@@ -1,0 +1,17 @@
+#connect{
+    width: 100%;
+    height: 100%;
+    border: solid 1px black;
+    display:  flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+
+#spacer{
+        
+        height: 50vh;
+        width: 100%;
+}

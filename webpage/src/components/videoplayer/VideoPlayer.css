@@ -1,0 +1,15 @@
+#video-player{
+    background-color: green;
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.displaymedia{
+    height: 415px;
+    width: 680px;
+    background-color: black;
+}

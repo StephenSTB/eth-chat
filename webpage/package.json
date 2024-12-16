@@ -1,0 +1,45 @@
+{
+  "name": "webpage",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "install-basic-components": "npm install ../../basic-components/sb-labs-basic-components-0.1.0.tgz",
+    "install-web3-data": "npm install ../../web3-data/sb-labs-web3-data-1.0.0.tgz",
+    "install-contract-factory-v2": "npm install ../../contract-factory-v2/sb-labs-contract-factory-v2-1.0.0.tgz",
+    "install-all": "npm run install-basic-components && npm run install-web3-data && npm run install-contract-factory-v2",
+    "build": "tsc -b && vite build -- --force",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@sb-labs/basic-components": "file:../../basic-components/sb-labs-basic-components-0.1.0.tgz",
+    "@sb-labs/contract-factory-v2": "file:../../contract-factory-v2/sb-labs-contract-factory-v2-1.0.0.tgz",
+    "@sb-labs/web3-data": "file:../../web3-data/sb-labs-web3-data-1.0.0.tgz",
+    "@types/web3": "^1.2.2",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "multicoin-address-validator": "^0.5.22",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.0.2",
+    "rollup-plugin-polyfill-node": "^0.13.0",
+    "vite-plugin-node-polyfills": "^0.17.0",
+    "web3": "^4.16.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "@types/multicoin-address-validator": "^0.5.3",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.15.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.12.0",
+    "node-stdlib-browser": "^1.3.0",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.15.0",
+    "vite": "^5.0.0"
+  }
+}
