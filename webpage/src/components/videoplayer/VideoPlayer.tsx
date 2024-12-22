@@ -1,12 +1,13 @@
 import Peer from "peerjs";
 import { useEffect } from "react"
 import "./VideoPlayer.css"
-
+import { Button, Icon } from "@sb-labs/basic-components/dist";
+import { flame, user, search, ethereum_black, ethereum_green, ethereum_white, copy, settings_black, settings_green, close } from "@sb-labs/images"
 
 interface VideoPlayerProps{
     me: Peer
     peeruuid: string;
-    setCallStreamRecorder(callStreamRecord: MediaRecorder): any;
+    /*setCallStreamRecorder(callStreamRecord: MediaRecorder): any;*/
 }
 
 export const VideoPlayer = (props: VideoPlayerProps) =>{
@@ -38,33 +39,22 @@ export const VideoPlayer = (props: VideoPlayerProps) =>{
             
             /*
             const connectToPeer = async () =>{
+                
+                var conn = me.connect(props.peeruuid);
+                console.log(conn)
+                // on open will be launch when you successfully connect to PeerServer
+                conn.on('open', function(){
+                console.log("open connection")
+                // here you have conn.id
+                conn.send('hi!');
+                });
 
-                console.log("connect to peer")
-                try{
-                let conn = me.connect(props.peeruuid, {reliable: true});
-                if(!conn){
-                    console.log("no connection")
-                }
-                console.log(me.id)
-                
-                    conn.on('open', function(){
-                        console.log("sending")
-                        //conn.send("hi!")
-                    })
-                }catch{
-                    console.log("can't send to peer")
-                }
-                
-                try{
-                    me.on('connection', function(conn) {
-                        conn.on('data', function(data){
-                          // Will print 'hi!'
-                          console.log(data);
-                        });
-                      });
-                }catch{
-                    console.log("can't receive to peer")
-                }
+                me.on('connection', function(conn) {
+                    conn.on('data', function(data){
+                      // Will print 'hi!'
+                      console.log(data);
+                    });
+                  })
                 
             }
             
@@ -84,7 +74,7 @@ export const VideoPlayer = (props: VideoPlayerProps) =>{
                 //(document.querySelector("#video-client1") as HTMLVideoElement).srcObject = stream
                 const call = me.call(props.peeruuid as string, callstream)
                 call.on('stream', (remoteStream: MediaStream) => {
-                    new MediaRecorder(remoteStream)
+                    //new MediaRecorder(remoteStream)
                     console.log("stream");
                     //(document.querySelector("#video1") as HTMLVideoElement).srcObject = callstream;
                     (document.querySelector("#video2") as HTMLVideoElement).srcObject = remoteStream;
@@ -121,6 +111,7 @@ export const VideoPlayer = (props: VideoPlayerProps) =>{
                 <video autoPlay={true} playsInline id="video1" className="displaymedia" />
                 <video autoPlay={true} playsInline id="video2"className="displaymedia" />
             </div>
+            <Button size="medium" text="Close" icon={<Icon size="mini" src={close}></Icon>}></Button>
         </>
     );
 }

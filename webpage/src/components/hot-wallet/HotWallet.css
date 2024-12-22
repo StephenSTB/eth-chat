@@ -1,0 +1,22 @@
+#hot-wallet-main{
+    
+    border-top: solid gray 2px;
+    border-bottom: solid gray 2px;
+}
+
+/* Desktop */
+@media screen and (min-width: 900px) {
+	
+    #hot-wallet-main{
+        width: 800px;
+        height: 600px;
+    }
+	
+}
+
+/*Mobile*/
+@media screen and (max-width: 900px) 
+{
+  
+    
+}

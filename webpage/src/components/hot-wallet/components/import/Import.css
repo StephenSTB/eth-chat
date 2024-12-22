@@ -1,0 +1,34 @@
+#import{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    height: 600px;
+}
+
+
+#import-password-input, #import-confirm-input{
+    margin-top: 2.5px;
+}
+
+#connect-display{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+    margin-top: 2.5px;
+}
+
+#import-display-button{
+    color: var(--purple);
+}
+
+#import-display-button, #import-connect-button{
+    border: none;
+    background: none;
+}
+
+#import-display-button:hover, #import-connect-button:hover{
+    text-decoration: underline;
+}

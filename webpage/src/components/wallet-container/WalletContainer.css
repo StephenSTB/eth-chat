@@ -1,0 +1,31 @@
+#wallet-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /*border: solid 1px black*/
+}
+#player{
+    width: 100%;
+}
+
+/* Desktop */
+@media screen and (min-width: 900px) {
+	
+    #wallet-container{
+        margin-top: 5vh;
+        height: 95vh;
+    }
+    
+}
+
+
+/*Mobile*/
+@media screen and (max-width: 900px) 
+{
+  
+    #wallet-container{
+        margin-top: 5vh;
+        height: 95vh;
+    }
+}

@@ -10,3 +10,23 @@
   top: 0;
   /*border: solid black 1px;*/
 }
+
+/* Desktop */
+@media screen and (min-width: 900px) {
+	/* width */
+	::-webkit-scrollbar {
+		width: 10px;
+    background-color: gray;
+	}
+}
+
+/*Mobile*/
+@media screen and (max-width: 900px) 
+{
+	/* width */
+	::-webkit-scrollbar {
+		width: 7px;
+    background-color: gray;
+	}
+	
+}

@@ -1,0 +1,44 @@
+#topbar{
+    position: absolute;
+    width: 100%;
+    /*height: 5vh;*/
+    border: solid 1px black;
+    display:  flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.top-section{
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#top-button{
+    background: none;
+    border: none;
+}
+
+#top-button:hover{
+    text-decoration: underline;
+    border: none;
+}
+
+/* Desktop */
+@media screen and (min-width: 900px) {
+	
+    .top-section{
+        width: 25vw;
+        height: 5vh;
+    }
+	
+}
+
+/*Mobile*/
+@media screen and (max-width: 900px) 
+{
+  
+   
+}

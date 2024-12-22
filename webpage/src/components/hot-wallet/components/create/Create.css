@@ -1,0 +1,35 @@
+#wallet-create{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#wallet-password-confirm{
+    margin-top: 5px;
+}
+
+#wallet-create-button
+{
+    margin-top: 2.5px;
+}
+
+#continue-button{
+    margin-top: 2.5px;
+}
+
+/* Desktop */
+@media screen and (min-width: 900px) {
+	
+    #wallet-create{
+        height: 600px;
+        width: 800px;
+    }
+}
+
+/*Mobile*/
+@media screen and (max-width: 900px) 
+{
+  
+   
+}

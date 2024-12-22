@@ -1,4 +1,4 @@
-import { useState,  } from "react"
+import { useEffect, useState,  } from "react"
 import { Button, GetWeb3, Input, Text } from "@sb-labs/basic-components/dist"
 import {Web3} from "web3"
 import { isAddress } from 'web3-validator';
@@ -11,6 +11,7 @@ import "./Connect.css"
 import WAValidator from "multicoin-address-validator"
 import {Peer} from "peerjs";
 import { VideoPlayer } from "../videoplayer/VideoPlayer";
+
 
 interface ConnectProps{
     getWeb3(web3: Web3, uuid: string): any
@@ -35,6 +36,14 @@ export function Connect(props: ConnectProps){
     //let getConnect = true
     //const navigate = useNavigate();
 
+    const [mobile , setMobile] = useState<boolean>(false)
+
+    useEffect(() =>{
+        setMobile(window.innerWidth > 900 ? false: true)
+
+    }, [window.innerWidth])
+
+   
 /*
     useEffect(() =>{
         
@@ -51,7 +60,7 @@ export function Connect(props: ConnectProps){
         const network = chains[ chainId]
         uuidConnect.options.address = deployed[network]["UUIDConnect"].address;
         await setuuidConnect(uuidConnect)
-
+        //uuidConnect.get
         try{
             let myuuid = await uuidConnect.methods.uuidmap(address).call({from: address})
             console.log(myuuid)
@@ -135,9 +144,26 @@ export function Connect(props: ConnectProps){
             //setuuid(uuid)
         }
     }
+    const prefix = "/src/assets/"
+    const tracks = [ prefix + "CtrlAltDelete.mp3", prefix + "don'tknowwhy.mp3", prefix + "Bleach.mp3", prefix + "Suppuku.mp3"]; //prefix + "Bleach.mp3", prefix + "Suppuku.mp3"
 
-   
+    let track = 0;
 
+    const switchTrack = () =>{
+        const track = (Math.floor(Math.random() * 1000 )) % tracks.length;
+        (document.querySelector("#player") as HTMLAudioElement).src = tracks[track];
+        (document.querySelector("#player") as HTMLAudioElement).play();
+    }
+
+    useEffect(() =>{
+        console.log("play first track");
+        ;
+        const next = (Math.floor(Math.random() * 1000) ) % tracks.length;
+        console.log((next));
+        (document.querySelector("#player") as HTMLAudioElement).src =  tracks[next];
+        (document.querySelector("#player") as HTMLAudioElement).play();
+        (document.querySelector("#player") as HTMLAudioElement).addEventListener("ended", switchTrack)
+    }, [])
 
 /*
 size?: string;
@@ -155,7 +181,7 @@ size?: string;
         <div id="connect">
 
             {
-                displayStream && <VideoPlayer me={props.me } peeruuid={peeruuid as string} setCallStreamRecorder={props.setCallStreamRecoder}/> // getStreaming?
+                displayStream && <VideoPlayer me={props.me } peeruuid={peeruuid as string} /> // getStreaming?{/*setCallStreamRecorder={props.setCallStreamRecoder*/}
                 
             }
             {
@@ -166,24 +192,38 @@ size?: string;
             }
                 {getConnect &&
                 <>
-                    <GetWeb3 text={props.text} default_network={11155111} networkIds={[11155111]} getWeb3={getWeb3}/>
+                    {<GetWeb3 text={props.text} default_network={11155111} networkIds={[11155111]} getWeb3={getWeb3}/>}
                     <br />
                     
                 </>
             
                 } 
-                { 
-                    connectPeer && <>
-                        <Input size="medium" placeholder="0x...90d" onKeyDown={onKeyDown}></Input> 
-                        <br/>
-                            
-                    </>
-                }
-                {
-                    callTransacting && <Button theme="light" size="mini" transacting={true}/>
-                }
-                <Text theme="light" text={promptText}></Text>
-            
+                <div id="callbar">
+                    { 
+                        connectPeer && <>
+                            <Input size={mobile ? "small" : "medium"} placeholder="0x...90d" onKeyDown={onKeyDown}></Input> 
+                            <br/>
+                                
+                        </>
+                    }{
+
+                    }
+                    {
+                        callTransacting && <Button theme="light" size="mini" transacting={true}/>
+                    }
+                    
+                    <Text theme="light" text={promptText} ></Text>
+                </div>
+                <>
+                    <audio controls id="player" src="/src/assets/don'tknowwhy.mp3">
+                        {/*<source src="/src/assets/don'tknowwhy.mp3" type="audio/mp3" id="player-source"/>*/}
+                        {/*<source src="/src/assets/CtrlAltDelete.mp3" type="audio/mp3"/>*/}
+                    </audio>
+                    {/*<Input placeholder = "Audio link..." onKeyDown={getAudio} size="small"></Input>*/}
+                    
+                </>
+                
+                
         </div>
     )
 }

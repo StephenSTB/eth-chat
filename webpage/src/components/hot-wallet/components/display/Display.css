@@ -1,0 +1,132 @@
+#display{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#connect-import{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+    height: 30px;
+    margin-top: 2px;
+    /*border: solid 1px black;*/
+}
+
+#import-button, #connect-button{
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+}
+
+#import-button:hover, #connect-button:hover{
+    text-decoration: underline;
+}
+
+#import-button{
+    color: var(--purple);
+}
+/* account */
+
+#display-account{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    justify-content: space-between;
+    width: 170px;
+    margin-bottom: 5px;
+}
+
+#display-account-string{
+
+}
+
+#display-account-copy{
+   
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+}
+
+#display-copy{
+    margin-left: 2.5px;
+    width: 30px;
+}
+
+/*send ether section*/
+
+#display-send-ether{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2.5px;
+    margin-bottom: 10.5px;
+}
+
+#display-send-ether-button{
+    
+}
+
+
+#display-network{
+    margin-top: 10.5px;
+    margin-bottom: 10.5px;
+}
+
+/*call signing*/
+
+#call-sign{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#call-sign-key-button{
+    min-width: 250px;
+    margin-top: 5px;
+}
+
+/* create call channel*/
+
+#create-call-channel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#create-call-channel-input{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Desktop */
+@media screen and (min-width: 900px) {
+	#display{
+        height: 600px;
+        width: 800px;
+    }
+    
+	
+}
+
+/*Mobile*/
+@media screen and (max-width: 900px) 
+{
+  
+    #display{
+        height: 600px;
+        width: 400px;
+    }
+}

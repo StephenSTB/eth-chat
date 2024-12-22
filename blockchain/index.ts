@@ -95,7 +95,7 @@ peer1.on('connection', function(conn) {
 // disconnect
 
 
-// account dithiliam
+// account falcon
 /*
 while(true){
     // peerjs get transaction
