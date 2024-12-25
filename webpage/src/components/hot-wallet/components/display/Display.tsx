@@ -8,7 +8,7 @@ import { contractFactoryV2 } from "@sb-labs/contract-factory-v2"
 
 import { deployed, providers, Providers } from "@sb-labs/web3-data"
 
-import {ethereum_black, copy} from "@sb-labs/images"
+import {ethereum_black, copy, flame} from "@sb-labs/images"
 
 import * as CryptoJS from 'crypto-js'
 
@@ -18,11 +18,14 @@ import { Buffer } from 'buffer';
 
 import { v4 as uuidV4 } from "uuid"
 
+import axios from "axios" 
+
 globalThis.Buffer = Buffer;
 
 //console.log('Buffer polyfill:', Buffer);
 
 import "./Display.css"
+
 
 interface DisplayProps{
     engine: Web3Engine,
@@ -32,11 +35,15 @@ interface DisplayProps{
 }
 
 export const Display = (props: DisplayProps) => {
+
     const [engine, setEngine] = useState<Web3Engine>();
     const [network, setNetwork] = useState<string>();
     const [account , setAccount] = useState<string>()
     const [displayAccount, setDisplayAccount] = useState<string>();
-
+    /*const [client, setClient] = useState(createPublicClient({ chain: sepolia , transport: http() }) as PublicClient);*/
+    const [client, setClient] = useState()
+    const [name, setName] = useState<string>("")
+    const [avatar, setAvatar] = useState<string>("");
     const [ether, setEther] = useState<string>();
     const [display, setDisplay] = useState("Connect")
     const [password, setPassword] = useState<string>("")
@@ -77,6 +84,7 @@ export const Display = (props: DisplayProps) => {
         }
 
         const getRegistries = async() =>{
+            console.log("here")
                 if(engine.defaultInstance?.web3 !== undefined){
                     account = engine.web3Instances[network].wallet[0].address
                     const signkey = await engine.sendTransaction(engine.defaultNetwork as string, {from: account}, "Call", "SignKeys", [account], true)
@@ -87,12 +95,12 @@ export const Display = (props: DisplayProps) => {
                         console.log("Gas:", registerGas)
                         setCallSignKey(true);
                         setCallRegisterGas(engine.defaultInstance.web3.utils.fromWei(registerGas.gas.toString(), "ether"))
+                        return;
                     }
                     else{
                         setCallSignKey(false)
                         /* get create channel gas */
                         // get enable hash
-    
                         const enableHash = await engine.sendTransaction(network, {from: account}, "Call", "EnableHash", [], true)
                         //console.log(enableHash)
                         const publicKey = (await engine.sendTransaction(network, {from: account}, "Call", "SignKeys", [account], true)).transaction
@@ -107,43 +115,56 @@ export const Display = (props: DisplayProps) => {
                         let gas = await engine.getGas(network, {from: account}, "Call", "setCallChannel",[account, ["0x" + encrypted.toString("hex"), "0x" + encrypted.toString("hex")]] )
                         const utils = engine.defaultInstance.web3.utils
                         setCallChannelGas(utils.fromWei(gas.gas.toString(), "ether"))
-
-                        //const encrypt = await eccrypto.encrypt(Buffer.from(("04" + keybufCompressed.toString("hex")), "hex"), Buffer.from("msg"))
-                        /*
-                        const pk = new PrivateKey();
-                       
-                        const data = new Uint8Array(Buffer.from("hello world", "utf-8"))
-                        const encrypted = encrypt(pk.publicKey.toBytes(), data)
-                        console.log(encrypted)
-                        const decrypted = decrypt(pk.secret.toString('hex'), encrypted)
-                        console.log(decrypted.toString('utf-8'))
-                        //console.log(encrypt)
-
-                        //console.log(key)
-
-
-                        
-                        /*
-                        window.crypto.subtle.deriveKey({
-                            name: "ECDH",
-                            public: publicKey0
-                        },
-                        privateKey.slice(2),
-                        {
-                            name: "AES-GCM",
-                            length:256
-                        },
-                        false,
-                        ["encrypt", "decrypt"]
-                    )*/
                        
                     }
+                    // Name verifier.
+                    const name_tx = (await engine.sendTransaction(network, {from: account}, "Name", "Names", [account], true))
+                    const _name = name_tx.transaction;
+                    console.log(_name)
+                    if(_name !== ""){
+                        const address = await engine.sendTransaction(network, {from: account}, "Name", "NamesResolver", ["Steve"], true)
+                    
+                        const info_tx = await engine.sendTransaction(network, {from: account}, "Name", "Info", [account], true)
+                        const info = info_tx.transaction;
+                        setName(_name)
+                        console.log(info.avatar)
+                        
+                        try{
+                            console.log(avatar)
+                            if(avatar == ""){
+                                const _avatar = await axios.get(("https://ipfs.io./ipfs/" + info.avatar), {responseType: "blob"})
+                                console.log(_avatar.data)
+                                if(_avatar.data.type.includes("image")){
+                                    const blobUrl = window.URL.createObjectURL(_avatar.data);
+                                    console.log(_avatar.data)
+                                    setAvatar(blobUrl)
+                                }
+                                
+                            }
+                            
+                        
+                        }catch{
+                            console.log("Bad axios call")
+                        }
+                        
+                        
+                        
+                        /*const resp = _avatar.clone()
+
+                        const blobUrl = window.URL.createObjectURL(await resp.blob());
+                        console.log(blobUrl)
+                        //console.log(avatar)
+                        setAvatar(blobUrl)*/
+                        
+                    }
+                    
+                    
                 }
         }
         // get registries
         getRegistries()
 
-    },)
+    },[props.engine])
 
     const confirmPassword = async () =>{
         
@@ -306,7 +327,9 @@ export const Display = (props: DisplayProps) => {
                 {
                     display === "Connect" &&
                     <>
+                        <Icon size="large" src={flame}/>
                         <h3>Connect to Wallet</h3>
+                        
                         <Input size="small" placeholder="password..." onChange={changePassword} onKeyDown={passwordEnter} inputType="password"/>
                         <div id="connect-import">
                             <Button text="Import" size="small" id="import-button" onClick={importMnemonic}/>
@@ -318,14 +341,18 @@ export const Display = (props: DisplayProps) => {
                     display === "Account" &&
                     <>
                         <h3>Account</h3>
+                        {
+                            name !== "" && <div id="display-name">{name} <Icon src={avatar} size="medium"/></div>
+                        }
                         <div id="display-account">
+                            {/*<div>{name}<Icon size="mini" src={avatar} /></div>*/}
                             <div id="display-account-string">{displayAccount}</div>
                             <div id="display-account-copy">
                                 <Popup text='Copied!' offset={{bottom: "45px", right:"-25px"}} display={copyState} 
                                 element={<Button size='icon' icon={<Icon size="mini" src={copy} round={true}/>} onClick={copyAddress} id="display-copy"/>}/>
                             </div>
                         </div>
-                        <div>
+                        <div id="display-ether">
                             Ether: {ether} <Icon size="mini" src={ethereum_black} round={true}></Icon>
                         </div>
                         {/** Create send ether  TODO*/}
@@ -347,28 +374,32 @@ export const Display = (props: DisplayProps) => {
                             
                             <Dropdown options={options} size="medium" theme="light" onChange={networkChange}></Dropdown>
                         </div>
-                        <Divider />
+                        
                         {/* register for calling messages following*/}
                         
                             { 
                                 callSignKey && 
-                                <div id="call-sign">
+                                <>
+                                    <Divider />
+                                    <div id="call-sign">
                                     <div>Register Call Sign Key Button to Interact with App.</div>
                                     <div>Gas : {callRegisterGas}</div>
                                     <Button text="Register Call Sign Key." size="large" onClick={registerCallSignKey} id="call-sign-key-button" transacting={transactCallSignKey}/>
                                 </div>
+                                </>
+                                
                             }
                         {/* Create Call channel */}
-                            {
+                            {/*
                                 !callSignKey &&
                                 <div id="create-call-channel">
                                     <h3>Create Call Channel</h3>
                                     <div>Gas : {callChannelGas}</div>
-                                    <div id="create-call-channel-input"><Input placeholder="address..." size="small" onChange={changeChannel}/><Button text="Channel" size="large"/></div>
-                                </div>
+                                    <div id="create-call-channel-input"><Input placeholder="address..." onChange={changeChannel}/><Button text="Channel" size="large"/></div>
+                                </div>*/
                             }
                         
-                        {/* register ens name*/}
+                        
 
                     </>
                 }

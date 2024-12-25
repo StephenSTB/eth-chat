@@ -11,6 +11,13 @@
   /*border: solid black 1px;*/
 }
 
+#player{
+  margin-top: 5.5vh;
+  position: absolute;
+  max-width: 50%;
+  translate: 50%;
+}
+
 /* Desktop */
 @media screen and (min-width: 900px) {
 	/* width */
@@ -28,5 +35,6 @@
 		width: 7px;
     background-color: gray;
 	}
+
 	
 }

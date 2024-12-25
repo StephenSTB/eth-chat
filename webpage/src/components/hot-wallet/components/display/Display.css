@@ -45,8 +45,14 @@
     margin-bottom: 5px;
 }
 
-#display-account-string{
-
+#display-name{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /*border: solid 1px black;*/
+    width: 120px;
+    margin-bottom: 5px;
 }
 
 #display-account-copy{
@@ -111,11 +117,21 @@
     align-items: center;
 }
 
+#display-ether{
+    display:  flex;
+    flex: row;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Desktop */
 @media screen and (min-width: 900px) {
 	#display{
         height: 600px;
         width: 800px;
+        border-left: solid 1px gray;
+        border-right: solid 1px gray;;
     }
     
 	

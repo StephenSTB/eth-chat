@@ -38,6 +38,7 @@ export const Call = (props: CallProps) =>{
     useEffect(() =>{
         if(props.engine.mnemonic === undefined){
             navigate("/")
+            return
         }
 
         const getConnected = async () =>{

@@ -12,6 +12,7 @@ import { Topbar } from './components/topbar/Topbar'
 import { WalletContainer } from './components/wallet-container/WalletContainer'
 import { HotWallet } from './components/hot-wallet/HotWallet'
 import { Call } from './components/call/Call'
+import { Name } from './components/name/Name'
 /*
 interface Web3Props{
     web3: Web3;
@@ -20,13 +21,14 @@ interface Web3Props{
 
 function App() {
   //const [web3, setWeb3] = useState({} as Web3)
-  const [address, setAddress] = useState("")
+  const [account, setAccount] = useState<string>("")
+  const [displayAddress, setDisplayAddress] = useState<string>("")
   const [me, setMe] = useState<Peer>()
   const [peeruuid, setpeeruuid] = useState<string>()
   const [callStreamRecorder, setCallStreamRecorder] = useState<MediaRecorder>();
   const [engine, setEngine] = useState<Web3Engine>(new Web3Engine({} as EngineArgs));
   const [network, setNetwork] = useState<string>("");
-
+/*
   async function getWeb3(web3: Web3, uuid: string){
     console.log("getweb3")
     let addr = (await web3.eth.getAccounts())[0];
@@ -54,7 +56,7 @@ function App() {
   }
   useEffect(() =>{
 
-  },[callStreamRecorder] )
+  },[callStreamRecorder] )*/
 
   const setCallStream = (callstream: MediaRecorder) =>{
 
@@ -68,16 +70,43 @@ function App() {
   const getNetwork = (network: string) => {
     setNetwork(network)
   }
+
+    const prefix = "/src/assets/"
+    const tracks = [ prefix + "CtrlAltDelete.mp3", prefix + "don'tknowwhy.mp3", prefix + "Bleach.mp3", prefix + "Suppuku.mp3", prefix + "MyFlaws.mp3"]; //prefix + "Bleach.mp3", prefix + "Suppuku.mp3"
+
+    //let track = 0;
+
+    const switchTrack = () =>{
+        const track = (Math.floor(Math.random() * 1000 )) % tracks.length;
+        (document.querySelector("#player") as HTMLAudioElement).src = tracks[track];
+        (document.querySelector("#player") as HTMLAudioElement).play();
+    }
+
+    useEffect(() =>{
+        console.log("play first track");
+        ;
+        const next = (Math.floor(Math.random() * 1000) ) % tracks.length;
+        console.log((next));
+        (document.querySelector("#player") as HTMLAudioElement).src =  tracks[next];
+        //(document.querySelector("#player") as HTMLAudioElement).play();
+        (document.querySelector("#player") as HTMLAudioElement).addEventListener("ended", switchTrack)
+    }, [])
  
   return (
     <div className='App'>
         
         <BrowserRouter>
             <Topbar></Topbar>
+            {
+                        <>
+                            <audio controls id="player" src="/src/assets/don'tknowwhy.mp3">
+                            </audio>
+                        </> 
+            }
             <Routes>
                 <Route path="/">
-                    <Route index element={<WalletContainer wallet={<HotWallet getEngine={getEngine} getNetwork={getNetwork} engine={engine}/>}></WalletContainer>}>
-                    </Route>
+                    <Route index element={<WalletContainer wallet={<HotWallet getEngine={getEngine} getNetwork={getNetwork} engine={engine}/>}></WalletContainer>} />
+                    
                     <Route path="call" element={<div>
                                                 {
                                                     /*<Connect text='Connect' getWeb3={getWeb3} me={me as Peer} setpeeruuid={setpeeruuid} setCallStreamRecoder={setCallStream} ></Connect>
@@ -85,7 +114,8 @@ function App() {
                                                 }
                                                 <Call engine={engine} network={network}/>
                                           </div>}
-                                        ></Route>
+                                        />
+                  <Route path="name" element={<Name engine={engine} network={network}/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>

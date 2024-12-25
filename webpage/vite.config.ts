@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     nodePolyfills({
       // To add only specific polyfills, add them here. If no option is passed, adds all polyfills
-      include: ['path', 'crypto', "fs", "url", "buffer",],
+      include: ['path', 'crypto', "fs", "url", "buffer", "stream"],
       // To exclude specific polyfills, add them to this list. Note: if include is provided, this has no effect
       exclude: [
         'http', // Excludes the polyfill for `http` and `node:http`.

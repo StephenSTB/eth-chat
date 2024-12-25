@@ -15,12 +15,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ensdomains/ensjs": "^4.0.2",
+    "@helia/unixfs": "^4.0.1",
     "@sb-labs/basic-components": "file:../../basic-components/sb-labs-basic-components-0.1.0.tgz",
     "@sb-labs/contract-factory-v2": "file:../../contract-factory-v2/sb-labs-contract-factory-v2-1.0.0.tgz",
     "@sb-labs/web3-data": "file:../../web3-data/sb-labs-web3-data-1.0.0.tgz",
     "@sb-labs/web3-engine": "file:../../web3-engine/sb-labs-web3-engine-1.0.0.tgz",
     "@types/web3": "^1.2.2",
     "@vitejs/plugin-vue": "^5.2.1",
+    "axios": "^1.7.9",
     "buffer": "^6.0.3",
     "crypto": "^1.0.1",
     "crypto-browserify": "^3.12.1",
@@ -33,6 +36,8 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.0.2",
     "rollup-plugin-polyfill-node": "^0.13.0",
+    "stream-browserify": "^3.0.0",
+    "viem": "^2.21.57",
     "vite-plugin-node-polyfills": "^0.17.0",
     "vite-plugin-wasm": "^3.3.0",
     "web3": "^4.16.0"
