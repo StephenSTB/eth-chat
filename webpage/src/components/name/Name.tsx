@@ -6,8 +6,18 @@ import * as Block from 'multiformats/block';
 import * as raw from "multiformats/codecs/raw"
 import { sha256 } from 'multiformats/hashes/sha2';
 import axios from "axios" 
-import { Icon, Textarea, Input } from "@sb-labs/basic-components/dist";
+import { Icon, Textarea, Input, Button } from "@sb-labs/basic-components/dist";
 import { user } from "@sb-labs/images"
+
+/*
+import { createHelia } from "helia";
+
+const helia = await createHelia({})
+
+setInterval(() =>{
+    console.log(helia.libp2p.getConnections())
+}, 10000)
+*/
 
 interface NameProps{
     network: string,
@@ -18,11 +28,29 @@ export const Name = (props: NameProps) =>{
     const [name, setName] = useState<string>("")
     const [bio, setBio] = useState<string>()
     const [link, setLink] = useState<string>()
+    const [linkDisplay, setLinkDisplay] = useState<string>();
     const [avatar, setAvatar] = useState<string>();
+    
+    
 
     const [createName, setCreateName] = useState<boolean>(false);
     const [iconImport, setIconImport] = useState<string>(user);
+
+    const [newName, setNewName] = useState<string>("");
+    const [newBio, setNewBio] = useState<string>("")
+    const [newLink, setNewLink] = useState<string>("")
+    const [avatarCid, setAvatarCid] = useState<string>("")
+    const [avatarFile, setAvatarFile] = useState<File>();
+
+    const [error, setError] = useState<string>("");
+
+    const [engine, setEngine] = useState<Web3Engine>();
+    const [network, setNetwork] = useState<string>("");
+    const [account, setAccount] = useState<string>("");
+    const [transacting, setTransacting] = useState<boolean>(false)
+
     const navigate = useNavigate()
+
     useEffect(() =>{
         if(props.engine.mnemonic === undefined){
             navigate("/")
@@ -35,9 +63,12 @@ export const Name = (props: NameProps) =>{
             const engine = props.engine
             const network = props.network
             const account = engine.defaultAccount
+            setEngine(engine)
+            setNetwork(network)
+            setAccount(account as string)
             let name = (await engine.sendTransaction(network, {from: account}, "Name", "Names", [account], true)).transaction
 
-            console.log(name== "")
+            console.log(name == "")
             
             if(name !== undefined && name !== ""){
                 let nameInfo = (await engine.sendTransaction(network, {from: account}, "Name", "Info", [account], true)).transaction
@@ -50,13 +81,14 @@ export const Name = (props: NameProps) =>{
 
                 console.log(block.cid.toString())
                 if(name.link !== "bafkreihdwdcefgh4dqkjv67uzcmw7ojee6xedzdetojuzjevtenxquvyku"){
-                    setLink("https://ipfs.io/ipfs/" + nameInfo.link)
+                    setLink(nameInfo.link)
+                    setLinkDisplay(nameInfo.link.slice(0, 9) + "..." + nameInfo.link.slice(-4))
                 }  
 
                 try{    
                     console.log(nameInfo.avatar)
                     let _avatar = await axios.get("https://ipfs.io/ipfs/" + nameInfo.avatar, {responseType: "blob"})
-                    if(_avatar.data.type.includes("image")){
+                    if(_avatar.data.type.includes("image/png")){
                         const blobUrl = window.URL.createObjectURL(_avatar.data);
                         console.log(_avatar.data)
                         setAvatar(blobUrl)
@@ -69,9 +101,6 @@ export const Name = (props: NameProps) =>{
             else{
                 setCreateName(true)
                 console.log("here")
-                
-
-
             }
             
             //console.log(nameInfo)
@@ -79,19 +108,122 @@ export const Name = (props: NameProps) =>{
         getInfo()
     }, [props.engine])
 
+    useEffect(() =>{
 
+    },[error])
 
-    const getAvatar = (e : any) =>{
+    function fileToUint8Array(file: File): Promise<Uint8Array> {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const uint8Array = new Uint8Array(reader.result as ArrayBuffer);
+            resolve(uint8Array);
+          };
+          reader.onerror = () => {
+            reject(reader.error);
+          };
+          reader.readAsArrayBuffer(file);
+        });
+      }
+
+    const changeAvatar = async (e : any) =>{
         console.log(e.target.value)
         console.log("get avatar")
         const avatarInput = ((document.getElementById("name-avatar-button")) as HTMLInputElement).files?.item(0)
-        console.log(avatarInput)
-        //const reader = new FileReader()
+        setAvatarFile(avatarInput as File)
+
+        console.log(await fileToUint8Array(avatarInput as File))
+
+        const file = await fileToUint8Array(avatarInput as File)
+
+        const block = await Block.encode({value: file, codec: raw, hasher: sha256})
+        setAvatarCid(block.cid.toString())
+        //setAvatarData(block as any)
         
         const blobUrl = URL.createObjectURL(avatarInput as File);
         setIconImport(blobUrl)
+        
+        
+        
     }
-    
+   
+    const changeName = async (e: any) =>{
+        const address = (await engine?.sendTransaction(network, {from: account}, "Name", "NamesResolver", [e.target.value], true)).transaction;
+        console.log(address)
+        if(address !== "0x0000000000000000000000000000000000000000"){
+            setError("Name already taken.")
+            return;
+        }
+        setError("")
+        setNewName(e.target.value)
+        
+    }
+
+    const changeBio = async (e:any) =>{
+        setNewBio(e.target.value)
+    }
+
+    const changeLink = (e: any) =>{
+        //59 "bafybei""bafkrei"
+        if(e.target.value.length !== 59){
+            setError("Link cid not long enough")
+            return;
+        }
+        console.log(e.target.value.slice(0, 7))
+        if(e.target.value.slice(0, 7) !== "bafkrei"){
+            setError("Incorret begining prefix for raw or pb content.")
+            return;
+        }
+        setNewLink(e.targe.value)
+
+    }
+    const NewName = async () =>{
+        setTransacting(true)
+        let link = "bafkreihdwdcefgh4dqkjv67uzcmw7ojee6xedzdetojuzjevtenxquvyku";
+        let avatar = "bafkreihdwdcefgh4dqkjv67uzcmw7ojee6xedzdetojuzjevtenxquvyku";
+        // get blank info
+        if(newLink !== ""){
+            link = newLink;
+        }
+        if(avatarCid != ""){
+            avatar = avatarCid
+        }
+
+        
+        // send transaction
+        let gas = await engine?.getGas(network, {from: account}, "Name", "createName", [newName, newBio, link, avatar])
+        const utils = engine?.defaultInstance?.web3.utils;
+        console.log(utils?.fromWei(gas.gas.toString(), "ether"))
+        let createTranasaction = await engine?.sendTransaction(network, {from: account}, "Name", "createName", [newName, newBio, link, avatar])
+        if(!createTranasaction.success){
+            console.log(createTranasaction)
+            return
+        }
+
+        let transaction =  (await engine?.sendTransaction(network, {from: account}, "Name", "Info", [account], true)).transaction
+        transaction.network = network
+        console.log(transaction)
+        //TODO send avatar
+        const formData = new FormData();
+        if(avatarFile !== undefined){
+            //console.log("here")
+            formData.append('file', avatarFile as File);
+            formData.append('data', JSON.stringify(transaction))
+            await axios.post("http://localhost:3001/api/avatar", formData, {
+                headers:{
+                    "Content-Type": 'multipart/form-data'
+                }
+            })
+        }
+
+        setName(newName)
+        setBio(newBio)
+        setLink(newLink)
+        setAvatar(iconImport)
+        setCreateName(false)
+    }
+
+
     return(
         <>
         <div id="name-main">
@@ -101,7 +233,7 @@ export const Name = (props: NameProps) =>{
                     <div id="name-current">
                         <div id="name-name">{name} <Icon src={avatar} size="large" round={true} /></div>
                         <div id="name-bio"><Textarea value={bio} /></div>
-                        <div>{link}</div>
+                        <div> <a href={"https://ipfs.io/ipfs/" + link}>{linkDisplay}</a></div>
                     </div>
                 }
                 {
@@ -109,17 +241,19 @@ export const Name = (props: NameProps) =>{
                     <div id="name-create">
                         <h3>Create Name</h3>
                         <div>
-                            <Input placeholder="name..." size="small" id="name-name-input"/>
-                            <div id ="name-bio-textarea"><Textarea placeholder="bio..." /></div>
-                            <Input placeholder="link..." size="small" id="name-link-input"/>
+                            <Input placeholder="name..." size="small" id="name-name-input" onChange={changeName}/>
+                            <div id ="name-bio-textarea"><Textarea placeholder="bio..." onChange={changeBio}/></div>
+                            <Input placeholder="link..." size="small" id="name-link-input" onChange={changeLink}/>
                             <label >Upload Avatar:</label>
                             <div id="name-avatar-section"> 
-                                <input id="name-avatar-button" type="file" accept="image/png, image/jpeg" onChange={getAvatar}></input>
-                                <Icon src={iconImport} /></div>
+                                <input id="name-avatar-button" type="file" accept="image/png" onChange={changeAvatar}></input>
+                                <Icon src={iconImport} />
+                            </div>
+                            <div id="name-name-button"><Button size="medium" text="Create" transacting={transacting} onClick={NewName} /></div>
                         </div>
                     </div>
                 }
-                
+                <div>{error}</div>
             </div>
         </div>
         

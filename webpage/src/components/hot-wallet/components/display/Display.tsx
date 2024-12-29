@@ -25,6 +25,7 @@ globalThis.Buffer = Buffer;
 //console.log('Buffer polyfill:', Buffer);
 
 import "./Display.css"
+import { net } from "web3"
 
 
 interface DisplayProps{
@@ -32,29 +33,32 @@ interface DisplayProps{
     setComp: any
     getEngine: any
     getNetwork: any
+    network: string;
 }
 
 export const Display = (props: DisplayProps) => {
 
     const [engine, setEngine] = useState<Web3Engine>();
-    const [network, setNetwork] = useState<string>();
+    const [network, setNetwork] = useState<string>(props.network);
     const [account , setAccount] = useState<string>()
     const [displayAccount, setDisplayAccount] = useState<string>();
     /*const [client, setClient] = useState(createPublicClient({ chain: sepolia , transport: http() }) as PublicClient);*/
-    const [client, setClient] = useState()
+    //const [client, setClient] = useState()
     const [name, setName] = useState<string>("")
     const [avatar, setAvatar] = useState<string>("");
     const [ether, setEther] = useState<string>();
     const [display, setDisplay] = useState("Connect")
     const [password, setPassword] = useState<string>("")
     const [error, setError] = useState<string>("");
-    const options = [<option value="Sepolia" key="Sepolia">Sepolia</option>,<option value="Base" key="Base">Base</option>]
+    const  [options, setOptions] = useState(props.network == "Sepolia" ? [<option value="Sepolia" key="Sepolia">Sepolia</option>,<option value="Base" key="Base">Base</option>] : 
+                                                                        [<option value="Base" key="Base">Base</option>,<option value="Sepolia" key="Sepolia">Sepolia</option>])
     // account 
     const [copyState, setCopyState] = useState<boolean>(false)
     // send ether
     const [toAddress, setToAddress] = useState<string>("")
     const [sendEthereum, setSendEthereum] = useState<number>(0);
     const [etherTransacting, setEtherTransacting] = useState<boolean>(false);
+    const [sentEther, setSentEther] = useState<string>("")
     // registry variables
     const [callSignKey, setCallSignKey] = useState<boolean>(false);
     const [callRegisterGas, setCallRegisterGas] = useState("");
@@ -65,106 +69,120 @@ export const Display = (props: DisplayProps) => {
     useEffect(() =>{
 
         const getEther = async () =>{
-            const ether = props.engine.defaultInstance?.web3.utils.fromWei(await props.engine.defaultInstance?.web3.eth.getBalance(props.engine.defaultAccount as string), "ether")
+            const ether = props.engine.web3Instances[network].web3.utils.fromWei(await props.engine.web3Instances[network].web3.eth.getBalance(props.engine.defaultAccount as string), "ether")
             setEther(ether)
         }
 
         const engine = props.engine;
-        const network = engine.defaultNetwork as string;
-        let account;
 
         if(engine.mnemonic !== undefined){
             setAccount(props.engine.defaultAccount)
-            //console.log("display account")
+            console.log("display account", props.engine.defaultAccount)
             setDisplayAccount((props.engine.defaultAccount as string).slice(0, 6) + "..." + (props.engine.defaultAccount as string).slice(-4))
             setEngine(engine);
-            setNetwork(engine.defaultNetwork as string)
             getEther()
             setDisplay("Account")
         }
 
+
+    }, [])
+
+    useEffect(() =>{
+
+        const getEther = async () =>{
+            const ether = props.engine.web3Instances[network].web3.utils.fromWei(await props.engine.web3Instances[network].web3.eth.getBalance(props.engine.defaultAccount as string), "ether")
+            setEther(ether)
+        }
+       
+        const engine = props.engine;
+
+        if(engine.mnemonic !== undefined){
+            setAccount(props.engine.defaultAccount)
+            console.log("display account", props.engine.defaultAccount)
+            setDisplayAccount((props.engine.defaultAccount as string).slice(0, 6) + "..." + (props.engine.defaultAccount as string).slice(-4))
+            setEngine(engine);
+            getEther()
+            setDisplay("Account")
+        }
+        
+        let account;
+        
         const getRegistries = async() =>{
-            console.log("here")
-                if(engine.defaultInstance?.web3 !== undefined){
-                    account = engine.web3Instances[network].wallet[0].address
-                    const signkey = await engine.sendTransaction(engine.defaultNetwork as string, {from: account}, "Call", "SignKeys", [account], true)
-                    //console.log(signkey.transaction.v)
-                    if(signkey.transaction.v == 0){
-                        const sig = await engine.defaultInstance.wallet[0].sign("Enable Public Key.")
-                        const registerGas = await engine.getGas(engine.defaultNetwork as string, {from: account}, "Call", "register", [sig.signature])
-                        console.log("Gas:", registerGas)
-                        setCallSignKey(true);
-                        setCallRegisterGas(engine.defaultInstance.web3.utils.fromWei(registerGas.gas.toString(), "ether"))
-                        return;
-                    }
-                    else{
-                        setCallSignKey(false)
-                        /* get create channel gas */
-                        // get enable hash
-                        const enableHash = await engine.sendTransaction(network, {from: account}, "Call", "EnableHash", [], true)
-                        //console.log(enableHash)
-                        const publicKey = (await engine.sendTransaction(network, {from: account}, "Call", "SignKeys", [account], true)).transaction
-                        //console.log(publicKey)
 
-                        let keybuf = new Uint8Array(Buffer.from(("04" + ecrecover(toBuffer(enableHash.transaction), Number(publicKey.v), toBuffer(publicKey.r), toBuffer(publicKey.s)).toString("hex")), "hex"))
-                        //console.log(keybuf)
-                        const uuid = uuidV4()
-                        let encrypted = await engine.encrypt(keybuf, uuid)//await engine.sendTransaction(network, {from: account},"Call", "CallChannel", [account] )
-                        //console.log(encrypted)
+            console.log(engine.web3Instances[network].contracts)
 
-                        let gas = await engine.getGas(network, {from: account}, "Call", "setCallChannel",[account, ["0x" + encrypted.toString("hex"), "0x" + encrypted.toString("hex")]] )
-                        const utils = engine.defaultInstance.web3.utils
-                        setCallChannelGas(utils.fromWei(gas.gas.toString(), "ether"))
-                       
-                    }
-                    // Name verifier.
-                    const name_tx = (await engine.sendTransaction(network, {from: account}, "Name", "Names", [account], true))
-                    const _name = name_tx.transaction;
-                    console.log(_name)
-                    if(_name !== ""){
-                        const address = await engine.sendTransaction(network, {from: account}, "Name", "NamesResolver", ["Steve"], true)
-                    
-                        const info_tx = await engine.sendTransaction(network, {from: account}, "Name", "Info", [account], true)
-                        const info = info_tx.transaction;
-                        setName(_name)
-                        console.log(info.avatar)
-                        
-                        try{
-                            console.log(avatar)
-                            if(avatar == ""){
-                                const _avatar = await axios.get(("https://ipfs.io./ipfs/" + info.avatar), {responseType: "blob"})
-                                console.log(_avatar.data)
-                                if(_avatar.data.type.includes("image")){
-                                    const blobUrl = window.URL.createObjectURL(_avatar.data);
-                                    console.log(_avatar.data)
-                                    setAvatar(blobUrl)
-                                }
-                                
-                            }
-                            
-                        
-                        }catch{
-                            console.log("Bad axios call")
-                        }
-                        
-                        
-                        
-                        /*const resp = _avatar.clone()
+            if(engine.web3Instances[network].contracts["Call"] !== undefined){
+                console.log("here")
+                account = engine.web3Instances[network].wallet[0].address
+                console.log(account)
+                console.log(engine.web3Instances[network].contracts["Call"])
+                const signkey = await engine.sendTransaction(network as string, {from: account}, "Call", "SignKeys", [account], true)
+                console.log(signkey.transaction.v)
+                if(signkey.transaction.v == 0){
+                    const sig = await engine.web3Instances[network].wallet[0].sign("Enable Public Key.")
+                    const registerGas = await engine.getGas(network as string, {from: account}, "Call", "register", [sig.signature])
+                    console.log("Gas:", registerGas)
+                    setCallSignKey(true);
+                    setCallRegisterGas(engine.web3Instances[network].web3.utils.fromWei(registerGas.gas.toString(), "ether"))
+                    return;
+                }
+                else{
+                    setCallSignKey(false)
+                    /* get create channel gas */
+                    // get enable hash
+                    const enableHash = await engine.sendTransaction(network, {from: account}, "Call", "EnableHash", [], true)
+                    //console.log(enableHash)
+                    const publicKey = (await engine.sendTransaction(network, {from: account}, "Call", "SignKeys", [account], true)).transaction
+                    //console.log(publicKey)
 
-                        const blobUrl = window.URL.createObjectURL(await resp.blob());
-                        console.log(blobUrl)
-                        //console.log(avatar)
-                        setAvatar(blobUrl)*/
-                        
-                    }
-                    
+                    let keybuf = new Uint8Array(Buffer.from(("04" + ecrecover(toBuffer(enableHash.transaction), Number(publicKey.v), toBuffer(publicKey.r), toBuffer(publicKey.s)).toString("hex")), "hex"))
+                    //console.log(keybuf)
+                    const uuid = uuidV4()
+                    let encrypted = await engine.encrypt(keybuf, uuid)//await engine.sendTransaction(network, {from: account},"Call", "CallChannel", [account] )
+                    //console.log(encrypted)
+
+                    let gas = await engine.getGas(network, {from: account}, "Call", "setCallChannel",[account, ["0x" + encrypted.toString("hex"), "0x" + encrypted.toString("hex")]] )
+                    const utils = engine.web3Instances[network].web3.utils
+                    setCallChannelGas(utils.fromWei(gas.gas.toString(), "ether"))
                     
                 }
+                // Name verifier.
+                const name_tx = (await engine.sendTransaction(network, {from: account}, "Name", "Names", [account], true))
+                const _name = name_tx.transaction;
+                console.log(_name)
+                if(_name !== ""){
+                    const address = await engine.sendTransaction(network, {from: account}, "Name", "NamesResolver", ["Steve"], true)
+                
+                    const info_tx = await engine.sendTransaction(network, {from: account}, "Name", "Info", [account], true)
+                    const info = info_tx.transaction;
+                    setName(_name)
+                    console.log(info.avatar)
+                    
+                    try{
+                        console.log(avatar)
+                        if(avatar == ""){
+                            const _avatar = await axios.get(("https://ipfs.io./ipfs/" + info.avatar), {responseType: "blob"})
+                            console.log(_avatar.data)
+                            if(_avatar.data.type.includes("image")){
+                                const blobUrl = window.URL.createObjectURL(_avatar.data);
+                                console.log(_avatar.data)
+                                setAvatar(blobUrl)
+                            }
+                            
+                        }
+                        
+                    
+                    }catch{
+                        console.log("Bad axios call")
+                    }
+                    
+                }
+            }
         }
         // get registries
         getRegistries()
 
-    },[props.engine])
+    },[ props.engine, sentEther, props.network])
 
     const confirmPassword = async () =>{
         
@@ -187,17 +205,16 @@ export const Display = (props: DisplayProps) => {
 
         let prvdrs = {} as Providers;
 
-        const network = "Sepolia"
-
-        prvdrs[network] = providers[network]
+        prvdrs["Sepolia"] = providers["Sepolia"]
+        prvdrs["Base"] = providers["Base"]
 
         const engineArgs = 
         {
             browser: true,
             mnemonic, 
             defaultAccount: 0,
-            networks: [network], 
-            defaultNetwork: network, 
+            networks: ["Sepolia", "Base"], 
+            defaultNetwork: "Sepolia", 
             providers: prvdrs, 
             deployed, 
             contractFactory: contractFactoryV2, 
@@ -252,20 +269,31 @@ export const Display = (props: DisplayProps) => {
         if(Number(ether) > sendEthereum){
             let eth = engine?.defaultInstance?.web3.utils.toWei(sendEthereum.toString())
             await engine?.sendTransaction(network as string, {from: account, to:toAddress, value: eth})
+            const sent = engine?.defaultInstance?.web3.utils.fromWei(eth?.toString() as string, "ether")
+            setSentEther(sent as string + " sent to: " + toAddress)
         }else{
             setError("must not send all ether")
         }
         setEtherTransacting(false)
     }
     // to user section
-    const changeTo = (e: ChangeEvent<HTMLInputElement>) =>{
+    const changeTo = async (e: ChangeEvent<HTMLInputElement>) =>{
         const utils = engine?.defaultInstance?.web3.utils
         setCopyState(false)
+        
+        //console.log(to.transaction)
         if(utils?.isAddress(e.target.value)){
             setToAddress(e.target.value)
             setError("")
             return
         }
+        const to = await engine?.sendTransaction(network, {from: account}, "Name", "NamesResolver", [e.target.value], true)
+        if(to.transaction !== "0x0000000000000000000000000000000000000000"){
+            setToAddress(to.transaction)
+            setError("")
+            return
+        }
+        
         setError("Not an Ethereum address in to address")
     }
     //send section
@@ -294,8 +322,9 @@ export const Display = (props: DisplayProps) => {
         const engine = props.engine;
 
         engine.defaultInstance = defaultInstance
+        setNetwork(network)
         props.getEngine(engine);
-        
+        props.getNetwork(network)
     }
 
     
@@ -359,48 +388,39 @@ export const Display = (props: DisplayProps) => {
                         <Divider />
                         <h3>Send Ether</h3>
                         <div>
-                            <Input size="small" placeholder="address..." onKeyDown={keySendEther} onChange={changeTo}/>
+                            <Input size="small" placeholder="name or 0x..." onKeyDown={keySendEther} onChange={changeTo}/>
                         </div>
                         
                         <div id="display-send-ether">
                                 <Input  placeholder="ether..." onKeyDown={keySendEther} onChange={changeSendEther}/>
                                 <Button text="send" size="large" id="display-send-ether-button" onClick={sendEther} transacting={etherTransacting}/>
                         </div>
+                        <div id="display-sent-ether">{sentEther}</div>
                         {/* auto transact toggle*/}
                         <Divider />
                         {/* network change */}
                         <h3>Network</h3>
+                        <div>{network}</div>
                         <div id="display-network">
                             
                             <Dropdown options={options} size="medium" theme="light" onChange={networkChange}></Dropdown>
+                            
                         </div>
                         
                         {/* register for calling messages following*/}
                         
-                            { 
-                                callSignKey && 
-                                <>
-                                    <Divider />
-                                    <div id="call-sign">
-                                    <div>Register Call Sign Key Button to Interact with App.</div>
-                                    <div>Gas : {callRegisterGas}</div>
-                                    <Button text="Register Call Sign Key." size="large" onClick={registerCallSignKey} id="call-sign-key-button" transacting={transactCallSignKey}/>
-                                </div>
-                                </>
-                                
-                            }
-                        {/* Create Call channel */}
-                            {/*
-                                !callSignKey &&
-                                <div id="create-call-channel">
-                                    <h3>Create Call Channel</h3>
-                                    <div>Gas : {callChannelGas}</div>
-                                    <div id="create-call-channel-input"><Input placeholder="address..." onChange={changeChannel}/><Button text="Channel" size="large"/></div>
-                                </div>*/
-                            }
-                        
-                        
-
+                        { 
+                            callSignKey && 
+                            <>
+                                <Divider />
+                                <div id="call-sign">
+                                <div>Register Call Sign Key Button to Interact with App.</div>
+                                <div>Gas : {callRegisterGas}</div>
+                                <Button text="Register Call Sign Key." size="large" onClick={registerCallSignKey} id="call-sign-key-button" transacting={transactCallSignKey}/>
+                            </div>
+                            </>
+                            
+                        }
                     </>
                 }
                 

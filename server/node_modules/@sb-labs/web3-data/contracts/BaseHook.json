@@ -1,0 +1,4480 @@
+{
+  "contractName": "BaseHook",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "hooks",
+          "type": "address"
+        }
+      ],
+      "name": "HookAddressNotValid",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "HookNotImplemented",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidPool",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "LockFailure",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotPoolManager",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotSelf",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "poolManager",
+      "outputs": [
+        {
+          "internalType": "contract IPoolManager",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getHooksCalls",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "beforeInitialize",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "afterInitialize",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "beforeModifyPosition",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "afterModifyPosition",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "beforeSwap",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "afterSwap",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "beforeDonate",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "afterDonate",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "noOp",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct Hooks.Calls",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "lockAcquired",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint160",
+          "name": "",
+          "type": "uint160"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "beforeInitialize",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint160",
+          "name": "",
+          "type": "uint160"
+        },
+        {
+          "internalType": "int24",
+          "name": "",
+          "type": "int24"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "afterInitialize",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "int24",
+              "name": "tickLower",
+              "type": "int24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickUpper",
+              "type": "int24"
+            },
+            {
+              "internalType": "int256",
+              "name": "liquidityDelta",
+              "type": "int256"
+            }
+          ],
+          "internalType": "struct IPoolManager.ModifyPositionParams",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "beforeModifyPosition",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "int24",
+              "name": "tickLower",
+              "type": "int24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickUpper",
+              "type": "int24"
+            },
+            {
+              "internalType": "int256",
+              "name": "liquidityDelta",
+              "type": "int256"
+            }
+          ],
+          "internalType": "struct IPoolManager.ModifyPositionParams",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "internalType": "BalanceDelta",
+          "name": "",
+          "type": "int256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "afterModifyPosition",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "zeroForOne",
+              "type": "bool"
+            },
+            {
+              "internalType": "int256",
+              "name": "amountSpecified",
+              "type": "int256"
+            },
+            {
+              "internalType": "uint160",
+              "name": "sqrtPriceLimitX96",
+              "type": "uint160"
+            }
+          ],
+          "internalType": "struct IPoolManager.SwapParams",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "beforeSwap",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "zeroForOne",
+              "type": "bool"
+            },
+            {
+              "internalType": "int256",
+              "name": "amountSpecified",
+              "type": "int256"
+            },
+            {
+              "internalType": "uint160",
+              "name": "sqrtPriceLimitX96",
+              "type": "uint160"
+            }
+          ],
+          "internalType": "struct IPoolManager.SwapParams",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "internalType": "BalanceDelta",
+          "name": "",
+          "type": "int256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "afterSwap",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "beforeDonate",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "afterDonate",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.28+commit.7893614a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"hooks\",\"type\":\"address\"}],\"name\":\"HookAddressNotValid\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"HookNotImplemented\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidPool\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"LockFailure\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotPoolManager\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotSelf\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"afterDonate\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"\",\"type\":\"tuple\"},{\"internalType\":\"uint160\",\"name\":\"\",\"type\":\"uint160\"},{\"internalType\":\"int24\",\"name\":\"\",\"type\":\"int24\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"afterInitialize\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"int24\",\"name\":\"tickLower\",\"type\":\"int24\"},{\"internalType\":\"int24\",\"name\":\"tickUpper\",\"type\":\"int24\"},{\"internalType\":\"int256\",\"name\":\"liquidityDelta\",\"type\":\"int256\"}],\"internalType\":\"struct IPoolManager.ModifyPositionParams\",\"name\":\"\",\"type\":\"tuple\"},{\"internalType\":\"BalanceDelta\",\"name\":\"\",\"type\":\"int256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"afterModifyPosition\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"bool\",\"name\":\"zeroForOne\",\"type\":\"bool\"},{\"internalType\":\"int256\",\"name\":\"amountSpecified\",\"type\":\"int256\"},{\"internalType\":\"uint160\",\"name\":\"sqrtPriceLimitX96\",\"type\":\"uint160\"}],\"internalType\":\"struct IPoolManager.SwapParams\",\"name\":\"\",\"type\":\"tuple\"},{\"internalType\":\"BalanceDelta\",\"name\":\"\",\"type\":\"int256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"afterSwap\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"beforeDonate\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"\",\"type\":\"tuple\"},{\"internalType\":\"uint160\",\"name\":\"\",\"type\":\"uint160\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"beforeInitialize\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"int24\",\"name\":\"tickLower\",\"type\":\"int24\"},{\"internalType\":\"int24\",\"name\":\"tickUpper\",\"type\":\"int24\"},{\"internalType\":\"int256\",\"name\":\"liquidityDelta\",\"type\":\"int256\"}],\"internalType\":\"struct IPoolManager.ModifyPositionParams\",\"name\":\"\",\"type\":\"tuple\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"beforeModifyPosition\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"bool\",\"name\":\"zeroForOne\",\"type\":\"bool\"},{\"internalType\":\"int256\",\"name\":\"amountSpecified\",\"type\":\"int256\"},{\"internalType\":\"uint160\",\"name\":\"sqrtPriceLimitX96\",\"type\":\"uint160\"}],\"internalType\":\"struct IPoolManager.SwapParams\",\"name\":\"\",\"type\":\"tuple\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"beforeSwap\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getHooksCalls\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"beforeInitialize\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"afterInitialize\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"beforeModifyPosition\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"afterModifyPosition\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"beforeSwap\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"afterSwap\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"beforeDonate\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"afterDonate\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"noOp\",\"type\":\"bool\"}],\"internalType\":\"struct Hooks.Calls\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"lockAcquired\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"poolManager\",\"outputs\":[{\"internalType\":\"contract IPoolManager\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"errors\":{\"HookAddressNotValid(address)\":[{\"params\":{\"hooks\":\"The address of the hooks contract\"}}]},\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"errors\":{\"HookAddressNotValid(address)\":[{\"notice\":\"Thrown if the address will not lead to the specified hook calls being called\"}]},\"kind\":\"user\",\"methods\":{\"poolManager()\":{\"notice\":\"The address of the pool manager\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/v4-periphery/contracts/BaseHook.sol\":\"BaseHook\"},\"evmVersion\":\"cancun\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/v4-core/src/interfaces/IClaims.sol\":{\"keccak256\":\"0xdf74a92ef73ec38d1f3fdb83a217a805fee5a9e8d50a079d429dcdf88728a1e9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d4f73e8176929eed516327517ca2d37804348e6073d5b50b5a1396337f089281\",\"dweb:/ipfs/QmWdk99E4PtBBSLe39qPRacFDK52avHN65XAN12CYbCGpU\"]},\"project:/contracts/v4-core/src/interfaces/IFees.sol\":{\"keccak256\":\"0x7a2d2b74602f23a8944b45c745e8a512f7d8f00f8ba22742636abaf929379697\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ab38548046bb65d089fd56b335a3b98d2b4f03e9af4763c2b7da2b04322a6e73\",\"dweb:/ipfs/QmVQfsaSwqV8ynqc9KEGWjQkxnAzju7uQQaFvxqhAd32cW\"]},\"project:/contracts/v4-core/src/interfaces/IHooks.sol\":{\"keccak256\":\"0xc8b2ff0889b0866f84a4a4f06702b92ac08e3a5e2a6048e09dcbba8d58297002\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4614b2c046f2521dc7f39496cd77af787184189f9e23f65086ac89515826190c\",\"dweb:/ipfs/QmdVEVCfz1wJq5zWnvRsKKCUniwYbDUdWf8NWYukCaXe54\"]},\"project:/contracts/v4-core/src/interfaces/IPoolManager.sol\":{\"keccak256\":\"0xb68e18109027f3d40cf922f861c41c149124b5007a428a6476b8f45ed8642845\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://92ab2915861fca8823d53011b16c0dfb7bf5115cc89d8acbbf7f83b12f0974e4\",\"dweb:/ipfs/QmdxDzSn4qm1utvSgTWNioieheDCYLJpWe576YoBhAEbXm\"]},\"project:/contracts/v4-core/src/interfaces/external/IERC20Minimal.sol\":{\"keccak256\":\"0x8dc5ee72426906aeb12f4ae6a2426df059491739bd5cbdb8ea4a3e26970436c6\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://f7e30dbbc972cb78d169c8845d6210d27490c8534e68a20d4f296b11ec727b92\",\"dweb:/ipfs/QmXBvaWaAnPW25YGVm2sMbf5mwrzLapUcqPnrNiiGGXxmA\"]},\"project:/contracts/v4-core/src/libraries/BitMath.sol\":{\"keccak256\":\"0x652cd36970d953b3067c766b3b0c0063d4c403eba7352df09ec10dcc868910d9\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://e357b092171edb755c8514b4b4ae758a8b43458c7a23409ebf5afd325fefa2be\",\"dweb:/ipfs/QmWKRWT2z15cVbVVDkjqdVnpf8Ck1jytcXbA7zCUevp7b6\"]},\"project:/contracts/v4-core/src/libraries/FeeLibrary.sol\":{\"keccak256\":\"0x9fc00b77978b617d1a9b5c9d024210b43ee5455682982703d3009bfafc1c12b4\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://777acadfdbd1b3c01aa780b2dff49771ae6189e421b7e23be38c2db75b9c1267\",\"dweb:/ipfs/QmUR443r39JFuYjLi6zCWnW7r15u1gbmkuEd6e43Br4gyL\"]},\"project:/contracts/v4-core/src/libraries/FixedPoint128.sol\":{\"keccak256\":\"0x1f015a7a107f4c471985a958f1bfbc1710948f9bcd3786a02310bc0ad5080c69\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://a1cacac08675284f319d151f6bc5d1c66cf1d54c5dad1c620a2e1e1336cbb93a\",\"dweb:/ipfs/QmPf8vQ3mBqniKHwvS1DDEFrV5dJfZSL6mMi9JVy6omQaz\"]},\"project:/contracts/v4-core/src/libraries/FixedPoint96.sol\":{\"keccak256\":\"0x7731aeeba692b0ca5dac8f27803ec9e5ce98795a554c09ae05c220861bd0314e\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://963a8155e442d31c4541c387d333db0c02941ae3517e9173ad30ebcb4f6a14e9\",\"dweb:/ipfs/QmevAr8oG4WSoi5gBqQ53VzBuFbDKoZHfJwjuTmVhzm8Tc\"]},\"project:/contracts/v4-core/src/libraries/FullMath.sol\":{\"keccak256\":\"0x6d8760794ed38264579c5da7b2afe8ff5543de999180850bc08687b77dce36ea\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0e72da6f868ba5f5c829f78f649286c6b5922a8cda0317dfbb156b8a4d27fb24\",\"dweb:/ipfs/QmUQDZciNFhy4AFGXfYvoy22ihPc7ehvypeRVQwvVcD3vJ\"]},\"project:/contracts/v4-core/src/libraries/Hooks.sol\":{\"keccak256\":\"0x3d0d10925ccf15daa0f2a5a1370ec0f1f085e85c89b7362f9840f178e1d1d27e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9567aae5dc52dbcb2938bd19a4fc93cec4defaff00a08bfd98ead570f8e8d6ef\",\"dweb:/ipfs/QmV7x1Y48MPkooEPh3turkSr6STux1iP1pzYnE6tfR4cPd\"]},\"project:/contracts/v4-core/src/libraries/Pool.sol\":{\"keccak256\":\"0x4b4bbb00df0b43e296430d4088f719093dcbd16327c472af95c2b4ad84a9b78d\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://cc04d99d71e367fa8e2b3ab584e62c06604804b861aa8df69500b096755ce72d\",\"dweb:/ipfs/QmTJDRNjkXRD6ePSyG26Hfk5pNSNRu58CyYTBsc35kRX3e\"]},\"project:/contracts/v4-core/src/libraries/Position.sol\":{\"keccak256\":\"0x1319e4c172e31427c3b3521dd3c9c9c3949da22e25c9919ae57c47a8c9328e43\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://1e0885e8e035681836fe02213e165d1ab48cf2488cf6ba8f01964b4b026d2b46\",\"dweb:/ipfs/QmR4W3DZYYvctASLFnm7Sf4wk2L77gwNRrTS2mBqtiUaud\"]},\"project:/contracts/v4-core/src/libraries/SafeCast.sol\":{\"keccak256\":\"0x197985a64d2ccf38a5e6a80cf70dc345594cc7296a2364b7447e553966ed89dc\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://05c0f4aa083eb721febe1d23a1f55ced942eab0072318cb919c5fa42d0553042\",\"dweb:/ipfs/QmV1DBPTynduQnC9T5Ad87jHLZfevMkBQPFjPTMtstJgeN\"]},\"project:/contracts/v4-core/src/libraries/SqrtPriceMath.sol\":{\"keccak256\":\"0xe54bb39a96f98df7b8d36fade6b95bc866e138594b146ef0d4cee4e542170058\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://a3e737e963339141ba91a2a11d635e7ffe9ed901325579094aa4ac76b435314a\",\"dweb:/ipfs/QmVQ5ENKDBNJEM6kgLi8FwifxbAW4xj2riknTWfnox79ZR\"]},\"project:/contracts/v4-core/src/libraries/SwapMath.sol\":{\"keccak256\":\"0xac5b75b36ff928e88cbec828bdc9db03e681cc3b337d5d7f6be9fd617b3fef7f\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://6aaea2ecabdb3fec93c7c6be19ea3a034cf396a59ab96f61c57b5214c04b5a6e\",\"dweb:/ipfs/QmYyd4ExT6xbvEHZTQBv9nZuvU6xjB6EN4uY8TmK8Tceqv\"]},\"project:/contracts/v4-core/src/libraries/TickBitmap.sol\":{\"keccak256\":\"0x7cccb8dff4c76da872a827f1549dc44cdff384d123e77a5361a02a31902bf15c\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://88f850cd5bd2bbada4d9514f2516804392c7b23dc2cb541b74e9c88d0a351dcd\",\"dweb:/ipfs/QmZh9LvKUG23oFUZXAAa5gn77MguAbZ41VGjkES5U8N9Em\"]},\"project:/contracts/v4-core/src/libraries/TickMath.sol\":{\"keccak256\":\"0xc7e49d8f58765e4d586f943b782f3b11b5330864ffc273494420f268dc3b34a8\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://12a96f136f09a15af9f4484f23782097a7233fb0658f12ebc94873d91bc7eba3\",\"dweb:/ipfs/Qmc7W5Ff9Tmnd6daXeqGjgcfritarGxRrqSSCYzZ1pZ2yZ\"]},\"project:/contracts/v4-core/src/libraries/UnsafeMath.sol\":{\"keccak256\":\"0x2a8cb75af05f8557b698b089a0ab19e24279fffb7e87cddf5794404c7eaf1c69\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://85f68e6d614205f3f0f55f6ac41805e3a7d523d95bda1c443f2e75444443ffe3\",\"dweb:/ipfs/QmdCheMqxWNx4CbxG5MH9BUQeSMeeXF6DHkf7Aax4duRUe\"]},\"project:/contracts/v4-core/src/types/BalanceDelta.sol\":{\"keccak256\":\"0xb348472d6a9050f8e162173712911896882939a0cd7316db386ced5182716845\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://10db8d83e74b6cabcf71f0325d16e9c919c66ba4e41ab58a280b432f8b9ea6e4\",\"dweb:/ipfs/QmNWQJQqCrp9QWzbdBivkYBX6tfEgobkGYhoCxvoX3ZtKg\"]},\"project:/contracts/v4-core/src/types/Currency.sol\":{\"keccak256\":\"0xb1395e2817b604745bf6cd41821aafeaaa252caafe45133e54f02d6f6be13d2b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://49ec58bd7634ccb1b74f59378e54771ae11cba37494b57ae64e3f6640d4afdd9\",\"dweb:/ipfs/QmeYL1TuGXcTYfsQBGu7p9urSqGjiJky8iJAgwTRYqrJ4F\"]},\"project:/contracts/v4-core/src/types/PoolId.sol\":{\"keccak256\":\"0x2928a23cdf4c3dd05fafd3094020723954150901c6935a40fbb8e3cbc1e0ebe3\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4ddde47e0eda04cf7e1b8e903eafd22ff19866bcb2ce0f61b46a3470b4dc9927\",\"dweb:/ipfs/Qme84u2nmVFZkaBSwVJw3bhZSqt6P9xMHNsp1Y7ddWMDvi\"]},\"project:/contracts/v4-core/src/types/PoolKey.sol\":{\"keccak256\":\"0xef7421713157a514d757863e99c2d094a6fac1dcbae602ac0eb47eda2d651a6d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d2832668ba213b3928fd79e159b4d00b4b8f057844e2897902ec089014470f29\",\"dweb:/ipfs/QmV2MESks8RiTwRJpqynGCGsrmXKimRFpQFZSBXnxEiXKX\"]},\"project:/contracts/v4-periphery/contracts/BaseHook.sol\":{\"keccak256\":\"0x0fde959daa97f43dfbb454690c68a73744e7a29fdef6634f8ae5a5e105582bb5\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://125e6f5fd6ebc6afc4a0955c0afa8e9da61273fec656e1a1f8f550bab242151c\",\"dweb:/ipfs/QmRzThaonEwjyHXWpuFviWCeBXyV27cu34cXFUNxQZ4vLJ\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8.19;\n\nimport {Hooks} from \"../../v4-core/src/libraries/Hooks.sol\";\nimport {IPoolManager} from \"../../v4-core/src/interfaces/IPoolManager.sol\";\nimport {IHooks} from \"../../v4-core/src/interfaces/IHooks.sol\";\nimport {BalanceDelta} from \"../../v4-core/src/types/BalanceDelta.sol\";\nimport {PoolKey} from \"../../v4-core/src/types/PoolKey.sol\";\n\nabstract contract BaseHook is IHooks {\n    error NotPoolManager();\n    error NotSelf();\n    error InvalidPool();\n    error LockFailure();\n    error HookNotImplemented();\n\n    /// @notice The address of the pool manager\n    IPoolManager public immutable poolManager;\n\n    constructor(IPoolManager _poolManager) {\n        poolManager = _poolManager;\n        validateHookAddress(this);\n    }\n\n    /// @dev Only the pool manager may call this function\n    modifier poolManagerOnly() {\n        if (msg.sender != address(poolManager)) revert NotPoolManager();\n        _;\n    }\n\n    /// @dev Only this address may call this function\n    modifier selfOnly() {\n        if (msg.sender != address(this)) revert NotSelf();\n        _;\n    }\n\n    /// @dev Only pools with hooks set to this contract may call this function\n    modifier onlyValidPools(IHooks hooks) {\n        if (hooks != this) revert InvalidPool();\n        _;\n    }\n\n    function getHooksCalls() public pure virtual returns (Hooks.Calls memory);\n\n    // this function is virtual so that we can override it during testing,\n    // which allows us to deploy an implementation to any address\n    // and then etch the bytecode into the correct address\n    function validateHookAddress(BaseHook _this) internal pure virtual {\n        Hooks.validateHookAddress(_this, getHooksCalls());\n    }\n\n    function lockAcquired(bytes calldata data) external virtual poolManagerOnly returns (bytes memory) {\n        (bool success, bytes memory returnData) = address(this).call(data);\n        if (success) return returnData;\n        if (returnData.length == 0) revert LockFailure();\n        // if the call failed, bubble up the reason\n        /// @solidity memory-safe-assembly\n        assembly {\n            revert(add(returnData, 32), mload(returnData))\n        }\n    }\n\n    function beforeInitialize(address, PoolKey calldata, uint160, bytes calldata) external virtual returns (bytes4) {\n        revert HookNotImplemented();\n    }\n\n    function afterInitialize(address, PoolKey calldata, uint160, int24, bytes calldata)\n        external\n        virtual\n        returns (bytes4)\n    {\n        revert HookNotImplemented();\n    }\n\n    function beforeModifyPosition(address, PoolKey calldata, IPoolManager.ModifyPositionParams calldata, bytes calldata)\n        external\n        virtual\n        returns (bytes4)\n    {\n        revert HookNotImplemented();\n    }\n\n    function afterModifyPosition(\n        address,\n        PoolKey calldata,\n        IPoolManager.ModifyPositionParams calldata,\n        BalanceDelta,\n        bytes calldata\n    ) external virtual returns (bytes4) {\n        revert HookNotImplemented();\n    }\n\n    function beforeSwap(address, PoolKey calldata, IPoolManager.SwapParams calldata, bytes calldata)\n        external\n        virtual\n        returns (bytes4)\n    {\n        revert HookNotImplemented();\n    }\n\n    function afterSwap(address, PoolKey calldata, IPoolManager.SwapParams calldata, BalanceDelta, bytes calldata)\n        external\n        virtual\n        returns (bytes4)\n    {\n        revert HookNotImplemented();\n    }\n\n    function beforeDonate(address, PoolKey calldata, uint256, uint256, bytes calldata)\n        external\n        virtual\n        returns (bytes4)\n    {\n        revert HookNotImplemented();\n    }\n\n    function afterDonate(address, PoolKey calldata, uint256, uint256, bytes calldata)\n        external\n        virtual\n        returns (bytes4)\n    {\n        revert HookNotImplemented();\n    }\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/v4-periphery/contracts/BaseHook.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/v4-periphery/contracts/BaseHook.sol",
+    "exportedSymbols": {
+      "BalanceDelta": [
+        14111
+      ],
+      "BaseHook": [
+        14894
+      ],
+      "Hooks": [
+        10011
+      ],
+      "IHooks": [
+        8475
+      ],
+      "IPoolManager": [
+        8867
+      ],
+      "PoolKey": [
+        14587
+      ]
+    },
+    "id": 14895,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 14589,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".19"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:24:59"
+      },
+      {
+        "absolutePath": "project:/contracts/v4-core/src/libraries/Hooks.sol",
+        "file": "../../v4-core/src/libraries/Hooks.sol",
+        "id": 14591,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 14895,
+        "sourceUnit": 10012,
+        "src": "65:60:59",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 14590,
+              "name": "Hooks",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 10011,
+              "src": "73:5:59",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/v4-core/src/interfaces/IPoolManager.sol",
+        "file": "../../v4-core/src/interfaces/IPoolManager.sol",
+        "id": 14593,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 14895,
+        "sourceUnit": 8868,
+        "src": "126:75:59",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 14592,
+              "name": "IPoolManager",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 8867,
+              "src": "134:12:59",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/v4-core/src/interfaces/IHooks.sol",
+        "file": "../../v4-core/src/interfaces/IHooks.sol",
+        "id": 14595,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 14895,
+        "sourceUnit": 8476,
+        "src": "202:63:59",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 14594,
+              "name": "IHooks",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 8475,
+              "src": "210:6:59",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/v4-core/src/types/BalanceDelta.sol",
+        "file": "../../v4-core/src/types/BalanceDelta.sol",
+        "id": 14597,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 14895,
+        "sourceUnit": 14257,
+        "src": "266:70:59",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 14596,
+              "name": "BalanceDelta",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 14111,
+              "src": "274:12:59",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/v4-core/src/types/PoolKey.sol",
+        "file": "../../v4-core/src/types/PoolKey.sol",
+        "id": 14599,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 14895,
+        "sourceUnit": 14588,
+        "src": "337:60:59",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 14598,
+              "name": "PoolKey",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 14587,
+              "src": "345:7:59",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 14600,
+              "name": "IHooks",
+              "nameLocations": [
+                "429:6:59"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 8475,
+              "src": "429:6:59"
+            },
+            "id": 14601,
+            "nodeType": "InheritanceSpecifier",
+            "src": "429:6:59"
+          }
+        ],
+        "canonicalName": "BaseHook",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": false,
+        "id": 14894,
+        "linearizedBaseContracts": [
+          14894,
+          8475
+        ],
+        "name": "BaseHook",
+        "nameLocation": "417:8:59",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "errorSelector": "ae18210a",
+            "id": 14603,
+            "name": "NotPoolManager",
+            "nameLocation": "448:14:59",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 14602,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "462:2:59"
+            },
+            "src": "442:23:59"
+          },
+          {
+            "errorSelector": "29c3b7ee",
+            "id": 14605,
+            "name": "NotSelf",
+            "nameLocation": "476:7:59",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 14604,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "483:2:59"
+            },
+            "src": "470:16:59"
+          },
+          {
+            "errorSelector": "2083cd40",
+            "id": 14607,
+            "name": "InvalidPool",
+            "nameLocation": "497:11:59",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 14606,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "508:2:59"
+            },
+            "src": "491:20:59"
+          },
+          {
+            "errorSelector": "a40afa38",
+            "id": 14609,
+            "name": "LockFailure",
+            "nameLocation": "522:11:59",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 14608,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "533:2:59"
+            },
+            "src": "516:20:59"
+          },
+          {
+            "errorSelector": "0a85dc29",
+            "id": 14611,
+            "name": "HookNotImplemented",
+            "nameLocation": "547:18:59",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 14610,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "565:2:59"
+            },
+            "src": "541:27:59"
+          },
+          {
+            "constant": false,
+            "documentation": {
+              "id": 14612,
+              "nodeType": "StructuredDocumentation",
+              "src": "574:43:59",
+              "text": "@notice The address of the pool manager"
+            },
+            "functionSelector": "dc4c90d3",
+            "id": 14615,
+            "mutability": "immutable",
+            "name": "poolManager",
+            "nameLocation": "652:11:59",
+            "nodeType": "VariableDeclaration",
+            "scope": 14894,
+            "src": "622:41:59",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IPoolManager_$8867",
+              "typeString": "contract IPoolManager"
+            },
+            "typeName": {
+              "id": 14614,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 14613,
+                "name": "IPoolManager",
+                "nameLocations": [
+                  "622:12:59"
+                ],
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 8867,
+                "src": "622:12:59"
+              },
+              "referencedDeclaration": 8867,
+              "src": "622:12:59",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IPoolManager_$8867",
+                "typeString": "contract IPoolManager"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 14629,
+              "nodeType": "Block",
+              "src": "709:78:59",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 14623,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 14621,
+                      "name": "poolManager",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14615,
+                      "src": "719:11:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IPoolManager_$8867",
+                        "typeString": "contract IPoolManager"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 14622,
+                      "name": "_poolManager",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14618,
+                      "src": "733:12:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IPoolManager_$8867",
+                        "typeString": "contract IPoolManager"
+                      }
+                    },
+                    "src": "719:26:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IPoolManager_$8867",
+                      "typeString": "contract IPoolManager"
+                    }
+                  },
+                  "id": 14624,
+                  "nodeType": "ExpressionStatement",
+                  "src": "719:26:59"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 14626,
+                        "name": "this",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4294967268,
+                        "src": "775:4:59",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_BaseHook_$14894",
+                          "typeString": "contract BaseHook"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_BaseHook_$14894",
+                          "typeString": "contract BaseHook"
+                        }
+                      ],
+                      "id": 14625,
+                      "name": "validateHookAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14698,
+                      "src": "755:19:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_pure$_t_contract$_BaseHook_$14894_$returns$__$",
+                        "typeString": "function (contract BaseHook) pure"
+                      }
+                    },
+                    "id": 14627,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "755:25:59",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 14628,
+                  "nodeType": "ExpressionStatement",
+                  "src": "755:25:59"
+                }
+              ]
+            },
+            "id": 14630,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14619,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14618,
+                  "mutability": "mutable",
+                  "name": "_poolManager",
+                  "nameLocation": "695:12:59",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14630,
+                  "src": "682:25:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IPoolManager_$8867",
+                    "typeString": "contract IPoolManager"
+                  },
+                  "typeName": {
+                    "id": 14617,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14616,
+                      "name": "IPoolManager",
+                      "nameLocations": [
+                        "682:12:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 8867,
+                      "src": "682:12:59"
+                    },
+                    "referencedDeclaration": 8867,
+                    "src": "682:12:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IPoolManager_$8867",
+                      "typeString": "contract IPoolManager"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "681:27:59"
+            },
+            "returnParameters": {
+              "id": 14620,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "709:0:59"
+            },
+            "scope": 14894,
+            "src": "670:117:59",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 14645,
+              "nodeType": "Block",
+              "src": "878:91:59",
+              "statements": [
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "id": 14639,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "expression": {
+                        "id": 14633,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4294967281,
+                        "src": "892:3:59",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 14634,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "896:6:59",
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "src": "892:10:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "arguments": [
+                        {
+                          "id": 14637,
+                          "name": "poolManager",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 14615,
+                          "src": "914:11:59",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_IPoolManager_$8867",
+                            "typeString": "contract IPoolManager"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_contract$_IPoolManager_$8867",
+                            "typeString": "contract IPoolManager"
+                          }
+                        ],
+                        "id": 14636,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "906:7:59",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_address_$",
+                          "typeString": "type(address)"
+                        },
+                        "typeName": {
+                          "id": 14635,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "906:7:59",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 14638,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "906:20:59",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "892:34:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 14643,
+                  "nodeType": "IfStatement",
+                  "src": "888:63:59",
+                  "trueBody": {
+                    "errorCall": {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 14640,
+                        "name": "NotPoolManager",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 14603,
+                        "src": "935:14:59",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_error_pure$__$returns$_t_error_$",
+                          "typeString": "function () pure returns (error)"
+                        }
+                      },
+                      "id": 14641,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "935:16:59",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_error",
+                        "typeString": "error"
+                      }
+                    },
+                    "id": 14642,
+                    "nodeType": "RevertStatement",
+                    "src": "928:23:59"
+                  }
+                },
+                {
+                  "id": 14644,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "961:1:59"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 14631,
+              "nodeType": "StructuredDocumentation",
+              "src": "793:53:59",
+              "text": "@dev Only the pool manager may call this function"
+            },
+            "id": 14646,
+            "name": "poolManagerOnly",
+            "nameLocation": "860:15:59",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 14632,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "875:2:59"
+            },
+            "src": "851:118:59",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 14661,
+              "nodeType": "Block",
+              "src": "1049:77:59",
+              "statements": [
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "id": 14655,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "expression": {
+                        "id": 14649,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4294967281,
+                        "src": "1063:3:59",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 14650,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "1067:6:59",
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "src": "1063:10:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "arguments": [
+                        {
+                          "id": 14653,
+                          "name": "this",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4294967268,
+                          "src": "1085:4:59",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_BaseHook_$14894",
+                            "typeString": "contract BaseHook"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_contract$_BaseHook_$14894",
+                            "typeString": "contract BaseHook"
+                          }
+                        ],
+                        "id": 14652,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "1077:7:59",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_address_$",
+                          "typeString": "type(address)"
+                        },
+                        "typeName": {
+                          "id": 14651,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1077:7:59",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 14654,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1077:13:59",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1063:27:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 14659,
+                  "nodeType": "IfStatement",
+                  "src": "1059:49:59",
+                  "trueBody": {
+                    "errorCall": {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 14656,
+                        "name": "NotSelf",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 14605,
+                        "src": "1099:7:59",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_error_pure$__$returns$_t_error_$",
+                          "typeString": "function () pure returns (error)"
+                        }
+                      },
+                      "id": 14657,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1099:9:59",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_error",
+                        "typeString": "error"
+                      }
+                    },
+                    "id": 14658,
+                    "nodeType": "RevertStatement",
+                    "src": "1092:16:59"
+                  }
+                },
+                {
+                  "id": 14660,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "1118:1:59"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 14647,
+              "nodeType": "StructuredDocumentation",
+              "src": "975:49:59",
+              "text": "@dev Only this address may call this function"
+            },
+            "id": 14662,
+            "name": "selfOnly",
+            "nameLocation": "1038:8:59",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 14648,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1046:2:59"
+            },
+            "src": "1029:97:59",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 14676,
+              "nodeType": "Block",
+              "src": "1249:67:59",
+              "statements": [
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_contract$_IHooks_$8475",
+                      "typeString": "contract IHooks"
+                    },
+                    "id": 14670,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 14668,
+                      "name": "hooks",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14666,
+                      "src": "1263:5:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IHooks_$8475",
+                        "typeString": "contract IHooks"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "id": 14669,
+                      "name": "this",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4294967268,
+                      "src": "1272:4:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_BaseHook_$14894",
+                        "typeString": "contract BaseHook"
+                      }
+                    },
+                    "src": "1263:13:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 14674,
+                  "nodeType": "IfStatement",
+                  "src": "1259:39:59",
+                  "trueBody": {
+                    "errorCall": {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 14671,
+                        "name": "InvalidPool",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 14607,
+                        "src": "1285:11:59",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_error_pure$__$returns$_t_error_$",
+                          "typeString": "function () pure returns (error)"
+                        }
+                      },
+                      "id": 14672,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1285:13:59",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_error",
+                        "typeString": "error"
+                      }
+                    },
+                    "id": 14673,
+                    "nodeType": "RevertStatement",
+                    "src": "1278:20:59"
+                  }
+                },
+                {
+                  "id": 14675,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "1308:1:59"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 14663,
+              "nodeType": "StructuredDocumentation",
+              "src": "1132:74:59",
+              "text": "@dev Only pools with hooks set to this contract may call this function"
+            },
+            "id": 14677,
+            "name": "onlyValidPools",
+            "nameLocation": "1220:14:59",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 14667,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14666,
+                  "mutability": "mutable",
+                  "name": "hooks",
+                  "nameLocation": "1242:5:59",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14677,
+                  "src": "1235:12:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IHooks_$8475",
+                    "typeString": "contract IHooks"
+                  },
+                  "typeName": {
+                    "id": 14665,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14664,
+                      "name": "IHooks",
+                      "nameLocations": [
+                        "1235:6:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 8475,
+                      "src": "1235:6:59"
+                    },
+                    "referencedDeclaration": 8475,
+                    "src": "1235:6:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IHooks_$8475",
+                      "typeString": "contract IHooks"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1234:14:59"
+            },
+            "src": "1211:105:59",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "functionSelector": "612c39b7",
+            "id": 14683,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getHooksCalls",
+            "nameLocation": "1331:13:59",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14678,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1344:2:59"
+            },
+            "returnParameters": {
+              "id": 14682,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14681,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14683,
+                  "src": "1376:18:59",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Calls_$9604_memory_ptr",
+                    "typeString": "struct Hooks.Calls"
+                  },
+                  "typeName": {
+                    "id": 14680,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14679,
+                      "name": "Hooks.Calls",
+                      "nameLocations": [
+                        "1376:5:59",
+                        "1382:5:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 9604,
+                      "src": "1376:11:59"
+                    },
+                    "referencedDeclaration": 9604,
+                    "src": "1376:11:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Calls_$9604_storage_ptr",
+                      "typeString": "struct Hooks.Calls"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1375:20:59"
+            },
+            "scope": 14894,
+            "src": "1322:74:59",
+            "stateMutability": "pure",
+            "virtual": true,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 14697,
+              "nodeType": "Block",
+              "src": "1669:66:59",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 14692,
+                        "name": "_this",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 14686,
+                        "src": "1705:5:59",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_BaseHook_$14894",
+                          "typeString": "contract BaseHook"
+                        }
+                      },
+                      {
+                        "arguments": [],
+                        "expression": {
+                          "argumentTypes": [],
+                          "id": 14693,
+                          "name": "getHooksCalls",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 14683,
+                          "src": "1712:13:59",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_pure$__$returns$_t_struct$_Calls_$9604_memory_ptr_$",
+                            "typeString": "function () pure returns (struct Hooks.Calls memory)"
+                          }
+                        },
+                        "id": 14694,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "nameLocations": [],
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1712:15:59",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Calls_$9604_memory_ptr",
+                          "typeString": "struct Hooks.Calls memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_BaseHook_$14894",
+                          "typeString": "contract BaseHook"
+                        },
+                        {
+                          "typeIdentifier": "t_struct$_Calls_$9604_memory_ptr",
+                          "typeString": "struct Hooks.Calls memory"
+                        }
+                      ],
+                      "expression": {
+                        "id": 14689,
+                        "name": "Hooks",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 10011,
+                        "src": "1679:5:59",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_Hooks_$10011_$",
+                          "typeString": "type(library Hooks)"
+                        }
+                      },
+                      "id": 14691,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "1685:19:59",
+                      "memberName": "validateHookAddress",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 9694,
+                      "src": "1679:25:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_pure$_t_contract$_IHooks_$8475_$_t_struct$_Calls_$9604_memory_ptr_$returns$__$",
+                        "typeString": "function (contract IHooks,struct Hooks.Calls memory) pure"
+                      }
+                    },
+                    "id": 14695,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1679:49:59",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 14696,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1679:49:59"
+                }
+              ]
+            },
+            "id": 14698,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "validateHookAddress",
+            "nameLocation": "1611:19:59",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14687,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14686,
+                  "mutability": "mutable",
+                  "name": "_this",
+                  "nameLocation": "1640:5:59",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14698,
+                  "src": "1631:14:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_BaseHook_$14894",
+                    "typeString": "contract BaseHook"
+                  },
+                  "typeName": {
+                    "id": 14685,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14684,
+                      "name": "BaseHook",
+                      "nameLocations": [
+                        "1631:8:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14894,
+                      "src": "1631:8:59"
+                    },
+                    "referencedDeclaration": 14894,
+                    "src": "1631:8:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_BaseHook_$14894",
+                      "typeString": "contract BaseHook"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1630:16:59"
+            },
+            "returnParameters": {
+              "id": 14688,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1669:0:59"
+            },
+            "scope": 14894,
+            "src": "1602:133:59",
+            "stateMutability": "pure",
+            "virtual": true,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 14732,
+              "nodeType": "Block",
+              "src": "1840:364:59",
+              "statements": [
+                {
+                  "assignments": [
+                    14708,
+                    14710
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 14708,
+                      "mutability": "mutable",
+                      "name": "success",
+                      "nameLocation": "1856:7:59",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 14732,
+                      "src": "1851:12:59",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "typeName": {
+                        "id": 14707,
+                        "name": "bool",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1851:4:59",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    {
+                      "constant": false,
+                      "id": 14710,
+                      "mutability": "mutable",
+                      "name": "returnData",
+                      "nameLocation": "1878:10:59",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 14732,
+                      "src": "1865:23:59",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_memory_ptr",
+                        "typeString": "bytes"
+                      },
+                      "typeName": {
+                        "id": 14709,
+                        "name": "bytes",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1865:5:59",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_storage_ptr",
+                          "typeString": "bytes"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 14718,
+                  "initialValue": {
+                    "arguments": [
+                      {
+                        "id": 14716,
+                        "name": "data",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 14700,
+                        "src": "1911:4:59",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_calldata_ptr",
+                          "typeString": "bytes calldata"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes_calldata_ptr",
+                          "typeString": "bytes calldata"
+                        }
+                      ],
+                      "expression": {
+                        "arguments": [
+                          {
+                            "id": 14713,
+                            "name": "this",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4294967268,
+                            "src": "1900:4:59",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_BaseHook_$14894",
+                              "typeString": "contract BaseHook"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_BaseHook_$14894",
+                              "typeString": "contract BaseHook"
+                            }
+                          ],
+                          "id": 14712,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "1892:7:59",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": {
+                            "id": 14711,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "1892:7:59",
+                            "typeDescriptions": {}
+                          }
+                        },
+                        "id": 14714,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "nameLocations": [],
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1892:13:59",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "id": 14715,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "1906:4:59",
+                      "memberName": "call",
+                      "nodeType": "MemberAccess",
+                      "src": "1892:18:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_barecall_payable$_t_bytes_memory_ptr_$returns$_t_bool_$_t_bytes_memory_ptr_$",
+                        "typeString": "function (bytes memory) payable returns (bool,bytes memory)"
+                      }
+                    },
+                    "id": 14717,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1892:24:59",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_bool_$_t_bytes_memory_ptr_$",
+                      "typeString": "tuple(bool,bytes memory)"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1850:66:59"
+                },
+                {
+                  "condition": {
+                    "id": 14719,
+                    "name": "success",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 14708,
+                    "src": "1930:7:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 14722,
+                  "nodeType": "IfStatement",
+                  "src": "1926:30:59",
+                  "trueBody": {
+                    "expression": {
+                      "id": 14720,
+                      "name": "returnData",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14710,
+                      "src": "1946:10:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_memory_ptr",
+                        "typeString": "bytes memory"
+                      }
+                    },
+                    "functionReturnParameters": 14706,
+                    "id": 14721,
+                    "nodeType": "Return",
+                    "src": "1939:17:59"
+                  }
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 14726,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "expression": {
+                        "id": 14723,
+                        "name": "returnData",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 14710,
+                        "src": "1970:10:59",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_memory_ptr",
+                          "typeString": "bytes memory"
+                        }
+                      },
+                      "id": 14724,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "1981:6:59",
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "src": "1970:17:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "hexValue": "30",
+                      "id": 14725,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1991:1:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "src": "1970:22:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 14730,
+                  "nodeType": "IfStatement",
+                  "src": "1966:48:59",
+                  "trueBody": {
+                    "errorCall": {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 14727,
+                        "name": "LockFailure",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 14609,
+                        "src": "2001:11:59",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_error_pure$__$returns$_t_error_$",
+                          "typeString": "function () pure returns (error)"
+                        }
+                      },
+                      "id": 14728,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "2001:13:59",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_error",
+                        "typeString": "error"
+                      }
+                    },
+                    "id": 14729,
+                    "nodeType": "RevertStatement",
+                    "src": "1994:20:59"
+                  }
+                },
+                {
+                  "AST": {
+                    "nativeSrc": "2128:70:59",
+                    "nodeType": "YulBlock",
+                    "src": "2128:70:59",
+                    "statements": [
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "arguments": [
+                                {
+                                  "name": "returnData",
+                                  "nativeSrc": "2153:10:59",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "2153:10:59"
+                                },
+                                {
+                                  "kind": "number",
+                                  "nativeSrc": "2165:2:59",
+                                  "nodeType": "YulLiteral",
+                                  "src": "2165:2:59",
+                                  "type": "",
+                                  "value": "32"
+                                }
+                              ],
+                              "functionName": {
+                                "name": "add",
+                                "nativeSrc": "2149:3:59",
+                                "nodeType": "YulIdentifier",
+                                "src": "2149:3:59"
+                              },
+                              "nativeSrc": "2149:19:59",
+                              "nodeType": "YulFunctionCall",
+                              "src": "2149:19:59"
+                            },
+                            {
+                              "arguments": [
+                                {
+                                  "name": "returnData",
+                                  "nativeSrc": "2176:10:59",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "2176:10:59"
+                                }
+                              ],
+                              "functionName": {
+                                "name": "mload",
+                                "nativeSrc": "2170:5:59",
+                                "nodeType": "YulIdentifier",
+                                "src": "2170:5:59"
+                              },
+                              "nativeSrc": "2170:17:59",
+                              "nodeType": "YulFunctionCall",
+                              "src": "2170:17:59"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "revert",
+                            "nativeSrc": "2142:6:59",
+                            "nodeType": "YulIdentifier",
+                            "src": "2142:6:59"
+                          },
+                          "nativeSrc": "2142:46:59",
+                          "nodeType": "YulFunctionCall",
+                          "src": "2142:46:59"
+                        },
+                        "nativeSrc": "2142:46:59",
+                        "nodeType": "YulExpressionStatement",
+                        "src": "2142:46:59"
+                      }
+                    ]
+                  },
+                  "documentation": "@solidity memory-safe-assembly",
+                  "evmVersion": "cancun",
+                  "externalReferences": [
+                    {
+                      "declaration": 14710,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "2153:10:59",
+                      "valueSize": 1
+                    },
+                    {
+                      "declaration": 14710,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "2176:10:59",
+                      "valueSize": 1
+                    }
+                  ],
+                  "id": 14731,
+                  "nodeType": "InlineAssembly",
+                  "src": "2119:79:59"
+                }
+              ]
+            },
+            "functionSelector": "ab6291fe",
+            "id": 14733,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 14703,
+                "kind": "modifierInvocation",
+                "modifierName": {
+                  "id": 14702,
+                  "name": "poolManagerOnly",
+                  "nameLocations": [
+                    "1801:15:59"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 14646,
+                  "src": "1801:15:59"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1801:15:59"
+              }
+            ],
+            "name": "lockAcquired",
+            "nameLocation": "1750:12:59",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14701,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14700,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "1778:4:59",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14733,
+                  "src": "1763:19:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 14699,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1763:5:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1762:21:59"
+            },
+            "returnParameters": {
+              "id": 14706,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14705,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14733,
+                  "src": "1826:12:59",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 14704,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1826:5:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1825:14:59"
+            },
+            "scope": 14894,
+            "src": "1741:463:59",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "baseFunctions": [
+              8353
+            ],
+            "body": {
+              "id": 14750,
+              "nodeType": "Block",
+              "src": "2322:44:59",
+              "statements": [
+                {
+                  "errorCall": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 14747,
+                      "name": "HookNotImplemented",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14611,
+                      "src": "2339:18:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_error_pure$__$returns$_t_error_$",
+                        "typeString": "function () pure returns (error)"
+                      }
+                    },
+                    "id": 14748,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2339:20:59",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_error",
+                      "typeString": "error"
+                    }
+                  },
+                  "id": 14749,
+                  "nodeType": "RevertStatement",
+                  "src": "2332:27:59"
+                }
+              ]
+            },
+            "functionSelector": "3440d820",
+            "id": 14751,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "beforeInitialize",
+            "nameLocation": "2219:16:59",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14743,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14735,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14751,
+                  "src": "2236:7:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 14734,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2236:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14738,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14751,
+                  "src": "2245:16:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PoolKey_$14587_calldata_ptr",
+                    "typeString": "struct PoolKey"
+                  },
+                  "typeName": {
+                    "id": 14737,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14736,
+                      "name": "PoolKey",
+                      "nameLocations": [
+                        "2245:7:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14587,
+                      "src": "2245:7:59"
+                    },
+                    "referencedDeclaration": 14587,
+                    "src": "2245:7:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PoolKey_$14587_storage_ptr",
+                      "typeString": "struct PoolKey"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14740,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14751,
+                  "src": "2263:7:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint160",
+                    "typeString": "uint160"
+                  },
+                  "typeName": {
+                    "id": 14739,
+                    "name": "uint160",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2263:7:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint160",
+                      "typeString": "uint160"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14742,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14751,
+                  "src": "2272:14:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 14741,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2272:5:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2235:52:59"
+            },
+            "returnParameters": {
+              "id": 14746,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14745,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14751,
+                  "src": "2314:6:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 14744,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2314:6:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2313:8:59"
+            },
+            "scope": 14894,
+            "src": "2210:156:59",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "baseFunctions": [
+              8370
+            ],
+            "body": {
+              "id": 14770,
+              "nodeType": "Block",
+              "src": "2518:44:59",
+              "statements": [
+                {
+                  "errorCall": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 14767,
+                      "name": "HookNotImplemented",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14611,
+                      "src": "2535:18:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_error_pure$__$returns$_t_error_$",
+                        "typeString": "function () pure returns (error)"
+                      }
+                    },
+                    "id": 14768,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2535:20:59",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_error",
+                      "typeString": "error"
+                    }
+                  },
+                  "id": 14769,
+                  "nodeType": "RevertStatement",
+                  "src": "2528:27:59"
+                }
+              ]
+            },
+            "functionSelector": "a910f80f",
+            "id": 14771,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "afterInitialize",
+            "nameLocation": "2381:15:59",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14763,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14753,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14771,
+                  "src": "2397:7:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 14752,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2397:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14756,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14771,
+                  "src": "2406:16:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PoolKey_$14587_calldata_ptr",
+                    "typeString": "struct PoolKey"
+                  },
+                  "typeName": {
+                    "id": 14755,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14754,
+                      "name": "PoolKey",
+                      "nameLocations": [
+                        "2406:7:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14587,
+                      "src": "2406:7:59"
+                    },
+                    "referencedDeclaration": 14587,
+                    "src": "2406:7:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PoolKey_$14587_storage_ptr",
+                      "typeString": "struct PoolKey"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14758,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14771,
+                  "src": "2424:7:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint160",
+                    "typeString": "uint160"
+                  },
+                  "typeName": {
+                    "id": 14757,
+                    "name": "uint160",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2424:7:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint160",
+                      "typeString": "uint160"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14760,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14771,
+                  "src": "2433:5:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int24",
+                    "typeString": "int24"
+                  },
+                  "typeName": {
+                    "id": 14759,
+                    "name": "int24",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2433:5:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int24",
+                      "typeString": "int24"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14762,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14771,
+                  "src": "2440:14:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 14761,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2440:5:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2396:59:59"
+            },
+            "returnParameters": {
+              "id": 14766,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14765,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14771,
+                  "src": "2506:6:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 14764,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2506:6:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2505:8:59"
+            },
+            "scope": 14894,
+            "src": "2372:190:59",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "baseFunctions": [
+              8386
+            ],
+            "body": {
+              "id": 14789,
+              "nodeType": "Block",
+              "src": "2747:44:59",
+              "statements": [
+                {
+                  "errorCall": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 14786,
+                      "name": "HookNotImplemented",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14611,
+                      "src": "2764:18:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_error_pure$__$returns$_t_error_$",
+                        "typeString": "function () pure returns (error)"
+                      }
+                    },
+                    "id": 14787,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2764:20:59",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_error",
+                      "typeString": "error"
+                    }
+                  },
+                  "id": 14788,
+                  "nodeType": "RevertStatement",
+                  "src": "2757:27:59"
+                }
+              ]
+            },
+            "functionSelector": "fe9a6f45",
+            "id": 14790,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "beforeModifyPosition",
+            "nameLocation": "2577:20:59",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14782,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14773,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14790,
+                  "src": "2598:7:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 14772,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2598:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14776,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14790,
+                  "src": "2607:16:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PoolKey_$14587_calldata_ptr",
+                    "typeString": "struct PoolKey"
+                  },
+                  "typeName": {
+                    "id": 14775,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14774,
+                      "name": "PoolKey",
+                      "nameLocations": [
+                        "2607:7:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14587,
+                      "src": "2607:7:59"
+                    },
+                    "referencedDeclaration": 14587,
+                    "src": "2607:7:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PoolKey_$14587_storage_ptr",
+                      "typeString": "struct PoolKey"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14779,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14790,
+                  "src": "2625:42:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ModifyPositionParams_$8734_calldata_ptr",
+                    "typeString": "struct IPoolManager.ModifyPositionParams"
+                  },
+                  "typeName": {
+                    "id": 14778,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14777,
+                      "name": "IPoolManager.ModifyPositionParams",
+                      "nameLocations": [
+                        "2625:12:59",
+                        "2638:20:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 8734,
+                      "src": "2625:33:59"
+                    },
+                    "referencedDeclaration": 8734,
+                    "src": "2625:33:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ModifyPositionParams_$8734_storage_ptr",
+                      "typeString": "struct IPoolManager.ModifyPositionParams"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14781,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14790,
+                  "src": "2669:14:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 14780,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2669:5:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2597:87:59"
+            },
+            "returnParameters": {
+              "id": 14785,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14784,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14790,
+                  "src": "2735:6:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 14783,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2735:6:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2734:8:59"
+            },
+            "scope": 14894,
+            "src": "2568:223:59",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "baseFunctions": [
+              8405
+            ],
+            "body": {
+              "id": 14811,
+              "nodeType": "Block",
+              "src": "3007:44:59",
+              "statements": [
+                {
+                  "errorCall": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 14808,
+                      "name": "HookNotImplemented",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14611,
+                      "src": "3024:18:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_error_pure$__$returns$_t_error_$",
+                        "typeString": "function () pure returns (error)"
+                      }
+                    },
+                    "id": 14809,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "3024:20:59",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_error",
+                      "typeString": "error"
+                    }
+                  },
+                  "id": 14810,
+                  "nodeType": "RevertStatement",
+                  "src": "3017:27:59"
+                }
+              ]
+            },
+            "functionSelector": "30b7cdef",
+            "id": 14812,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "afterModifyPosition",
+            "nameLocation": "2806:19:59",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14804,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14792,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14812,
+                  "src": "2835:7:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 14791,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2835:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14795,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14812,
+                  "src": "2852:16:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PoolKey_$14587_calldata_ptr",
+                    "typeString": "struct PoolKey"
+                  },
+                  "typeName": {
+                    "id": 14794,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14793,
+                      "name": "PoolKey",
+                      "nameLocations": [
+                        "2852:7:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14587,
+                      "src": "2852:7:59"
+                    },
+                    "referencedDeclaration": 14587,
+                    "src": "2852:7:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PoolKey_$14587_storage_ptr",
+                      "typeString": "struct PoolKey"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14798,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14812,
+                  "src": "2878:42:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ModifyPositionParams_$8734_calldata_ptr",
+                    "typeString": "struct IPoolManager.ModifyPositionParams"
+                  },
+                  "typeName": {
+                    "id": 14797,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14796,
+                      "name": "IPoolManager.ModifyPositionParams",
+                      "nameLocations": [
+                        "2878:12:59",
+                        "2891:20:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 8734,
+                      "src": "2878:33:59"
+                    },
+                    "referencedDeclaration": 8734,
+                    "src": "2878:33:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ModifyPositionParams_$8734_storage_ptr",
+                      "typeString": "struct IPoolManager.ModifyPositionParams"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14801,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14812,
+                  "src": "2930:12:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$14111",
+                    "typeString": "BalanceDelta"
+                  },
+                  "typeName": {
+                    "id": 14800,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14799,
+                      "name": "BalanceDelta",
+                      "nameLocations": [
+                        "2930:12:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14111,
+                      "src": "2930:12:59"
+                    },
+                    "referencedDeclaration": 14111,
+                    "src": "2930:12:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$14111",
+                      "typeString": "BalanceDelta"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14803,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14812,
+                  "src": "2952:14:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 14802,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2952:5:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2825:147:59"
+            },
+            "returnParameters": {
+              "id": 14807,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14806,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14812,
+                  "src": "2999:6:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 14805,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2999:6:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2998:8:59"
+            },
+            "scope": 14894,
+            "src": "2797:254:59",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "baseFunctions": [
+              8421
+            ],
+            "body": {
+              "id": 14830,
+              "nodeType": "Block",
+              "src": "3216:44:59",
+              "statements": [
+                {
+                  "errorCall": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 14827,
+                      "name": "HookNotImplemented",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14611,
+                      "src": "3233:18:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_error_pure$__$returns$_t_error_$",
+                        "typeString": "function () pure returns (error)"
+                      }
+                    },
+                    "id": 14828,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "3233:20:59",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_error",
+                      "typeString": "error"
+                    }
+                  },
+                  "id": 14829,
+                  "nodeType": "RevertStatement",
+                  "src": "3226:27:59"
+                }
+              ]
+            },
+            "functionSelector": "575e24b4",
+            "id": 14831,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "beforeSwap",
+            "nameLocation": "3066:10:59",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14823,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14814,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14831,
+                  "src": "3077:7:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 14813,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3077:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14817,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14831,
+                  "src": "3086:16:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PoolKey_$14587_calldata_ptr",
+                    "typeString": "struct PoolKey"
+                  },
+                  "typeName": {
+                    "id": 14816,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14815,
+                      "name": "PoolKey",
+                      "nameLocations": [
+                        "3086:7:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14587,
+                      "src": "3086:7:59"
+                    },
+                    "referencedDeclaration": 14587,
+                    "src": "3086:7:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PoolKey_$14587_storage_ptr",
+                      "typeString": "struct PoolKey"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14820,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14831,
+                  "src": "3104:32:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_SwapParams_$8756_calldata_ptr",
+                    "typeString": "struct IPoolManager.SwapParams"
+                  },
+                  "typeName": {
+                    "id": 14819,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14818,
+                      "name": "IPoolManager.SwapParams",
+                      "nameLocations": [
+                        "3104:12:59",
+                        "3117:10:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 8756,
+                      "src": "3104:23:59"
+                    },
+                    "referencedDeclaration": 8756,
+                    "src": "3104:23:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_SwapParams_$8756_storage_ptr",
+                      "typeString": "struct IPoolManager.SwapParams"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14822,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14831,
+                  "src": "3138:14:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 14821,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3138:5:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3076:77:59"
+            },
+            "returnParameters": {
+              "id": 14826,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14825,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14831,
+                  "src": "3204:6:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 14824,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3204:6:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3203:8:59"
+            },
+            "scope": 14894,
+            "src": "3057:203:59",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "baseFunctions": [
+              8440
+            ],
+            "body": {
+              "id": 14852,
+              "nodeType": "Block",
+              "src": "3438:44:59",
+              "statements": [
+                {
+                  "errorCall": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 14849,
+                      "name": "HookNotImplemented",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14611,
+                      "src": "3455:18:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_error_pure$__$returns$_t_error_$",
+                        "typeString": "function () pure returns (error)"
+                      }
+                    },
+                    "id": 14850,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "3455:20:59",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_error",
+                      "typeString": "error"
+                    }
+                  },
+                  "id": 14851,
+                  "nodeType": "RevertStatement",
+                  "src": "3448:27:59"
+                }
+              ]
+            },
+            "functionSelector": "b47b2fb1",
+            "id": 14853,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "afterSwap",
+            "nameLocation": "3275:9:59",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14845,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14833,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14853,
+                  "src": "3285:7:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 14832,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3285:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14836,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14853,
+                  "src": "3294:16:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PoolKey_$14587_calldata_ptr",
+                    "typeString": "struct PoolKey"
+                  },
+                  "typeName": {
+                    "id": 14835,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14834,
+                      "name": "PoolKey",
+                      "nameLocations": [
+                        "3294:7:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14587,
+                      "src": "3294:7:59"
+                    },
+                    "referencedDeclaration": 14587,
+                    "src": "3294:7:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PoolKey_$14587_storage_ptr",
+                      "typeString": "struct PoolKey"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14839,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14853,
+                  "src": "3312:32:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_SwapParams_$8756_calldata_ptr",
+                    "typeString": "struct IPoolManager.SwapParams"
+                  },
+                  "typeName": {
+                    "id": 14838,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14837,
+                      "name": "IPoolManager.SwapParams",
+                      "nameLocations": [
+                        "3312:12:59",
+                        "3325:10:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 8756,
+                      "src": "3312:23:59"
+                    },
+                    "referencedDeclaration": 8756,
+                    "src": "3312:23:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_SwapParams_$8756_storage_ptr",
+                      "typeString": "struct IPoolManager.SwapParams"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14842,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14853,
+                  "src": "3346:12:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$14111",
+                    "typeString": "BalanceDelta"
+                  },
+                  "typeName": {
+                    "id": 14841,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14840,
+                      "name": "BalanceDelta",
+                      "nameLocations": [
+                        "3346:12:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14111,
+                      "src": "3346:12:59"
+                    },
+                    "referencedDeclaration": 14111,
+                    "src": "3346:12:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$14111",
+                      "typeString": "BalanceDelta"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14844,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14853,
+                  "src": "3360:14:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 14843,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3360:5:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3284:91:59"
+            },
+            "returnParameters": {
+              "id": 14848,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14847,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14853,
+                  "src": "3426:6:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 14846,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3426:6:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3425:8:59"
+            },
+            "scope": 14894,
+            "src": "3266:216:59",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "baseFunctions": [
+              8457
+            ],
+            "body": {
+              "id": 14872,
+              "nodeType": "Block",
+              "src": "3633:44:59",
+              "statements": [
+                {
+                  "errorCall": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 14869,
+                      "name": "HookNotImplemented",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14611,
+                      "src": "3650:18:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_error_pure$__$returns$_t_error_$",
+                        "typeString": "function () pure returns (error)"
+                      }
+                    },
+                    "id": 14870,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "3650:20:59",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_error",
+                      "typeString": "error"
+                    }
+                  },
+                  "id": 14871,
+                  "nodeType": "RevertStatement",
+                  "src": "3643:27:59"
+                }
+              ]
+            },
+            "functionSelector": "b6a8b0fa",
+            "id": 14873,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "beforeDonate",
+            "nameLocation": "3497:12:59",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14865,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14855,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14873,
+                  "src": "3510:7:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 14854,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3510:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14858,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14873,
+                  "src": "3519:16:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PoolKey_$14587_calldata_ptr",
+                    "typeString": "struct PoolKey"
+                  },
+                  "typeName": {
+                    "id": 14857,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14856,
+                      "name": "PoolKey",
+                      "nameLocations": [
+                        "3519:7:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14587,
+                      "src": "3519:7:59"
+                    },
+                    "referencedDeclaration": 14587,
+                    "src": "3519:7:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PoolKey_$14587_storage_ptr",
+                      "typeString": "struct PoolKey"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14860,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14873,
+                  "src": "3537:7:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 14859,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3537:7:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14862,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14873,
+                  "src": "3546:7:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 14861,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3546:7:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14864,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14873,
+                  "src": "3555:14:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 14863,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3555:5:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3509:61:59"
+            },
+            "returnParameters": {
+              "id": 14868,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14867,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14873,
+                  "src": "3621:6:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 14866,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3621:6:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3620:8:59"
+            },
+            "scope": 14894,
+            "src": "3488:189:59",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "baseFunctions": [
+              8474
+            ],
+            "body": {
+              "id": 14892,
+              "nodeType": "Block",
+              "src": "3827:44:59",
+              "statements": [
+                {
+                  "errorCall": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 14889,
+                      "name": "HookNotImplemented",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14611,
+                      "src": "3844:18:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_error_pure$__$returns$_t_error_$",
+                        "typeString": "function () pure returns (error)"
+                      }
+                    },
+                    "id": 14890,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "3844:20:59",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_error",
+                      "typeString": "error"
+                    }
+                  },
+                  "id": 14891,
+                  "nodeType": "RevertStatement",
+                  "src": "3837:27:59"
+                }
+              ]
+            },
+            "functionSelector": "e1b4af69",
+            "id": 14893,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "afterDonate",
+            "nameLocation": "3692:11:59",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14885,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14875,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14893,
+                  "src": "3704:7:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 14874,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3704:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14878,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14893,
+                  "src": "3713:16:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PoolKey_$14587_calldata_ptr",
+                    "typeString": "struct PoolKey"
+                  },
+                  "typeName": {
+                    "id": 14877,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14876,
+                      "name": "PoolKey",
+                      "nameLocations": [
+                        "3713:7:59"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14587,
+                      "src": "3713:7:59"
+                    },
+                    "referencedDeclaration": 14587,
+                    "src": "3713:7:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PoolKey_$14587_storage_ptr",
+                      "typeString": "struct PoolKey"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14880,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14893,
+                  "src": "3731:7:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 14879,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3731:7:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14882,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14893,
+                  "src": "3740:7:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 14881,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3740:7:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14884,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14893,
+                  "src": "3749:14:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 14883,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3749:5:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3703:61:59"
+            },
+            "returnParameters": {
+              "id": 14888,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14887,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14893,
+                  "src": "3815:6:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 14886,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3815:6:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3814:8:59"
+            },
+            "scope": 14894,
+            "src": "3683:188:59",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          }
+        ],
+        "scope": 14895,
+        "src": "399:3474:59",
+        "usedErrors": [
+          9609,
+          14603,
+          14605,
+          14607,
+          14609,
+          14611
+        ],
+        "usedEvents": []
+      }
+    ],
+    "src": "39:3835:59"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.28+commit.7893614a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2024-12-18T07:36:00.865Z",
+  "devdoc": {
+    "errors": {
+      "HookAddressNotValid(address)": [
+        {
+          "params": {
+            "hooks": "The address of the hooks contract"
+          }
+        }
+      ]
+    },
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "errors": {
+      "HookAddressNotValid(address)": [
+        {
+          "notice": "Thrown if the address will not lead to the specified hook calls being called"
+        }
+      ]
+    },
+    "kind": "user",
+    "methods": {
+      "poolManager()": {
+        "notice": "The address of the pool manager"
+      }
+    },
+    "version": 1
+  }
+}

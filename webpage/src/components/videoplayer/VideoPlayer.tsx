@@ -2,11 +2,12 @@ import Peer from "peerjs";
 import { useEffect } from "react"
 import "./VideoPlayer.css"
 import { Button, Icon } from "@sb-labs/basic-components/dist";
-import { flame, user, search, ethereum_black, ethereum_green, ethereum_white, copy, settings_black, settings_green, close } from "@sb-labs/images"
+import { close } from "@sb-labs/images"
 
 interface VideoPlayerProps{
     me: Peer
     peeruuid: string;
+    closePlayer: any
     /*setCallStreamRecorder(callStreamRecord: MediaRecorder): any;*/
 }
 
@@ -35,7 +36,8 @@ export const VideoPlayer = (props: VideoPlayerProps) =>{
             const me = props.me;
             console.log(`me: ${me.id}, peer: ${props.peeruuid}`)
 
-            //let conn = me.connect(props.peeruuid, {reliable: true})
+            let conn = me.connect(props.peeruuid, {reliable: true})
+            
             
             /*
             const connectToPeer = async () =>{
@@ -105,13 +107,20 @@ export const VideoPlayer = (props: VideoPlayerProps) =>{
             }*/
             
         }
+
+        const closeVideo =() =>{
+            props.me.destroy()
+            props.closePlayer()
+        }
+
+
     return(
         <>
             <div id="video-player">
                 <video autoPlay={true} playsInline id="video1" className="displaymedia" />
                 <video autoPlay={true} playsInline id="video2"className="displaymedia" />
             </div>
-            <Button size="medium" text="Close" icon={<Icon size="mini" src={close}></Icon>}></Button>
+            <Button size="medium" text="Close" icon={<Icon size="mini" src={close}></Icon>} onClick={closeVideo}></Button>
         </>
     );
 }

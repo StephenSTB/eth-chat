@@ -1,0 +1,1511 @@
+{
+  "contractName": "CometStorage",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "isAllowed",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "liquidatorPoints",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "numAbsorbs",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint64",
+          "name": "numAbsorbed",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint128",
+          "name": "approxSpend",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_reserved",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "totalsCollateral",
+      "outputs": [
+        {
+          "internalType": "uint128",
+          "name": "totalSupplyAsset",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "_reserved",
+          "type": "uint128"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "userBasic",
+      "outputs": [
+        {
+          "internalType": "int104",
+          "name": "principal",
+          "type": "int104"
+        },
+        {
+          "internalType": "uint64",
+          "name": "baseTrackingIndex",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "baseTrackingAccrued",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint16",
+          "name": "assetsIn",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint8",
+          "name": "_reserved",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "userCollateral",
+      "outputs": [
+        {
+          "internalType": "uint128",
+          "name": "balance",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "_reserved",
+          "type": "uint128"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "userNonce",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"isAllowed\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"liquidatorPoints\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"numAbsorbs\",\"type\":\"uint32\"},{\"internalType\":\"uint64\",\"name\":\"numAbsorbed\",\"type\":\"uint64\"},{\"internalType\":\"uint128\",\"name\":\"approxSpend\",\"type\":\"uint128\"},{\"internalType\":\"uint32\",\"name\":\"_reserved\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"totalsCollateral\",\"outputs\":[{\"internalType\":\"uint128\",\"name\":\"totalSupplyAsset\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"_reserved\",\"type\":\"uint128\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"userBasic\",\"outputs\":[{\"internalType\":\"int104\",\"name\":\"principal\",\"type\":\"int104\"},{\"internalType\":\"uint64\",\"name\":\"baseTrackingIndex\",\"type\":\"uint64\"},{\"internalType\":\"uint64\",\"name\":\"baseTrackingAccrued\",\"type\":\"uint64\"},{\"internalType\":\"uint16\",\"name\":\"assetsIn\",\"type\":\"uint16\"},{\"internalType\":\"uint8\",\"name\":\"_reserved\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"userCollateral\",\"outputs\":[{\"internalType\":\"uint128\",\"name\":\"balance\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"_reserved\",\"type\":\"uint128\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"userNonce\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Compound\",\"details\":\"Versions can enforce append-only storage slots via inheritance.\",\"kind\":\"dev\",\"methods\":{},\"stateVariables\":{\"baseSupplyIndex\":{\"details\":\"Aggregate variables tracked for the entire market\"}},\"title\":\"Compound's Comet Storage Interface\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"isAllowed(address,address)\":{\"notice\":\"Mapping of users to accounts which may be permitted to manage the user account\"},\"liquidatorPoints(address)\":{\"notice\":\"Mapping of magic liquidator points\"},\"totalsCollateral(address)\":{\"notice\":\"Aggregate variables tracked for each collateral asset\"},\"userBasic(address)\":{\"notice\":\"Mapping of users to base principal and other basic data\"},\"userCollateral(address,address)\":{\"notice\":\"Mapping of users to collateral data per collateral asset\"},\"userNonce(address)\":{\"notice\":\"The next expected nonce for an address, for validating authorizations via signature\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/comet/contracts/CometStorage.sol\":\"CometStorage\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/comet/contracts/CometStorage.sol\":{\"keccak256\":\"0xedc38ed37acf51c1f1210bc724e78033b4f2874604918014dde288cd5cf3464c\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://bbba37919596e53718e4d6b2ae3d60f60b4575852dcbc9abad647f3ef8594751\",\"dweb:/ipfs/QmSnSQVm1SAKhhPo3i7JkvZ8G8vQtAdWBmErHvSDMh9MQR\"]}},\"version\":1}",
+  "bytecode": "0x60808060405234610016576102f1908161001c8239f35b600080fdfe60806040818152600436101561001457600080fd5b600091823560e01c9081632b92a07d14610220575080632e04b8e7146101e957806359e017bd1461018d578063a165437914610140578063c5fa15cf146100d55763dc4abafd1461006457600080fd5b346100d15760203660031901126100d15760a09181906001600160a01b0361008a61028a565b1681526005602052205481519181600c0b835267ffffffffffffffff808360681c1660208501528260a81c169083015261ffff8160e81c16606083015260f81c6080820152f35b5080fd5b50346100d15760203660031901126100d15760809181906001600160a01b036100fc61028a565b1681526007602052205481519163ffffffff8216835267ffffffffffffffff8260201c1660208401526001600160801b038260601c169083015260e01c6060820152f35b50346100d157806003193601126100d15760ff8160209361015f61028a565b6101676102a5565b6001600160a01b0391821683526003875283832091168252855220549151911615158152f35b50346100d15760203660031901126100d1576101e59181906001600160a01b036101b561028a565b168152600260209081529190205491516001600160801b038316815260809290921c908201529081906040820190565b0390f35b50346100d15760203660031901126100d15760209181906001600160a01b0361021061028a565b1681526004845220549051908152f35b919050346102865780600319360112610286576101e590829361024161028a565b6102496102a5565b6001600160a01b039182168352600660209081528484209190921683528152919020546001600160801b038116845260801c908301526040820190565b8280fd5b600435906001600160a01b03821682036102a057565b600080fd5b602435906001600160a01b03821682036102a05756fea2646970667358221220612ee6699836febd45566abd24f3943d4adbd78a098b364d075428d868136e3464736f6c634300080f0033",
+  "deployedBytecode": "0x60806040818152600436101561001457600080fd5b600091823560e01c9081632b92a07d14610220575080632e04b8e7146101e957806359e017bd1461018d578063a165437914610140578063c5fa15cf146100d55763dc4abafd1461006457600080fd5b346100d15760203660031901126100d15760a09181906001600160a01b0361008a61028a565b1681526005602052205481519181600c0b835267ffffffffffffffff808360681c1660208501528260a81c169083015261ffff8160e81c16606083015260f81c6080820152f35b5080fd5b50346100d15760203660031901126100d15760809181906001600160a01b036100fc61028a565b1681526007602052205481519163ffffffff8216835267ffffffffffffffff8260201c1660208401526001600160801b038260601c169083015260e01c6060820152f35b50346100d157806003193601126100d15760ff8160209361015f61028a565b6101676102a5565b6001600160a01b0391821683526003875283832091168252855220549151911615158152f35b50346100d15760203660031901126100d1576101e59181906001600160a01b036101b561028a565b168152600260209081529190205491516001600160801b038316815260809290921c908201529081906040820190565b0390f35b50346100d15760203660031901126100d15760209181906001600160a01b0361021061028a565b1681526004845220549051908152f35b919050346102865780600319360112610286576101e590829361024161028a565b6102496102a5565b6001600160a01b039182168352600660209081528484209190921683528152919020546001600160801b038116845260801c908301526040820190565b8280fd5b600435906001600160a01b03821682036102a057565b600080fd5b602435906001600160a01b03821682036102a05756fea2646970667358221220612ee6699836febd45566abd24f3943d4adbd78a098b364d075428d868136e3464736f6c634300080f0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "207:2107:11:-:0;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "207:2107:11:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;207:2107:11;;;;;;;;-1:-1:-1;;;;;207:2107:11;;:::i;:::-;;;;1991:46;207:2107;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;207:2107:11;;;;;;;;-1:-1:-1;;;;;207:2107:11;;:::i;:::-;;;;2251:60;207:2107;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;207:2107:11;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::i;:::-;-1:-1:-1;;;;;207:2107:11;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;207:2107:11;;;;;;;;-1:-1:-1;;;;;207:2107:11;;:::i;:::-;;;;1541:60;207:2107;;;;;;;;;;-1:-1:-1;;;;;207:2107:11;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;207:2107:11;;;;;;;;-1:-1:-1;;;;;207:2107:11;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::i;:::-;-1:-1:-1;;;;;207:2107:11;;;;;2117:76;207:2107;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;207:2107:11;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;207:2107:11;;;;;;:::o;:::-;;;;;;;;-1:-1:-1;;;;;207:2107:11;;;;;;:::o",
+  "source": "// SPDX-License-Identifier: BUSL-1.1\npragma solidity 0.8.15;\n\n/**\n * @title Compound's Comet Storage Interface\n * @dev Versions can enforce append-only storage slots via inheritance.\n * @author Compound\n */\ncontract CometStorage {\n    // 512 bits total = 2 slots\n    struct TotalsBasic {\n        // 1st slot\n        uint64 baseSupplyIndex;\n        uint64 baseBorrowIndex;\n        uint64 trackingSupplyIndex;\n        uint64 trackingBorrowIndex;\n        // 2nd slot\n        uint104 totalSupplyBase;\n        uint104 totalBorrowBase;\n        uint40 lastAccrualTime;\n        uint8 pauseFlags;\n    }\n\n    struct TotalsCollateral {\n        uint128 totalSupplyAsset;\n        uint128 _reserved;\n    }\n\n    struct UserBasic {\n        int104 principal;\n        uint64 baseTrackingIndex;\n        uint64 baseTrackingAccrued;\n        uint16 assetsIn;\n        uint8 _reserved;\n    }\n\n    struct UserCollateral {\n        uint128 balance;\n        uint128 _reserved;\n    }\n\n    struct LiquidatorPoints {\n        uint32 numAbsorbs;\n        uint64 numAbsorbed;\n        uint128 approxSpend;\n        uint32 _reserved;\n    }\n\n    /// @dev Aggregate variables tracked for the entire market\n    uint64 internal baseSupplyIndex;\n    uint64 internal baseBorrowIndex;\n    uint64 internal trackingSupplyIndex;\n    uint64 internal trackingBorrowIndex;\n    uint104 internal totalSupplyBase;\n    uint104 internal totalBorrowBase;\n    uint40 internal lastAccrualTime;\n    uint8 internal pauseFlags;\n\n    /// @notice Aggregate variables tracked for each collateral asset\n    mapping(address => TotalsCollateral) public totalsCollateral;\n\n    /// @notice Mapping of users to accounts which may be permitted to manage the user account\n    mapping(address => mapping(address => bool)) public isAllowed;\n\n    /// @notice The next expected nonce for an address, for validating authorizations via signature\n    mapping(address => uint) public userNonce;\n\n    /// @notice Mapping of users to base principal and other basic data\n    mapping(address => UserBasic) public userBasic;\n\n    /// @notice Mapping of users to collateral data per collateral asset\n    mapping(address => mapping(address => UserCollateral)) public userCollateral;\n\n    /// @notice Mapping of magic liquidator points\n    mapping(address => LiquidatorPoints) public liquidatorPoints;\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/comet/contracts/CometStorage.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/comet/contracts/CometStorage.sol",
+    "exportedSymbols": {
+      "CometStorage": [
+        6894
+      ]
+    },
+    "id": 6895,
+    "license": "BUSL-1.1",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6790,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".15"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:11"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "CometStorage",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 6791,
+          "nodeType": "StructuredDocumentation",
+          "src": "62:144:11",
+          "text": " @title Compound's Comet Storage Interface\n @dev Versions can enforce append-only storage slots via inheritance.\n @author Compound"
+        },
+        "fullyImplemented": true,
+        "id": 6894,
+        "linearizedBaseContracts": [
+          6894
+        ],
+        "name": "CometStorage",
+        "nameLocation": "216:12:11",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "CometStorage.TotalsBasic",
+            "id": 6808,
+            "members": [
+              {
+                "constant": false,
+                "id": 6793,
+                "mutability": "mutable",
+                "name": "baseSupplyIndex",
+                "nameLocation": "323:15:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6808,
+                "src": "316:22:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint64",
+                  "typeString": "uint64"
+                },
+                "typeName": {
+                  "id": 6792,
+                  "name": "uint64",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "316:6:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6795,
+                "mutability": "mutable",
+                "name": "baseBorrowIndex",
+                "nameLocation": "355:15:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6808,
+                "src": "348:22:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint64",
+                  "typeString": "uint64"
+                },
+                "typeName": {
+                  "id": 6794,
+                  "name": "uint64",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "348:6:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6797,
+                "mutability": "mutable",
+                "name": "trackingSupplyIndex",
+                "nameLocation": "387:19:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6808,
+                "src": "380:26:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint64",
+                  "typeString": "uint64"
+                },
+                "typeName": {
+                  "id": 6796,
+                  "name": "uint64",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "380:6:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6799,
+                "mutability": "mutable",
+                "name": "trackingBorrowIndex",
+                "nameLocation": "423:19:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6808,
+                "src": "416:26:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint64",
+                  "typeString": "uint64"
+                },
+                "typeName": {
+                  "id": 6798,
+                  "name": "uint64",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "416:6:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6801,
+                "mutability": "mutable",
+                "name": "totalSupplyBase",
+                "nameLocation": "480:15:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6808,
+                "src": "472:23:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint104",
+                  "typeString": "uint104"
+                },
+                "typeName": {
+                  "id": 6800,
+                  "name": "uint104",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "472:7:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint104",
+                    "typeString": "uint104"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6803,
+                "mutability": "mutable",
+                "name": "totalBorrowBase",
+                "nameLocation": "513:15:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6808,
+                "src": "505:23:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint104",
+                  "typeString": "uint104"
+                },
+                "typeName": {
+                  "id": 6802,
+                  "name": "uint104",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "505:7:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint104",
+                    "typeString": "uint104"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6805,
+                "mutability": "mutable",
+                "name": "lastAccrualTime",
+                "nameLocation": "545:15:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6808,
+                "src": "538:22:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint40",
+                  "typeString": "uint40"
+                },
+                "typeName": {
+                  "id": 6804,
+                  "name": "uint40",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "538:6:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint40",
+                    "typeString": "uint40"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6807,
+                "mutability": "mutable",
+                "name": "pauseFlags",
+                "nameLocation": "576:10:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6808,
+                "src": "570:16:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 6806,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "570:5:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "TotalsBasic",
+            "nameLocation": "274:11:11",
+            "nodeType": "StructDefinition",
+            "scope": 6894,
+            "src": "267:326:11",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "CometStorage.TotalsCollateral",
+            "id": 6813,
+            "members": [
+              {
+                "constant": false,
+                "id": 6810,
+                "mutability": "mutable",
+                "name": "totalSupplyAsset",
+                "nameLocation": "641:16:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6813,
+                "src": "633:24:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint128",
+                  "typeString": "uint128"
+                },
+                "typeName": {
+                  "id": 6809,
+                  "name": "uint128",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "633:7:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint128",
+                    "typeString": "uint128"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6812,
+                "mutability": "mutable",
+                "name": "_reserved",
+                "nameLocation": "675:9:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6813,
+                "src": "667:17:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint128",
+                  "typeString": "uint128"
+                },
+                "typeName": {
+                  "id": 6811,
+                  "name": "uint128",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "667:7:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint128",
+                    "typeString": "uint128"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "TotalsCollateral",
+            "nameLocation": "606:16:11",
+            "nodeType": "StructDefinition",
+            "scope": 6894,
+            "src": "599:92:11",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "CometStorage.UserBasic",
+            "id": 6824,
+            "members": [
+              {
+                "constant": false,
+                "id": 6815,
+                "mutability": "mutable",
+                "name": "principal",
+                "nameLocation": "731:9:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6824,
+                "src": "724:16:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_int104",
+                  "typeString": "int104"
+                },
+                "typeName": {
+                  "id": 6814,
+                  "name": "int104",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "724:6:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int104",
+                    "typeString": "int104"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6817,
+                "mutability": "mutable",
+                "name": "baseTrackingIndex",
+                "nameLocation": "757:17:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6824,
+                "src": "750:24:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint64",
+                  "typeString": "uint64"
+                },
+                "typeName": {
+                  "id": 6816,
+                  "name": "uint64",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "750:6:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6819,
+                "mutability": "mutable",
+                "name": "baseTrackingAccrued",
+                "nameLocation": "791:19:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6824,
+                "src": "784:26:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint64",
+                  "typeString": "uint64"
+                },
+                "typeName": {
+                  "id": 6818,
+                  "name": "uint64",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "784:6:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6821,
+                "mutability": "mutable",
+                "name": "assetsIn",
+                "nameLocation": "827:8:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6824,
+                "src": "820:15:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 6820,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "820:6:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6823,
+                "mutability": "mutable",
+                "name": "_reserved",
+                "nameLocation": "851:9:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6824,
+                "src": "845:15:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 6822,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "845:5:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "UserBasic",
+            "nameLocation": "704:9:11",
+            "nodeType": "StructDefinition",
+            "scope": 6894,
+            "src": "697:170:11",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "CometStorage.UserCollateral",
+            "id": 6829,
+            "members": [
+              {
+                "constant": false,
+                "id": 6826,
+                "mutability": "mutable",
+                "name": "balance",
+                "nameLocation": "913:7:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6829,
+                "src": "905:15:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint128",
+                  "typeString": "uint128"
+                },
+                "typeName": {
+                  "id": 6825,
+                  "name": "uint128",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "905:7:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint128",
+                    "typeString": "uint128"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6828,
+                "mutability": "mutable",
+                "name": "_reserved",
+                "nameLocation": "938:9:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6829,
+                "src": "930:17:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint128",
+                  "typeString": "uint128"
+                },
+                "typeName": {
+                  "id": 6827,
+                  "name": "uint128",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "930:7:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint128",
+                    "typeString": "uint128"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "UserCollateral",
+            "nameLocation": "880:14:11",
+            "nodeType": "StructDefinition",
+            "scope": 6894,
+            "src": "873:81:11",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "CometStorage.LiquidatorPoints",
+            "id": 6838,
+            "members": [
+              {
+                "constant": false,
+                "id": 6831,
+                "mutability": "mutable",
+                "name": "numAbsorbs",
+                "nameLocation": "1001:10:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6838,
+                "src": "994:17:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 6830,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "994:6:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6833,
+                "mutability": "mutable",
+                "name": "numAbsorbed",
+                "nameLocation": "1028:11:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6838,
+                "src": "1021:18:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint64",
+                  "typeString": "uint64"
+                },
+                "typeName": {
+                  "id": 6832,
+                  "name": "uint64",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1021:6:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6835,
+                "mutability": "mutable",
+                "name": "approxSpend",
+                "nameLocation": "1057:11:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6838,
+                "src": "1049:19:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint128",
+                  "typeString": "uint128"
+                },
+                "typeName": {
+                  "id": 6834,
+                  "name": "uint128",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1049:7:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint128",
+                    "typeString": "uint128"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6837,
+                "mutability": "mutable",
+                "name": "_reserved",
+                "nameLocation": "1085:9:11",
+                "nodeType": "VariableDeclaration",
+                "scope": 6838,
+                "src": "1078:16:11",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 6836,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1078:6:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "LiquidatorPoints",
+            "nameLocation": "967:16:11",
+            "nodeType": "StructDefinition",
+            "scope": 6894,
+            "src": "960:141:11",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "documentation": {
+              "id": 6839,
+              "nodeType": "StructuredDocumentation",
+              "src": "1107:58:11",
+              "text": "@dev Aggregate variables tracked for the entire market"
+            },
+            "id": 6841,
+            "mutability": "mutable",
+            "name": "baseSupplyIndex",
+            "nameLocation": "1186:15:11",
+            "nodeType": "VariableDeclaration",
+            "scope": 6894,
+            "src": "1170:31:11",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint64",
+              "typeString": "uint64"
+            },
+            "typeName": {
+              "id": 6840,
+              "name": "uint64",
+              "nodeType": "ElementaryTypeName",
+              "src": "1170:6:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint64",
+                "typeString": "uint64"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 6843,
+            "mutability": "mutable",
+            "name": "baseBorrowIndex",
+            "nameLocation": "1223:15:11",
+            "nodeType": "VariableDeclaration",
+            "scope": 6894,
+            "src": "1207:31:11",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint64",
+              "typeString": "uint64"
+            },
+            "typeName": {
+              "id": 6842,
+              "name": "uint64",
+              "nodeType": "ElementaryTypeName",
+              "src": "1207:6:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint64",
+                "typeString": "uint64"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 6845,
+            "mutability": "mutable",
+            "name": "trackingSupplyIndex",
+            "nameLocation": "1260:19:11",
+            "nodeType": "VariableDeclaration",
+            "scope": 6894,
+            "src": "1244:35:11",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint64",
+              "typeString": "uint64"
+            },
+            "typeName": {
+              "id": 6844,
+              "name": "uint64",
+              "nodeType": "ElementaryTypeName",
+              "src": "1244:6:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint64",
+                "typeString": "uint64"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 6847,
+            "mutability": "mutable",
+            "name": "trackingBorrowIndex",
+            "nameLocation": "1301:19:11",
+            "nodeType": "VariableDeclaration",
+            "scope": 6894,
+            "src": "1285:35:11",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint64",
+              "typeString": "uint64"
+            },
+            "typeName": {
+              "id": 6846,
+              "name": "uint64",
+              "nodeType": "ElementaryTypeName",
+              "src": "1285:6:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint64",
+                "typeString": "uint64"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 6849,
+            "mutability": "mutable",
+            "name": "totalSupplyBase",
+            "nameLocation": "1343:15:11",
+            "nodeType": "VariableDeclaration",
+            "scope": 6894,
+            "src": "1326:32:11",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint104",
+              "typeString": "uint104"
+            },
+            "typeName": {
+              "id": 6848,
+              "name": "uint104",
+              "nodeType": "ElementaryTypeName",
+              "src": "1326:7:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint104",
+                "typeString": "uint104"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 6851,
+            "mutability": "mutable",
+            "name": "totalBorrowBase",
+            "nameLocation": "1381:15:11",
+            "nodeType": "VariableDeclaration",
+            "scope": 6894,
+            "src": "1364:32:11",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint104",
+              "typeString": "uint104"
+            },
+            "typeName": {
+              "id": 6850,
+              "name": "uint104",
+              "nodeType": "ElementaryTypeName",
+              "src": "1364:7:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint104",
+                "typeString": "uint104"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 6853,
+            "mutability": "mutable",
+            "name": "lastAccrualTime",
+            "nameLocation": "1418:15:11",
+            "nodeType": "VariableDeclaration",
+            "scope": 6894,
+            "src": "1402:31:11",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint40",
+              "typeString": "uint40"
+            },
+            "typeName": {
+              "id": 6852,
+              "name": "uint40",
+              "nodeType": "ElementaryTypeName",
+              "src": "1402:6:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint40",
+                "typeString": "uint40"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 6855,
+            "mutability": "mutable",
+            "name": "pauseFlags",
+            "nameLocation": "1454:10:11",
+            "nodeType": "VariableDeclaration",
+            "scope": 6894,
+            "src": "1439:25:11",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint8",
+              "typeString": "uint8"
+            },
+            "typeName": {
+              "id": 6854,
+              "name": "uint8",
+              "nodeType": "ElementaryTypeName",
+              "src": "1439:5:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint8",
+                "typeString": "uint8"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "documentation": {
+              "id": 6856,
+              "nodeType": "StructuredDocumentation",
+              "src": "1471:65:11",
+              "text": "@notice Aggregate variables tracked for each collateral asset"
+            },
+            "functionSelector": "59e017bd",
+            "id": 6861,
+            "mutability": "mutable",
+            "name": "totalsCollateral",
+            "nameLocation": "1585:16:11",
+            "nodeType": "VariableDeclaration",
+            "scope": 6894,
+            "src": "1541:60:11",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_TotalsCollateral_$6813_storage_$",
+              "typeString": "mapping(address => struct CometStorage.TotalsCollateral)"
+            },
+            "typeName": {
+              "id": 6860,
+              "keyType": {
+                "id": 6857,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "1549:7:11",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "1541:36:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_TotalsCollateral_$6813_storage_$",
+                "typeString": "mapping(address => struct CometStorage.TotalsCollateral)"
+              },
+              "valueType": {
+                "id": 6859,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 6858,
+                  "name": "TotalsCollateral",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 6813,
+                  "src": "1560:16:11"
+                },
+                "referencedDeclaration": 6813,
+                "src": "1560:16:11",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_TotalsCollateral_$6813_storage_ptr",
+                  "typeString": "struct CometStorage.TotalsCollateral"
+                }
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "documentation": {
+              "id": 6862,
+              "nodeType": "StructuredDocumentation",
+              "src": "1608:90:11",
+              "text": "@notice Mapping of users to accounts which may be permitted to manage the user account"
+            },
+            "functionSelector": "a1654379",
+            "id": 6868,
+            "mutability": "mutable",
+            "name": "isAllowed",
+            "nameLocation": "1755:9:11",
+            "nodeType": "VariableDeclaration",
+            "scope": 6894,
+            "src": "1703:61:11",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$",
+              "typeString": "mapping(address => mapping(address => bool))"
+            },
+            "typeName": {
+              "id": 6867,
+              "keyType": {
+                "id": 6863,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "1711:7:11",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "1703:44:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$",
+                "typeString": "mapping(address => mapping(address => bool))"
+              },
+              "valueType": {
+                "id": 6866,
+                "keyType": {
+                  "id": 6864,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1730:7:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "nodeType": "Mapping",
+                "src": "1722:24:11",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                  "typeString": "mapping(address => bool)"
+                },
+                "valueType": {
+                  "id": 6865,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1741:4:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                }
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "documentation": {
+              "id": 6869,
+              "nodeType": "StructuredDocumentation",
+              "src": "1771:95:11",
+              "text": "@notice The next expected nonce for an address, for validating authorizations via signature"
+            },
+            "functionSelector": "2e04b8e7",
+            "id": 6873,
+            "mutability": "mutable",
+            "name": "userNonce",
+            "nameLocation": "1903:9:11",
+            "nodeType": "VariableDeclaration",
+            "scope": 6894,
+            "src": "1871:41:11",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+              "typeString": "mapping(address => uint256)"
+            },
+            "typeName": {
+              "id": 6872,
+              "keyType": {
+                "id": 6870,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "1879:7:11",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "1871:24:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                "typeString": "mapping(address => uint256)"
+              },
+              "valueType": {
+                "id": 6871,
+                "name": "uint",
+                "nodeType": "ElementaryTypeName",
+                "src": "1890:4:11",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "documentation": {
+              "id": 6874,
+              "nodeType": "StructuredDocumentation",
+              "src": "1919:67:11",
+              "text": "@notice Mapping of users to base principal and other basic data"
+            },
+            "functionSelector": "dc4abafd",
+            "id": 6879,
+            "mutability": "mutable",
+            "name": "userBasic",
+            "nameLocation": "2028:9:11",
+            "nodeType": "VariableDeclaration",
+            "scope": 6894,
+            "src": "1991:46:11",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_UserBasic_$6824_storage_$",
+              "typeString": "mapping(address => struct CometStorage.UserBasic)"
+            },
+            "typeName": {
+              "id": 6878,
+              "keyType": {
+                "id": 6875,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "1999:7:11",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "1991:29:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_UserBasic_$6824_storage_$",
+                "typeString": "mapping(address => struct CometStorage.UserBasic)"
+              },
+              "valueType": {
+                "id": 6877,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 6876,
+                  "name": "UserBasic",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 6824,
+                  "src": "2010:9:11"
+                },
+                "referencedDeclaration": 6824,
+                "src": "2010:9:11",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_UserBasic_$6824_storage_ptr",
+                  "typeString": "struct CometStorage.UserBasic"
+                }
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "documentation": {
+              "id": 6880,
+              "nodeType": "StructuredDocumentation",
+              "src": "2044:68:11",
+              "text": "@notice Mapping of users to collateral data per collateral asset"
+            },
+            "functionSelector": "2b92a07d",
+            "id": 6887,
+            "mutability": "mutable",
+            "name": "userCollateral",
+            "nameLocation": "2179:14:11",
+            "nodeType": "VariableDeclaration",
+            "scope": 6894,
+            "src": "2117:76:11",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_address_$_t_struct$_UserCollateral_$6829_storage_$_$",
+              "typeString": "mapping(address => mapping(address => struct CometStorage.UserCollateral))"
+            },
+            "typeName": {
+              "id": 6886,
+              "keyType": {
+                "id": 6881,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "2125:7:11",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "2117:54:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_address_$_t_struct$_UserCollateral_$6829_storage_$_$",
+                "typeString": "mapping(address => mapping(address => struct CometStorage.UserCollateral))"
+              },
+              "valueType": {
+                "id": 6885,
+                "keyType": {
+                  "id": 6882,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2144:7:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "nodeType": "Mapping",
+                "src": "2136:34:11",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_UserCollateral_$6829_storage_$",
+                  "typeString": "mapping(address => struct CometStorage.UserCollateral)"
+                },
+                "valueType": {
+                  "id": 6884,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 6883,
+                    "name": "UserCollateral",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 6829,
+                    "src": "2155:14:11"
+                  },
+                  "referencedDeclaration": 6829,
+                  "src": "2155:14:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_UserCollateral_$6829_storage_ptr",
+                    "typeString": "struct CometStorage.UserCollateral"
+                  }
+                }
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "documentation": {
+              "id": 6888,
+              "nodeType": "StructuredDocumentation",
+              "src": "2200:46:11",
+              "text": "@notice Mapping of magic liquidator points"
+            },
+            "functionSelector": "c5fa15cf",
+            "id": 6893,
+            "mutability": "mutable",
+            "name": "liquidatorPoints",
+            "nameLocation": "2295:16:11",
+            "nodeType": "VariableDeclaration",
+            "scope": 6894,
+            "src": "2251:60:11",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_LiquidatorPoints_$6838_storage_$",
+              "typeString": "mapping(address => struct CometStorage.LiquidatorPoints)"
+            },
+            "typeName": {
+              "id": 6892,
+              "keyType": {
+                "id": 6889,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "2259:7:11",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "2251:36:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_LiquidatorPoints_$6838_storage_$",
+                "typeString": "mapping(address => struct CometStorage.LiquidatorPoints)"
+              },
+              "valueType": {
+                "id": 6891,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 6890,
+                  "name": "LiquidatorPoints",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 6838,
+                  "src": "2270:16:11"
+                },
+                "referencedDeclaration": 6838,
+                "src": "2270:16:11",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_LiquidatorPoints_$6838_storage_ptr",
+                  "typeString": "struct CometStorage.LiquidatorPoints"
+                }
+              }
+            },
+            "visibility": "public"
+          }
+        ],
+        "scope": 6895,
+        "src": "207:2107:11",
+        "usedErrors": []
+      }
+    ],
+    "src": "37:2278:11"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.15+commit.e14f2714.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-11-30T22:41:29.667Z",
+  "devdoc": {
+    "author": "Compound",
+    "details": "Versions can enforce append-only storage slots via inheritance.",
+    "kind": "dev",
+    "methods": {},
+    "stateVariables": {
+      "baseSupplyIndex": {
+        "details": "Aggregate variables tracked for the entire market"
+      }
+    },
+    "title": "Compound's Comet Storage Interface",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "isAllowed(address,address)": {
+        "notice": "Mapping of users to accounts which may be permitted to manage the user account"
+      },
+      "liquidatorPoints(address)": {
+        "notice": "Mapping of magic liquidator points"
+      },
+      "totalsCollateral(address)": {
+        "notice": "Aggregate variables tracked for each collateral asset"
+      },
+      "userBasic(address)": {
+        "notice": "Mapping of users to base principal and other basic data"
+      },
+      "userCollateral(address,address)": {
+        "notice": "Mapping of users to collateral data per collateral asset"
+      },
+      "userNonce(address)": {
+        "notice": "The next expected nonce for an address, for validating authorizations via signature"
+      }
+    },
+    "version": 1
+  }
+}

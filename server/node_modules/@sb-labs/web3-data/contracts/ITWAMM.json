@@ -1,0 +1,2787 @@
+{
+  "contractName": "ITWAMM",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint160",
+              "name": "expiration",
+              "type": "uint160"
+            },
+            {
+              "internalType": "bool",
+              "name": "zeroForOne",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct ITWAMM.OrderKey",
+          "name": "orderKey",
+          "type": "tuple"
+        }
+      ],
+      "name": "CannotModifyCompletedOrder",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "expiration",
+          "type": "uint256"
+        }
+      ],
+      "name": "ExpirationLessThanBlocktime",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "expiration",
+          "type": "uint256"
+        }
+      ],
+      "name": "ExpirationNotOnInterval",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint160",
+              "name": "expiration",
+              "type": "uint160"
+            },
+            {
+              "internalType": "bool",
+              "name": "zeroForOne",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct ITWAMM.OrderKey",
+          "name": "orderKey",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint256",
+          "name": "unsoldAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "int256",
+          "name": "amountDelta",
+          "type": "int256"
+        }
+      ],
+      "name": "InvalidAmountDelta",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "currentAccount",
+          "type": "address"
+        }
+      ],
+      "name": "MustBeOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotInitialized",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint160",
+              "name": "expiration",
+              "type": "uint160"
+            },
+            {
+              "internalType": "bool",
+              "name": "zeroForOne",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct ITWAMM.OrderKey",
+          "name": "orderKey",
+          "type": "tuple"
+        }
+      ],
+      "name": "OrderAlreadyExists",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint160",
+              "name": "expiration",
+              "type": "uint160"
+            },
+            {
+              "internalType": "bool",
+              "name": "zeroForOne",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct ITWAMM.OrderKey",
+          "name": "orderKey",
+          "type": "tuple"
+        }
+      ],
+      "name": "OrderDoesNotExist",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "SellRateCannotBeZero",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "PoolId",
+          "name": "poolId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint160",
+          "name": "expiration",
+          "type": "uint160"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "zeroForOne",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "sellRate",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "earningsFactorLast",
+          "type": "uint256"
+        }
+      ],
+      "name": "SubmitOrder",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "PoolId",
+          "name": "poolId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint160",
+          "name": "expiration",
+          "type": "uint160"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "zeroForOne",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "sellRate",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "earningsFactorLast",
+          "type": "uint256"
+        }
+      ],
+      "name": "UpdateOrder",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "expirationInterval",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "key",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint160",
+              "name": "expiration",
+              "type": "uint160"
+            },
+            {
+              "internalType": "bool",
+              "name": "zeroForOne",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct ITWAMM.OrderKey",
+          "name": "orderKey",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amountIn",
+          "type": "uint256"
+        }
+      ],
+      "name": "submitOrder",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "orderId",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "key",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint160",
+              "name": "expiration",
+              "type": "uint160"
+            },
+            {
+              "internalType": "bool",
+              "name": "zeroForOne",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct ITWAMM.OrderKey",
+          "name": "orderKey",
+          "type": "tuple"
+        },
+        {
+          "internalType": "int256",
+          "name": "amountDelta",
+          "type": "int256"
+        }
+      ],
+      "name": "updateOrder",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokens0Owed",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokens1Owed",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "Currency",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amountRequested",
+          "type": "uint256"
+        }
+      ],
+      "name": "claimTokens",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "amountTransferred",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "key",
+          "type": "tuple"
+        }
+      ],
+      "name": "executeTWAMMOrders",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "Currency",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "tokensOwed",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.28+commit.7893614a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint160\",\"name\":\"expiration\",\"type\":\"uint160\"},{\"internalType\":\"bool\",\"name\":\"zeroForOne\",\"type\":\"bool\"}],\"internalType\":\"struct ITWAMM.OrderKey\",\"name\":\"orderKey\",\"type\":\"tuple\"}],\"name\":\"CannotModifyCompletedOrder\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"expiration\",\"type\":\"uint256\"}],\"name\":\"ExpirationLessThanBlocktime\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"expiration\",\"type\":\"uint256\"}],\"name\":\"ExpirationNotOnInterval\",\"type\":\"error\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint160\",\"name\":\"expiration\",\"type\":\"uint160\"},{\"internalType\":\"bool\",\"name\":\"zeroForOne\",\"type\":\"bool\"}],\"internalType\":\"struct ITWAMM.OrderKey\",\"name\":\"orderKey\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"unsoldAmount\",\"type\":\"uint256\"},{\"internalType\":\"int256\",\"name\":\"amountDelta\",\"type\":\"int256\"}],\"name\":\"InvalidAmountDelta\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"currentAccount\",\"type\":\"address\"}],\"name\":\"MustBeOwner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotInitialized\",\"type\":\"error\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint160\",\"name\":\"expiration\",\"type\":\"uint160\"},{\"internalType\":\"bool\",\"name\":\"zeroForOne\",\"type\":\"bool\"}],\"internalType\":\"struct ITWAMM.OrderKey\",\"name\":\"orderKey\",\"type\":\"tuple\"}],\"name\":\"OrderAlreadyExists\",\"type\":\"error\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint160\",\"name\":\"expiration\",\"type\":\"uint160\"},{\"internalType\":\"bool\",\"name\":\"zeroForOne\",\"type\":\"bool\"}],\"internalType\":\"struct ITWAMM.OrderKey\",\"name\":\"orderKey\",\"type\":\"tuple\"}],\"name\":\"OrderDoesNotExist\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"SellRateCannotBeZero\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"PoolId\",\"name\":\"poolId\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint160\",\"name\":\"expiration\",\"type\":\"uint160\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"zeroForOne\",\"type\":\"bool\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"sellRate\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"earningsFactorLast\",\"type\":\"uint256\"}],\"name\":\"SubmitOrder\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"PoolId\",\"name\":\"poolId\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint160\",\"name\":\"expiration\",\"type\":\"uint160\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"zeroForOne\",\"type\":\"bool\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"sellRate\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"earningsFactorLast\",\"type\":\"uint256\"}],\"name\":\"UpdateOrder\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"Currency\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountRequested\",\"type\":\"uint256\"}],\"name\":\"claimTokens\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountTransferred\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"key\",\"type\":\"tuple\"}],\"name\":\"executeTWAMMOrders\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"expirationInterval\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"key\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint160\",\"name\":\"expiration\",\"type\":\"uint160\"},{\"internalType\":\"bool\",\"name\":\"zeroForOne\",\"type\":\"bool\"}],\"internalType\":\"struct ITWAMM.OrderKey\",\"name\":\"orderKey\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"amountIn\",\"type\":\"uint256\"}],\"name\":\"submitOrder\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"orderId\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"Currency\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"tokensOwed\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"key\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint160\",\"name\":\"expiration\",\"type\":\"uint160\"},{\"internalType\":\"bool\",\"name\":\"zeroForOne\",\"type\":\"bool\"}],\"internalType\":\"struct ITWAMM.OrderKey\",\"name\":\"orderKey\",\"type\":\"tuple\"},{\"internalType\":\"int256\",\"name\":\"amountDelta\",\"type\":\"int256\"}],\"name\":\"updateOrder\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"tokens0Owed\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokens1Owed\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"errors\":{\"CannotModifyCompletedOrder((address,uint160,bool))\":[{\"params\":{\"orderKey\":\"The orderKey\"}}],\"ExpirationLessThanBlocktime(uint256)\":[{\"params\":{\"expiration\":\"The expiration timestamp of the order\"}}],\"ExpirationNotOnInterval(uint256)\":[{\"params\":{\"expiration\":\"The expiration timestamp of the order\"}}],\"InvalidAmountDelta((address,uint160,bool),uint256,int256)\":[{\"params\":{\"amountDelta\":\"The amount delta for the order\",\"orderKey\":\"The orderKey\",\"unsoldAmount\":\"The amount still unsold\"}}],\"MustBeOwner(address,address)\":[{\"params\":{\"currentAccount\":\"The invalid account attempting to interact with the order\",\"owner\":\"The owner of the order\"}}],\"OrderAlreadyExists((address,uint160,bool))\":[{\"params\":{\"orderKey\":\"The already existing orderKey\"}}],\"OrderDoesNotExist((address,uint160,bool))\":[{\"params\":{\"orderKey\":\"The already existing orderKey\"}}]},\"events\":{\"SubmitOrder(bytes32,address,uint160,bool,uint256,uint256)\":{\"params\":{\"earningsFactorLast\":\"The current earningsFactor of the order pool\",\"expiration\":\"The expiration timestamp of the order\",\"owner\":\"The owner of the new order\",\"poolId\":\"The id of the corresponding pool\",\"sellRate\":\"The sell rate of tokens per second being sold in the order\",\"zeroForOne\":\"Whether the order is selling token 0 for token 1\"}},\"UpdateOrder(bytes32,address,uint160,bool,uint256,uint256)\":{\"params\":{\"earningsFactorLast\":\"The current earningsFactor of the order pool   (since updated orders will claim existing earnings)\",\"expiration\":\"The expiration timestamp of the order\",\"owner\":\"The owner of the existing order\",\"poolId\":\"The id of the corresponding pool\",\"sellRate\":\"The updated sellRate of tokens per second being sold in the order\",\"zeroForOne\":\"Whether the order is selling token 0 for token 1\"}}},\"kind\":\"dev\",\"methods\":{\"claimTokens(address,address,uint256)\":{\"params\":{\"amountRequested\":\"The amount of tokens requested to claim. Set to 0 to claim all.\",\"to\":\"The receipient of the claim\",\"token\":\"The token to claim\"},\"returns\":{\"amountTransferred\":\"The total token amount to be collected\"}},\"executeTWAMMOrders((address,address,uint24,int24,address))\":{\"params\":{\"key\":\"The pool key associated with the TWAMM\"}},\"submitOrder((address,address,uint24,int24,address),(address,uint160,bool),uint256)\":{\"params\":{\"amountIn\":\"The amount of sell token to add to the order. Some precision on amountIn may be lost up to the magnitude of (orderKey.expiration - block.timestamp)\",\"key\":\"The PoolKey for which to identify the amm pool of the order\",\"orderKey\":\"The OrderKey for the new order\"},\"returns\":{\"orderId\":\"The bytes32 ID of the order\"}},\"updateOrder((address,address,uint24,int24,address),(address,uint160,bool),int256)\":{\"params\":{\"amountDelta\":\"The delta for the order sell amount. Negative to remove from order, positive to add, or    -1 to remove full amount from order.\",\"key\":\"The PoolKey for which to identify the amm pool of the order\",\"orderKey\":\"The OrderKey for which to identify the order\"}}},\"version\":1},\"userdoc\":{\"errors\":{\"CannotModifyCompletedOrder((address,uint160,bool))\":[{\"notice\":\"Thrown when trying to cancel an already completed order\"}],\"ExpirationLessThanBlocktime(uint256)\":[{\"notice\":\"Thrown when trying to submit an order with an expiration time in the past.\"}],\"ExpirationNotOnInterval(uint256)\":[{\"notice\":\"Thrown when trying to submit an order with an expiration that isn't on the interval.\"}],\"InvalidAmountDelta((address,uint160,bool),uint256,int256)\":[{\"notice\":\"Thrown when trying to subtract more value from a long term order than exists\"}],\"MustBeOwner(address,address)\":[{\"notice\":\"Thrown when account other than owner attempts to interact with an order\"}],\"NotInitialized()\":[{\"notice\":\"Thrown when trying to submit an order without initializing TWAMM state first\"}],\"OrderAlreadyExists((address,uint160,bool))\":[{\"notice\":\"Thrown when trying to submit an order that's already ongoing.\"}],\"OrderDoesNotExist((address,uint160,bool))\":[{\"notice\":\"Thrown when trying to interact with an order that does not exist.\"}],\"SellRateCannotBeZero()\":[{\"notice\":\"Thrown when submitting an order with a sellRate of 0\"}]},\"events\":{\"SubmitOrder(bytes32,address,uint160,bool,uint256,uint256)\":{\"notice\":\"Emitted when a new long term order is submitted\"},\"UpdateOrder(bytes32,address,uint160,bool,uint256,uint256)\":{\"notice\":\"Emitted when a long term order is updated\"}},\"kind\":\"user\",\"methods\":{\"claimTokens(address,address,uint256)\":{\"notice\":\"Claim tokens owed from TWAMM contract\"},\"executeTWAMMOrders((address,address,uint24,int24,address))\":{\"notice\":\"Executes TWAMM orders on the pool, swapping on the pool itself to make up the difference between the two TWAMM pools swapping against each other\"},\"expirationInterval()\":{\"notice\":\"Time interval on which orders are allowed to expire. Conserves processing needed on execute.\"},\"submitOrder((address,address,uint24,int24,address),(address,uint160,bool),uint256)\":{\"notice\":\"Submits a new long term order into the TWAMM. Also executes TWAMM orders if not up to date.\"},\"updateOrder((address,address,uint24,int24,address),(address,uint160,bool),int256)\":{\"notice\":\"Update an existing long term order with current earnings, optionally modify the amount selling.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/v4-periphery/contracts/interfaces/ITWAMM.sol\":\"ITWAMM\"},\"evmVersion\":\"cancun\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/v4-core/src/interfaces/IClaims.sol\":{\"keccak256\":\"0xdf74a92ef73ec38d1f3fdb83a217a805fee5a9e8d50a079d429dcdf88728a1e9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d4f73e8176929eed516327517ca2d37804348e6073d5b50b5a1396337f089281\",\"dweb:/ipfs/QmWdk99E4PtBBSLe39qPRacFDK52avHN65XAN12CYbCGpU\"]},\"project:/contracts/v4-core/src/interfaces/IFees.sol\":{\"keccak256\":\"0x7a2d2b74602f23a8944b45c745e8a512f7d8f00f8ba22742636abaf929379697\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ab38548046bb65d089fd56b335a3b98d2b4f03e9af4763c2b7da2b04322a6e73\",\"dweb:/ipfs/QmVQfsaSwqV8ynqc9KEGWjQkxnAzju7uQQaFvxqhAd32cW\"]},\"project:/contracts/v4-core/src/interfaces/IHooks.sol\":{\"keccak256\":\"0xc8b2ff0889b0866f84a4a4f06702b92ac08e3a5e2a6048e09dcbba8d58297002\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4614b2c046f2521dc7f39496cd77af787184189f9e23f65086ac89515826190c\",\"dweb:/ipfs/QmdVEVCfz1wJq5zWnvRsKKCUniwYbDUdWf8NWYukCaXe54\"]},\"project:/contracts/v4-core/src/interfaces/IPoolManager.sol\":{\"keccak256\":\"0xb68e18109027f3d40cf922f861c41c149124b5007a428a6476b8f45ed8642845\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://92ab2915861fca8823d53011b16c0dfb7bf5115cc89d8acbbf7f83b12f0974e4\",\"dweb:/ipfs/QmdxDzSn4qm1utvSgTWNioieheDCYLJpWe576YoBhAEbXm\"]},\"project:/contracts/v4-core/src/interfaces/external/IERC20Minimal.sol\":{\"keccak256\":\"0x8dc5ee72426906aeb12f4ae6a2426df059491739bd5cbdb8ea4a3e26970436c6\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://f7e30dbbc972cb78d169c8845d6210d27490c8534e68a20d4f296b11ec727b92\",\"dweb:/ipfs/QmXBvaWaAnPW25YGVm2sMbf5mwrzLapUcqPnrNiiGGXxmA\"]},\"project:/contracts/v4-core/src/libraries/BitMath.sol\":{\"keccak256\":\"0x652cd36970d953b3067c766b3b0c0063d4c403eba7352df09ec10dcc868910d9\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://e357b092171edb755c8514b4b4ae758a8b43458c7a23409ebf5afd325fefa2be\",\"dweb:/ipfs/QmWKRWT2z15cVbVVDkjqdVnpf8Ck1jytcXbA7zCUevp7b6\"]},\"project:/contracts/v4-core/src/libraries/FixedPoint128.sol\":{\"keccak256\":\"0x1f015a7a107f4c471985a958f1bfbc1710948f9bcd3786a02310bc0ad5080c69\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://a1cacac08675284f319d151f6bc5d1c66cf1d54c5dad1c620a2e1e1336cbb93a\",\"dweb:/ipfs/QmPf8vQ3mBqniKHwvS1DDEFrV5dJfZSL6mMi9JVy6omQaz\"]},\"project:/contracts/v4-core/src/libraries/FixedPoint96.sol\":{\"keccak256\":\"0x7731aeeba692b0ca5dac8f27803ec9e5ce98795a554c09ae05c220861bd0314e\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://963a8155e442d31c4541c387d333db0c02941ae3517e9173ad30ebcb4f6a14e9\",\"dweb:/ipfs/QmevAr8oG4WSoi5gBqQ53VzBuFbDKoZHfJwjuTmVhzm8Tc\"]},\"project:/contracts/v4-core/src/libraries/FullMath.sol\":{\"keccak256\":\"0x6d8760794ed38264579c5da7b2afe8ff5543de999180850bc08687b77dce36ea\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0e72da6f868ba5f5c829f78f649286c6b5922a8cda0317dfbb156b8a4d27fb24\",\"dweb:/ipfs/QmUQDZciNFhy4AFGXfYvoy22ihPc7ehvypeRVQwvVcD3vJ\"]},\"project:/contracts/v4-core/src/libraries/Pool.sol\":{\"keccak256\":\"0x4b4bbb00df0b43e296430d4088f719093dcbd16327c472af95c2b4ad84a9b78d\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://cc04d99d71e367fa8e2b3ab584e62c06604804b861aa8df69500b096755ce72d\",\"dweb:/ipfs/QmTJDRNjkXRD6ePSyG26Hfk5pNSNRu58CyYTBsc35kRX3e\"]},\"project:/contracts/v4-core/src/libraries/Position.sol\":{\"keccak256\":\"0x1319e4c172e31427c3b3521dd3c9c9c3949da22e25c9919ae57c47a8c9328e43\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://1e0885e8e035681836fe02213e165d1ab48cf2488cf6ba8f01964b4b026d2b46\",\"dweb:/ipfs/QmR4W3DZYYvctASLFnm7Sf4wk2L77gwNRrTS2mBqtiUaud\"]},\"project:/contracts/v4-core/src/libraries/SafeCast.sol\":{\"keccak256\":\"0x197985a64d2ccf38a5e6a80cf70dc345594cc7296a2364b7447e553966ed89dc\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://05c0f4aa083eb721febe1d23a1f55ced942eab0072318cb919c5fa42d0553042\",\"dweb:/ipfs/QmV1DBPTynduQnC9T5Ad87jHLZfevMkBQPFjPTMtstJgeN\"]},\"project:/contracts/v4-core/src/libraries/SqrtPriceMath.sol\":{\"keccak256\":\"0xe54bb39a96f98df7b8d36fade6b95bc866e138594b146ef0d4cee4e542170058\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://a3e737e963339141ba91a2a11d635e7ffe9ed901325579094aa4ac76b435314a\",\"dweb:/ipfs/QmVQ5ENKDBNJEM6kgLi8FwifxbAW4xj2riknTWfnox79ZR\"]},\"project:/contracts/v4-core/src/libraries/SwapMath.sol\":{\"keccak256\":\"0xac5b75b36ff928e88cbec828bdc9db03e681cc3b337d5d7f6be9fd617b3fef7f\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://6aaea2ecabdb3fec93c7c6be19ea3a034cf396a59ab96f61c57b5214c04b5a6e\",\"dweb:/ipfs/QmYyd4ExT6xbvEHZTQBv9nZuvU6xjB6EN4uY8TmK8Tceqv\"]},\"project:/contracts/v4-core/src/libraries/TickBitmap.sol\":{\"keccak256\":\"0x7cccb8dff4c76da872a827f1549dc44cdff384d123e77a5361a02a31902bf15c\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://88f850cd5bd2bbada4d9514f2516804392c7b23dc2cb541b74e9c88d0a351dcd\",\"dweb:/ipfs/QmZh9LvKUG23oFUZXAAa5gn77MguAbZ41VGjkES5U8N9Em\"]},\"project:/contracts/v4-core/src/libraries/TickMath.sol\":{\"keccak256\":\"0xc7e49d8f58765e4d586f943b782f3b11b5330864ffc273494420f268dc3b34a8\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://12a96f136f09a15af9f4484f23782097a7233fb0658f12ebc94873d91bc7eba3\",\"dweb:/ipfs/Qmc7W5Ff9Tmnd6daXeqGjgcfritarGxRrqSSCYzZ1pZ2yZ\"]},\"project:/contracts/v4-core/src/libraries/UnsafeMath.sol\":{\"keccak256\":\"0x2a8cb75af05f8557b698b089a0ab19e24279fffb7e87cddf5794404c7eaf1c69\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://85f68e6d614205f3f0f55f6ac41805e3a7d523d95bda1c443f2e75444443ffe3\",\"dweb:/ipfs/QmdCheMqxWNx4CbxG5MH9BUQeSMeeXF6DHkf7Aax4duRUe\"]},\"project:/contracts/v4-core/src/types/BalanceDelta.sol\":{\"keccak256\":\"0xb348472d6a9050f8e162173712911896882939a0cd7316db386ced5182716845\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://10db8d83e74b6cabcf71f0325d16e9c919c66ba4e41ab58a280b432f8b9ea6e4\",\"dweb:/ipfs/QmNWQJQqCrp9QWzbdBivkYBX6tfEgobkGYhoCxvoX3ZtKg\"]},\"project:/contracts/v4-core/src/types/Currency.sol\":{\"keccak256\":\"0xb1395e2817b604745bf6cd41821aafeaaa252caafe45133e54f02d6f6be13d2b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://49ec58bd7634ccb1b74f59378e54771ae11cba37494b57ae64e3f6640d4afdd9\",\"dweb:/ipfs/QmeYL1TuGXcTYfsQBGu7p9urSqGjiJky8iJAgwTRYqrJ4F\"]},\"project:/contracts/v4-core/src/types/PoolId.sol\":{\"keccak256\":\"0x2928a23cdf4c3dd05fafd3094020723954150901c6935a40fbb8e3cbc1e0ebe3\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4ddde47e0eda04cf7e1b8e903eafd22ff19866bcb2ce0f61b46a3470b4dc9927\",\"dweb:/ipfs/Qme84u2nmVFZkaBSwVJw3bhZSqt6P9xMHNsp1Y7ddWMDvi\"]},\"project:/contracts/v4-core/src/types/PoolKey.sol\":{\"keccak256\":\"0xef7421713157a514d757863e99c2d094a6fac1dcbae602ac0eb47eda2d651a6d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d2832668ba213b3928fd79e159b4d00b4b8f057844e2897902ec089014470f29\",\"dweb:/ipfs/QmV2MESks8RiTwRJpqynGCGsrmXKimRFpQFZSBXnxEiXKX\"]},\"project:/contracts/v4-periphery/contracts/interfaces/ITWAMM.sol\":{\"keccak256\":\"0x72ad9cca63f16dab1906bddf1eeef9222e656a426d71957fe9e3b987cc628fc5\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://5492bf62a7ed8b207e4147eef3a0218f50d361047497696904a57d22850f3a52\",\"dweb:/ipfs/QmdBV2zTiBSiq1M74ew8HxkMAJ6QR1FeFWMbXKvakXpCp5\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8.15;\n\nimport {IPoolManager} from \"../../../v4-core/src/interfaces/IPoolManager.sol\";\nimport {IERC20Minimal} from \"../../../v4-core/src/interfaces/external/IERC20Minimal.sol\";\nimport {Currency, CurrencyLibrary} from \"../../../v4-core/src/types/Currency.sol\";\nimport {PoolId, PoolIdLibrary} from \"../../../v4-core/src/types/PoolId.sol\";\nimport {PoolKey} from \"../../../v4-core/src/types/PoolKey.sol\";\n\ninterface ITWAMM {\n    /// @notice Thrown when account other than owner attempts to interact with an order\n    /// @param owner The owner of the order\n    /// @param currentAccount The invalid account attempting to interact with the order\n    error MustBeOwner(address owner, address currentAccount);\n\n    /// @notice Thrown when trying to cancel an already completed order\n    /// @param orderKey The orderKey\n    error CannotModifyCompletedOrder(OrderKey orderKey);\n\n    /// @notice Thrown when trying to submit an order with an expiration that isn't on the interval.\n    /// @param expiration The expiration timestamp of the order\n    error ExpirationNotOnInterval(uint256 expiration);\n\n    /// @notice Thrown when trying to submit an order with an expiration time in the past.\n    /// @param expiration The expiration timestamp of the order\n    error ExpirationLessThanBlocktime(uint256 expiration);\n\n    /// @notice Thrown when trying to submit an order without initializing TWAMM state first\n    error NotInitialized();\n\n    /// @notice Thrown when trying to submit an order that's already ongoing.\n    /// @param orderKey The already existing orderKey\n    error OrderAlreadyExists(OrderKey orderKey);\n\n    /// @notice Thrown when trying to interact with an order that does not exist.\n    /// @param orderKey The already existing orderKey\n    error OrderDoesNotExist(OrderKey orderKey);\n\n    /// @notice Thrown when trying to subtract more value from a long term order than exists\n    /// @param orderKey The orderKey\n    /// @param unsoldAmount The amount still unsold\n    /// @param amountDelta The amount delta for the order\n    error InvalidAmountDelta(OrderKey orderKey, uint256 unsoldAmount, int256 amountDelta);\n\n    /// @notice Thrown when submitting an order with a sellRate of 0\n    error SellRateCannotBeZero();\n\n    /// @notice Information associated with a long term order\n    /// @member sellRate Amount of tokens sold per interval\n    /// @member earningsFactorLast The accrued earnings factor from which to start claiming owed earnings for this order\n    struct Order {\n        uint256 sellRate;\n        uint256 earningsFactorLast;\n    }\n\n    /// @notice Information that identifies an order\n    /// @member owner Owner of the order\n    /// @member expiration Timestamp when the order expires\n    /// @member zeroForOne Bool whether the order is zeroForOne\n    struct OrderKey {\n        address owner;\n        uint160 expiration;\n        bool zeroForOne;\n    }\n\n    /// @notice Emitted when a new long term order is submitted\n    /// @param poolId The id of the corresponding pool\n    /// @param owner The owner of the new order\n    /// @param expiration The expiration timestamp of the order\n    /// @param zeroForOne Whether the order is selling token 0 for token 1\n    /// @param sellRate The sell rate of tokens per second being sold in the order\n    /// @param earningsFactorLast The current earningsFactor of the order pool\n    event SubmitOrder(\n        PoolId indexed poolId,\n        address indexed owner,\n        uint160 expiration,\n        bool zeroForOne,\n        uint256 sellRate,\n        uint256 earningsFactorLast\n    );\n\n    /// @notice Emitted when a long term order is updated\n    /// @param poolId The id of the corresponding pool\n    /// @param owner The owner of the existing order\n    /// @param expiration The expiration timestamp of the order\n    /// @param zeroForOne Whether the order is selling token 0 for token 1\n    /// @param sellRate The updated sellRate of tokens per second being sold in the order\n    /// @param earningsFactorLast The current earningsFactor of the order pool\n    ///   (since updated orders will claim existing earnings)\n    event UpdateOrder(\n        PoolId indexed poolId,\n        address indexed owner,\n        uint160 expiration,\n        bool zeroForOne,\n        uint256 sellRate,\n        uint256 earningsFactorLast\n    );\n\n    /// @notice Time interval on which orders are allowed to expire. Conserves processing needed on execute.\n    function expirationInterval() external view returns (uint256);\n\n    /// @notice Submits a new long term order into the TWAMM. Also executes TWAMM orders if not up to date.\n    /// @param key The PoolKey for which to identify the amm pool of the order\n    /// @param orderKey The OrderKey for the new order\n    /// @param amountIn The amount of sell token to add to the order. Some precision on amountIn may be lost up to the\n    /// magnitude of (orderKey.expiration - block.timestamp)\n    /// @return orderId The bytes32 ID of the order\n    function submitOrder(PoolKey calldata key, OrderKey calldata orderKey, uint256 amountIn)\n        external\n        returns (bytes32 orderId);\n\n    /// @notice Update an existing long term order with current earnings, optionally modify the amount selling.\n    /// @param key The PoolKey for which to identify the amm pool of the order\n    /// @param orderKey The OrderKey for which to identify the order\n    /// @param amountDelta The delta for the order sell amount. Negative to remove from order, positive to add, or\n    ///    -1 to remove full amount from order.\n    function updateOrder(PoolKey calldata key, OrderKey calldata orderKey, int256 amountDelta)\n        external\n        returns (uint256 tokens0Owed, uint256 tokens1Owed);\n\n    /// @notice Claim tokens owed from TWAMM contract\n    /// @param token The token to claim\n    /// @param to The receipient of the claim\n    /// @param amountRequested The amount of tokens requested to claim. Set to 0 to claim all.\n    /// @return amountTransferred The total token amount to be collected\n    function claimTokens(Currency token, address to, uint256 amountRequested)\n        external\n        returns (uint256 amountTransferred);\n\n    /// @notice Executes TWAMM orders on the pool, swapping on the pool itself to make up the difference between the\n    /// two TWAMM pools swapping against each other\n    /// @param key The pool key associated with the TWAMM\n    function executeTWAMMOrders(PoolKey memory key) external;\n\n    function tokensOwed(Currency token, address owner) external returns (uint256);\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/v4-periphery/contracts/interfaces/ITWAMM.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/v4-periphery/contracts/interfaces/ITWAMM.sol",
+    "exportedSymbols": {
+      "Currency": [
+        14262
+      ],
+      "CurrencyLibrary": [
+        14533
+      ],
+      "IERC20Minimal": [
+        8964
+      ],
+      "IPoolManager": [
+        8867
+      ],
+      "ITWAMM": [
+        20808
+      ],
+      "PoolId": [
+        14539
+      ],
+      "PoolIdLibrary": [
+        14561
+      ],
+      "PoolKey": [
+        14587
+      ]
+    },
+    "id": 20809,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 20632,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".15"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:24:66"
+      },
+      {
+        "absolutePath": "project:/contracts/v4-core/src/interfaces/IPoolManager.sol",
+        "file": "../../../v4-core/src/interfaces/IPoolManager.sol",
+        "id": 20634,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 20809,
+        "sourceUnit": 8868,
+        "src": "65:78:66",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 20633,
+              "name": "IPoolManager",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 8867,
+              "src": "73:12:66",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/v4-core/src/interfaces/external/IERC20Minimal.sol",
+        "file": "../../../v4-core/src/interfaces/external/IERC20Minimal.sol",
+        "id": 20636,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 20809,
+        "sourceUnit": 8965,
+        "src": "144:89:66",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 20635,
+              "name": "IERC20Minimal",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 8964,
+              "src": "152:13:66",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/v4-core/src/types/Currency.sol",
+        "file": "../../../v4-core/src/types/Currency.sol",
+        "id": 20639,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 20809,
+        "sourceUnit": 14534,
+        "src": "234:82:66",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 20637,
+              "name": "Currency",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 14262,
+              "src": "242:8:66",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          },
+          {
+            "foreign": {
+              "id": 20638,
+              "name": "CurrencyLibrary",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 14533,
+              "src": "252:15:66",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/v4-core/src/types/PoolId.sol",
+        "file": "../../../v4-core/src/types/PoolId.sol",
+        "id": 20642,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 20809,
+        "sourceUnit": 14562,
+        "src": "317:76:66",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 20640,
+              "name": "PoolId",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 14539,
+              "src": "325:6:66",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          },
+          {
+            "foreign": {
+              "id": 20641,
+              "name": "PoolIdLibrary",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 14561,
+              "src": "333:13:66",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/v4-core/src/types/PoolKey.sol",
+        "file": "../../../v4-core/src/types/PoolKey.sol",
+        "id": 20644,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 20809,
+        "sourceUnit": 14588,
+        "src": "394:63:66",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 20643,
+              "name": "PoolKey",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 14587,
+              "src": "402:7:66",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ITWAMM",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 20808,
+        "linearizedBaseContracts": [
+          20808
+        ],
+        "name": "ITWAMM",
+        "nameLocation": "469:6:66",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 20645,
+              "nodeType": "StructuredDocumentation",
+              "src": "482:215:66",
+              "text": "@notice Thrown when account other than owner attempts to interact with an order\n @param owner The owner of the order\n @param currentAccount The invalid account attempting to interact with the order"
+            },
+            "errorSelector": "e2aaff73",
+            "id": 20651,
+            "name": "MustBeOwner",
+            "nameLocation": "708:11:66",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 20650,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20647,
+                  "mutability": "mutable",
+                  "name": "owner",
+                  "nameLocation": "728:5:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20651,
+                  "src": "720:13:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 20646,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "720:7:66",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20649,
+                  "mutability": "mutable",
+                  "name": "currentAccount",
+                  "nameLocation": "743:14:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20651,
+                  "src": "735:22:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 20648,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "735:7:66",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "719:39:66"
+            },
+            "src": "702:57:66"
+          },
+          {
+            "documentation": {
+              "id": 20652,
+              "nodeType": "StructuredDocumentation",
+              "src": "765:104:66",
+              "text": "@notice Thrown when trying to cancel an already completed order\n @param orderKey The orderKey"
+            },
+            "errorSelector": "0918b289",
+            "id": 20657,
+            "name": "CannotModifyCompletedOrder",
+            "nameLocation": "880:26:66",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 20656,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20655,
+                  "mutability": "mutable",
+                  "name": "orderKey",
+                  "nameLocation": "916:8:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20657,
+                  "src": "907:17:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_OrderKey_$20709_memory_ptr",
+                    "typeString": "struct ITWAMM.OrderKey"
+                  },
+                  "typeName": {
+                    "id": 20654,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 20653,
+                      "name": "OrderKey",
+                      "nameLocations": [
+                        "907:8:66"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 20709,
+                      "src": "907:8:66"
+                    },
+                    "referencedDeclaration": 20709,
+                    "src": "907:8:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_OrderKey_$20709_storage_ptr",
+                      "typeString": "struct ITWAMM.OrderKey"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "906:19:66"
+            },
+            "src": "874:52:66"
+          },
+          {
+            "documentation": {
+              "id": 20658,
+              "nodeType": "StructuredDocumentation",
+              "src": "932:160:66",
+              "text": "@notice Thrown when trying to submit an order with an expiration that isn't on the interval.\n @param expiration The expiration timestamp of the order"
+            },
+            "errorSelector": "a643559c",
+            "id": 20662,
+            "name": "ExpirationNotOnInterval",
+            "nameLocation": "1103:23:66",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 20661,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20660,
+                  "mutability": "mutable",
+                  "name": "expiration",
+                  "nameLocation": "1135:10:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20662,
+                  "src": "1127:18:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 20659,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1127:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1126:20:66"
+            },
+            "src": "1097:50:66"
+          },
+          {
+            "documentation": {
+              "id": 20663,
+              "nodeType": "StructuredDocumentation",
+              "src": "1153:150:66",
+              "text": "@notice Thrown when trying to submit an order with an expiration time in the past.\n @param expiration The expiration timestamp of the order"
+            },
+            "errorSelector": "cd87c18d",
+            "id": 20667,
+            "name": "ExpirationLessThanBlocktime",
+            "nameLocation": "1314:27:66",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 20666,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20665,
+                  "mutability": "mutable",
+                  "name": "expiration",
+                  "nameLocation": "1350:10:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20667,
+                  "src": "1342:18:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 20664,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1342:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1341:20:66"
+            },
+            "src": "1308:54:66"
+          },
+          {
+            "documentation": {
+              "id": 20668,
+              "nodeType": "StructuredDocumentation",
+              "src": "1368:88:66",
+              "text": "@notice Thrown when trying to submit an order without initializing TWAMM state first"
+            },
+            "errorSelector": "87138d5c",
+            "id": 20670,
+            "name": "NotInitialized",
+            "nameLocation": "1467:14:66",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 20669,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1481:2:66"
+            },
+            "src": "1461:23:66"
+          },
+          {
+            "documentation": {
+              "id": 20671,
+              "nodeType": "StructuredDocumentation",
+              "src": "1490:127:66",
+              "text": "@notice Thrown when trying to submit an order that's already ongoing.\n @param orderKey The already existing orderKey"
+            },
+            "errorSelector": "04a9e54d",
+            "id": 20676,
+            "name": "OrderAlreadyExists",
+            "nameLocation": "1628:18:66",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 20675,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20674,
+                  "mutability": "mutable",
+                  "name": "orderKey",
+                  "nameLocation": "1656:8:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20676,
+                  "src": "1647:17:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_OrderKey_$20709_memory_ptr",
+                    "typeString": "struct ITWAMM.OrderKey"
+                  },
+                  "typeName": {
+                    "id": 20673,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 20672,
+                      "name": "OrderKey",
+                      "nameLocations": [
+                        "1647:8:66"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 20709,
+                      "src": "1647:8:66"
+                    },
+                    "referencedDeclaration": 20709,
+                    "src": "1647:8:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_OrderKey_$20709_storage_ptr",
+                      "typeString": "struct ITWAMM.OrderKey"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1646:19:66"
+            },
+            "src": "1622:44:66"
+          },
+          {
+            "documentation": {
+              "id": 20677,
+              "nodeType": "StructuredDocumentation",
+              "src": "1672:131:66",
+              "text": "@notice Thrown when trying to interact with an order that does not exist.\n @param orderKey The already existing orderKey"
+            },
+            "errorSelector": "9044eb27",
+            "id": 20682,
+            "name": "OrderDoesNotExist",
+            "nameLocation": "1814:17:66",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 20681,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20680,
+                  "mutability": "mutable",
+                  "name": "orderKey",
+                  "nameLocation": "1841:8:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20682,
+                  "src": "1832:17:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_OrderKey_$20709_memory_ptr",
+                    "typeString": "struct ITWAMM.OrderKey"
+                  },
+                  "typeName": {
+                    "id": 20679,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 20678,
+                      "name": "OrderKey",
+                      "nameLocations": [
+                        "1832:8:66"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 20709,
+                      "src": "1832:8:66"
+                    },
+                    "referencedDeclaration": 20709,
+                    "src": "1832:8:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_OrderKey_$20709_storage_ptr",
+                      "typeString": "struct ITWAMM.OrderKey"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1831:19:66"
+            },
+            "src": "1808:43:66"
+          },
+          {
+            "documentation": {
+              "id": 20683,
+              "nodeType": "StructuredDocumentation",
+              "src": "1857:235:66",
+              "text": "@notice Thrown when trying to subtract more value from a long term order than exists\n @param orderKey The orderKey\n @param unsoldAmount The amount still unsold\n @param amountDelta The amount delta for the order"
+            },
+            "errorSelector": "a26087fe",
+            "id": 20692,
+            "name": "InvalidAmountDelta",
+            "nameLocation": "2103:18:66",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 20691,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20686,
+                  "mutability": "mutable",
+                  "name": "orderKey",
+                  "nameLocation": "2131:8:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20692,
+                  "src": "2122:17:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_OrderKey_$20709_memory_ptr",
+                    "typeString": "struct ITWAMM.OrderKey"
+                  },
+                  "typeName": {
+                    "id": 20685,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 20684,
+                      "name": "OrderKey",
+                      "nameLocations": [
+                        "2122:8:66"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 20709,
+                      "src": "2122:8:66"
+                    },
+                    "referencedDeclaration": 20709,
+                    "src": "2122:8:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_OrderKey_$20709_storage_ptr",
+                      "typeString": "struct ITWAMM.OrderKey"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20688,
+                  "mutability": "mutable",
+                  "name": "unsoldAmount",
+                  "nameLocation": "2149:12:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20692,
+                  "src": "2141:20:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 20687,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2141:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20690,
+                  "mutability": "mutable",
+                  "name": "amountDelta",
+                  "nameLocation": "2170:11:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20692,
+                  "src": "2163:18:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 20689,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2163:6:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2121:61:66"
+            },
+            "src": "2097:86:66"
+          },
+          {
+            "documentation": {
+              "id": 20693,
+              "nodeType": "StructuredDocumentation",
+              "src": "2189:64:66",
+              "text": "@notice Thrown when submitting an order with a sellRate of 0"
+            },
+            "errorSelector": "78326369",
+            "id": 20695,
+            "name": "SellRateCannotBeZero",
+            "nameLocation": "2264:20:66",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 20694,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2284:2:66"
+            },
+            "src": "2258:29:66"
+          },
+          {
+            "canonicalName": "ITWAMM.Order",
+            "documentation": {
+              "id": 20696,
+              "nodeType": "StructuredDocumentation",
+              "src": "2293:238:66",
+              "text": "@notice Information associated with a long term order\n @member sellRate Amount of tokens sold per interval\n @member earningsFactorLast The accrued earnings factor from which to start claiming owed earnings for this order"
+            },
+            "id": 20701,
+            "members": [
+              {
+                "constant": false,
+                "id": 20698,
+                "mutability": "mutable",
+                "name": "sellRate",
+                "nameLocation": "2567:8:66",
+                "nodeType": "VariableDeclaration",
+                "scope": 20701,
+                "src": "2559:16:66",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 20697,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2559:7:66",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 20700,
+                "mutability": "mutable",
+                "name": "earningsFactorLast",
+                "nameLocation": "2593:18:66",
+                "nodeType": "VariableDeclaration",
+                "scope": 20701,
+                "src": "2585:26:66",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 20699,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2585:7:66",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Order",
+            "nameLocation": "2543:5:66",
+            "nodeType": "StructDefinition",
+            "scope": 20808,
+            "src": "2536:82:66",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "ITWAMM.OrderKey",
+            "documentation": {
+              "id": 20702,
+              "nodeType": "StructuredDocumentation",
+              "src": "2624:213:66",
+              "text": "@notice Information that identifies an order\n @member owner Owner of the order\n @member expiration Timestamp when the order expires\n @member zeroForOne Bool whether the order is zeroForOne"
+            },
+            "id": 20709,
+            "members": [
+              {
+                "constant": false,
+                "id": 20704,
+                "mutability": "mutable",
+                "name": "owner",
+                "nameLocation": "2876:5:66",
+                "nodeType": "VariableDeclaration",
+                "scope": 20709,
+                "src": "2868:13:66",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 20703,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2868:7:66",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 20706,
+                "mutability": "mutable",
+                "name": "expiration",
+                "nameLocation": "2899:10:66",
+                "nodeType": "VariableDeclaration",
+                "scope": 20709,
+                "src": "2891:18:66",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint160",
+                  "typeString": "uint160"
+                },
+                "typeName": {
+                  "id": 20705,
+                  "name": "uint160",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2891:7:66",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint160",
+                    "typeString": "uint160"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 20708,
+                "mutability": "mutable",
+                "name": "zeroForOne",
+                "nameLocation": "2924:10:66",
+                "nodeType": "VariableDeclaration",
+                "scope": 20709,
+                "src": "2919:15:66",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 20707,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2919:4:66",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "OrderKey",
+            "nameLocation": "2849:8:66",
+            "nodeType": "StructDefinition",
+            "scope": 20808,
+            "src": "2842:99:66",
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 20710,
+              "nodeType": "StructuredDocumentation",
+              "src": "2947:463:66",
+              "text": "@notice Emitted when a new long term order is submitted\n @param poolId The id of the corresponding pool\n @param owner The owner of the new order\n @param expiration The expiration timestamp of the order\n @param zeroForOne Whether the order is selling token 0 for token 1\n @param sellRate The sell rate of tokens per second being sold in the order\n @param earningsFactorLast The current earningsFactor of the order pool"
+            },
+            "eventSelector": "faaa07ce082dc5fd8da3b5871f3bea299c149b02540be2d1c9169e94a8be8484",
+            "id": 20725,
+            "name": "SubmitOrder",
+            "nameLocation": "3421:11:66",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 20724,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20713,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "poolId",
+                  "nameLocation": "3457:6:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20725,
+                  "src": "3442:21:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_PoolId_$14539",
+                    "typeString": "PoolId"
+                  },
+                  "typeName": {
+                    "id": 20712,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 20711,
+                      "name": "PoolId",
+                      "nameLocations": [
+                        "3442:6:66"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14539,
+                      "src": "3442:6:66"
+                    },
+                    "referencedDeclaration": 14539,
+                    "src": "3442:6:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_PoolId_$14539",
+                      "typeString": "PoolId"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20715,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "owner",
+                  "nameLocation": "3489:5:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20725,
+                  "src": "3473:21:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 20714,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3473:7:66",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20717,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "expiration",
+                  "nameLocation": "3512:10:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20725,
+                  "src": "3504:18:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint160",
+                    "typeString": "uint160"
+                  },
+                  "typeName": {
+                    "id": 20716,
+                    "name": "uint160",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3504:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint160",
+                      "typeString": "uint160"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20719,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "zeroForOne",
+                  "nameLocation": "3537:10:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20725,
+                  "src": "3532:15:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 20718,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3532:4:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20721,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "sellRate",
+                  "nameLocation": "3565:8:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20725,
+                  "src": "3557:16:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 20720,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3557:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20723,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "earningsFactorLast",
+                  "nameLocation": "3591:18:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20725,
+                  "src": "3583:26:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 20722,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3583:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3432:183:66"
+            },
+            "src": "3415:201:66"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 20726,
+              "nodeType": "StructuredDocumentation",
+              "src": "3622:531:66",
+              "text": "@notice Emitted when a long term order is updated\n @param poolId The id of the corresponding pool\n @param owner The owner of the existing order\n @param expiration The expiration timestamp of the order\n @param zeroForOne Whether the order is selling token 0 for token 1\n @param sellRate The updated sellRate of tokens per second being sold in the order\n @param earningsFactorLast The current earningsFactor of the order pool\n   (since updated orders will claim existing earnings)"
+            },
+            "eventSelector": "0419b3b20aa8f170fc09bc80fa2437166bce38232cb28c36a035b65c79742a09",
+            "id": 20741,
+            "name": "UpdateOrder",
+            "nameLocation": "4164:11:66",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 20740,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20729,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "poolId",
+                  "nameLocation": "4200:6:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20741,
+                  "src": "4185:21:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_PoolId_$14539",
+                    "typeString": "PoolId"
+                  },
+                  "typeName": {
+                    "id": 20728,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 20727,
+                      "name": "PoolId",
+                      "nameLocations": [
+                        "4185:6:66"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14539,
+                      "src": "4185:6:66"
+                    },
+                    "referencedDeclaration": 14539,
+                    "src": "4185:6:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_PoolId_$14539",
+                      "typeString": "PoolId"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20731,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "owner",
+                  "nameLocation": "4232:5:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20741,
+                  "src": "4216:21:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 20730,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4216:7:66",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20733,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "expiration",
+                  "nameLocation": "4255:10:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20741,
+                  "src": "4247:18:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint160",
+                    "typeString": "uint160"
+                  },
+                  "typeName": {
+                    "id": 20732,
+                    "name": "uint160",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4247:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint160",
+                      "typeString": "uint160"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20735,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "zeroForOne",
+                  "nameLocation": "4280:10:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20741,
+                  "src": "4275:15:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 20734,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4275:4:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20737,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "sellRate",
+                  "nameLocation": "4308:8:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20741,
+                  "src": "4300:16:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 20736,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4300:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20739,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "earningsFactorLast",
+                  "nameLocation": "4334:18:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20741,
+                  "src": "4326:26:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 20738,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4326:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4175:183:66"
+            },
+            "src": "4158:201:66"
+          },
+          {
+            "documentation": {
+              "id": 20742,
+              "nodeType": "StructuredDocumentation",
+              "src": "4365:104:66",
+              "text": "@notice Time interval on which orders are allowed to expire. Conserves processing needed on execute."
+            },
+            "functionSelector": "c01f9606",
+            "id": 20747,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "expirationInterval",
+            "nameLocation": "4483:18:66",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20743,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4501:2:66"
+            },
+            "returnParameters": {
+              "id": 20746,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20745,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20747,
+                  "src": "4527:7:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 20744,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4527:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4526:9:66"
+            },
+            "scope": 20808,
+            "src": "4474:62:66",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 20748,
+              "nodeType": "StructuredDocumentation",
+              "src": "4542:469:66",
+              "text": "@notice Submits a new long term order into the TWAMM. Also executes TWAMM orders if not up to date.\n @param key The PoolKey for which to identify the amm pool of the order\n @param orderKey The OrderKey for the new order\n @param amountIn The amount of sell token to add to the order. Some precision on amountIn may be lost up to the\n magnitude of (orderKey.expiration - block.timestamp)\n @return orderId The bytes32 ID of the order"
+            },
+            "functionSelector": "9d544ca8",
+            "id": 20761,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "submitOrder",
+            "nameLocation": "5025:11:66",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20757,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20751,
+                  "mutability": "mutable",
+                  "name": "key",
+                  "nameLocation": "5054:3:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20761,
+                  "src": "5037:20:66",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PoolKey_$14587_calldata_ptr",
+                    "typeString": "struct PoolKey"
+                  },
+                  "typeName": {
+                    "id": 20750,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 20749,
+                      "name": "PoolKey",
+                      "nameLocations": [
+                        "5037:7:66"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14587,
+                      "src": "5037:7:66"
+                    },
+                    "referencedDeclaration": 14587,
+                    "src": "5037:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PoolKey_$14587_storage_ptr",
+                      "typeString": "struct PoolKey"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20754,
+                  "mutability": "mutable",
+                  "name": "orderKey",
+                  "nameLocation": "5077:8:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20761,
+                  "src": "5059:26:66",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_OrderKey_$20709_calldata_ptr",
+                    "typeString": "struct ITWAMM.OrderKey"
+                  },
+                  "typeName": {
+                    "id": 20753,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 20752,
+                      "name": "OrderKey",
+                      "nameLocations": [
+                        "5059:8:66"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 20709,
+                      "src": "5059:8:66"
+                    },
+                    "referencedDeclaration": 20709,
+                    "src": "5059:8:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_OrderKey_$20709_storage_ptr",
+                      "typeString": "struct ITWAMM.OrderKey"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20756,
+                  "mutability": "mutable",
+                  "name": "amountIn",
+                  "nameLocation": "5095:8:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20761,
+                  "src": "5087:16:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 20755,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5087:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5036:68:66"
+            },
+            "returnParameters": {
+              "id": 20760,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20759,
+                  "mutability": "mutable",
+                  "name": "orderId",
+                  "nameLocation": "5147:7:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20761,
+                  "src": "5139:15:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 20758,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5139:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5138:17:66"
+            },
+            "scope": 20808,
+            "src": "5016:140:66",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 20762,
+              "nodeType": "StructuredDocumentation",
+              "src": "5162:418:66",
+              "text": "@notice Update an existing long term order with current earnings, optionally modify the amount selling.\n @param key The PoolKey for which to identify the amm pool of the order\n @param orderKey The OrderKey for which to identify the order\n @param amountDelta The delta for the order sell amount. Negative to remove from order, positive to add, or\n    -1 to remove full amount from order."
+            },
+            "functionSelector": "00e7b1be",
+            "id": 20777,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateOrder",
+            "nameLocation": "5594:11:66",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20771,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20765,
+                  "mutability": "mutable",
+                  "name": "key",
+                  "nameLocation": "5623:3:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20777,
+                  "src": "5606:20:66",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PoolKey_$14587_calldata_ptr",
+                    "typeString": "struct PoolKey"
+                  },
+                  "typeName": {
+                    "id": 20764,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 20763,
+                      "name": "PoolKey",
+                      "nameLocations": [
+                        "5606:7:66"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14587,
+                      "src": "5606:7:66"
+                    },
+                    "referencedDeclaration": 14587,
+                    "src": "5606:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PoolKey_$14587_storage_ptr",
+                      "typeString": "struct PoolKey"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20768,
+                  "mutability": "mutable",
+                  "name": "orderKey",
+                  "nameLocation": "5646:8:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20777,
+                  "src": "5628:26:66",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_OrderKey_$20709_calldata_ptr",
+                    "typeString": "struct ITWAMM.OrderKey"
+                  },
+                  "typeName": {
+                    "id": 20767,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 20766,
+                      "name": "OrderKey",
+                      "nameLocations": [
+                        "5628:8:66"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 20709,
+                      "src": "5628:8:66"
+                    },
+                    "referencedDeclaration": 20709,
+                    "src": "5628:8:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_OrderKey_$20709_storage_ptr",
+                      "typeString": "struct ITWAMM.OrderKey"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20770,
+                  "mutability": "mutable",
+                  "name": "amountDelta",
+                  "nameLocation": "5663:11:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20777,
+                  "src": "5656:18:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 20769,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5656:6:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5605:70:66"
+            },
+            "returnParameters": {
+              "id": 20776,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20773,
+                  "mutability": "mutable",
+                  "name": "tokens0Owed",
+                  "nameLocation": "5718:11:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20777,
+                  "src": "5710:19:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 20772,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5710:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20775,
+                  "mutability": "mutable",
+                  "name": "tokens1Owed",
+                  "nameLocation": "5739:11:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20777,
+                  "src": "5731:19:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 20774,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5731:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5709:42:66"
+            },
+            "scope": 20808,
+            "src": "5585:167:66",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 20778,
+              "nodeType": "StructuredDocumentation",
+              "src": "5758:303:66",
+              "text": "@notice Claim tokens owed from TWAMM contract\n @param token The token to claim\n @param to The receipient of the claim\n @param amountRequested The amount of tokens requested to claim. Set to 0 to claim all.\n @return amountTransferred The total token amount to be collected"
+            },
+            "functionSelector": "9fc314c8",
+            "id": 20790,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "claimTokens",
+            "nameLocation": "6075:11:66",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20786,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20781,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nameLocation": "6096:5:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20790,
+                  "src": "6087:14:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_Currency_$14262",
+                    "typeString": "Currency"
+                  },
+                  "typeName": {
+                    "id": 20780,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 20779,
+                      "name": "Currency",
+                      "nameLocations": [
+                        "6087:8:66"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14262,
+                      "src": "6087:8:66"
+                    },
+                    "referencedDeclaration": 14262,
+                    "src": "6087:8:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_Currency_$14262",
+                      "typeString": "Currency"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20783,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "6111:2:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20790,
+                  "src": "6103:10:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 20782,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6103:7:66",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20785,
+                  "mutability": "mutable",
+                  "name": "amountRequested",
+                  "nameLocation": "6123:15:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20790,
+                  "src": "6115:23:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 20784,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6115:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6086:53:66"
+            },
+            "returnParameters": {
+              "id": 20789,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20788,
+                  "mutability": "mutable",
+                  "name": "amountTransferred",
+                  "nameLocation": "6182:17:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20790,
+                  "src": "6174:25:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 20787,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6174:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6173:27:66"
+            },
+            "scope": 20808,
+            "src": "6066:135:66",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 20791,
+              "nodeType": "StructuredDocumentation",
+              "src": "6207:222:66",
+              "text": "@notice Executes TWAMM orders on the pool, swapping on the pool itself to make up the difference between the\n two TWAMM pools swapping against each other\n @param key The pool key associated with the TWAMM"
+            },
+            "functionSelector": "5f65a295",
+            "id": 20797,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "executeTWAMMOrders",
+            "nameLocation": "6443:18:66",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20795,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20794,
+                  "mutability": "mutable",
+                  "name": "key",
+                  "nameLocation": "6477:3:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20797,
+                  "src": "6462:18:66",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PoolKey_$14587_memory_ptr",
+                    "typeString": "struct PoolKey"
+                  },
+                  "typeName": {
+                    "id": 20793,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 20792,
+                      "name": "PoolKey",
+                      "nameLocations": [
+                        "6462:7:66"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14587,
+                      "src": "6462:7:66"
+                    },
+                    "referencedDeclaration": 14587,
+                    "src": "6462:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PoolKey_$14587_storage_ptr",
+                      "typeString": "struct PoolKey"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6461:20:66"
+            },
+            "returnParameters": {
+              "id": 20796,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "6490:0:66"
+            },
+            "scope": 20808,
+            "src": "6434:57:66",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "6fc389ae",
+            "id": 20807,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "tokensOwed",
+            "nameLocation": "6506:10:66",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 20803,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20800,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nameLocation": "6526:5:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20807,
+                  "src": "6517:14:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_Currency_$14262",
+                    "typeString": "Currency"
+                  },
+                  "typeName": {
+                    "id": 20799,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 20798,
+                      "name": "Currency",
+                      "nameLocations": [
+                        "6517:8:66"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 14262,
+                      "src": "6517:8:66"
+                    },
+                    "referencedDeclaration": 14262,
+                    "src": "6517:8:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_Currency_$14262",
+                      "typeString": "Currency"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 20802,
+                  "mutability": "mutable",
+                  "name": "owner",
+                  "nameLocation": "6541:5:66",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20807,
+                  "src": "6533:13:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 20801,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6533:7:66",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6516:31:66"
+            },
+            "returnParameters": {
+              "id": 20806,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20805,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 20807,
+                  "src": "6566:7:66",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 20804,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6566:7:66",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6565:9:66"
+            },
+            "scope": 20808,
+            "src": "6497:78:66",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 20809,
+        "src": "459:6118:66",
+        "usedErrors": [
+          20651,
+          20657,
+          20662,
+          20667,
+          20670,
+          20676,
+          20682,
+          20692,
+          20695
+        ],
+        "usedEvents": [
+          20725,
+          20741
+        ]
+      }
+    ],
+    "src": "39:6539:66"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.28+commit.7893614a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2024-12-18T07:36:00.898Z",
+  "devdoc": {
+    "errors": {
+      "CannotModifyCompletedOrder((address,uint160,bool))": [
+        {
+          "params": {
+            "orderKey": "The orderKey"
+          }
+        }
+      ],
+      "ExpirationLessThanBlocktime(uint256)": [
+        {
+          "params": {
+            "expiration": "The expiration timestamp of the order"
+          }
+        }
+      ],
+      "ExpirationNotOnInterval(uint256)": [
+        {
+          "params": {
+            "expiration": "The expiration timestamp of the order"
+          }
+        }
+      ],
+      "InvalidAmountDelta((address,uint160,bool),uint256,int256)": [
+        {
+          "params": {
+            "amountDelta": "The amount delta for the order",
+            "orderKey": "The orderKey",
+            "unsoldAmount": "The amount still unsold"
+          }
+        }
+      ],
+      "MustBeOwner(address,address)": [
+        {
+          "params": {
+            "currentAccount": "The invalid account attempting to interact with the order",
+            "owner": "The owner of the order"
+          }
+        }
+      ],
+      "OrderAlreadyExists((address,uint160,bool))": [
+        {
+          "params": {
+            "orderKey": "The already existing orderKey"
+          }
+        }
+      ],
+      "OrderDoesNotExist((address,uint160,bool))": [
+        {
+          "params": {
+            "orderKey": "The already existing orderKey"
+          }
+        }
+      ]
+    },
+    "events": {
+      "SubmitOrder(bytes32,address,uint160,bool,uint256,uint256)": {
+        "params": {
+          "earningsFactorLast": "The current earningsFactor of the order pool",
+          "expiration": "The expiration timestamp of the order",
+          "owner": "The owner of the new order",
+          "poolId": "The id of the corresponding pool",
+          "sellRate": "The sell rate of tokens per second being sold in the order",
+          "zeroForOne": "Whether the order is selling token 0 for token 1"
+        }
+      },
+      "UpdateOrder(bytes32,address,uint160,bool,uint256,uint256)": {
+        "params": {
+          "earningsFactorLast": "The current earningsFactor of the order pool   (since updated orders will claim existing earnings)",
+          "expiration": "The expiration timestamp of the order",
+          "owner": "The owner of the existing order",
+          "poolId": "The id of the corresponding pool",
+          "sellRate": "The updated sellRate of tokens per second being sold in the order",
+          "zeroForOne": "Whether the order is selling token 0 for token 1"
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "claimTokens(address,address,uint256)": {
+        "params": {
+          "amountRequested": "The amount of tokens requested to claim. Set to 0 to claim all.",
+          "to": "The receipient of the claim",
+          "token": "The token to claim"
+        },
+        "returns": {
+          "amountTransferred": "The total token amount to be collected"
+        }
+      },
+      "executeTWAMMOrders((address,address,uint24,int24,address))": {
+        "params": {
+          "key": "The pool key associated with the TWAMM"
+        }
+      },
+      "submitOrder((address,address,uint24,int24,address),(address,uint160,bool),uint256)": {
+        "params": {
+          "amountIn": "The amount of sell token to add to the order. Some precision on amountIn may be lost up to the magnitude of (orderKey.expiration - block.timestamp)",
+          "key": "The PoolKey for which to identify the amm pool of the order",
+          "orderKey": "The OrderKey for the new order"
+        },
+        "returns": {
+          "orderId": "The bytes32 ID of the order"
+        }
+      },
+      "updateOrder((address,address,uint24,int24,address),(address,uint160,bool),int256)": {
+        "params": {
+          "amountDelta": "The delta for the order sell amount. Negative to remove from order, positive to add, or    -1 to remove full amount from order.",
+          "key": "The PoolKey for which to identify the amm pool of the order",
+          "orderKey": "The OrderKey for which to identify the order"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "errors": {
+      "CannotModifyCompletedOrder((address,uint160,bool))": [
+        {
+          "notice": "Thrown when trying to cancel an already completed order"
+        }
+      ],
+      "ExpirationLessThanBlocktime(uint256)": [
+        {
+          "notice": "Thrown when trying to submit an order with an expiration time in the past."
+        }
+      ],
+      "ExpirationNotOnInterval(uint256)": [
+        {
+          "notice": "Thrown when trying to submit an order with an expiration that isn't on the interval."
+        }
+      ],
+      "InvalidAmountDelta((address,uint160,bool),uint256,int256)": [
+        {
+          "notice": "Thrown when trying to subtract more value from a long term order than exists"
+        }
+      ],
+      "MustBeOwner(address,address)": [
+        {
+          "notice": "Thrown when account other than owner attempts to interact with an order"
+        }
+      ],
+      "NotInitialized()": [
+        {
+          "notice": "Thrown when trying to submit an order without initializing TWAMM state first"
+        }
+      ],
+      "OrderAlreadyExists((address,uint160,bool))": [
+        {
+          "notice": "Thrown when trying to submit an order that's already ongoing."
+        }
+      ],
+      "OrderDoesNotExist((address,uint160,bool))": [
+        {
+          "notice": "Thrown when trying to interact with an order that does not exist."
+        }
+      ],
+      "SellRateCannotBeZero()": [
+        {
+          "notice": "Thrown when submitting an order with a sellRate of 0"
+        }
+      ]
+    },
+    "events": {
+      "SubmitOrder(bytes32,address,uint160,bool,uint256,uint256)": {
+        "notice": "Emitted when a new long term order is submitted"
+      },
+      "UpdateOrder(bytes32,address,uint160,bool,uint256,uint256)": {
+        "notice": "Emitted when a long term order is updated"
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "claimTokens(address,address,uint256)": {
+        "notice": "Claim tokens owed from TWAMM contract"
+      },
+      "executeTWAMMOrders((address,address,uint24,int24,address))": {
+        "notice": "Executes TWAMM orders on the pool, swapping on the pool itself to make up the difference between the two TWAMM pools swapping against each other"
+      },
+      "expirationInterval()": {
+        "notice": "Time interval on which orders are allowed to expire. Conserves processing needed on execute."
+      },
+      "submitOrder((address,address,uint24,int24,address),(address,uint160,bool),uint256)": {
+        "notice": "Submits a new long term order into the TWAMM. Also executes TWAMM orders if not up to date."
+      },
+      "updateOrder((address,address,uint24,int24,address),(address,uint160,bool),int256)": {
+        "notice": "Update an existing long term order with current earnings, optionally modify the amount selling."
+      }
+    },
+    "version": 1
+  }
+}

@@ -27,7 +27,7 @@ function App() {
   const [peeruuid, setpeeruuid] = useState<string>()
   const [callStreamRecorder, setCallStreamRecorder] = useState<MediaRecorder>();
   const [engine, setEngine] = useState<Web3Engine>(new Web3Engine({} as EngineArgs));
-  const [network, setNetwork] = useState<string>("");
+  const [network, setNetwork] = useState<string>("Sepolia");
 /*
   async function getWeb3(web3: Web3, uuid: string){
     console.log("getweb3")
@@ -105,7 +105,7 @@ function App() {
             }
             <Routes>
                 <Route path="/">
-                    <Route index element={<WalletContainer wallet={<HotWallet getEngine={getEngine} getNetwork={getNetwork} engine={engine}/>}></WalletContainer>} />
+                    <Route index element={<WalletContainer wallet={<HotWallet getEngine={getEngine} getNetwork={getNetwork} engine={engine} network={network}/>}></WalletContainer>} />
                     
                     <Route path="call" element={<div>
                                                 {

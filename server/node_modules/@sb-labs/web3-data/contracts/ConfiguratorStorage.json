@@ -1,0 +1,356 @@
+{
+  "contractName": "ConfiguratorStorage",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "factory",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "governor",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "version",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"factory\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"governor\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"version\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Compound\",\"details\":\"Versions can enforce append-only storage slots via inheritance.\",\"kind\":\"dev\",\"methods\":{},\"stateVariables\":{\"configuratorParams\":{\"details\":\"This needs to be internal to avoid a `CompilerError: Stack too deep when compiling inline assembly` error that is caused by the default getters created for public variables.\"}},\"title\":\"Compound's Comet Configuration Storage Interface\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"factory(address)\":{\"notice\":\"Mapping of Comet proxy addresses to their Comet factory contracts\"},\"governor()\":{\"notice\":\"The governor of the protocol\"},\"version()\":{\"notice\":\"The current version of Configurator. This version should be checked in the initializer function.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/comet/contracts/ConfiguratorStorage.sol\":\"ConfiguratorStorage\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/comet/contracts/CometConfiguration.sol\":{\"keccak256\":\"0x58cdf3e481d05a5fb47f25304d104115af196c97d38725d33a2d27a9f01f7b4a\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://a3f44637440f16fab29a16528b88cbe234ad300f87f3b5e25f8b85ead47bdd35\",\"dweb:/ipfs/QmQGFFE6YKnm1KtTsoMm5fRFKjnhECd6Fr1ZwAsRfJ4bio\"]},\"project:/contracts/comet/contracts/ConfiguratorStorage.sol\":{\"keccak256\":\"0x9e69c1790179ea454317320f377c8a68fd35a37a1479d15cad29327c9b869b15\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://4a98e8a845af3fa68ec3481de0863821e30c0f95107c65c18160226416fae2a0\",\"dweb:/ipfs/Qma2GkRSNeUWWrX8ujYx1hvXzEs9vSzJRqZZeTyuhFXeCQ\"]}},\"version\":1}",
+  "bytecode": "0x608080604052346100155760f8908161001b8239f35b600080fdfe6080806040526004361015601257600080fd5b600090813560e01c9081630c340a2414609b57508063395c0fda14605b576354fd4d5014603e57600080fd5b346058578060031936011260585760209054604051908152f35b80fd5b503460585760203660031901126058576001600160a01b0360043581811690819003609757826040916020945260038452205416604051908152f35b8280fd5b90503460be578160031936011260be576002546001600160a01b03168152602090f35b5080fdfea26469706673582212203c572748af9d6dc977a3e593a475cbf617a3423621d2570cbaee92c772e08ad164736f6c634300080f0033",
+  "deployedBytecode": "0x6080806040526004361015601257600080fd5b600090813560e01c9081630c340a2414609b57508063395c0fda14605b576354fd4d5014603e57600080fd5b346058578060031936011260585760209054604051908152f35b80fd5b503460585760203660031901126058576001600160a01b0360043581811690819003609757826040916020945260038452205416604051908152f35b8280fd5b90503460be578160031936011260be576002546001600160a01b03168152602090f35b5080fdfea26469706673582212203c572748af9d6dc977a3e593a475cbf617a3423621d2570cbaee92c772e08ad164736f6c634300080f0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "257:758:14:-:0;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "257:758:14:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;257:758:14;;;;-1:-1:-1;;;;;257:758:14;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;858:23;257:758;-1:-1:-1;;;;;257:758:14;;;;;;;;;",
+  "source": "// SPDX-License-Identifier: BUSL-1.1\npragma solidity 0.8.15;\n\nimport \"./CometConfiguration.sol\";\n\n/**\n * @title Compound's Comet Configuration Storage Interface\n * @dev Versions can enforce append-only storage slots via inheritance.\n * @author Compound\n */\ncontract ConfiguratorStorage is CometConfiguration {\n    /// @notice The current version of Configurator. This version should be\n    /// checked in the initializer function.\n    uint public version;\n\n    /// @notice Mapping of Comet proxy addresses to their Configuration settings\n    /// @dev This needs to be internal to avoid a `CompilerError: Stack too deep\n    /// when compiling inline assembly` error that is caused by the default\n    /// getters created for public variables.\n    mapping(address => Configuration) internal configuratorParams;\n\n    /// @notice The governor of the protocol\n    address public governor;\n\n    /// @notice Mapping of Comet proxy addresses to their Comet factory contracts\n    mapping(address => address) public factory;\n}",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/comet/contracts/ConfiguratorStorage.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/comet/contracts/ConfiguratorStorage.sol",
+    "exportedSymbols": {
+      "CometConfiguration": [
+        4308
+      ],
+      "ConfiguratorStorage": [
+        8461
+      ]
+    },
+    "id": 8462,
+    "license": "BUSL-1.1",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8439,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".15"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:14"
+      },
+      {
+        "absolutePath": "project:/contracts/comet/contracts/CometConfiguration.sol",
+        "file": "./CometConfiguration.sol",
+        "id": 8440,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 8462,
+        "sourceUnit": 4309,
+        "src": "62:34:14",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 8442,
+              "name": "CometConfiguration",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 4308,
+              "src": "289:18:14"
+            },
+            "id": 8443,
+            "nodeType": "InheritanceSpecifier",
+            "src": "289:18:14"
+          }
+        ],
+        "canonicalName": "ConfiguratorStorage",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 8441,
+          "nodeType": "StructuredDocumentation",
+          "src": "98:158:14",
+          "text": " @title Compound's Comet Configuration Storage Interface\n @dev Versions can enforce append-only storage slots via inheritance.\n @author Compound"
+        },
+        "fullyImplemented": true,
+        "id": 8461,
+        "linearizedBaseContracts": [
+          8461,
+          4308
+        ],
+        "name": "ConfiguratorStorage",
+        "nameLocation": "266:19:14",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "documentation": {
+              "id": 8444,
+              "nodeType": "StructuredDocumentation",
+              "src": "314:116:14",
+              "text": "@notice The current version of Configurator. This version should be\n checked in the initializer function."
+            },
+            "functionSelector": "54fd4d50",
+            "id": 8446,
+            "mutability": "mutable",
+            "name": "version",
+            "nameLocation": "447:7:14",
+            "nodeType": "VariableDeclaration",
+            "scope": 8461,
+            "src": "435:19:14",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 8445,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "435:4:14",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "documentation": {
+              "id": 8447,
+              "nodeType": "StructuredDocumentation",
+              "src": "461:279:14",
+              "text": "@notice Mapping of Comet proxy addresses to their Configuration settings\n @dev This needs to be internal to avoid a `CompilerError: Stack too deep\n when compiling inline assembly` error that is caused by the default\n getters created for public variables."
+            },
+            "id": 8452,
+            "mutability": "mutable",
+            "name": "configuratorParams",
+            "nameLocation": "788:18:14",
+            "nodeType": "VariableDeclaration",
+            "scope": 8461,
+            "src": "745:61:14",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Configuration_$4292_storage_$",
+              "typeString": "mapping(address => struct CometConfiguration.Configuration)"
+            },
+            "typeName": {
+              "id": 8451,
+              "keyType": {
+                "id": 8448,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "753:7:14",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "745:33:14",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Configuration_$4292_storage_$",
+                "typeString": "mapping(address => struct CometConfiguration.Configuration)"
+              },
+              "valueType": {
+                "id": 8450,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 8449,
+                  "name": "Configuration",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 4292,
+                  "src": "764:13:14"
+                },
+                "referencedDeclaration": 4292,
+                "src": "764:13:14",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Configuration_$4292_storage_ptr",
+                  "typeString": "struct CometConfiguration.Configuration"
+                }
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "documentation": {
+              "id": 8453,
+              "nodeType": "StructuredDocumentation",
+              "src": "813:40:14",
+              "text": "@notice The governor of the protocol"
+            },
+            "functionSelector": "0c340a24",
+            "id": 8455,
+            "mutability": "mutable",
+            "name": "governor",
+            "nameLocation": "873:8:14",
+            "nodeType": "VariableDeclaration",
+            "scope": 8461,
+            "src": "858:23:14",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 8454,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "858:7:14",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "documentation": {
+              "id": 8456,
+              "nodeType": "StructuredDocumentation",
+              "src": "888:77:14",
+              "text": "@notice Mapping of Comet proxy addresses to their Comet factory contracts"
+            },
+            "functionSelector": "395c0fda",
+            "id": 8460,
+            "mutability": "mutable",
+            "name": "factory",
+            "nameLocation": "1005:7:14",
+            "nodeType": "VariableDeclaration",
+            "scope": 8461,
+            "src": "970:42:14",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_address_$",
+              "typeString": "mapping(address => address)"
+            },
+            "typeName": {
+              "id": 8459,
+              "keyType": {
+                "id": 8457,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "978:7:14",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "970:27:14",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_address_$",
+                "typeString": "mapping(address => address)"
+              },
+              "valueType": {
+                "id": 8458,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "989:7:14",
+                "stateMutability": "nonpayable",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              }
+            },
+            "visibility": "public"
+          }
+        ],
+        "scope": 8462,
+        "src": "257:758:14",
+        "usedErrors": []
+      }
+    ],
+    "src": "37:978:14"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.15+commit.e14f2714.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-11-30T22:41:29.675Z",
+  "devdoc": {
+    "author": "Compound",
+    "details": "Versions can enforce append-only storage slots via inheritance.",
+    "kind": "dev",
+    "methods": {},
+    "stateVariables": {
+      "configuratorParams": {
+        "details": "This needs to be internal to avoid a `CompilerError: Stack too deep when compiling inline assembly` error that is caused by the default getters created for public variables."
+      }
+    },
+    "title": "Compound's Comet Configuration Storage Interface",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "factory(address)": {
+        "notice": "Mapping of Comet proxy addresses to their Comet factory contracts"
+      },
+      "governor()": {
+        "notice": "The governor of the protocol"
+      },
+      "version()": {
+        "notice": "The current version of Configurator. This version should be checked in the initializer function."
+      }
+    },
+    "version": 1
+  }
+}

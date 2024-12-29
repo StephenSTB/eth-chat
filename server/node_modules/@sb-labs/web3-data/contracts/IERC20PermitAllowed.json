@@ -1,0 +1,404 @@
+{
+  "contractName": "IERC20PermitAllowed",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "holder",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "nonce",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "expiry",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "allowed",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint8",
+          "name": "v",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "r",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "s",
+          "type": "bytes32"
+        }
+      ],
+      "name": "permit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"holder\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"expiry\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"allowed\",\"type\":\"bool\"},{\"internalType\":\"uint8\",\"name\":\"v\",\"type\":\"uint8\"},{\"internalType\":\"bytes32\",\"name\":\"r\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"s\",\"type\":\"bytes32\"}],\"name\":\"permit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"permit(address,address,uint256,uint256,bool,uint8,bytes32,bytes32)\":{\"details\":\"This is the permit interface used by DAI and CHAI\",\"params\":{\"allowed\":\"Boolean that sets approval amount, true for type(uint256).max and false for 0\",\"expiry\":\"The timestamp at which the permit is no longer valid\",\"holder\":\"The address of the token holder, the token owner\",\"nonce\":\"The holder's nonce, increases at each call to permit\",\"r\":\"Must produce valid secp256k1 signature from the holder along with `v` and `s`\",\"s\":\"Must produce valid secp256k1 signature from the holder along with `r` and `v`\",\"spender\":\"The address of the token spender\",\"v\":\"Must produce valid secp256k1 signature from the holder along with `r` and `s`\"}}},\"title\":\"Interface for permit\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"permit(address,address,uint256,uint256,bool,uint8,bytes32,bytes32)\":{\"notice\":\"Approve the spender to spend some tokens via the holder signature\"}},\"notice\":\"Interface used by DAI/CHAI for permit\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/v4-periphery/contracts/interfaces/external/IERC20PermitAllowed.sol\":\"IERC20PermitAllowed\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/v4-periphery/contracts/interfaces/external/IERC20PermitAllowed.sol\":{\"keccak256\":\"0x2729229a957539133034c22064563e9e9959b4fdb9b34a0052f327266181c471\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://973ed2dbfebbc91b3baa5af8bd522b859383aebb762072e8c80963cb0d41c11f\",\"dweb:/ipfs/QmUZRvZVtHBbBJSAq85JoRKPwag7znVLCTQna9oQxPRMgZ\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: UNLICENSED\npragma solidity >=0.5.0;\n\n/// @title Interface for permit\n/// @notice Interface used by DAI/CHAI for permit\ninterface IERC20PermitAllowed {\n    /// @notice Approve the spender to spend some tokens via the holder signature\n    /// @dev This is the permit interface used by DAI and CHAI\n    /// @param holder The address of the token holder, the token owner\n    /// @param spender The address of the token spender\n    /// @param nonce The holder's nonce, increases at each call to permit\n    /// @param expiry The timestamp at which the permit is no longer valid\n    /// @param allowed Boolean that sets approval amount, true for type(uint256).max and false for 0\n    /// @param v Must produce valid secp256k1 signature from the holder along with `r` and `s`\n    /// @param r Must produce valid secp256k1 signature from the holder along with `v` and `s`\n    /// @param s Must produce valid secp256k1 signature from the holder along with `r` and `v`\n    function permit(\n        address holder,\n        address spender,\n        uint256 nonce,\n        uint256 expiry,\n        bool allowed,\n        uint8 v,\n        bytes32 r,\n        bytes32 s\n    ) external;\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/v4-periphery/contracts/interfaces/external/IERC20PermitAllowed.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/v4-periphery/contracts/interfaces/external/IERC20PermitAllowed.sol",
+    "exportedSymbols": {
+      "IERC20PermitAllowed": [
+        17110
+      ]
+    },
+    "id": 17111,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 17088,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:24:63"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IERC20PermitAllowed",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 17089,
+          "nodeType": "StructuredDocumentation",
+          "src": "65:82:63",
+          "text": "@title Interface for permit\n @notice Interface used by DAI/CHAI for permit"
+        },
+        "fullyImplemented": false,
+        "id": 17110,
+        "linearizedBaseContracts": [
+          17110
+        ],
+        "name": "IERC20PermitAllowed",
+        "nameLocation": "157:19:63",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 17090,
+              "nodeType": "StructuredDocumentation",
+              "src": "183:802:63",
+              "text": "@notice Approve the spender to spend some tokens via the holder signature\n @dev This is the permit interface used by DAI and CHAI\n @param holder The address of the token holder, the token owner\n @param spender The address of the token spender\n @param nonce The holder's nonce, increases at each call to permit\n @param expiry The timestamp at which the permit is no longer valid\n @param allowed Boolean that sets approval amount, true for type(uint256).max and false for 0\n @param v Must produce valid secp256k1 signature from the holder along with `r` and `s`\n @param r Must produce valid secp256k1 signature from the holder along with `v` and `s`\n @param s Must produce valid secp256k1 signature from the holder along with `r` and `v`"
+            },
+            "functionSelector": "8fcbaf0c",
+            "id": 17109,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "permit",
+            "nameLocation": "999:6:63",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 17107,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 17092,
+                  "mutability": "mutable",
+                  "name": "holder",
+                  "nameLocation": "1023:6:63",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 17109,
+                  "src": "1015:14:63",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 17091,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1015:7:63",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 17094,
+                  "mutability": "mutable",
+                  "name": "spender",
+                  "nameLocation": "1047:7:63",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 17109,
+                  "src": "1039:15:63",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 17093,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1039:7:63",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 17096,
+                  "mutability": "mutable",
+                  "name": "nonce",
+                  "nameLocation": "1072:5:63",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 17109,
+                  "src": "1064:13:63",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 17095,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1064:7:63",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 17098,
+                  "mutability": "mutable",
+                  "name": "expiry",
+                  "nameLocation": "1095:6:63",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 17109,
+                  "src": "1087:14:63",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 17097,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1087:7:63",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 17100,
+                  "mutability": "mutable",
+                  "name": "allowed",
+                  "nameLocation": "1116:7:63",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 17109,
+                  "src": "1111:12:63",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 17099,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1111:4:63",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 17102,
+                  "mutability": "mutable",
+                  "name": "v",
+                  "nameLocation": "1139:1:63",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 17109,
+                  "src": "1133:7:63",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 17101,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1133:5:63",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 17104,
+                  "mutability": "mutable",
+                  "name": "r",
+                  "nameLocation": "1158:1:63",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 17109,
+                  "src": "1150:9:63",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 17103,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1150:7:63",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 17106,
+                  "mutability": "mutable",
+                  "name": "s",
+                  "nameLocation": "1177:1:63",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 17109,
+                  "src": "1169:9:63",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 17105,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1169:7:63",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1005:179:63"
+            },
+            "returnParameters": {
+              "id": 17108,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1193:0:63"
+            },
+            "scope": 17110,
+            "src": "990:204:63",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 17111,
+        "src": "147:1049:63",
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "src": "39:1158:63"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.23+commit.f704f362.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-12-01T17:36:41.280Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "permit(address,address,uint256,uint256,bool,uint8,bytes32,bytes32)": {
+        "details": "This is the permit interface used by DAI and CHAI",
+        "params": {
+          "allowed": "Boolean that sets approval amount, true for type(uint256).max and false for 0",
+          "expiry": "The timestamp at which the permit is no longer valid",
+          "holder": "The address of the token holder, the token owner",
+          "nonce": "The holder's nonce, increases at each call to permit",
+          "r": "Must produce valid secp256k1 signature from the holder along with `v` and `s`",
+          "s": "Must produce valid secp256k1 signature from the holder along with `r` and `v`",
+          "spender": "The address of the token spender",
+          "v": "Must produce valid secp256k1 signature from the holder along with `r` and `s`"
+        }
+      }
+    },
+    "title": "Interface for permit",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "permit(address,address,uint256,uint256,bool,uint8,bytes32,bytes32)": {
+        "notice": "Approve the spender to spend some tokens via the holder signature"
+      }
+    },
+    "notice": "Interface used by DAI/CHAI for permit",
+    "version": 1
+  }
+}

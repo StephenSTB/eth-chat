@@ -1,0 +1,1356 @@
+{
+  "contractName": "IUserAgeManager",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_age",
+          "type": "uint256"
+        }
+      ],
+      "name": "setUserAge",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_age\",\"type\":\"uint256\"}],\"name\":\"setUserAge\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/challenge/UpdateAge.sol\":\"IUserAgeManager\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/challenge/UpdateAge.sol\":{\"keccak256\":\"0x2be6983345b62c9c502e421771790619e4214acd399f20011fe61eccc7e3ce9f\",\"urls\":[\"bzz-raw://36bd6dcbca9b4201c038ffe12e32da038ba6fa1ce96c70450a0900776909ec1a\",\"dweb:/ipfs/QmVLfXN6CQKoHVB5GnA9r3W2dePufee8ttz85jPJACDNCU\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.8.0;\n\n\ncontract UserAgeManager{\n    uint256 public userAge;\n\n    function setUserAge(uint256 _age) external{\n        require(_age > 0 && _age < 150, \"Age must be between 1 and 149\");\n        userAge = _age;\n    }\n}\n\ninterface IUserAgeManager{\n    function setUserAge(uint256 _age) external;\n}\n\ncontract AgeUpdater{\n    function updateUserAgeV1(IUserAgeManager ageManager, uint256 _age) external{\n        ageManager.setUserAge(_age);\n    }\n\n    function updateUserAgeV2(address ageManager, uint256 _age) external{\n        (bool success, ) = ageManager.call(abi.encodeWithSignature(\"setUserAge(uint256)\", _age));\n    }\n\n    function updateUserAgeV3(address ageManager, uint256 _age) external{\n        bytes4 sig = bytes4(keccak256(\"setUserAge(uint256)\"));\n        assembly {\n            let x := mload(0x04)\n            mstore(x,sig)\n            mstore(add(x,0x04), _age)\n            let success := call(0, ageManager, 0, x, 0x24, x, 0)\n        }\n    }\n}\n\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/challenge/UpdateAge.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/challenge/UpdateAge.sol",
+    "exportedSymbols": {
+      "AgeUpdater": [
+        3081
+      ],
+      "IUserAgeManager": [
+        3028
+      ],
+      "UserAgeManager": [
+        3022
+      ]
+    },
+    "id": 3082,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2998,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:13"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "UserAgeManager",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 3022,
+        "linearizedBaseContracts": [
+          3022
+        ],
+        "name": "UserAgeManager",
+        "nameLocation": "35:14:13",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "4257eb8c",
+            "id": 3000,
+            "mutability": "mutable",
+            "name": "userAge",
+            "nameLocation": "70:7:13",
+            "nodeType": "VariableDeclaration",
+            "scope": 3022,
+            "src": "55:22:13",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 2999,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "55:7:13",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 3020,
+              "nodeType": "Block",
+              "src": "126:105:13",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "id": 3012,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "id": 3008,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "id": 3006,
+                            "name": "_age",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3002,
+                            "src": "144:4:13",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": ">",
+                          "rightExpression": {
+                            "hexValue": "30",
+                            "id": 3007,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "151:1:13",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_0_by_1",
+                              "typeString": "int_const 0"
+                            },
+                            "value": "0"
+                          },
+                          "src": "144:8:13",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "&&",
+                        "rightExpression": {
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "id": 3011,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "id": 3009,
+                            "name": "_age",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3002,
+                            "src": "156:4:13",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "<",
+                          "rightExpression": {
+                            "hexValue": "313530",
+                            "id": 3010,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "163:3:13",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_150_by_1",
+                              "typeString": "int_const 150"
+                            },
+                            "value": "150"
+                          },
+                          "src": "156:10:13",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "src": "144:22:13",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "416765206d757374206265206265747765656e203120616e6420313439",
+                        "id": 3013,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "168:31:13",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_01a7a80ca19d1f8de6b37d44a41459a87e53036b5ef936e78394a492c88ebf2d",
+                          "typeString": "literal_string \"Age must be between 1 and 149\""
+                        },
+                        "value": "Age must be between 1 and 149"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_01a7a80ca19d1f8de6b37d44a41459a87e53036b5ef936e78394a492c88ebf2d",
+                          "typeString": "literal_string \"Age must be between 1 and 149\""
+                        }
+                      ],
+                      "id": 3005,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "136:7:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 3014,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "136:64:13",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 3015,
+                  "nodeType": "ExpressionStatement",
+                  "src": "136:64:13"
+                },
+                {
+                  "expression": {
+                    "id": 3018,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 3016,
+                      "name": "userAge",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3000,
+                      "src": "210:7:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 3017,
+                      "name": "_age",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3002,
+                      "src": "220:4:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "210:14:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 3019,
+                  "nodeType": "ExpressionStatement",
+                  "src": "210:14:13"
+                }
+              ]
+            },
+            "functionSelector": "19c52ea0",
+            "id": 3021,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setUserAge",
+            "nameLocation": "93:10:13",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3003,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3002,
+                  "mutability": "mutable",
+                  "name": "_age",
+                  "nameLocation": "112:4:13",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3021,
+                  "src": "104:12:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3001,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "104:7:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "103:14:13"
+            },
+            "returnParameters": {
+              "id": 3004,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "126:0:13"
+            },
+            "scope": 3022,
+            "src": "84:147:13",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3082,
+        "src": "26:207:13",
+        "usedErrors": []
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IUserAgeManager",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 3028,
+        "linearizedBaseContracts": [
+          3028
+        ],
+        "name": "IUserAgeManager",
+        "nameLocation": "245:15:13",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "19c52ea0",
+            "id": 3027,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setUserAge",
+            "nameLocation": "275:10:13",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3025,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3024,
+                  "mutability": "mutable",
+                  "name": "_age",
+                  "nameLocation": "294:4:13",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3027,
+                  "src": "286:12:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3023,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "286:7:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "285:14:13"
+            },
+            "returnParameters": {
+              "id": 3026,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "308:0:13"
+            },
+            "scope": 3028,
+            "src": "266:43:13",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3082,
+        "src": "235:76:13",
+        "usedErrors": []
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "AgeUpdater",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 3081,
+        "linearizedBaseContracts": [
+          3081
+        ],
+        "name": "AgeUpdater",
+        "nameLocation": "322:10:13",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 3042,
+              "nodeType": "Block",
+              "src": "413:44:13",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 3039,
+                        "name": "_age",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3033,
+                        "src": "445:4:13",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "id": 3036,
+                        "name": "ageManager",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3031,
+                        "src": "423:10:13",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IUserAgeManager_$3028",
+                          "typeString": "contract IUserAgeManager"
+                        }
+                      },
+                      "id": 3038,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "434:10:13",
+                      "memberName": "setUserAge",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3027,
+                      "src": "423:21:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256) external"
+                      }
+                    },
+                    "id": 3040,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "423:27:13",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 3041,
+                  "nodeType": "ExpressionStatement",
+                  "src": "423:27:13"
+                }
+              ]
+            },
+            "functionSelector": "9b0a6d76",
+            "id": 3043,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateUserAgeV1",
+            "nameLocation": "347:15:13",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3034,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3031,
+                  "mutability": "mutable",
+                  "name": "ageManager",
+                  "nameLocation": "379:10:13",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3043,
+                  "src": "363:26:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IUserAgeManager_$3028",
+                    "typeString": "contract IUserAgeManager"
+                  },
+                  "typeName": {
+                    "id": 3030,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3029,
+                      "name": "IUserAgeManager",
+                      "nameLocations": [
+                        "363:15:13"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 3028,
+                      "src": "363:15:13"
+                    },
+                    "referencedDeclaration": 3028,
+                    "src": "363:15:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IUserAgeManager_$3028",
+                      "typeString": "contract IUserAgeManager"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3033,
+                  "mutability": "mutable",
+                  "name": "_age",
+                  "nameLocation": "399:4:13",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3043,
+                  "src": "391:12:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3032,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "391:7:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "362:42:13"
+            },
+            "returnParameters": {
+              "id": 3035,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "413:0:13"
+            },
+            "scope": 3081,
+            "src": "338:119:13",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 3061,
+              "nodeType": "Block",
+              "src": "530:105:13",
+              "statements": [
+                {
+                  "assignments": [
+                    3051,
+                    null
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 3051,
+                      "mutability": "mutable",
+                      "name": "success",
+                      "nameLocation": "546:7:13",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 3061,
+                      "src": "541:12:13",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "typeName": {
+                        "id": 3050,
+                        "name": "bool",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "541:4:13",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "visibility": "internal"
+                    },
+                    null
+                  ],
+                  "id": 3060,
+                  "initialValue": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "hexValue": "736574557365724167652875696e7432353629",
+                            "id": 3056,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "string",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "599:21:13",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_stringliteral_19c52ea0d4e5447d11aeee2c743a4b9080f18d17800347b011e0d22330819894",
+                              "typeString": "literal_string \"setUserAge(uint256)\""
+                            },
+                            "value": "setUserAge(uint256)"
+                          },
+                          {
+                            "id": 3057,
+                            "name": "_age",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3047,
+                            "src": "622:4:13",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_stringliteral_19c52ea0d4e5447d11aeee2c743a4b9080f18d17800347b011e0d22330819894",
+                              "typeString": "literal_string \"setUserAge(uint256)\""
+                            },
+                            {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          ],
+                          "expression": {
+                            "id": 3054,
+                            "name": "abi",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4294967295,
+                            "src": "575:3:13",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_abi",
+                              "typeString": "abi"
+                            }
+                          },
+                          "id": 3055,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberLocation": "579:19:13",
+                          "memberName": "encodeWithSignature",
+                          "nodeType": "MemberAccess",
+                          "src": "575:23:13",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_abiencodewithsignature_pure$_t_string_memory_ptr_$returns$_t_bytes_memory_ptr_$",
+                            "typeString": "function (string memory) pure returns (bytes memory)"
+                          }
+                        },
+                        "id": 3058,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "nameLocations": [],
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "575:52:13",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_memory_ptr",
+                          "typeString": "bytes memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes_memory_ptr",
+                          "typeString": "bytes memory"
+                        }
+                      ],
+                      "expression": {
+                        "id": 3052,
+                        "name": "ageManager",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3045,
+                        "src": "559:10:13",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "id": 3053,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "570:4:13",
+                      "memberName": "call",
+                      "nodeType": "MemberAccess",
+                      "src": "559:15:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_barecall_payable$_t_bytes_memory_ptr_$returns$_t_bool_$_t_bytes_memory_ptr_$",
+                        "typeString": "function (bytes memory) payable returns (bool,bytes memory)"
+                      }
+                    },
+                    "id": 3059,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "559:69:13",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_bool_$_t_bytes_memory_ptr_$",
+                      "typeString": "tuple(bool,bytes memory)"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "540:88:13"
+                }
+              ]
+            },
+            "functionSelector": "2eb340e2",
+            "id": 3062,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateUserAgeV2",
+            "nameLocation": "472:15:13",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3048,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3045,
+                  "mutability": "mutable",
+                  "name": "ageManager",
+                  "nameLocation": "496:10:13",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3062,
+                  "src": "488:18:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3044,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "488:7:13",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3047,
+                  "mutability": "mutable",
+                  "name": "_age",
+                  "nameLocation": "516:4:13",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3062,
+                  "src": "508:12:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3046,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "508:7:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "487:34:13"
+            },
+            "returnParameters": {
+              "id": 3049,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "530:0:13"
+            },
+            "scope": 3081,
+            "src": "463:172:13",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 3079,
+              "nodeType": "Block",
+              "src": "708:261:13",
+              "statements": [
+                {
+                  "assignments": [
+                    3070
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 3070,
+                      "mutability": "mutable",
+                      "name": "sig",
+                      "nameLocation": "725:3:13",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 3079,
+                      "src": "718:10:13",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      },
+                      "typeName": {
+                        "id": 3069,
+                        "name": "bytes4",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "718:6:13",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes4",
+                          "typeString": "bytes4"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 3077,
+                  "initialValue": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "hexValue": "736574557365724167652875696e7432353629",
+                            "id": 3074,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "string",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "748:21:13",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_stringliteral_19c52ea0d4e5447d11aeee2c743a4b9080f18d17800347b011e0d22330819894",
+                              "typeString": "literal_string \"setUserAge(uint256)\""
+                            },
+                            "value": "setUserAge(uint256)"
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_stringliteral_19c52ea0d4e5447d11aeee2c743a4b9080f18d17800347b011e0d22330819894",
+                              "typeString": "literal_string \"setUserAge(uint256)\""
+                            }
+                          ],
+                          "id": 3073,
+                          "name": "keccak256",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4294967288,
+                          "src": "738:9:13",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                            "typeString": "function (bytes memory) pure returns (bytes32)"
+                          }
+                        },
+                        "id": 3075,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "nameLocations": [],
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "738:32:13",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      ],
+                      "id": 3072,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "nodeType": "ElementaryTypeNameExpression",
+                      "src": "731:6:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_bytes4_$",
+                        "typeString": "type(bytes4)"
+                      },
+                      "typeName": {
+                        "id": 3071,
+                        "name": "bytes4",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "731:6:13",
+                        "typeDescriptions": {}
+                      }
+                    },
+                    "id": 3076,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "731:40:13",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "718:53:13"
+                },
+                {
+                  "AST": {
+                    "nodeType": "YulBlock",
+                    "src": "790:173:13",
+                    "statements": [
+                      {
+                        "nodeType": "YulVariableDeclaration",
+                        "src": "804:20:13",
+                        "value": {
+                          "arguments": [
+                            {
+                              "kind": "number",
+                              "nodeType": "YulLiteral",
+                              "src": "819:4:13",
+                              "type": "",
+                              "value": "0x04"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "mload",
+                            "nodeType": "YulIdentifier",
+                            "src": "813:5:13"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "813:11:13"
+                        },
+                        "variables": [
+                          {
+                            "name": "x",
+                            "nodeType": "YulTypedName",
+                            "src": "808:1:13",
+                            "type": ""
+                          }
+                        ]
+                      },
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "name": "x",
+                              "nodeType": "YulIdentifier",
+                              "src": "844:1:13"
+                            },
+                            {
+                              "name": "sig",
+                              "nodeType": "YulIdentifier",
+                              "src": "846:3:13"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "mstore",
+                            "nodeType": "YulIdentifier",
+                            "src": "837:6:13"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "837:13:13"
+                        },
+                        "nodeType": "YulExpressionStatement",
+                        "src": "837:13:13"
+                      },
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "arguments": [
+                                {
+                                  "name": "x",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "874:1:13"
+                                },
+                                {
+                                  "kind": "number",
+                                  "nodeType": "YulLiteral",
+                                  "src": "876:4:13",
+                                  "type": "",
+                                  "value": "0x04"
+                                }
+                              ],
+                              "functionName": {
+                                "name": "add",
+                                "nodeType": "YulIdentifier",
+                                "src": "870:3:13"
+                              },
+                              "nodeType": "YulFunctionCall",
+                              "src": "870:11:13"
+                            },
+                            {
+                              "name": "_age",
+                              "nodeType": "YulIdentifier",
+                              "src": "883:4:13"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "mstore",
+                            "nodeType": "YulIdentifier",
+                            "src": "863:6:13"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "863:25:13"
+                        },
+                        "nodeType": "YulExpressionStatement",
+                        "src": "863:25:13"
+                      },
+                      {
+                        "nodeType": "YulVariableDeclaration",
+                        "src": "901:52:13",
+                        "value": {
+                          "arguments": [
+                            {
+                              "kind": "number",
+                              "nodeType": "YulLiteral",
+                              "src": "921:1:13",
+                              "type": "",
+                              "value": "0"
+                            },
+                            {
+                              "name": "ageManager",
+                              "nodeType": "YulIdentifier",
+                              "src": "924:10:13"
+                            },
+                            {
+                              "kind": "number",
+                              "nodeType": "YulLiteral",
+                              "src": "936:1:13",
+                              "type": "",
+                              "value": "0"
+                            },
+                            {
+                              "name": "x",
+                              "nodeType": "YulIdentifier",
+                              "src": "939:1:13"
+                            },
+                            {
+                              "kind": "number",
+                              "nodeType": "YulLiteral",
+                              "src": "942:4:13",
+                              "type": "",
+                              "value": "0x24"
+                            },
+                            {
+                              "name": "x",
+                              "nodeType": "YulIdentifier",
+                              "src": "948:1:13"
+                            },
+                            {
+                              "kind": "number",
+                              "nodeType": "YulLiteral",
+                              "src": "951:1:13",
+                              "type": "",
+                              "value": "0"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "call",
+                            "nodeType": "YulIdentifier",
+                            "src": "916:4:13"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "916:37:13"
+                        },
+                        "variables": [
+                          {
+                            "name": "success",
+                            "nodeType": "YulTypedName",
+                            "src": "905:7:13",
+                            "type": ""
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "evmVersion": "london",
+                  "externalReferences": [
+                    {
+                      "declaration": 3066,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "883:4:13",
+                      "valueSize": 1
+                    },
+                    {
+                      "declaration": 3064,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "924:10:13",
+                      "valueSize": 1
+                    },
+                    {
+                      "declaration": 3070,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "846:3:13",
+                      "valueSize": 1
+                    }
+                  ],
+                  "id": 3078,
+                  "nodeType": "InlineAssembly",
+                  "src": "781:182:13"
+                }
+              ]
+            },
+            "functionSelector": "806d2153",
+            "id": 3080,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateUserAgeV3",
+            "nameLocation": "650:15:13",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3067,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3064,
+                  "mutability": "mutable",
+                  "name": "ageManager",
+                  "nameLocation": "674:10:13",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3080,
+                  "src": "666:18:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3063,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "666:7:13",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3066,
+                  "mutability": "mutable",
+                  "name": "_age",
+                  "nameLocation": "694:4:13",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3080,
+                  "src": "686:12:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3065,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "686:7:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "665:34:13"
+            },
+            "returnParameters": {
+              "id": 3068,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "708:0:13"
+            },
+            "scope": 3081,
+            "src": "641:328:13",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3082,
+        "src": "313:658:13",
+        "usedErrors": []
+      }
+    ],
+    "src": "0:973:13"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.17+commit.8df45f5f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-11-23T01:54:13.750Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

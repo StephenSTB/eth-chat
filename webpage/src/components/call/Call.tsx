@@ -8,6 +8,7 @@ import { v4 as uuidV4} from "uuid"
 import { ecrecover, toBuffer } from "ethereumjs-util";
 import { Peer } from "peerjs"
 import { VideoPlayer } from "../videoplayer/VideoPlayer";
+import { net } from "web3";
 
 interface CallProps{
     engine: Web3Engine;
@@ -34,11 +35,17 @@ export const Call = (props: CallProps) =>{
     const [peeruuid, setpeeruuid] = useState<string>("");
 
     const [showPlayer, setShowPlayer] = useState<boolean>(false)
+
+    const [mobile, setMobile] = useState<boolean>(false)
     
     useEffect(() =>{
         if(props.engine.mnemonic === undefined){
             navigate("/")
             return
+        }
+
+        if(window.innerWidth < 900){
+            setMobile(true)
         }
 
         const getConnected = async () =>{
@@ -56,11 +63,18 @@ export const Call = (props: CallProps) =>{
 
         //engine.sendTransaction("")
     }, [])
-    const changeCallAddress = (e: ChangeEvent<HTMLInputElement>) =>{
-        if(!isAddress(e.target.value )){
+    const changeCallAddress = async (e: ChangeEvent<HTMLInputElement>) =>{
+        const address = await engine?.sendTransaction(network, {from: account}, "Name", "NamesResolver", [e.target.value] ,true)
+        console.log("change call address:", address.transaction)
+        if(address.transaction !== "0x0000000000000000000000000000000000000000000000000000000000000000" && !isAddress(e.target.value)){
+            setCallAddress(address.transaction)
+            return;
+        }
+        if(!isAddress(e.target.value)){
             setError("Invalid ethereum address format given.")
             return;
         }   
+
         setCallAddress(e.target.value)
     }
 
@@ -69,7 +83,7 @@ export const Call = (props: CallProps) =>{
         console.log(callAddress)
         if(!isAddress(callAddress)){
             setError("Invalid ethereum address format given.")
-            return;
+            
         }
 
         setError("")
@@ -143,8 +157,10 @@ export const Call = (props: CallProps) =>{
                 let enablehash = await engine?.sendTransaction(network, {from: account}, "Call", "EnableHash", [], true);
                 enablehash = enablehash.transaction
                 console.log(enablehash)
+                console.log(callAddress)
                 let signKey0 = await engine?.sendTransaction(network, {from: account}, "Call", "SignKeys", [callAddress], true);
                 signKey0 = signKey0.transaction
+                console.log(signKey0)
                 if(signKey0.v == 0){
                     setPromptText("Other user doesn't have a signKey. Can't make channel")
                     return
@@ -225,7 +241,7 @@ export const Call = (props: CallProps) =>{
             
             const me = new Peer(uuid, {
                 host: "localhost",
-                port: 9000,
+                port: 3001,
                 path: "/eth-chat",
             })
             setMe(me)
@@ -235,13 +251,17 @@ export const Call = (props: CallProps) =>{
         
     }
 
+    const closePlayer = () =>{
+        setShowPlayer(false);
+    }
+
     return(
         <>
             <div id="call-main">
-                { showPlayer && <VideoPlayer me={me as Peer} peeruuid={peeruuid} />}
+                { showPlayer && <VideoPlayer closePlayer={closePlayer} me={me as Peer} peeruuid={peeruuid} />}
                 <div id="call-search">
-                    <Input placeholder="Call..." size="small" onChange={changeCallAddress}/>
-                    <Button theme="light" size="large" text={callButtonText} id="call-button" transacting={transacting} onClick={call}/>
+                    <Input placeholder="name or 0x... " size={mobile ? "" : "small"} onChange={changeCallAddress}/>
+                    <Button theme="light" size={mobile ? "" : "large"} text={callButtonText} id="call-button" transacting={transacting} onClick={call}/>
                 </div>
                 {promptText}
                 {error}

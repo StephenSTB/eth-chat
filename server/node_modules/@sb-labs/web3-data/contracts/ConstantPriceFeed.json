@@ -1,0 +1,932 @@
+{
+  "contractName": "ConstantPriceFeed",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "decimals_",
+          "type": "uint8"
+        },
+        {
+          "internalType": "int256",
+          "name": "constantPrice_",
+          "type": "int256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "constantPrice",
+      "outputs": [
+        {
+          "internalType": "int256",
+          "name": "",
+          "type": "int256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "decimals",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "description",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "version",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "latestRoundData",
+      "outputs": [
+        {
+          "internalType": "uint80",
+          "name": "roundId",
+          "type": "uint80"
+        },
+        {
+          "internalType": "int256",
+          "name": "answer",
+          "type": "int256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "startedAt",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "updatedAt",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint80",
+          "name": "answeredInRound",
+          "type": "uint80"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"decimals_\",\"type\":\"uint8\"},{\"internalType\":\"int256\",\"name\":\"constantPrice_\",\"type\":\"int256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"constantPrice\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"\",\"type\":\"int256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"description\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"latestRoundData\",\"outputs\":[{\"internalType\":\"uint80\",\"name\":\"roundId\",\"type\":\"uint80\"},{\"internalType\":\"int256\",\"name\":\"answer\",\"type\":\"int256\"},{\"internalType\":\"uint256\",\"name\":\"startedAt\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"updatedAt\",\"type\":\"uint256\"},{\"internalType\":\"uint80\",\"name\":\"answeredInRound\",\"type\":\"uint80\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"version\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Compound\",\"kind\":\"dev\",\"methods\":{\"constructor\":{\"params\":{\"decimals_\":\"The number of decimals for the returned prices*\"}},\"latestRoundData()\":{\"returns\":{\"answer\":\"Latest price for the asset (will always be a constant price)\",\"answeredInRound\":\"Round id in which the answer was computed; passed on from underlying price feed*\",\"roundId\":\"Round id from the underlying price feed\",\"startedAt\":\"Timestamp when the round was started; passed on from underlying price feed\",\"updatedAt\":\"Timestamp when the round was last updated; passed on from underlying price feed\"}}},\"title\":\"Constant price feed\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"constantPrice()\":{\"notice\":\"The constant price\"},\"constructor\":{\"notice\":\"Construct a new scaling price feed\"},\"decimals()\":{\"notice\":\"Number of decimals for returned prices\"},\"description()\":{\"notice\":\"Description of the price feed\"},\"latestRoundData()\":{\"notice\":\"Price for the latest round\"},\"version()\":{\"notice\":\"Version of the price feed\"}},\"notice\":\"A custom price feed that always returns a constant price\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/comet/contracts/pricefeeds/ConstantPriceFeed.sol\":\"ConstantPriceFeed\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/comet/contracts/IPriceFeed.sol\":{\"keccak256\":\"0x310068353d00e6a4db31a7245ec49e8e48bb78a26616eb93dc92ef38e1b2218b\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://7c21788138ef0b331c5e0a93c2463436380924133584de858b87304bce4332a3\",\"dweb:/ipfs/QmV9dhQt6UaHcaVXvbpaARMnfdtj2KgLVs2Nf8wFij9cho\"]},\"project:/contracts/comet/contracts/pricefeeds/ConstantPriceFeed.sol\":{\"keccak256\":\"0x5cad9d52555c3cd92d8ebadea51de3976ad8b58a1dbce8c74a6d49d854030084\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://55d4341eef1ad6a03c72b522ba7055c2007f85fdee6977e171dad72700100669\",\"dweb:/ipfs/QmXs4L3Gd3YDkrG5ovaMyECpioCxGS2Db4M8MQsSfiKGTS\"]}},\"version\":1}",
+  "bytecode": "0x60c03461007b57601f6102cb38819003918201601f19168301916001600160401b0383118484101761008057808492604094855283398101031261007b5780519060ff8216820361007b57602001519060805260a05260405161023490816100978239608051816101da015260a0518181816075015260c80152f35b600080fd5b634e487b7160e01b600052604160045260246000fdfe60806040818152600436101561001457600080fd5b600091823560e01c908163313ce567146101c15750806354fd4d50146101a65780637284e416146100eb578063eea72e28146100b15763feaf968c1461005957600080fd5b346100ad57816003193601126100ad578060a0915190600182527f00000000000000000000000000000000000000000000000000000000000000006020830152429082015242606082015260016080820152f35b5080fd5b50346100ad57816003193601126100ad57602090517f00000000000000000000000000000000000000000000000000000000000000008152f35b50346100ad57816003193601126100ad5780519181830183811067ffffffffffffffff821117610192578293919352601381526020907210dbdb9cdd185b9d081c1c9a58d94819995959606a1b828201528251938285938452825192838286015282915b84831061017a575050821061016e575b50601f01601f19168101030190f35b8382840101523861015f565b8183018101518884018801528795509182019161014f565b634e487b7160e01b82526041600452602482fd5b50346100ad57816003193601126100ad576020905160018152f35b8390346100ad57816003193601126100ad5760209060ff7f0000000000000000000000000000000000000000000000000000000000000000168152f3fea26469706673582212209755afbf347ddcd627cb4dd2be6aedeefb094c4e30708a891103b864671a3e1464736f6c634300080f0033",
+  "deployedBytecode": "0x60806040818152600436101561001457600080fd5b600091823560e01c908163313ce567146101c15750806354fd4d50146101a65780637284e416146100eb578063eea72e28146100b15763feaf968c1461005957600080fd5b346100ad57816003193601126100ad578060a0915190600182527f00000000000000000000000000000000000000000000000000000000000000006020830152429082015242606082015260016080820152f35b5080fd5b50346100ad57816003193601126100ad57602090517f00000000000000000000000000000000000000000000000000000000000000008152f35b50346100ad57816003193601126100ad5780519181830183811067ffffffffffffffff821117610192578293919352601381526020907210dbdb9cdd185b9d081c1c9a58d94819995959606a1b828201528251938285938452825192838286015282915b84831061017a575050821061016e575b50601f01601f19168101030190f35b8382840101523861015f565b8183018101518884018801528795509182019161014f565b634e487b7160e01b82526041600452602482fd5b50346100ad57816003193601126100ad576020905160018152f35b8390346100ad57816003193601126100ad5760209060ff7f0000000000000000000000000000000000000000000000000000000000000000168152f3fea26469706673582212209755afbf347ddcd627cb4dd2be6aedeefb094c4e30708a891103b864671a3e1464736f6c634300080f0033",
+  "immutableReferences": {
+    "14167": [
+      {
+        "length": 32,
+        "start": 474
+      }
+    ],
+    "14170": [
+      {
+        "length": 32,
+        "start": 117
+      },
+      {
+        "length": 32,
+        "start": 200
+      }
+    ]
+  },
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "217:1490:61:-:0;;;;;;;;;;;;;-1:-1:-1;;217:1490:61;;;;-1:-1:-1;;;;;217:1490:61;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;843:20;;;873:30;;217:1490;;;;;;;;843:20;217:1490;;;;;873:30;217:1490;;;;;;;;;;;;-1:-1:-1;217:1490:61;;;;;;-1:-1:-1;217:1490:61;;;;;-1:-1:-1;217:1490:61",
+  "deployedSourceMap": "217:1490:61:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1644:1;217:1490;;1647:13;217:1490;;;;1662:15;217:1490;;;;1662:15;217:1490;;;;1644:1;217:1490;;;;;;;;;;;;;;;;;;;;;;;;;602:34;217:1490;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;217:1490:61;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;217:1490:61;;;-1:-1:-1;217:1490:61;;-1:-1:-1;;217:1490:61;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;217:1490:61;;;;;;;-1:-1:-1;;;217:1490:61;;;;;;;;;;;;;;;;;;;;;;;;346:1;217:1490;;;;;;;;;;;;;;;;;;520:40;217:1490;520:40;217:1490;;;",
+  "source": "// SPDX-License-Identifier: BUSL-1.1\npragma solidity 0.8.15;\n\nimport \"../IPriceFeed.sol\";\n\n/**\n * @title Constant price feed\n * @notice A custom price feed that always returns a constant price\n * @author Compound\n */\ncontract ConstantPriceFeed is IPriceFeed {\n    /// @notice Version of the price feed\n    uint public constant override version = 1;\n\n    /// @notice Description of the price feed\n    string public constant description = \"Constant price feed\";\n\n    /// @notice Number of decimals for returned prices\n    uint8 public immutable override decimals;\n\n    /// @notice The constant price\n    int public immutable constantPrice;\n\n    /**\n     * @notice Construct a new scaling price feed\n     * @param decimals_ The number of decimals for the returned prices\n     **/\n    constructor(uint8 decimals_, int256 constantPrice_) {\n        decimals = decimals_;\n        constantPrice = constantPrice_;\n    }\n\n    /**\n     * @notice Price for the latest round\n     * @return roundId Round id from the underlying price feed\n     * @return answer Latest price for the asset (will always be a constant price)\n     * @return startedAt Timestamp when the round was started; passed on from underlying price feed\n     * @return updatedAt Timestamp when the round was last updated; passed on from underlying price feed\n     * @return answeredInRound Round id in which the answer was computed; passed on from underlying price feed\n     **/\n    function latestRoundData() external view returns (\n        uint80 roundId,\n        int256 answer,\n        uint256 startedAt,\n        uint256 updatedAt,\n        uint80 answeredInRound\n    ) {\n        return (1, constantPrice, block.timestamp, block.timestamp, 1);\n    }\n}",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/comet/contracts/pricefeeds/ConstantPriceFeed.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/comet/contracts/pricefeeds/ConstantPriceFeed.sol",
+    "exportedSymbols": {
+      "ConstantPriceFeed": [
+        14212
+      ],
+      "IPriceFeed": [
+        8815
+      ]
+    },
+    "id": 14213,
+    "license": "BUSL-1.1",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 14150,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".15"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:61"
+      },
+      {
+        "absolutePath": "project:/contracts/comet/contracts/IPriceFeed.sol",
+        "file": "../IPriceFeed.sol",
+        "id": 14151,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 14213,
+        "sourceUnit": 8816,
+        "src": "62:27:61",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 14153,
+              "name": "IPriceFeed",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 8815,
+              "src": "247:10:61"
+            },
+            "id": 14154,
+            "nodeType": "InheritanceSpecifier",
+            "src": "247:10:61"
+          }
+        ],
+        "canonicalName": "ConstantPriceFeed",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 14152,
+          "nodeType": "StructuredDocumentation",
+          "src": "91:125:61",
+          "text": " @title Constant price feed\n @notice A custom price feed that always returns a constant price\n @author Compound"
+        },
+        "fullyImplemented": true,
+        "id": 14212,
+        "linearizedBaseContracts": [
+          14212,
+          8815
+        ],
+        "name": "ConstantPriceFeed",
+        "nameLocation": "226:17:61",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "baseFunctions": [
+              8801
+            ],
+            "constant": true,
+            "documentation": {
+              "id": 14155,
+              "nodeType": "StructuredDocumentation",
+              "src": "264:37:61",
+              "text": "@notice Version of the price feed"
+            },
+            "functionSelector": "54fd4d50",
+            "id": 14159,
+            "mutability": "constant",
+            "name": "version",
+            "nameLocation": "336:7:61",
+            "nodeType": "VariableDeclaration",
+            "overrides": {
+              "id": 14157,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "327:8:61"
+            },
+            "scope": 14212,
+            "src": "306:41:61",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 14156,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "306:4:61",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "hexValue": "31",
+              "id": 14158,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "346:1:61",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_1_by_1",
+                "typeString": "int_const 1"
+              },
+              "value": "1"
+            },
+            "visibility": "public"
+          },
+          {
+            "baseFunctions": [
+              8796
+            ],
+            "constant": true,
+            "documentation": {
+              "id": 14160,
+              "nodeType": "StructuredDocumentation",
+              "src": "354:41:61",
+              "text": "@notice Description of the price feed"
+            },
+            "functionSelector": "7284e416",
+            "id": 14163,
+            "mutability": "constant",
+            "name": "description",
+            "nameLocation": "423:11:61",
+            "nodeType": "VariableDeclaration",
+            "scope": 14212,
+            "src": "400:58:61",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_string_memory_ptr",
+              "typeString": "string"
+            },
+            "typeName": {
+              "id": 14161,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "400:6:61",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            },
+            "value": {
+              "hexValue": "436f6e7374616e742070726963652066656564",
+              "id": 14162,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "string",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "437:21:61",
+              "typeDescriptions": {
+                "typeIdentifier": "t_stringliteral_f8d750881eac6c4b8071f34d69d7a63c3b439b41cad8eb231648780440238688",
+                "typeString": "literal_string \"Constant price feed\""
+              },
+              "value": "Constant price feed"
+            },
+            "visibility": "public"
+          },
+          {
+            "baseFunctions": [
+              8791
+            ],
+            "constant": false,
+            "documentation": {
+              "id": 14164,
+              "nodeType": "StructuredDocumentation",
+              "src": "465:50:61",
+              "text": "@notice Number of decimals for returned prices"
+            },
+            "functionSelector": "313ce567",
+            "id": 14167,
+            "mutability": "immutable",
+            "name": "decimals",
+            "nameLocation": "552:8:61",
+            "nodeType": "VariableDeclaration",
+            "overrides": {
+              "id": 14166,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "543:8:61"
+            },
+            "scope": 14212,
+            "src": "520:40:61",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint8",
+              "typeString": "uint8"
+            },
+            "typeName": {
+              "id": 14165,
+              "name": "uint8",
+              "nodeType": "ElementaryTypeName",
+              "src": "520:5:61",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint8",
+                "typeString": "uint8"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "documentation": {
+              "id": 14168,
+              "nodeType": "StructuredDocumentation",
+              "src": "567:30:61",
+              "text": "@notice The constant price"
+            },
+            "functionSelector": "eea72e28",
+            "id": 14170,
+            "mutability": "immutable",
+            "name": "constantPrice",
+            "nameLocation": "623:13:61",
+            "nodeType": "VariableDeclaration",
+            "scope": 14212,
+            "src": "602:34:61",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_int256",
+              "typeString": "int256"
+            },
+            "typeName": {
+              "id": 14169,
+              "name": "int",
+              "nodeType": "ElementaryTypeName",
+              "src": "602:3:61",
+              "typeDescriptions": {
+                "typeIdentifier": "t_int256",
+                "typeString": "int256"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 14186,
+              "nodeType": "Block",
+              "src": "833:77:61",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 14180,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 14178,
+                      "name": "decimals",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14167,
+                      "src": "843:8:61",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint8",
+                        "typeString": "uint8"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 14179,
+                      "name": "decimals_",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14173,
+                      "src": "854:9:61",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint8",
+                        "typeString": "uint8"
+                      }
+                    },
+                    "src": "843:20:61",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "id": 14181,
+                  "nodeType": "ExpressionStatement",
+                  "src": "843:20:61"
+                },
+                {
+                  "expression": {
+                    "id": 14184,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 14182,
+                      "name": "constantPrice",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14170,
+                      "src": "873:13:61",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int256",
+                        "typeString": "int256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 14183,
+                      "name": "constantPrice_",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14175,
+                      "src": "889:14:61",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int256",
+                        "typeString": "int256"
+                      }
+                    },
+                    "src": "873:30:61",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "id": 14185,
+                  "nodeType": "ExpressionStatement",
+                  "src": "873:30:61"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 14171,
+              "nodeType": "StructuredDocumentation",
+              "src": "643:133:61",
+              "text": " @notice Construct a new scaling price feed\n @param decimals_ The number of decimals for the returned prices*"
+            },
+            "id": 14187,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14176,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14173,
+                  "mutability": "mutable",
+                  "name": "decimals_",
+                  "nameLocation": "799:9:61",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14187,
+                  "src": "793:15:61",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 14172,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "793:5:61",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14175,
+                  "mutability": "mutable",
+                  "name": "constantPrice_",
+                  "nameLocation": "817:14:61",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14187,
+                  "src": "810:21:61",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 14174,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "810:6:61",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "792:40:61"
+            },
+            "returnParameters": {
+              "id": 14177,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "833:0:61"
+            },
+            "scope": 14212,
+            "src": "781:129:61",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "baseFunctions": [
+              8814
+            ],
+            "body": {
+              "id": 14210,
+              "nodeType": "Block",
+              "src": "1626:79:61",
+              "statements": [
+                {
+                  "expression": {
+                    "components": [
+                      {
+                        "hexValue": "31",
+                        "id": 14201,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1644:1:61",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      {
+                        "id": 14202,
+                        "name": "constantPrice",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 14170,
+                        "src": "1647:13:61",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_int256",
+                          "typeString": "int256"
+                        }
+                      },
+                      {
+                        "expression": {
+                          "id": 14203,
+                          "name": "block",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4294967292,
+                          "src": "1662:5:61",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_block",
+                            "typeString": "block"
+                          }
+                        },
+                        "id": 14204,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "timestamp",
+                        "nodeType": "MemberAccess",
+                        "src": "1662:15:61",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "expression": {
+                          "id": 14205,
+                          "name": "block",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4294967292,
+                          "src": "1679:5:61",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_block",
+                            "typeString": "block"
+                          }
+                        },
+                        "id": 14206,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "timestamp",
+                        "nodeType": "MemberAccess",
+                        "src": "1679:15:61",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "hexValue": "31",
+                        "id": 14207,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1696:1:61",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      }
+                    ],
+                    "id": 14208,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "1643:55:61",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_rational_1_by_1_$_t_int256_$_t_uint256_$_t_uint256_$_t_rational_1_by_1_$",
+                      "typeString": "tuple(int_const 1,int256,uint256,uint256,int_const 1)"
+                    }
+                  },
+                  "functionReturnParameters": 14200,
+                  "id": 14209,
+                  "nodeType": "Return",
+                  "src": "1636:62:61"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 14188,
+              "nodeType": "StructuredDocumentation",
+              "src": "916:516:61",
+              "text": " @notice Price for the latest round\n @return roundId Round id from the underlying price feed\n @return answer Latest price for the asset (will always be a constant price)\n @return startedAt Timestamp when the round was started; passed on from underlying price feed\n @return updatedAt Timestamp when the round was last updated; passed on from underlying price feed\n @return answeredInRound Round id in which the answer was computed; passed on from underlying price feed*"
+            },
+            "functionSelector": "feaf968c",
+            "id": 14211,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "latestRoundData",
+            "nameLocation": "1446:15:61",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14189,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1461:2:61"
+            },
+            "returnParameters": {
+              "id": 14200,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14191,
+                  "mutability": "mutable",
+                  "name": "roundId",
+                  "nameLocation": "1503:7:61",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14211,
+                  "src": "1496:14:61",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint80",
+                    "typeString": "uint80"
+                  },
+                  "typeName": {
+                    "id": 14190,
+                    "name": "uint80",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1496:6:61",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint80",
+                      "typeString": "uint80"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14193,
+                  "mutability": "mutable",
+                  "name": "answer",
+                  "nameLocation": "1527:6:61",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14211,
+                  "src": "1520:13:61",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 14192,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1520:6:61",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14195,
+                  "mutability": "mutable",
+                  "name": "startedAt",
+                  "nameLocation": "1551:9:61",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14211,
+                  "src": "1543:17:61",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 14194,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1543:7:61",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14197,
+                  "mutability": "mutable",
+                  "name": "updatedAt",
+                  "nameLocation": "1578:9:61",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14211,
+                  "src": "1570:17:61",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 14196,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1570:7:61",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14199,
+                  "mutability": "mutable",
+                  "name": "answeredInRound",
+                  "nameLocation": "1604:15:61",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14211,
+                  "src": "1597:22:61",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint80",
+                    "typeString": "uint80"
+                  },
+                  "typeName": {
+                    "id": 14198,
+                    "name": "uint80",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1597:6:61",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint80",
+                      "typeString": "uint80"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1486:139:61"
+            },
+            "scope": 14212,
+            "src": "1437:268:61",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 14213,
+        "src": "217:1490:61",
+        "usedErrors": []
+      }
+    ],
+    "src": "37:1670:61"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.15+commit.e14f2714.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-11-30T22:41:29.712Z",
+  "devdoc": {
+    "author": "Compound",
+    "kind": "dev",
+    "methods": {
+      "constructor": {
+        "params": {
+          "decimals_": "The number of decimals for the returned prices*"
+        }
+      },
+      "latestRoundData()": {
+        "returns": {
+          "answer": "Latest price for the asset (will always be a constant price)",
+          "answeredInRound": "Round id in which the answer was computed; passed on from underlying price feed*",
+          "roundId": "Round id from the underlying price feed",
+          "startedAt": "Timestamp when the round was started; passed on from underlying price feed",
+          "updatedAt": "Timestamp when the round was last updated; passed on from underlying price feed"
+        }
+      }
+    },
+    "title": "Constant price feed",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "constantPrice()": {
+        "notice": "The constant price"
+      },
+      "constructor": {
+        "notice": "Construct a new scaling price feed"
+      },
+      "decimals()": {
+        "notice": "Number of decimals for returned prices"
+      },
+      "description()": {
+        "notice": "Description of the price feed"
+      },
+      "latestRoundData()": {
+        "notice": "Price for the latest round"
+      },
+      "version()": {
+        "notice": "Version of the price feed"
+      }
+    },
+    "notice": "A custom price feed that always returns a constant price",
+    "version": 1
+  }
+}

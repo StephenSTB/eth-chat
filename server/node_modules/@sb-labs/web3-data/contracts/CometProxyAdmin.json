@@ -1,0 +1,1183 @@
+{
+  "contractName": "CometProxyAdmin",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract TransparentUpgradeableProxy",
+          "name": "proxy",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "changeProxyAdmin",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract TransparentUpgradeableProxy",
+          "name": "proxy",
+          "type": "address"
+        }
+      ],
+      "name": "getProxyAdmin",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract TransparentUpgradeableProxy",
+          "name": "proxy",
+          "type": "address"
+        }
+      ],
+      "name": "getProxyImplementation",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract TransparentUpgradeableProxy",
+          "name": "proxy",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "implementation",
+          "type": "address"
+        }
+      ],
+      "name": "upgrade",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract TransparentUpgradeableProxy",
+          "name": "proxy",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "implementation",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "upgradeAndCall",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract Deployable",
+          "name": "configuratorProxy",
+          "type": "address"
+        },
+        {
+          "internalType": "contract TransparentUpgradeableProxy",
+          "name": "cometProxy",
+          "type": "address"
+        }
+      ],
+      "name": "deployAndUpgradeTo",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract Deployable",
+          "name": "configuratorProxy",
+          "type": "address"
+        },
+        {
+          "internalType": "contract TransparentUpgradeableProxy",
+          "name": "cometProxy",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "deployUpgradeToAndCall",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"contract TransparentUpgradeableProxy\",\"name\":\"proxy\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"changeProxyAdmin\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract Deployable\",\"name\":\"configuratorProxy\",\"type\":\"address\"},{\"internalType\":\"contract TransparentUpgradeableProxy\",\"name\":\"cometProxy\",\"type\":\"address\"}],\"name\":\"deployAndUpgradeTo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract Deployable\",\"name\":\"configuratorProxy\",\"type\":\"address\"},{\"internalType\":\"contract TransparentUpgradeableProxy\",\"name\":\"cometProxy\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"deployUpgradeToAndCall\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract TransparentUpgradeableProxy\",\"name\":\"proxy\",\"type\":\"address\"}],\"name\":\"getProxyAdmin\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract TransparentUpgradeableProxy\",\"name\":\"proxy\",\"type\":\"address\"}],\"name\":\"getProxyImplementation\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract TransparentUpgradeableProxy\",\"name\":\"proxy\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"}],\"name\":\"upgrade\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract TransparentUpgradeableProxy\",\"name\":\"proxy\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"upgradeAndCall\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"changeProxyAdmin(address,address)\":{\"details\":\"Changes the admin of `proxy` to `newAdmin`. Requirements: - This contract must be the current admin of `proxy`.\"},\"deployAndUpgradeTo(address,address)\":{\"details\":\"Deploy a new Comet and upgrade the implementation of the Comet proxy  Requirements:   - This contract must be the admin of `CometProxy`\"},\"deployUpgradeToAndCall(address,address,bytes)\":{\"details\":\"Deploy a new Comet and upgrade the implementation of the Comet proxy, then call the function  Requirements:   - This contract must be the admin of `CometProxy`\"},\"getProxyAdmin(address)\":{\"details\":\"Returns the current admin of `proxy`. Requirements: - This contract must be the admin of `proxy`.\"},\"getProxyImplementation(address)\":{\"details\":\"Returns the current implementation of `proxy`. Requirements: - This contract must be the admin of `proxy`.\"},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"},\"upgrade(address,address)\":{\"details\":\"Upgrades `proxy` to `implementation`. See {TransparentUpgradeableProxy-upgradeTo}. Requirements: - This contract must be the admin of `proxy`.\"},\"upgradeAndCall(address,address,bytes)\":{\"details\":\"Upgrades `proxy` to `implementation` and calls a function on the new implementation. See {TransparentUpgradeableProxy-upgradeToAndCall}. Requirements: - This contract must be the admin of `proxy`.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/comet/contracts/CometProxyAdmin.sol\":\"CometProxyAdmin\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/comet/contracts/CometProxyAdmin.sol\":{\"keccak256\":\"0x8b4fd94c8f07a14ba25113cb2f171344bdb530ba352eec5750e8ac8374d1af42\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://75fa26f982d6996a1e8ffe4cc4fe251d2dba50c175e578f3da13776ea24fd3ed\",\"dweb:/ipfs/QmS8Ge41FhoLwxPu4L3ibC1xvyuSYWjgH2XjnvNZ8DGjmu\"]},\"project:/contracts/comet/contracts/vendor/access/Ownable.sol\":{\"keccak256\":\"0x24e0364e503a9bbde94c715d26573a76f14cd2a202d45f96f52134ab806b67b9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e12cbaa7378fd9b62280e4e1d164bedcb4399ce238f5f98fc0eefb7e50577981\",\"dweb:/ipfs/QmXRoFGUgfsaRkoPT5bxNMtSayKTQ8GZATLPXf69HcRA51\"]},\"project:/contracts/comet/contracts/vendor/interfaces/draft-IERC1822.sol\":{\"keccak256\":\"0x1d4afe6cb24200cc4545eed814ecf5847277dfe5d613a1707aad5fceecebcfff\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://383fb7b8181016ac5ccf07bc9cdb7c1b5045ea36e2cc4df52bcbf20396fc7688\",\"dweb:/ipfs/QmYJ7Cg4WmE3rR8KGQxjUCXFfTH6TcwZ2Z1f6tPrq7jHFr\"]},\"project:/contracts/comet/contracts/vendor/proxy/ERC1967/ERC1967Proxy.sol\":{\"keccak256\":\"0x6309f9f39dc6f4f45a24f296543867aa358e32946cd6b2874627a996d606b3a0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4f5abfc32db1d44fd3d38d902879eaeaad827781bb9f954d3ccb8639c55db3c0\",\"dweb:/ipfs/QmVSkxFgWphaUx6w9XdvgwJJuxABdpuVQEbABbRmzd3XFc\"]},\"project:/contracts/comet/contracts/vendor/proxy/ERC1967/ERC1967Upgrade.sol\":{\"keccak256\":\"0xabf3f59bc0e5423eae45e459dbe92e7052c6983628d39008590edc852a62f94a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://89c2a0f70157c13845be5cb49b078a6374fee3a78fa950052a3af26190255da8\",\"dweb:/ipfs/QmUcvMEQH1oMM2pUyMuDiBUKdvvnTz1NRB8bmPHrVq8725\"]},\"project:/contracts/comet/contracts/vendor/proxy/Proxy.sol\":{\"keccak256\":\"0x0edeb16b9821ae2b16e9d69c383b38d3ad2fbb3e0c06cf809a0786d96e602551\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://88adc865fb1bd8dab4c58096e1d5887713f62c0405f8d2d17294727a8f43d8f7\",\"dweb:/ipfs/QmUJ27zsjxCatfoTFWho4k4qdhuBTorMqLuJzWqUX4Sdmg\"]},\"project:/contracts/comet/contracts/vendor/proxy/beacon/IBeacon.sol\":{\"keccak256\":\"0xd50a3421ac379ccb1be435fa646d66a65c986b4924f0849839f08692f39dde61\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ada1e030c0231db8d143b44ce92b4d1158eedb087880cad6d8cc7bd7ebe7b354\",\"dweb:/ipfs/QmWZ2NHZweRpz1U9GF6R1h65ri76dnX7fNxLBeM2t5N5Ce\"]},\"project:/contracts/comet/contracts/vendor/proxy/transparent/ProxyAdmin.sol\":{\"keccak256\":\"0x33b8603bfbef7f33d9308b79c79aa3db7eb19525fd1addd764285e834ca275d7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0ada1f59ac012751561c8fa066bddf1a8fb518fcb0ea2d64920797c1711aad0c\",\"dweb:/ipfs/QmTrY13qevgKDUAyQhFvMNLvbLuWaQprvDzvLdXWQwnoxA\"]},\"project:/contracts/comet/contracts/vendor/proxy/transparent/TransparentUpgradeableProxy.sol\":{\"keccak256\":\"0x140055a64cf579d622e04f5a198595832bf2cb193cd0005f4f2d4d61ca906253\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a3110d13fd267ac03d3cf9611198971db0d12ed2bc0538cddef286090987461f\",\"dweb:/ipfs/QmWPynjSTgd72fRxeX3huVN9GLNLWijFvoVpJMKNESkPb3\"]},\"project:/contracts/comet/contracts/vendor/utils/Address.sol\":{\"keccak256\":\"0x2ccf9d2313a313d41a791505f2b5abfdc62191b5d4334f7f7a82691c088a1c87\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b3a57d0854b2fdce6ebff933a48dca2445643d1eccfc27f00292e937f26c6a58\",\"dweb:/ipfs/QmW45rZooS9TqR4YXUbjRbtf2Bpb5ouSarBvfW1LdGprvV\"]},\"project:/contracts/comet/contracts/vendor/utils/Context.sol\":{\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92\",\"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3\"]},\"project:/contracts/comet/contracts/vendor/utils/StorageSlot.sol\":{\"keccak256\":\"0xfe1b7a9aa2a530a9e705b220e26cd584e2fbdc9602a3a1066032b12816b46aca\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://dbaba7fe0fe556cc5ed291e03d271fd27d395250141ecfb57a4b30d528958ff9\",\"dweb:/ipfs/QmWT653X2DyZo8nqEcmFe3yTkrCJv3ptbZLhbgLU3y6abe\"]}},\"version\":1}",
+  "bytecode": "0x6080806040523461005b5760008054336001600160a01b0319821681178355916001600160a01b03909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09084a361088e90816100618239f35b600080fdfe6080604081815260048036101561001557600080fd5b600092833560e01c90848263204e1c7a1461069f5750508063715018a61461063f5780637eff275e146105b55780638da5cb5b1461058d5780639623609d146104a4578381639627816f146103cd57816399a88ec41461035d57508063c7d20733146101d3578063f2fde38b146100ff5763f3b7dead1461009557600080fd5b346100fb5760203660031901126100fb576001600160a01b039083908190836100bc6106de565b86516303e1469160e61b815291165afa926100d5610828565b93156100f857506100f0836020808096518301019101610809565b169051908152f35b80fd5b8280fd5b50346100fb5760203660031901126100fb576101196106de565b83546001600160a01b0391829161013390831633146107be565b16918215610181575060005492826bffffffffffffffffffffffff60a01b8516176000555192167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0600084a3f35b608490602085519162461bcd60e51b8352820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201526564647265737360d01b6064820152fd5b509190346102e95760603660031901126102e9576101ef6106de565b6101f76106f9565b9360443567ffffffffffffffff8111610359576102179036908301610777565b84546001600160a01b0396879161023190831633146107be565b169186855194634c96a38960e01b86528483870152856024818a60209c8d95165af194851561034f578795610320575b506102703382895416146107be565b833b1561031c57855163278f794360e11b81529416908401526024830184905280516044840181905294958695915b828810610306575050828092816000606489978689978d116102fa575b601f01601f191681010301925af180156102ed576102d957505051f35b6102e29061070f565b6102e95751f35b5080fd5b50505051903d90823e3d90fd5b878382840101526102bc565b878101820151858901606401529681019661029f565b8680fd5b610341919550883d8a11610348575b6103398183610739565b810190610809565b9338610261565b503d61032f565b86513d89823e3d90fd5b8480fd5b919050346102e957826003193601126102e9576103786106de565b6103806106f9565b9060018060a01b0380916103988287541633146107be565b16803b156103595784928360249288519687958694631b2ce7f360e11b865216908401525af180156102ed576102d957505051f35b919050346102e957826003193601126102e9578160246103eb6106de565b60206103f56106f9565b60018060a01b039384809261040e8289541633146107be565b169389519687938492634c96a38960e01b8452878b850152165af192831561049a57859361047a575b506104463383875416146107be565b803b156103595784928360249288519687958694631b2ce7f360e11b865216908401525af180156102ed576102d957505051f35b61049391935060203d8111610348576103398183610739565b9138610437565b86513d87823e3d90fd5b5060603660031901126100fb576104b96106de565b6104c16106f9565b9160443567ffffffffffffffff8111610589576104e19036908301610777565b9060018060a01b0380936104f98289541633146107be565b1692833b1561031c57855163278f794360e11b8152941690840152602483018490528051604484018190528593929184905b82821061056e57509183606481848195899711610562575b601f01601f1916810103019134905af180156102ed576102d957505051f35b86838284010152610543565b6020818301810151606487850101528896509091019061052b565b8580fd5b5050346102e957816003193601126102e957905490516001600160a01b039091168152602090f35b508290346102e957826003193601126102e9576105d06106de565b6105d86106f9565b83546001600160a01b039283916105f290831633146107be565b16803b156103595784929183602492885196879586946308f2839760e41b865216908401525af180156106355761062857509051f35b6106319061070f565b9051f35b83513d84823e3d90fd5b5050346102e957816003193601126102e95781546001600160a01b03811691839161066b3385146107be565b6001600160a01b031916825551917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e08284a3f35b915091346102e95760203660031901126102e9576001600160a01b0392829190846106c86106de565b635c60da1b60e01b8352165afa926100d5610828565b600435906001600160a01b03821682036106f457565b600080fd5b602435906001600160a01b03821682036106f457565b67ffffffffffffffff811161072357604052565b634e487b7160e01b600052604160045260246000fd5b90601f8019910116810190811067ffffffffffffffff82111761072357604052565b67ffffffffffffffff811161072357601f01601f191660200190565b81601f820112156106f45780359061078e8261075b565b9261079c6040519485610739565b828452602083830101116106f457816000926020809301838601378301015290565b156107c557565b606460405162461bcd60e51b815260206004820152602060248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e65726044820152fd5b908160209103126106f457516001600160a01b03811681036106f45790565b3d15610853573d906108398261075b565b916108476040519384610739565b82523d6000602084013e565b60609056fea2646970667358221220b2249b63d35d84d8835d6bac67d96890edcd86e9c37835655e99320f177b05fd64736f6c634300080f0033",
+  "deployedBytecode": "0x6080604081815260048036101561001557600080fd5b600092833560e01c90848263204e1c7a1461069f5750508063715018a61461063f5780637eff275e146105b55780638da5cb5b1461058d5780639623609d146104a4578381639627816f146103cd57816399a88ec41461035d57508063c7d20733146101d3578063f2fde38b146100ff5763f3b7dead1461009557600080fd5b346100fb5760203660031901126100fb576001600160a01b039083908190836100bc6106de565b86516303e1469160e61b815291165afa926100d5610828565b93156100f857506100f0836020808096518301019101610809565b169051908152f35b80fd5b8280fd5b50346100fb5760203660031901126100fb576101196106de565b83546001600160a01b0391829161013390831633146107be565b16918215610181575060005492826bffffffffffffffffffffffff60a01b8516176000555192167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0600084a3f35b608490602085519162461bcd60e51b8352820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201526564647265737360d01b6064820152fd5b509190346102e95760603660031901126102e9576101ef6106de565b6101f76106f9565b9360443567ffffffffffffffff8111610359576102179036908301610777565b84546001600160a01b0396879161023190831633146107be565b169186855194634c96a38960e01b86528483870152856024818a60209c8d95165af194851561034f578795610320575b506102703382895416146107be565b833b1561031c57855163278f794360e11b81529416908401526024830184905280516044840181905294958695915b828810610306575050828092816000606489978689978d116102fa575b601f01601f191681010301925af180156102ed576102d957505051f35b6102e29061070f565b6102e95751f35b5080fd5b50505051903d90823e3d90fd5b878382840101526102bc565b878101820151858901606401529681019661029f565b8680fd5b610341919550883d8a11610348575b6103398183610739565b810190610809565b9338610261565b503d61032f565b86513d89823e3d90fd5b8480fd5b919050346102e957826003193601126102e9576103786106de565b6103806106f9565b9060018060a01b0380916103988287541633146107be565b16803b156103595784928360249288519687958694631b2ce7f360e11b865216908401525af180156102ed576102d957505051f35b919050346102e957826003193601126102e9578160246103eb6106de565b60206103f56106f9565b60018060a01b039384809261040e8289541633146107be565b169389519687938492634c96a38960e01b8452878b850152165af192831561049a57859361047a575b506104463383875416146107be565b803b156103595784928360249288519687958694631b2ce7f360e11b865216908401525af180156102ed576102d957505051f35b61049391935060203d8111610348576103398183610739565b9138610437565b86513d87823e3d90fd5b5060603660031901126100fb576104b96106de565b6104c16106f9565b9160443567ffffffffffffffff8111610589576104e19036908301610777565b9060018060a01b0380936104f98289541633146107be565b1692833b1561031c57855163278f794360e11b8152941690840152602483018490528051604484018190528593929184905b82821061056e57509183606481848195899711610562575b601f01601f1916810103019134905af180156102ed576102d957505051f35b86838284010152610543565b6020818301810151606487850101528896509091019061052b565b8580fd5b5050346102e957816003193601126102e957905490516001600160a01b039091168152602090f35b508290346102e957826003193601126102e9576105d06106de565b6105d86106f9565b83546001600160a01b039283916105f290831633146107be565b16803b156103595784929183602492885196879586946308f2839760e41b865216908401525af180156106355761062857509051f35b6106319061070f565b9051f35b83513d84823e3d90fd5b5050346102e957816003193601126102e95781546001600160a01b03811691839161066b3385146107be565b6001600160a01b031916825551917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e08284a3f35b915091346102e95760203660031901126102e9576001600160a01b0392829190846106c86106de565b635c60da1b60e01b8352165afa926100d5610828565b600435906001600160a01b03821682036106f457565b600080fd5b602435906001600160a01b03821682036106f457565b67ffffffffffffffff811161072357604052565b634e487b7160e01b600052604160045260246000fd5b90601f8019910116810190811067ffffffffffffffff82111761072357604052565b67ffffffffffffffff811161072357601f01601f191660200190565b81601f820112156106f45780359061078e8261075b565b9261079c6040519485610739565b828452602083830101116106f457816000926020809301838601378301015290565b156107c557565b606460405162461bcd60e51b815260206004820152602060248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e65726044820152fd5b908160209103126106f457516001600160a01b03811681036106f45790565b3d15610853573d906108398261075b565b916108476040519384610739565b82523d6000602084013e565b60609056fea2646970667358221220b2249b63d35d84d8835d6bac67d96890edcd86e9c37835655e99320f177b05fd64736f6c634300080f0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "207:971:9:-:0;;;;;;;2362:6:82;207:971:9;;719:10:92;-1:-1:-1;;;;;;207:971:9;;;;;;719:10:92;-1:-1:-1;;;;;207:971:9;;;;2410:40:82;;;;207:971:9;;;;;;;;;;",
+  "deployedSourceMap": "207:971:9:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;207:971:9;;;;-1:-1:-1;;;;;207:971:9;;;;;;;;:::i;:::-;;;-1:-1:-1;;;207:971:9;;;;1528:40:89;;;;;:::i;:::-;207:971:9;;;;;1611:33:89;207:971:9;;;;;;1611:33:89;;;;;;:::i;:::-;207:971:9;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;207:971:9;;;;;;:::i;:::-;;;-1:-1:-1;;;;;207:971:9;;;1240:68:82;;207:971:9;;719:10:92;1248:23:82;1240:68;:::i;:::-;207:971:9;2006:22:82;;;207:971:9;;;;;;;;;;;;;;;;;;2410:40:82;207:971:9;2410:40:82;;207:971:9;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;207:971:9;;;;;;;;;;;;;;-1:-1:-1;;207:971:9;;;;;;:::i;:::-;;;:::i;:::-;;;;;;;;;;;;;;;;:::i;:::-;;;-1:-1:-1;;;;;207:971:9;;;1240:68:82;;207:971:9;;719:10:92;1248:23:82;1240:68;:::i;:::-;207:971:9;;;;;;;;;1068:45;;;;;;207:971;;;;;;;;;;1068:45;;;;;;;;;;;207:971;719:10:92;1240:68:82;719:10:92;207:971:9;;;;1248:23:82;1240:68;:::i;:::-;2768:62:89;;;;;207:971:9;;-1:-1:-1;;;2768:62:89;;207:971:9;;2768:62:89;;;207:971:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;207:971:9;;;2768:62:89;;;;;;;;;;;207:971:9;;;;2768:62:89;;;;:::i;:::-;207:971:9;;;;;;;;2768:62:89;207:971:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2768:62:89;207:971:9;;;1068:45;;;;;;;;;;;;;;;;:::i;:::-;;;;;:::i;:::-;;;;;;;;;;;207:971;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::i;:::-;;;;;;;;;1240:68:82;207:971:9;;;;719:10:92;1248:23:82;1240:68;:::i;:::-;207:971:9;2289:31:89;;;;;207:971:9;;;;;;;;;;;;;;;2289:31:89;;207:971:9;2289:31:89;;;207:971:9;2289:31:89;;;;;;;;207:971:9;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;:::i;:::-;;;;;;;;;;1240:68:82;207:971:9;;;;719:10:92;1248:23:82;1240:68;:::i;:::-;207:971:9;;;;;;;;;;;;586:45;;;;;;207:971;;586:45;;;;;;;;;;;207:971;719:10:92;1240:68:82;719:10:92;207:971:9;;;;1248:23:82;1240:68;:::i;:::-;2289:31:89;;;;;207:971:9;;;;;;;;;;;;;;;2289:31:89;;207:971:9;2289:31:89;;;207:971:9;2289:31:89;;;;;;;;207:971:9;;;;586:45;;;;;207:971;586:45;;;;;;;;;:::i;:::-;;;;;;207:971;;;;;;;;;;-1:-1:-1;207:971:9;;-1:-1:-1;;207:971:9;;;;;;:::i;:::-;;;:::i;:::-;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;1240:68:82;207:971:9;;;;719:10:92;1248:23:82;1240:68;:::i;:::-;207:971:9;2768:62:89;;;;;;207:971:9;;-1:-1:-1;;;2768:62:89;;207:971:9;;2768:62:89;;;207:971:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;207:971:9;;;2768:62:89;;;2798:9;;2768:62;;;;;;;;207:971:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;207:971:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;207:971:9;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::i;:::-;;;-1:-1:-1;;;;;207:971:9;;;1240:68:82;;207:971:9;;719:10:92;1248:23:82;1240:68;:::i;:::-;207:971:9;1939:27:89;;;;;207:971:9;;;;;;;;;;;;;;;;1939:27:89;;207:971:9;1939:27:89;;;207:971:9;1939:27:89;;;;;;;;207:971:9;;;;1939:27:89;;;;:::i;:::-;207:971:9;;;1939:27:89;207:971:9;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;207:971:9;;;;;1240:68:82;719:10:92;1248:23:82;;1240:68;:::i;:::-;-1:-1:-1;;;;;;207:971:9;;;;;2410:40:82;207:971:9;;2410:40:82;207:971:9;;;;;;;;;;-1:-1:-1;;207:971:9;;;;-1:-1:-1;;;;;207:971:9;;;;;;;:::i;:::-;-1:-1:-1;;;207:971:9;;;949:40:89;;;;;:::i;207:971:9:-;;;;-1:-1:-1;;;;;207:971:9;;;;;;:::o;:::-;;;;;;;;-1:-1:-1;;;;;207:971:9;;;;;;:::o;:::-;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;-1:-1:-1;;207:971:9;;;;:::o;:::-;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;:::i;:::-;;;;;;;;;;;;;-1:-1:-1;207:971:9;;;;;;;;;;;;;;:::o;:::-;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;207:971:9;;;;;;;:::o;:::-;;;;;;;;;;:::i;:::-;;;;;;;;:::i;:::-;;;;-1:-1:-1;207:971:9;;;;:::o;:::-;;;:::o",
+  "source": "// SPDX-License-Identifier: BUSL-1.1\npragma solidity 0.8.15;\n\nimport \"./vendor/proxy/transparent/ProxyAdmin.sol\";\n\ninterface Deployable {\n  function deploy(address cometProxy) external returns (address);\n}\n\ncontract CometProxyAdmin is ProxyAdmin {\n    /**\n     * @dev Deploy a new Comet and upgrade the implementation of the Comet proxy\n     *  Requirements:\n     *   - This contract must be the admin of `CometProxy`\n     */\n    function deployAndUpgradeTo(Deployable configuratorProxy, TransparentUpgradeableProxy cometProxy) public virtual onlyOwner {\n        address newCometImpl = configuratorProxy.deploy(address(cometProxy));\n        upgrade(cometProxy, newCometImpl);\n    }\n\n    /**\n     * @dev Deploy a new Comet and upgrade the implementation of the Comet proxy, then call the function\n     *  Requirements:\n     *   - This contract must be the admin of `CometProxy`\n     */\n    function deployUpgradeToAndCall(Deployable configuratorProxy, TransparentUpgradeableProxy cometProxy, bytes memory data) public virtual onlyOwner {\n        address newCometImpl = configuratorProxy.deploy(address(cometProxy));\n        upgradeAndCall(cometProxy, newCometImpl, data);\n    }\n}",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/comet/contracts/CometProxyAdmin.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/comet/contracts/CometProxyAdmin.sol",
+    "exportedSymbols": {
+      "Address": [
+        19706
+      ],
+      "CometProxyAdmin": [
+        6140
+      ],
+      "Context": [
+        19728
+      ],
+      "Deployable": [
+        6078
+      ],
+      "ERC1967Proxy": [
+        18731
+      ],
+      "ERC1967Upgrade": [
+        19049
+      ],
+      "IBeacon": [
+        19111
+      ],
+      "IERC1822Proxiable": [
+        18678
+      ],
+      "Ownable": [
+        18419
+      ],
+      "Proxy": [
+        19101
+      ],
+      "ProxyAdmin": [
+        19247
+      ],
+      "StorageSlot": [
+        19788
+      ],
+      "TransparentUpgradeableProxy": [
+        19411
+      ]
+    },
+    "id": 6141,
+    "license": "BUSL-1.1",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6069,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".15"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:9"
+      },
+      {
+        "absolutePath": "project:/contracts/comet/contracts/vendor/proxy/transparent/ProxyAdmin.sol",
+        "file": "./vendor/proxy/transparent/ProxyAdmin.sol",
+        "id": 6070,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 6141,
+        "sourceUnit": 19248,
+        "src": "62:51:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "Deployable",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 6078,
+        "linearizedBaseContracts": [
+          6078
+        ],
+        "name": "Deployable",
+        "nameLocation": "125:10:9",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "4c96a389",
+            "id": 6077,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deploy",
+            "nameLocation": "149:6:9",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6073,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6072,
+                  "mutability": "mutable",
+                  "name": "cometProxy",
+                  "nameLocation": "164:10:9",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6077,
+                  "src": "156:18:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6071,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "156:7:9",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "155:20:9"
+            },
+            "returnParameters": {
+              "id": 6076,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6075,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6077,
+                  "src": "194:7:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6074,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "194:7:9",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "193:9:9"
+            },
+            "scope": 6078,
+            "src": "140:63:9",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 6141,
+        "src": "115:90:9",
+        "usedErrors": []
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 6079,
+              "name": "ProxyAdmin",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 19247,
+              "src": "235:10:9"
+            },
+            "id": 6080,
+            "nodeType": "InheritanceSpecifier",
+            "src": "235:10:9"
+          }
+        ],
+        "canonicalName": "CometProxyAdmin",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 6140,
+        "linearizedBaseContracts": [
+          6140,
+          19247,
+          18419,
+          19728
+        ],
+        "name": "CometProxyAdmin",
+        "nameLocation": "216:15:9",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 6107,
+              "nodeType": "Block",
+              "src": "553:128:9",
+              "statements": [
+                {
+                  "assignments": [
+                    6093
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 6093,
+                      "mutability": "mutable",
+                      "name": "newCometImpl",
+                      "nameLocation": "571:12:9",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 6107,
+                      "src": "563:20:9",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 6092,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "563:7:9",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 6101,
+                  "initialValue": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "id": 6098,
+                            "name": "cometProxy",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 6087,
+                            "src": "619:10:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_TransparentUpgradeableProxy_$19411",
+                              "typeString": "contract TransparentUpgradeableProxy"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_TransparentUpgradeableProxy_$19411",
+                              "typeString": "contract TransparentUpgradeableProxy"
+                            }
+                          ],
+                          "id": 6097,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "611:7:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": {
+                            "id": 6096,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "611:7:9",
+                            "typeDescriptions": {}
+                          }
+                        },
+                        "id": 6099,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "611:19:9",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "id": 6094,
+                        "name": "configuratorProxy",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6084,
+                        "src": "586:17:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_Deployable_$6078",
+                          "typeString": "contract Deployable"
+                        }
+                      },
+                      "id": 6095,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "deploy",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 6077,
+                      "src": "586:24:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_address_$",
+                        "typeString": "function (address) external returns (address)"
+                      }
+                    },
+                    "id": 6100,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "586:45:9",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "563:68:9"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 6103,
+                        "name": "cometProxy",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6087,
+                        "src": "649:10:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_TransparentUpgradeableProxy_$19411",
+                          "typeString": "contract TransparentUpgradeableProxy"
+                        }
+                      },
+                      {
+                        "id": 6104,
+                        "name": "newCometImpl",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6093,
+                        "src": "661:12:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_TransparentUpgradeableProxy_$19411",
+                          "typeString": "contract TransparentUpgradeableProxy"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 6102,
+                      "name": "upgrade",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 19222,
+                      "src": "641:7:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_contract$_TransparentUpgradeableProxy_$19411_$_t_address_$returns$__$",
+                        "typeString": "function (contract TransparentUpgradeableProxy,address)"
+                      }
+                    },
+                    "id": 6105,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "641:33:9",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6106,
+                  "nodeType": "ExpressionStatement",
+                  "src": "641:33:9"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 6081,
+              "nodeType": "StructuredDocumentation",
+              "src": "252:173:9",
+              "text": " @dev Deploy a new Comet and upgrade the implementation of the Comet proxy\n  Requirements:\n   - This contract must be the admin of `CometProxy`"
+            },
+            "functionSelector": "9627816f",
+            "id": 6108,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 6090,
+                "kind": "modifierInvocation",
+                "modifierName": {
+                  "id": 6089,
+                  "name": "onlyOwner",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 18361,
+                  "src": "543:9:9"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "543:9:9"
+              }
+            ],
+            "name": "deployAndUpgradeTo",
+            "nameLocation": "439:18:9",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6088,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6084,
+                  "mutability": "mutable",
+                  "name": "configuratorProxy",
+                  "nameLocation": "469:17:9",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6108,
+                  "src": "458:28:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_Deployable_$6078",
+                    "typeString": "contract Deployable"
+                  },
+                  "typeName": {
+                    "id": 6083,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6082,
+                      "name": "Deployable",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 6078,
+                      "src": "458:10:9"
+                    },
+                    "referencedDeclaration": 6078,
+                    "src": "458:10:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_Deployable_$6078",
+                      "typeString": "contract Deployable"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6087,
+                  "mutability": "mutable",
+                  "name": "cometProxy",
+                  "nameLocation": "516:10:9",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6108,
+                  "src": "488:38:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_TransparentUpgradeableProxy_$19411",
+                    "typeString": "contract TransparentUpgradeableProxy"
+                  },
+                  "typeName": {
+                    "id": 6086,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6085,
+                      "name": "TransparentUpgradeableProxy",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 19411,
+                      "src": "488:27:9"
+                    },
+                    "referencedDeclaration": 19411,
+                    "src": "488:27:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_TransparentUpgradeableProxy_$19411",
+                      "typeString": "contract TransparentUpgradeableProxy"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "457:70:9"
+            },
+            "returnParameters": {
+              "id": 6091,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "553:0:9"
+            },
+            "scope": 6140,
+            "src": "430:251:9",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6138,
+              "nodeType": "Block",
+              "src": "1035:141:9",
+              "statements": [
+                {
+                  "assignments": [
+                    6123
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 6123,
+                      "mutability": "mutable",
+                      "name": "newCometImpl",
+                      "nameLocation": "1053:12:9",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 6138,
+                      "src": "1045:20:9",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 6122,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1045:7:9",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 6131,
+                  "initialValue": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "id": 6128,
+                            "name": "cometProxy",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 6115,
+                            "src": "1101:10:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_TransparentUpgradeableProxy_$19411",
+                              "typeString": "contract TransparentUpgradeableProxy"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_TransparentUpgradeableProxy_$19411",
+                              "typeString": "contract TransparentUpgradeableProxy"
+                            }
+                          ],
+                          "id": 6127,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "1093:7:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": {
+                            "id": 6126,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "1093:7:9",
+                            "typeDescriptions": {}
+                          }
+                        },
+                        "id": 6129,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1093:19:9",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "id": 6124,
+                        "name": "configuratorProxy",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6112,
+                        "src": "1068:17:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_Deployable_$6078",
+                          "typeString": "contract Deployable"
+                        }
+                      },
+                      "id": 6125,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "deploy",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 6077,
+                      "src": "1068:24:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_address_$",
+                        "typeString": "function (address) external returns (address)"
+                      }
+                    },
+                    "id": 6130,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1068:45:9",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1045:68:9"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 6133,
+                        "name": "cometProxy",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6115,
+                        "src": "1138:10:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_TransparentUpgradeableProxy_$19411",
+                          "typeString": "contract TransparentUpgradeableProxy"
+                        }
+                      },
+                      {
+                        "id": 6134,
+                        "name": "newCometImpl",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6123,
+                        "src": "1150:12:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "id": 6135,
+                        "name": "data",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6117,
+                        "src": "1164:4:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_memory_ptr",
+                          "typeString": "bytes memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_TransparentUpgradeableProxy_$19411",
+                          "typeString": "contract TransparentUpgradeableProxy"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_bytes_memory_ptr",
+                          "typeString": "bytes memory"
+                        }
+                      ],
+                      "id": 6132,
+                      "name": "upgradeAndCall",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 19246,
+                      "src": "1123:14:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_contract$_TransparentUpgradeableProxy_$19411_$_t_address_$_t_bytes_memory_ptr_$returns$__$",
+                        "typeString": "function (contract TransparentUpgradeableProxy,address,bytes memory)"
+                      }
+                    },
+                    "id": 6136,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1123:46:9",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6137,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1123:46:9"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 6109,
+              "nodeType": "StructuredDocumentation",
+              "src": "687:197:9",
+              "text": " @dev Deploy a new Comet and upgrade the implementation of the Comet proxy, then call the function\n  Requirements:\n   - This contract must be the admin of `CometProxy`"
+            },
+            "functionSelector": "c7d20733",
+            "id": 6139,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 6120,
+                "kind": "modifierInvocation",
+                "modifierName": {
+                  "id": 6119,
+                  "name": "onlyOwner",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 18361,
+                  "src": "1025:9:9"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1025:9:9"
+              }
+            ],
+            "name": "deployUpgradeToAndCall",
+            "nameLocation": "898:22:9",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6118,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6112,
+                  "mutability": "mutable",
+                  "name": "configuratorProxy",
+                  "nameLocation": "932:17:9",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6139,
+                  "src": "921:28:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_Deployable_$6078",
+                    "typeString": "contract Deployable"
+                  },
+                  "typeName": {
+                    "id": 6111,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6110,
+                      "name": "Deployable",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 6078,
+                      "src": "921:10:9"
+                    },
+                    "referencedDeclaration": 6078,
+                    "src": "921:10:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_Deployable_$6078",
+                      "typeString": "contract Deployable"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6115,
+                  "mutability": "mutable",
+                  "name": "cometProxy",
+                  "nameLocation": "979:10:9",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6139,
+                  "src": "951:38:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_TransparentUpgradeableProxy_$19411",
+                    "typeString": "contract TransparentUpgradeableProxy"
+                  },
+                  "typeName": {
+                    "id": 6114,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6113,
+                      "name": "TransparentUpgradeableProxy",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 19411,
+                      "src": "951:27:9"
+                    },
+                    "referencedDeclaration": 19411,
+                    "src": "951:27:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_TransparentUpgradeableProxy_$19411",
+                      "typeString": "contract TransparentUpgradeableProxy"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6117,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "1004:4:9",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6139,
+                  "src": "991:17:9",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 6116,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "991:5:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "920:89:9"
+            },
+            "returnParameters": {
+              "id": 6121,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1035:0:9"
+            },
+            "scope": 6140,
+            "src": "889:287:9",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 6141,
+        "src": "207:971:9",
+        "usedErrors": []
+      }
+    ],
+    "src": "37:1141:9"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.15+commit.e14f2714.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-11-30T22:41:29.664Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "changeProxyAdmin(address,address)": {
+        "details": "Changes the admin of `proxy` to `newAdmin`. Requirements: - This contract must be the current admin of `proxy`."
+      },
+      "deployAndUpgradeTo(address,address)": {
+        "details": "Deploy a new Comet and upgrade the implementation of the Comet proxy  Requirements:   - This contract must be the admin of `CometProxy`"
+      },
+      "deployUpgradeToAndCall(address,address,bytes)": {
+        "details": "Deploy a new Comet and upgrade the implementation of the Comet proxy, then call the function  Requirements:   - This contract must be the admin of `CometProxy`"
+      },
+      "getProxyAdmin(address)": {
+        "details": "Returns the current admin of `proxy`. Requirements: - This contract must be the admin of `proxy`."
+      },
+      "getProxyImplementation(address)": {
+        "details": "Returns the current implementation of `proxy`. Requirements: - This contract must be the admin of `proxy`."
+      },
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      },
+      "upgrade(address,address)": {
+        "details": "Upgrades `proxy` to `implementation`. See {TransparentUpgradeableProxy-upgradeTo}. Requirements: - This contract must be the admin of `proxy`."
+      },
+      "upgradeAndCall(address,address,bytes)": {
+        "details": "Upgrades `proxy` to `implementation` and calls a function on the new implementation. See {TransparentUpgradeableProxy-upgradeToAndCall}. Requirements: - This contract must be the admin of `proxy`."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

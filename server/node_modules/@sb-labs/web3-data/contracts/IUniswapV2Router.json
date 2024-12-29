@@ -1,0 +1,333 @@
+{
+  "contractName": "IUniswapV2Router",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amountIn",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amountOutMin",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address[]",
+          "name": "path",
+          "type": "address[]"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "deadline",
+          "type": "uint256"
+        }
+      ],
+      "name": "swapExactTokensForTokens",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "amounts",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountIn\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountOutMin\",\"type\":\"uint256\"},{\"internalType\":\"address[]\",\"name\":\"path\",\"type\":\"address[]\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"name\":\"swapExactTokensForTokens\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"amounts\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Interface for interacting with Uniswap and SushiSwap Routers Note Not a comprehensive interface\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/comet/contracts/liquidator/interfaces/IUniswapV2Router.sol\":\"IUniswapV2Router\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/comet/contracts/liquidator/interfaces/IUniswapV2Router.sol\":{\"keccak256\":\"0x234210a78deed9ed55591f1f86193b8b13cb0cc46642d41234ab47ee455771eb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b60a203ffbdf9fb1b1aac9b6b99c44e88592dd7624959f15c2e8d1b0eda5fb16\",\"dweb:/ipfs/QmecTNshnts9gFrq6xg8zVpNQxCBHupA16M98cerLZKFdz\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity 0.8.15;\n\n/**\n * @dev Interface for interacting with Uniswap and SushiSwap Routers\n * Note Not a comprehensive interface\n */\ninterface IUniswapV2Router {\n    function swapExactTokensForTokens(\n        uint256 amountIn,\n        uint256 amountOutMin,\n        address[] calldata path,\n        address to,\n        uint256 deadline\n    ) external returns (uint256[] memory amounts);\n}",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/comet/contracts/liquidator/interfaces/IUniswapV2Router.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/comet/contracts/liquidator/interfaces/IUniswapV2Router.sol",
+    "exportedSymbols": {
+      "IUniswapV2Router": [
+        12826
+      ]
+    },
+    "id": 12827,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 12807,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".15"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:40"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IUniswapV2Router",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 12808,
+          "nodeType": "StructuredDocumentation",
+          "src": "57:114:40",
+          "text": " @dev Interface for interacting with Uniswap and SushiSwap Routers\n Note Not a comprehensive interface"
+        },
+        "fullyImplemented": false,
+        "id": 12826,
+        "linearizedBaseContracts": [
+          12826
+        ],
+        "name": "IUniswapV2Router",
+        "nameLocation": "182:16:40",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "38ed1739",
+            "id": 12825,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "swapExactTokensForTokens",
+            "nameLocation": "214:24:40",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12820,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12810,
+                  "mutability": "mutable",
+                  "name": "amountIn",
+                  "nameLocation": "256:8:40",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12825,
+                  "src": "248:16:40",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12809,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "248:7:40",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12812,
+                  "mutability": "mutable",
+                  "name": "amountOutMin",
+                  "nameLocation": "282:12:40",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12825,
+                  "src": "274:20:40",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12811,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "274:7:40",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12815,
+                  "mutability": "mutable",
+                  "name": "path",
+                  "nameLocation": "323:4:40",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12825,
+                  "src": "304:23:40",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 12813,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "304:7:40",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 12814,
+                    "nodeType": "ArrayTypeName",
+                    "src": "304:9:40",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12817,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "345:2:40",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12825,
+                  "src": "337:10:40",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 12816,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "337:7:40",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12819,
+                  "mutability": "mutable",
+                  "name": "deadline",
+                  "nameLocation": "365:8:40",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12825,
+                  "src": "357:16:40",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12818,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "357:7:40",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "238:141:40"
+            },
+            "returnParameters": {
+              "id": 12824,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12823,
+                  "mutability": "mutable",
+                  "name": "amounts",
+                  "nameLocation": "415:7:40",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12825,
+                  "src": "398:24:40",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 12821,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "398:7:40",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 12822,
+                    "nodeType": "ArrayTypeName",
+                    "src": "398:9:40",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "397:26:40"
+            },
+            "scope": 12826,
+            "src": "205:219:40",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 12827,
+        "src": "172:254:40",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:394:40"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.15+commit.e14f2714.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-11-30T22:41:29.702Z",
+  "devdoc": {
+    "details": "Interface for interacting with Uniswap and SushiSwap Routers Note Not a comprehensive interface",
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

@@ -1,0 +1,146 @@
+{
+    "1": {
+        "chainId": "0x1",
+        "chainName": "Ethereum",
+        "rpcUrls": [
+            "https://mainnet.infura.io/v3/"
+        ],
+        "nativeCurrency": {
+            "name": "Ether",
+            "symbol": "ETH",
+            "decimals": 18
+        },
+        "blockExplorerUrls": [
+            "https://etherscan.io/"
+        ]
+    },
+    "5": {
+        "chainId": "0x5",
+        "chainName": "Goerli",
+        "rpcUrls": [
+            "https://goerli.infura.io/v3/"
+        ],
+        "nativeCurrency": {
+            "name": "Goerli",
+            "symbol": "GETH",
+            "decimals": 18
+        },
+        "blockExplorerUrls": [
+            "https://goerli.etherscan.io/"
+        ]
+    },
+    "137": {
+        "chainId": "0x89",
+        "chainName": "Polygon",
+        "rpcUrls": [
+            "https://rpc-mainnet.maticvigil.com/"
+        ],
+        "nativeCurrency": {
+            "name": "Matic",
+            "symbol": "MATIC",
+            "decimals": 18
+        },
+        "blockExplorerUrls": [
+            "https://explorer-mainnet.maticvigil.com/"
+        ]
+    },
+    "1101": {
+        "chainId": "0x44d",
+        "chainName": "zkEVM",
+        "rpcUrls": [
+            "https://zkevm-rpc.com"
+        ],
+        "nativeCurrency": {
+            "name": "Ether",
+            "symbol": "ETH",
+            "decimals": 18
+        }
+    },
+    "1337": {
+        "chainId": "0x539",
+        "chainName": "Ganache",
+        "rpcUrls": [
+            "http://172.20.89.195:8545"
+        ],
+        "nativeCurrency": {
+            "name": "Ganache",
+            "symbol": "ETH",
+            "decimals": 18
+        }
+    },
+    "3141": {
+        "chainId": "0xC45",
+        "chainName": "Hyperspace",
+        "rpcUrls": [
+            "https://api.hyperspace.node.glif.io/rpc/v1/"
+        ],
+        "nativeCurrency": {
+            "name": "Test Filecoin",
+            "symbol": "tFIL",
+            "decimals": 18
+        },
+        "blockExplorerUrls": [
+            "https://hyperspace.filfox.info/en/"
+        ]
+    },
+    "8453": {
+        "chainId": "0x2105",
+        "chainName": "Base",
+        "rpcUrls": [
+            "https://mainnet.base.org/"
+        ],
+        "nativeCurrency": {
+            "name": "Ethereum",
+            "symbol": "ETH",
+            "decimals": 18
+        },
+        "blockExplorerUrls": [
+            "https://basescan.org/"
+        ]
+    },
+    "80001": {
+        "chainId": "0x13881",
+        "chainName": "Mumbai",
+        "rpcUrls": [
+            "https://rpc-mumbai.maticvigil.com/"
+        ],
+        "nativeCurrency": {
+            "name": "Matic",
+            "symbol": "MATIC",
+            "decimals": 18
+        },
+        "blockExplorerUrls": [
+            "https://mumbai.polygonscan.com/"
+        ]
+    },
+    "84531": {
+        "chainId": "0x14A33",
+        "chainName": "BaseGoreli",
+        "rpcUrls": [
+            "https://goerli.base.org/"
+        ],
+        "nativeCurrency": {
+            "name": "Ethereum",
+            "symbol": "ETH",
+            "decimals": 18
+        },
+        "blockExplorerUrls": [
+            "https://goerli.basescan.org/"
+        ]
+    },
+    "11155111":{
+        "chainId": "0x14A33",
+        "chainName": "Sepolia",
+        "rpcUrls": [
+            "https://sepolia.drpc.org"
+        ],
+        "nativeCurrency": {
+            "name": "Ethereum",
+            "symbol": "ETH",
+            "decimals": 18
+        },
+        "blockExplorerUrls": [
+            "https://sepolia.drpc.org"
+        ]
+    }
+}

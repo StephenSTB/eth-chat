@@ -1,0 +1,1593 @@
+{
+  "contractName": "BasicHook",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract IPoolManager",
+          "name": "_poolManager",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "hooks",
+          "type": "address"
+        }
+      ],
+      "name": "HookAddressNotValid",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "HookNotImplemented",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidPool",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "LockFailure",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotPoolManager",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotSelf",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "afterDonate",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint160",
+          "name": "",
+          "type": "uint160"
+        },
+        {
+          "internalType": "int24",
+          "name": "",
+          "type": "int24"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "afterInitialize",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "int24",
+              "name": "tickLower",
+              "type": "int24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickUpper",
+              "type": "int24"
+            },
+            {
+              "internalType": "int256",
+              "name": "liquidityDelta",
+              "type": "int256"
+            }
+          ],
+          "internalType": "struct IPoolManager.ModifyPositionParams",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "internalType": "BalanceDelta",
+          "name": "",
+          "type": "int256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "afterModifyPosition",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "zeroForOne",
+              "type": "bool"
+            },
+            {
+              "internalType": "int256",
+              "name": "amountSpecified",
+              "type": "int256"
+            },
+            {
+              "internalType": "uint160",
+              "name": "sqrtPriceLimitX96",
+              "type": "uint160"
+            }
+          ],
+          "internalType": "struct IPoolManager.SwapParams",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "internalType": "BalanceDelta",
+          "name": "",
+          "type": "int256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "afterSwap",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "beforeDonate",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint160",
+          "name": "",
+          "type": "uint160"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "beforeInitialize",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "int24",
+              "name": "tickLower",
+              "type": "int24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickUpper",
+              "type": "int24"
+            },
+            {
+              "internalType": "int256",
+              "name": "liquidityDelta",
+              "type": "int256"
+            }
+          ],
+          "internalType": "struct IPoolManager.ModifyPositionParams",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "beforeModifyPosition",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "Currency",
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "internalType": "Currency",
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "int24",
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "internalType": "contract IHooks",
+              "name": "hooks",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct PoolKey",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "zeroForOne",
+              "type": "bool"
+            },
+            {
+              "internalType": "int256",
+              "name": "amountSpecified",
+              "type": "int256"
+            },
+            {
+              "internalType": "uint160",
+              "name": "sqrtPriceLimitX96",
+              "type": "uint160"
+            }
+          ],
+          "internalType": "struct IPoolManager.SwapParams",
+          "name": "",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "beforeSwap",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "lockAcquired",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "poolManager",
+      "outputs": [
+        {
+          "internalType": "contract IPoolManager",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getHooksCalls",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "beforeInitialize",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "afterInitialize",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "beforeModifyPosition",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "afterModifyPosition",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "beforeSwap",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "afterSwap",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "beforeDonate",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "afterDonate",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "noOp",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct Hooks.Calls",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.28+commit.7893614a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract IPoolManager\",\"name\":\"_poolManager\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"hooks\",\"type\":\"address\"}],\"name\":\"HookAddressNotValid\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"HookNotImplemented\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidPool\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"LockFailure\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotPoolManager\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotSelf\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"afterDonate\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"\",\"type\":\"tuple\"},{\"internalType\":\"uint160\",\"name\":\"\",\"type\":\"uint160\"},{\"internalType\":\"int24\",\"name\":\"\",\"type\":\"int24\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"afterInitialize\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"int24\",\"name\":\"tickLower\",\"type\":\"int24\"},{\"internalType\":\"int24\",\"name\":\"tickUpper\",\"type\":\"int24\"},{\"internalType\":\"int256\",\"name\":\"liquidityDelta\",\"type\":\"int256\"}],\"internalType\":\"struct IPoolManager.ModifyPositionParams\",\"name\":\"\",\"type\":\"tuple\"},{\"internalType\":\"BalanceDelta\",\"name\":\"\",\"type\":\"int256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"afterModifyPosition\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"bool\",\"name\":\"zeroForOne\",\"type\":\"bool\"},{\"internalType\":\"int256\",\"name\":\"amountSpecified\",\"type\":\"int256\"},{\"internalType\":\"uint160\",\"name\":\"sqrtPriceLimitX96\",\"type\":\"uint160\"}],\"internalType\":\"struct IPoolManager.SwapParams\",\"name\":\"\",\"type\":\"tuple\"},{\"internalType\":\"BalanceDelta\",\"name\":\"\",\"type\":\"int256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"afterSwap\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"beforeDonate\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"\",\"type\":\"tuple\"},{\"internalType\":\"uint160\",\"name\":\"\",\"type\":\"uint160\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"beforeInitialize\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"int24\",\"name\":\"tickLower\",\"type\":\"int24\"},{\"internalType\":\"int24\",\"name\":\"tickUpper\",\"type\":\"int24\"},{\"internalType\":\"int256\",\"name\":\"liquidityDelta\",\"type\":\"int256\"}],\"internalType\":\"struct IPoolManager.ModifyPositionParams\",\"name\":\"\",\"type\":\"tuple\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"beforeModifyPosition\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"Currency\",\"name\":\"currency0\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency1\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"int24\",\"name\":\"tickSpacing\",\"type\":\"int24\"},{\"internalType\":\"contract IHooks\",\"name\":\"hooks\",\"type\":\"address\"}],\"internalType\":\"struct PoolKey\",\"name\":\"\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"bool\",\"name\":\"zeroForOne\",\"type\":\"bool\"},{\"internalType\":\"int256\",\"name\":\"amountSpecified\",\"type\":\"int256\"},{\"internalType\":\"uint160\",\"name\":\"sqrtPriceLimitX96\",\"type\":\"uint160\"}],\"internalType\":\"struct IPoolManager.SwapParams\",\"name\":\"\",\"type\":\"tuple\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"beforeSwap\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getHooksCalls\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"beforeInitialize\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"afterInitialize\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"beforeModifyPosition\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"afterModifyPosition\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"beforeSwap\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"afterSwap\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"beforeDonate\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"afterDonate\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"noOp\",\"type\":\"bool\"}],\"internalType\":\"struct Hooks.Calls\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"lockAcquired\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"poolManager\",\"outputs\":[{\"internalType\":\"contract IPoolManager\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"errors\":{\"HookAddressNotValid(address)\":[{\"params\":{\"hooks\":\"The address of the hooks contract\"}}]},\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"errors\":{\"HookAddressNotValid(address)\":[{\"notice\":\"Thrown if the address will not lead to the specified hook calls being called\"}]},\"kind\":\"user\",\"methods\":{\"poolManager()\":{\"notice\":\"The address of the pool manager\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/v4-periphery/contracts/BasicHook.sol\":\"BasicHook\"},\"evmVersion\":\"cancun\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/v4-core/src/interfaces/IClaims.sol\":{\"keccak256\":\"0xdf74a92ef73ec38d1f3fdb83a217a805fee5a9e8d50a079d429dcdf88728a1e9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d4f73e8176929eed516327517ca2d37804348e6073d5b50b5a1396337f089281\",\"dweb:/ipfs/QmWdk99E4PtBBSLe39qPRacFDK52avHN65XAN12CYbCGpU\"]},\"project:/contracts/v4-core/src/interfaces/IFees.sol\":{\"keccak256\":\"0x7a2d2b74602f23a8944b45c745e8a512f7d8f00f8ba22742636abaf929379697\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ab38548046bb65d089fd56b335a3b98d2b4f03e9af4763c2b7da2b04322a6e73\",\"dweb:/ipfs/QmVQfsaSwqV8ynqc9KEGWjQkxnAzju7uQQaFvxqhAd32cW\"]},\"project:/contracts/v4-core/src/interfaces/IHooks.sol\":{\"keccak256\":\"0xc8b2ff0889b0866f84a4a4f06702b92ac08e3a5e2a6048e09dcbba8d58297002\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4614b2c046f2521dc7f39496cd77af787184189f9e23f65086ac89515826190c\",\"dweb:/ipfs/QmdVEVCfz1wJq5zWnvRsKKCUniwYbDUdWf8NWYukCaXe54\"]},\"project:/contracts/v4-core/src/interfaces/IPoolManager.sol\":{\"keccak256\":\"0xb68e18109027f3d40cf922f861c41c149124b5007a428a6476b8f45ed8642845\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://92ab2915861fca8823d53011b16c0dfb7bf5115cc89d8acbbf7f83b12f0974e4\",\"dweb:/ipfs/QmdxDzSn4qm1utvSgTWNioieheDCYLJpWe576YoBhAEbXm\"]},\"project:/contracts/v4-core/src/interfaces/external/IERC20Minimal.sol\":{\"keccak256\":\"0x8dc5ee72426906aeb12f4ae6a2426df059491739bd5cbdb8ea4a3e26970436c6\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://f7e30dbbc972cb78d169c8845d6210d27490c8534e68a20d4f296b11ec727b92\",\"dweb:/ipfs/QmXBvaWaAnPW25YGVm2sMbf5mwrzLapUcqPnrNiiGGXxmA\"]},\"project:/contracts/v4-core/src/libraries/BitMath.sol\":{\"keccak256\":\"0x652cd36970d953b3067c766b3b0c0063d4c403eba7352df09ec10dcc868910d9\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://e357b092171edb755c8514b4b4ae758a8b43458c7a23409ebf5afd325fefa2be\",\"dweb:/ipfs/QmWKRWT2z15cVbVVDkjqdVnpf8Ck1jytcXbA7zCUevp7b6\"]},\"project:/contracts/v4-core/src/libraries/FeeLibrary.sol\":{\"keccak256\":\"0x9fc00b77978b617d1a9b5c9d024210b43ee5455682982703d3009bfafc1c12b4\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://777acadfdbd1b3c01aa780b2dff49771ae6189e421b7e23be38c2db75b9c1267\",\"dweb:/ipfs/QmUR443r39JFuYjLi6zCWnW7r15u1gbmkuEd6e43Br4gyL\"]},\"project:/contracts/v4-core/src/libraries/FixedPoint128.sol\":{\"keccak256\":\"0x1f015a7a107f4c471985a958f1bfbc1710948f9bcd3786a02310bc0ad5080c69\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://a1cacac08675284f319d151f6bc5d1c66cf1d54c5dad1c620a2e1e1336cbb93a\",\"dweb:/ipfs/QmPf8vQ3mBqniKHwvS1DDEFrV5dJfZSL6mMi9JVy6omQaz\"]},\"project:/contracts/v4-core/src/libraries/FixedPoint96.sol\":{\"keccak256\":\"0x7731aeeba692b0ca5dac8f27803ec9e5ce98795a554c09ae05c220861bd0314e\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://963a8155e442d31c4541c387d333db0c02941ae3517e9173ad30ebcb4f6a14e9\",\"dweb:/ipfs/QmevAr8oG4WSoi5gBqQ53VzBuFbDKoZHfJwjuTmVhzm8Tc\"]},\"project:/contracts/v4-core/src/libraries/FullMath.sol\":{\"keccak256\":\"0x6d8760794ed38264579c5da7b2afe8ff5543de999180850bc08687b77dce36ea\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0e72da6f868ba5f5c829f78f649286c6b5922a8cda0317dfbb156b8a4d27fb24\",\"dweb:/ipfs/QmUQDZciNFhy4AFGXfYvoy22ihPc7ehvypeRVQwvVcD3vJ\"]},\"project:/contracts/v4-core/src/libraries/Hooks.sol\":{\"keccak256\":\"0x3d0d10925ccf15daa0f2a5a1370ec0f1f085e85c89b7362f9840f178e1d1d27e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9567aae5dc52dbcb2938bd19a4fc93cec4defaff00a08bfd98ead570f8e8d6ef\",\"dweb:/ipfs/QmV7x1Y48MPkooEPh3turkSr6STux1iP1pzYnE6tfR4cPd\"]},\"project:/contracts/v4-core/src/libraries/Pool.sol\":{\"keccak256\":\"0x4b4bbb00df0b43e296430d4088f719093dcbd16327c472af95c2b4ad84a9b78d\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://cc04d99d71e367fa8e2b3ab584e62c06604804b861aa8df69500b096755ce72d\",\"dweb:/ipfs/QmTJDRNjkXRD6ePSyG26Hfk5pNSNRu58CyYTBsc35kRX3e\"]},\"project:/contracts/v4-core/src/libraries/Position.sol\":{\"keccak256\":\"0x1319e4c172e31427c3b3521dd3c9c9c3949da22e25c9919ae57c47a8c9328e43\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://1e0885e8e035681836fe02213e165d1ab48cf2488cf6ba8f01964b4b026d2b46\",\"dweb:/ipfs/QmR4W3DZYYvctASLFnm7Sf4wk2L77gwNRrTS2mBqtiUaud\"]},\"project:/contracts/v4-core/src/libraries/SafeCast.sol\":{\"keccak256\":\"0x197985a64d2ccf38a5e6a80cf70dc345594cc7296a2364b7447e553966ed89dc\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://05c0f4aa083eb721febe1d23a1f55ced942eab0072318cb919c5fa42d0553042\",\"dweb:/ipfs/QmV1DBPTynduQnC9T5Ad87jHLZfevMkBQPFjPTMtstJgeN\"]},\"project:/contracts/v4-core/src/libraries/SqrtPriceMath.sol\":{\"keccak256\":\"0xe54bb39a96f98df7b8d36fade6b95bc866e138594b146ef0d4cee4e542170058\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://a3e737e963339141ba91a2a11d635e7ffe9ed901325579094aa4ac76b435314a\",\"dweb:/ipfs/QmVQ5ENKDBNJEM6kgLi8FwifxbAW4xj2riknTWfnox79ZR\"]},\"project:/contracts/v4-core/src/libraries/SwapMath.sol\":{\"keccak256\":\"0xac5b75b36ff928e88cbec828bdc9db03e681cc3b337d5d7f6be9fd617b3fef7f\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://6aaea2ecabdb3fec93c7c6be19ea3a034cf396a59ab96f61c57b5214c04b5a6e\",\"dweb:/ipfs/QmYyd4ExT6xbvEHZTQBv9nZuvU6xjB6EN4uY8TmK8Tceqv\"]},\"project:/contracts/v4-core/src/libraries/TickBitmap.sol\":{\"keccak256\":\"0x7cccb8dff4c76da872a827f1549dc44cdff384d123e77a5361a02a31902bf15c\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://88f850cd5bd2bbada4d9514f2516804392c7b23dc2cb541b74e9c88d0a351dcd\",\"dweb:/ipfs/QmZh9LvKUG23oFUZXAAa5gn77MguAbZ41VGjkES5U8N9Em\"]},\"project:/contracts/v4-core/src/libraries/TickMath.sol\":{\"keccak256\":\"0xc7e49d8f58765e4d586f943b782f3b11b5330864ffc273494420f268dc3b34a8\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://12a96f136f09a15af9f4484f23782097a7233fb0658f12ebc94873d91bc7eba3\",\"dweb:/ipfs/Qmc7W5Ff9Tmnd6daXeqGjgcfritarGxRrqSSCYzZ1pZ2yZ\"]},\"project:/contracts/v4-core/src/libraries/UnsafeMath.sol\":{\"keccak256\":\"0x2a8cb75af05f8557b698b089a0ab19e24279fffb7e87cddf5794404c7eaf1c69\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://85f68e6d614205f3f0f55f6ac41805e3a7d523d95bda1c443f2e75444443ffe3\",\"dweb:/ipfs/QmdCheMqxWNx4CbxG5MH9BUQeSMeeXF6DHkf7Aax4duRUe\"]},\"project:/contracts/v4-core/src/types/BalanceDelta.sol\":{\"keccak256\":\"0xb348472d6a9050f8e162173712911896882939a0cd7316db386ced5182716845\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://10db8d83e74b6cabcf71f0325d16e9c919c66ba4e41ab58a280b432f8b9ea6e4\",\"dweb:/ipfs/QmNWQJQqCrp9QWzbdBivkYBX6tfEgobkGYhoCxvoX3ZtKg\"]},\"project:/contracts/v4-core/src/types/Currency.sol\":{\"keccak256\":\"0xb1395e2817b604745bf6cd41821aafeaaa252caafe45133e54f02d6f6be13d2b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://49ec58bd7634ccb1b74f59378e54771ae11cba37494b57ae64e3f6640d4afdd9\",\"dweb:/ipfs/QmeYL1TuGXcTYfsQBGu7p9urSqGjiJky8iJAgwTRYqrJ4F\"]},\"project:/contracts/v4-core/src/types/PoolId.sol\":{\"keccak256\":\"0x2928a23cdf4c3dd05fafd3094020723954150901c6935a40fbb8e3cbc1e0ebe3\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4ddde47e0eda04cf7e1b8e903eafd22ff19866bcb2ce0f61b46a3470b4dc9927\",\"dweb:/ipfs/Qme84u2nmVFZkaBSwVJw3bhZSqt6P9xMHNsp1Y7ddWMDvi\"]},\"project:/contracts/v4-core/src/types/PoolKey.sol\":{\"keccak256\":\"0xef7421713157a514d757863e99c2d094a6fac1dcbae602ac0eb47eda2d651a6d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d2832668ba213b3928fd79e159b4d00b4b8f057844e2897902ec089014470f29\",\"dweb:/ipfs/QmV2MESks8RiTwRJpqynGCGsrmXKimRFpQFZSBXnxEiXKX\"]},\"project:/contracts/v4-periphery/contracts/BaseHook.sol\":{\"keccak256\":\"0x0fde959daa97f43dfbb454690c68a73744e7a29fdef6634f8ae5a5e105582bb5\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://125e6f5fd6ebc6afc4a0955c0afa8e9da61273fec656e1a1f8f550bab242151c\",\"dweb:/ipfs/QmRzThaonEwjyHXWpuFviWCeBXyV27cu34cXFUNxQZ4vLJ\"]},\"project:/contracts/v4-periphery/contracts/BasicHook.sol\":{\"keccak256\":\"0x69c0e926be46c3612a3c2453d71ce02af3e226aabd7b47ab2d78a5100203bff1\",\"urls\":[\"bzz-raw://de48a04e657302d5ff142bf7b5d4a55bfe50fb6fd35285c19fd7f27606dcec6e\",\"dweb:/ipfs/QmT7xWdo1zGKGtg9nDE3phayDNeNwfzMNsrufb2k5mYZu5\"]}},\"version\":1}",
+  "bytecode": "0x60a06040523461009257604051601f61087238819003918201601f19168301916001600160401b038311848410176100965780849260209460405283398101031261009257516001600160a01b0381168103610092576080526100696100636100ca565b30610145565b6100746100636100ca565b6040516105f29081610280823960805181818160d201526101570152f35b5f80fd5b634e487b7160e01b5f52604160045260245ffd5b6040519061012082016001600160401b0381118382101761009657604052565b5f6101006100d66100aa565b8281528260208201528260408201528260608201528260808201528260a08201528260c08201528260e0820152015261010d6100aa565b5f81525f60208201525f60408201525f60608201525f60808201525f60a08201525f60c08201525f60e0820152600161010082015290565b90805115156001609f1b831615151490811591610266575b811561024d575b8115610234575b811561021b575b8115610202575b81156101e9575b81156101d0575b81156101b6575b506101965750565b630732d7b560e51b5f9081526001600160a01b0391909116600452602490fd5b61010001511515600160971b83161515141590505f61018e565b60e08101511515600160981b8416151514159150610187565b60c08101511515600160991b8416151514159150610180565b60a081015115156001609a1b8416151514159150610179565b608081015115156001609b1b8416151514159150610172565b606081015115156001609c1b841615151415915061016b565b604081015115156001609d1b8416151514159150610164565b602081015115156001609e1b841615151415915061015d56fe60806040526004361015610011575f80fd5b5f3560e01c806330b7cdef146101015780633440d8201461031e578063575e24b414610092578063612c39b71461023c578063a910f80f146101ce578063ab6291fe14610124578063b47b2fb114610101578063b6a8b0fa146100b8578063dc4c90d3146100bd578063e1b4af69146100b85763fe9a6f4514610092575f80fd5b346100b4576100a036610430565b5050505050630a85dc2960e01b5f5260045ffd5b5f80fd5b610490565b346100b4575f3660031901126100b4576040517f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03168152602090f35b346100b45761010f366103b2565b505050505050630a85dc2960e01b5f5260045ffd5b346100b45760203660031901126100b45760043567ffffffffffffffff81116100b457610155903690600401610384565b7f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031633036101bf5761019360409160209361052b565b815192839181835280519182918282860152018484015e5f828201840152601f01601f19168101030190f35b63570c108560e11b5f5260045ffd5b346100b4576101203660031901126100b4576101e861036e565b5060a03660231901126100b4576101fd61041a565b5060e4358060020b036100b4576101043567ffffffffffffffff81116100b45761022b903690600401610384565b5050630a85dc2960e01b5f5260045ffd5b346100b4575f3660031901126100b4575f6101006102586104f6565b8281528260208201528260408201528260608201528260808201528260a08201528260c08201528260e082015201526101206102926104f6565b5f815260208101905f825260408101905f8252606081015f8152608082015f815260a08301905f825260c08401925f845261010060e08601955f8752019560018752604051975f8952511515602089015251151560408801525115156060870152511515608086015251151560a085015251151560c084015251151560e0830152511515610100820152f35b346100b4576101003660031901126100b45761033861036e565b5060a03660231901126100b45761034d61041a565b5060e43567ffffffffffffffff81116100b45761022b903690600401610384565b600435906001600160a01b03821682036100b457565b9181601f840112156100b45782359167ffffffffffffffff83116100b457602083818601950101116100b457565b6101606003198201126100b4576004356001600160a01b03811681036100b4579160a06023198301126100b457602491606060c3198201126100b45760c4916101243591610144359067ffffffffffffffff82116100b45761041691600401610384565b9091565b60c435906001600160a01b03821682036100b457565b906101406003198301126100b4576004356001600160a01b03811681036100b4579160a06023198201126100b457602491606060c3198301126100b45760c491610124359067ffffffffffffffff82116100b45761041691600401610384565b346100b4576101203660031901126100b4576004356001600160a01b03811681036100b4575060a03660231901126100b4576101043567ffffffffffffffff81116100b4576104e3903690600401610384565b5050630a85dc2960e01b5f908152600490fd5b60405190610120820182811067ffffffffffffffff82111761051757604052565b634e487b7160e01b5f52604160045260245ffd5b5f9182918160405192839283378101838152039082305af1903d156105b4573d9167ffffffffffffffff83116105175760405192601f8101601f19908116603f0116840167ffffffffffffffff8111858210176105175760405283523d5f602085013e5b6105b257508051156105a357602081519101fd5b6314815f4760e31b5f5260045ffd5b565b60609161058f56fea2646970667358221220559e78bbbf07c2fe917a2906c9c86e890f02dcb349dc41197c0fbe942db3b1cd64736f6c634300081c0033",
+  "deployedBytecode": "0x60806040526004361015610011575f80fd5b5f3560e01c806330b7cdef146101015780633440d8201461031e578063575e24b414610092578063612c39b71461023c578063a910f80f146101ce578063ab6291fe14610124578063b47b2fb114610101578063b6a8b0fa146100b8578063dc4c90d3146100bd578063e1b4af69146100b85763fe9a6f4514610092575f80fd5b346100b4576100a036610430565b5050505050630a85dc2960e01b5f5260045ffd5b5f80fd5b610490565b346100b4575f3660031901126100b4576040517f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03168152602090f35b346100b45761010f366103b2565b505050505050630a85dc2960e01b5f5260045ffd5b346100b45760203660031901126100b45760043567ffffffffffffffff81116100b457610155903690600401610384565b7f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031633036101bf5761019360409160209361052b565b815192839181835280519182918282860152018484015e5f828201840152601f01601f19168101030190f35b63570c108560e11b5f5260045ffd5b346100b4576101203660031901126100b4576101e861036e565b5060a03660231901126100b4576101fd61041a565b5060e4358060020b036100b4576101043567ffffffffffffffff81116100b45761022b903690600401610384565b5050630a85dc2960e01b5f5260045ffd5b346100b4575f3660031901126100b4575f6101006102586104f6565b8281528260208201528260408201528260608201528260808201528260a08201528260c08201528260e082015201526101206102926104f6565b5f815260208101905f825260408101905f8252606081015f8152608082015f815260a08301905f825260c08401925f845261010060e08601955f8752019560018752604051975f8952511515602089015251151560408801525115156060870152511515608086015251151560a085015251151560c084015251151560e0830152511515610100820152f35b346100b4576101003660031901126100b45761033861036e565b5060a03660231901126100b45761034d61041a565b5060e43567ffffffffffffffff81116100b45761022b903690600401610384565b600435906001600160a01b03821682036100b457565b9181601f840112156100b45782359167ffffffffffffffff83116100b457602083818601950101116100b457565b6101606003198201126100b4576004356001600160a01b03811681036100b4579160a06023198301126100b457602491606060c3198201126100b45760c4916101243591610144359067ffffffffffffffff82116100b45761041691600401610384565b9091565b60c435906001600160a01b03821682036100b457565b906101406003198301126100b4576004356001600160a01b03811681036100b4579160a06023198201126100b457602491606060c3198301126100b45760c491610124359067ffffffffffffffff82116100b45761041691600401610384565b346100b4576101203660031901126100b4576004356001600160a01b03811681036100b4575060a03660231901126100b4576101043567ffffffffffffffff81116100b4576104e3903690600401610384565b5050630a85dc2960e01b5f908152600490fd5b60405190610120820182811067ffffffffffffffff82111761051757604052565b634e487b7160e01b5f52604160045260245ffd5b5f9182918160405192839283378101838152039082305af1903d156105b4573d9167ffffffffffffffff83116105175760405192601f8101601f19908116603f0116840167ffffffffffffffff8111858210176105175760405283523d5f602085013e5b6105b257508051156105a357602081519101fd5b6314815f4760e31b5f5260045ffd5b565b60609161058f56fea2646970667358221220559e78bbbf07c2fe917a2906c9c86e890f02dcb349dc41197c0fbe942db3b1cd64736f6c634300081c0033",
+  "immutableReferences": {
+    "14615": [
+      {
+        "length": 32,
+        "start": 210
+      },
+      {
+        "length": 32,
+        "start": 343
+      }
+    ]
+  },
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "268:706:60:-:0;;;;;;;;;;;;;;;;;-1:-1:-1;;268:706:60;;;;-1:-1:-1;;;;;268:706:60;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;268:706:60;;;;;;719:26:59;;1679:49;1712:15;;:::i;:::-;775:4;1679:49;:::i;:::-;426:15:60;;;:::i;:::-;268:706;;;;;;;;719:26:59;268:706:60;;;;;;;;;;;;-1:-1:-1;268:706:60;;;;;;-1:-1:-1;268:706:60;;;;;-1:-1:-1;268:706:60;;;;;;;;-1:-1:-1;;;;;268:706:60;;;;;;;;;;:::o;454:518::-;-1:-1:-1;268:706:60;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;-1:-1:-1;268:706:60;;-1:-1:-1;268:706:60;598:367;;268:706;-1:-1:-1;268:706:60;598:367;;268:706;-1:-1:-1;268:706:60;598:367;;268:706;-1:-1:-1;268:706:60;598:367;;268:706;-1:-1:-1;268:706:60;598:367;;268:706;-1:-1:-1;268:706:60;598:367;;268:706;-1:-1:-1;268:706:60;598:367;;268:706;;;598:367;;268:706;454:518;:::o;2087:785:45:-;;268:706:60;;;;;629:8:45;;3999:56;;:61;;2190:58;;;;:134;;;2087:785;2190:220;;;;2087:785;2190:304;;;;2087:785;2190:370;;;;2087:785;2190:418;;;;2087:785;2190:488;;;;2087:785;2190:540;;;;2087:785;2190:599;;;;2087:785;2173:693;;;2087:785;:::o;2173:693::-;-1:-1:-1;;;;2821:34:45;;;-1:-1:-1;;;;;268:706:60;;;;2821:34:45;268:706:60;;;2821:34:45;2190:599;2750:10;;268:706:60;;;-1:-1:-1;;;5314:44:45;;:49;;2750:39;;;-1:-1:-1;2190:599:45;;;:540;2682:17;;;268:706:60;;;-1:-1:-1;;;5157:51:45;;:56;;2682:48;;;-1:-1:-1;2190:540:45;;:488;2628:18;;;268:706:60;;;-1:-1:-1;;;4997:52:45;;:57;;2628:50;;;-1:-1:-1;2190:488:45;;:418;2564:15;;;268:706:60;;;-1:-1:-1;;;4839:49:45;;:54;;2564:44;;;-1:-1:-1;2190:418:45;;:370;2514:16;;;268:706:60;;;-1:-1:-1;;;4683:50:45;;:55;;2514:46;;;-1:-1:-1;2190:370:45;;:304;2430:25;;;268:706:60;;;-1:-1:-1;;;4516:60:45;;:65;;2430:64;;;-1:-1:-1;2190:304:45;;:220;2344:26;;;268:706:60;;;-1:-1:-1;;;4339:61:45;;:66;;2344;;;-1:-1:-1;2190:220:45;;:134;2268:21;;;268:706:60;;;-1:-1:-1;;;4167:55:45;;:60;;2268:56;;;-1:-1:-1;2190:134:45;",
+  "deployedSourceMap": "268:706:60:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;3024:20:59;;;;;;;;268:706:60;3024:20:59;268:706:60;;3024:20:59;268:706:60;;;;;;:::i;:::-;;;;;;-1:-1:-1;;268:706:60;;;;;;622:41:59;-1:-1:-1;;;;;268:706:60;;;;;;;;;;;;;:::i;:::-;3024:20:59;;;;;;;;;268:706:60;3024:20:59;268:706:60;;3024:20:59;268:706:60;;;;;;-1:-1:-1;;268:706:60;;;;;;;;;;;;;;;;;;:::i;:::-;914:11:59;-1:-1:-1;;;;;268:706:60;892:10:59;:34;888:63;;1741:463;268:706:60;1741:463:59;268:706:60;1741:463:59;;:::i;:::-;268:706:60;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;268:706:60;;;;;;;888:63:59;935:16;;;268:706:60;935:16:59;268:706:60;;935:16:59;268:706:60;;;;;;-1:-1:-1;;268:706:60;;;;;;:::i;:::-;-1:-1:-1;268:706:60;;-1:-1:-1;;268:706:60;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;3024:20:59;;;;;268:706:60;3024:20:59;268:706:60;;3024:20:59;268:706:60;;;;;;-1:-1:-1;;268:706:60;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;598:367;;268:706;;;;;598:367;;268:706;;;;;598:367;;268:706;;;;598:367;;268:706;;;;598:367;;268:706;;;;;598:367;;268:706;;;;;;598:367;;268:706;;;;598:367;268:706;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;268:706:60;;;;;;:::i;:::-;-1:-1:-1;268:706:60;;-1:-1:-1;;268:706:60;;;;;;:::i;:::-;;;;;;;;;;;;;;;;:::i;:::-;;;;-1:-1:-1;;;;;268:706:60;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;-1:-1:-1;;268:706:60;;;;;;;-1:-1:-1;;;;;268:706:60;;;;;;;;-1:-1:-1;;268:706:60;;;;;;;;-1:-1:-1;;268:706:60;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;-1:-1:-1;;;;;268:706:60;;;;;;:::o;:::-;;;-1:-1:-1;;268:706:60;;;;;;;-1:-1:-1;;;;;268:706:60;;;;;;;;-1:-1:-1;;268:706:60;;;;;;;;-1:-1:-1;;268:706:60;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;-1:-1:-1;;268:706:60;;;;;;-1:-1:-1;;;;;268:706:60;;;;;;-1:-1:-1;268:706:60;;-1:-1:-1;;268:706:60;;;;;;;;;;;;;;;;;;:::i;:::-;-1:-1:-1;;;;;;3024:20:59;;;268:706:60;;3024:20:59;268:706:60;;;;;;;;;;;;;;;;;;:::o;:::-;;;;-1:-1:-1;268:706:60;;;;;-1:-1:-1;268:706:60;1741:463:59;-1:-1:-1;1741:463:59;;;268:706:60;;;;;;;;;;;;;1892:24:59;1900:4;;;1892:24;;;268:706:60;;;;;;;;;;;;;;;;;-1:-1:-1;;268:706:60;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;268:706:60;;;;;1926:30:59;;268:706:60;;;1970:22:59;1966:48;;2119:79;;;;;;1966:48;2001:13;;;-1:-1:-1;2001:13:59;;-1:-1:-1;2001:13:59;1926:30;1939:17::o;268:706:60:-;;;;",
+  "source": "pragma solidity ^0.8.20;\nimport {BaseHook} from \"./BaseHook.sol\";\nimport {Hooks} from \"../../v4-core/src/libraries/Hooks.sol\";\nimport {IHooks} from \"../../v4-core/src/interfaces/IHooks.sol\";\nimport {IPoolManager} from \"../../v4-core/src/interfaces/IPoolManager.sol\";\n\ncontract BasicHook is BaseHook {\n\n    constructor(IPoolManager _poolManager)BaseHook(_poolManager){\n         Hooks.validateHookAddress(IHooks(address(this)), getHooksCalls());\n    }\n    function getHooksCalls()\n        public\n        pure\n        virtual\n        override\n        returns (Hooks.Calls memory)\n    {\n        return Hooks.Calls({\n                beforeInitialize: false,\n                afterInitialize: false,\n                beforeModifyPosition: false,\n                afterModifyPosition: false,\n                beforeSwap: false,\n                afterSwap: false,\n                beforeDonate: false,\n                afterDonate: false,\n                noOp: true\n            });\n    }\n}",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/v4-periphery/contracts/BasicHook.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/v4-periphery/contracts/BasicHook.sol",
+    "exportedSymbols": {
+      "BaseHook": [
+        14894
+      ],
+      "BasicHook": [
+        14951
+      ],
+      "Hooks": [
+        10011
+      ],
+      "IHooks": [
+        8475
+      ],
+      "IPoolManager": [
+        8867
+      ]
+    },
+    "id": 14952,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 14896,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".20"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:60"
+      },
+      {
+        "absolutePath": "project:/contracts/v4-periphery/contracts/BaseHook.sol",
+        "file": "./BaseHook.sol",
+        "id": 14898,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 14952,
+        "sourceUnit": 14895,
+        "src": "25:40:60",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 14897,
+              "name": "BaseHook",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 14894,
+              "src": "33:8:60",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/v4-core/src/libraries/Hooks.sol",
+        "file": "../../v4-core/src/libraries/Hooks.sol",
+        "id": 14900,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 14952,
+        "sourceUnit": 10012,
+        "src": "66:60:60",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 14899,
+              "name": "Hooks",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 10011,
+              "src": "74:5:60",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/v4-core/src/interfaces/IHooks.sol",
+        "file": "../../v4-core/src/interfaces/IHooks.sol",
+        "id": 14902,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 14952,
+        "sourceUnit": 8476,
+        "src": "127:63:60",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 14901,
+              "name": "IHooks",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 8475,
+              "src": "135:6:60",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/v4-core/src/interfaces/IPoolManager.sol",
+        "file": "../../v4-core/src/interfaces/IPoolManager.sol",
+        "id": 14904,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 14952,
+        "sourceUnit": 8868,
+        "src": "191:75:60",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 14903,
+              "name": "IPoolManager",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 8867,
+              "src": "199:12:60",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 14905,
+              "name": "BaseHook",
+              "nameLocations": [
+                "290:8:60"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 14894,
+              "src": "290:8:60"
+            },
+            "id": 14906,
+            "nodeType": "InheritanceSpecifier",
+            "src": "290:8:60"
+          }
+        ],
+        "canonicalName": "BasicHook",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 14951,
+        "linearizedBaseContracts": [
+          14951,
+          14894,
+          8475
+        ],
+        "name": "BasicHook",
+        "nameLocation": "277:9:60",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 14928,
+              "nodeType": "Block",
+              "src": "366:83:60",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "arguments": [
+                              {
+                                "id": 14921,
+                                "name": "this",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 4294967268,
+                                "src": "418:4:60",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_contract$_BasicHook_$14951",
+                                  "typeString": "contract BasicHook"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_contract$_BasicHook_$14951",
+                                  "typeString": "contract BasicHook"
+                                }
+                              ],
+                              "id": 14920,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "410:7:60",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_address_$",
+                                "typeString": "type(address)"
+                              },
+                              "typeName": {
+                                "id": 14919,
+                                "name": "address",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "410:7:60",
+                                "typeDescriptions": {}
+                              }
+                            },
+                            "id": 14922,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "nameLocations": [],
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "410:13:60",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 14918,
+                          "name": "IHooks",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 8475,
+                          "src": "403:6:60",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_IHooks_$8475_$",
+                            "typeString": "type(contract IHooks)"
+                          }
+                        },
+                        "id": 14923,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "nameLocations": [],
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "403:21:60",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IHooks_$8475",
+                          "typeString": "contract IHooks"
+                        }
+                      },
+                      {
+                        "arguments": [],
+                        "expression": {
+                          "argumentTypes": [],
+                          "id": 14924,
+                          "name": "getHooksCalls",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [
+                            14950
+                          ],
+                          "referencedDeclaration": 14950,
+                          "src": "426:13:60",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_pure$__$returns$_t_struct$_Calls_$9604_memory_ptr_$",
+                            "typeString": "function () pure returns (struct Hooks.Calls memory)"
+                          }
+                        },
+                        "id": 14925,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "nameLocations": [],
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "426:15:60",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Calls_$9604_memory_ptr",
+                          "typeString": "struct Hooks.Calls memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_IHooks_$8475",
+                          "typeString": "contract IHooks"
+                        },
+                        {
+                          "typeIdentifier": "t_struct$_Calls_$9604_memory_ptr",
+                          "typeString": "struct Hooks.Calls memory"
+                        }
+                      ],
+                      "expression": {
+                        "id": 14915,
+                        "name": "Hooks",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 10011,
+                        "src": "377:5:60",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_Hooks_$10011_$",
+                          "typeString": "type(library Hooks)"
+                        }
+                      },
+                      "id": 14917,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "383:19:60",
+                      "memberName": "validateHookAddress",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 9694,
+                      "src": "377:25:60",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_pure$_t_contract$_IHooks_$8475_$_t_struct$_Calls_$9604_memory_ptr_$returns$__$",
+                        "typeString": "function (contract IHooks,struct Hooks.Calls memory) pure"
+                      }
+                    },
+                    "id": 14926,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "377:65:60",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 14927,
+                  "nodeType": "ExpressionStatement",
+                  "src": "377:65:60"
+                }
+              ]
+            },
+            "id": 14929,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "id": 14912,
+                    "name": "_poolManager",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 14909,
+                    "src": "353:12:60",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IPoolManager_$8867",
+                      "typeString": "contract IPoolManager"
+                    }
+                  }
+                ],
+                "id": 14913,
+                "kind": "baseConstructorSpecifier",
+                "modifierName": {
+                  "id": 14911,
+                  "name": "BaseHook",
+                  "nameLocations": [
+                    "344:8:60"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 14894,
+                  "src": "344:8:60"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "344:22:60"
+              }
+            ],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14910,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14909,
+                  "mutability": "mutable",
+                  "name": "_poolManager",
+                  "nameLocation": "331:12:60",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14929,
+                  "src": "318:25:60",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IPoolManager_$8867",
+                    "typeString": "contract IPoolManager"
+                  },
+                  "typeName": {
+                    "id": 14908,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14907,
+                      "name": "IPoolManager",
+                      "nameLocations": [
+                        "318:12:60"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 8867,
+                      "src": "318:12:60"
+                    },
+                    "referencedDeclaration": 8867,
+                    "src": "318:12:60",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IPoolManager_$8867",
+                      "typeString": "contract IPoolManager"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "317:27:60"
+            },
+            "returnParameters": {
+              "id": 14914,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "366:0:60"
+            },
+            "scope": 14951,
+            "src": "306:143:60",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "baseFunctions": [
+              14683
+            ],
+            "body": {
+              "id": 14949,
+              "nodeType": "Block",
+              "src": "581:391:60",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "hexValue": "66616c7365",
+                        "id": 14938,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "bool",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "646:5:60",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "value": "false"
+                      },
+                      {
+                        "hexValue": "66616c7365",
+                        "id": 14939,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "bool",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "686:5:60",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "value": "false"
+                      },
+                      {
+                        "hexValue": "66616c7365",
+                        "id": 14940,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "bool",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "731:5:60",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "value": "false"
+                      },
+                      {
+                        "hexValue": "66616c7365",
+                        "id": 14941,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "bool",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "775:5:60",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "value": "false"
+                      },
+                      {
+                        "hexValue": "66616c7365",
+                        "id": 14942,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "bool",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "810:5:60",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "value": "false"
+                      },
+                      {
+                        "hexValue": "66616c7365",
+                        "id": 14943,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "bool",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "844:5:60",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "value": "false"
+                      },
+                      {
+                        "hexValue": "66616c7365",
+                        "id": 14944,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "bool",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "881:5:60",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "value": "false"
+                      },
+                      {
+                        "hexValue": "66616c7365",
+                        "id": 14945,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "bool",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "917:5:60",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "value": "false"
+                      },
+                      {
+                        "hexValue": "74727565",
+                        "id": 14946,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "bool",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "946:4:60",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "value": "true"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "expression": {
+                        "id": 14936,
+                        "name": "Hooks",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 10011,
+                        "src": "598:5:60",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_Hooks_$10011_$",
+                          "typeString": "type(library Hooks)"
+                        }
+                      },
+                      "id": 14937,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "604:5:60",
+                      "memberName": "Calls",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 9604,
+                      "src": "598:11:60",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_Calls_$9604_storage_ptr_$",
+                        "typeString": "type(struct Hooks.Calls storage pointer)"
+                      }
+                    },
+                    "id": 14947,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "nameLocations": [
+                      "628:16:60",
+                      "669:15:60",
+                      "709:20:60",
+                      "754:19:60",
+                      "798:10:60",
+                      "833:9:60",
+                      "867:12:60",
+                      "904:11:60",
+                      "940:4:60"
+                    ],
+                    "names": [
+                      "beforeInitialize",
+                      "afterInitialize",
+                      "beforeModifyPosition",
+                      "afterModifyPosition",
+                      "beforeSwap",
+                      "afterSwap",
+                      "beforeDonate",
+                      "afterDonate",
+                      "noOp"
+                    ],
+                    "nodeType": "FunctionCall",
+                    "src": "598:367:60",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Calls_$9604_memory_ptr",
+                      "typeString": "struct Hooks.Calls memory"
+                    }
+                  },
+                  "functionReturnParameters": 14935,
+                  "id": 14948,
+                  "nodeType": "Return",
+                  "src": "591:374:60"
+                }
+              ]
+            },
+            "functionSelector": "612c39b7",
+            "id": 14950,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getHooksCalls",
+            "nameLocation": "463:13:60",
+            "nodeType": "FunctionDefinition",
+            "overrides": {
+              "id": 14931,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "531:8:60"
+            },
+            "parameters": {
+              "id": 14930,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "476:2:60"
+            },
+            "returnParameters": {
+              "id": 14935,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14934,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14950,
+                  "src": "557:18:60",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Calls_$9604_memory_ptr",
+                    "typeString": "struct Hooks.Calls"
+                  },
+                  "typeName": {
+                    "id": 14933,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 14932,
+                      "name": "Hooks.Calls",
+                      "nameLocations": [
+                        "557:5:60",
+                        "563:5:60"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 9604,
+                      "src": "557:11:60"
+                    },
+                    "referencedDeclaration": 9604,
+                    "src": "557:11:60",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Calls_$9604_storage_ptr",
+                      "typeString": "struct Hooks.Calls"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "556:20:60"
+            },
+            "scope": 14951,
+            "src": "454:518:60",
+            "stateMutability": "pure",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 14952,
+        "src": "268:706:60",
+        "usedErrors": [
+          9609,
+          14603,
+          14605,
+          14607,
+          14609,
+          14611
+        ],
+        "usedEvents": []
+      }
+    ],
+    "src": "0:974:60"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.28+commit.7893614a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2024-12-18T07:36:00.866Z",
+  "devdoc": {
+    "errors": {
+      "HookAddressNotValid(address)": [
+        {
+          "params": {
+            "hooks": "The address of the hooks contract"
+          }
+        }
+      ]
+    },
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "errors": {
+      "HookAddressNotValid(address)": [
+        {
+          "notice": "Thrown if the address will not lead to the specified hook calls being called"
+        }
+      ]
+    },
+    "kind": "user",
+    "methods": {
+      "poolManager()": {
+        "notice": "The address of the pool manager"
+      }
+    },
+    "version": 1
+  }
+}

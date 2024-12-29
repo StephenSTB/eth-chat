@@ -30,6 +30,9 @@
 /*Mobile*/
 @media screen and (max-width: 900px) 
 {
-  
+    #wallet-create{
+        height: 600px;
+        width: 375px;
+    }
    
 }

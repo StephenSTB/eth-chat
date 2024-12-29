@@ -1,0 +1,145 @@
+{
+  "contractName": "IOvmL2CrossDomainMessengerInterface",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "xDomainMessageSender",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"xDomainMessageSender\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/comet/contracts/bridges/optimism/IOvmL2CrossDomainMessengerInterface.sol\":\"IOvmL2CrossDomainMessengerInterface\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/comet/contracts/bridges/optimism/IOvmL2CrossDomainMessengerInterface.sol\":{\"keccak256\":\"0x2aa22567c64b652364dc88b017644fe6c874ae67f06fbf499faafe037eb66a25\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://19932fb2728b88c26a0018f15a9afae9bea80b24c9cb7e434ae28a1a5fb80dd0\",\"dweb:/ipfs/QmasibRW4haHVx4VLDZUvM88YLFArwAHQrSUZgBorcJP8o\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: BUSL-1.1\npragma solidity 0.8.15;\n\ninterface IOvmL2CrossDomainMessengerInterface {\n    function xDomainMessageSender() external returns (address);\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/comet/contracts/bridges/optimism/IOvmL2CrossDomainMessengerInterface.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/comet/contracts/bridges/optimism/IOvmL2CrossDomainMessengerInterface.sol",
+    "exportedSymbols": {
+      "IOvmL2CrossDomainMessengerInterface": [
+        9836
+      ]
+    },
+    "id": 9837,
+    "license": "BUSL-1.1",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 9830,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".15"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:30"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IOvmL2CrossDomainMessengerInterface",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 9836,
+        "linearizedBaseContracts": [
+          9836
+        ],
+        "name": "IOvmL2CrossDomainMessengerInterface",
+        "nameLocation": "72:35:30",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "6e296e45",
+            "id": 9835,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "xDomainMessageSender",
+            "nameLocation": "123:20:30",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9831,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "143:2:30"
+            },
+            "returnParameters": {
+              "id": 9834,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9833,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9835,
+                  "src": "164:7:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9832,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "164:7:30",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "163:9:30"
+            },
+            "scope": 9836,
+            "src": "114:59:30",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 9837,
+        "src": "62:113:30",
+        "usedErrors": []
+      }
+    ],
+    "src": "37:139:30"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.15+commit.e14f2714.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-11-30T22:41:29.684Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

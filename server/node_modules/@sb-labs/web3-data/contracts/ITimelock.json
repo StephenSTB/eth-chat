@@ -1,0 +1,2500 @@
+{
+  "contractName": "ITimelock",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "txHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "signature",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "eta",
+          "type": "uint256"
+        }
+      ],
+      "name": "CancelTransaction",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "txHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "signature",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "eta",
+          "type": "uint256"
+        }
+      ],
+      "name": "ExecuteTransaction",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "NewAdmin",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "newDelay",
+          "type": "uint256"
+        }
+      ],
+      "name": "NewDelay",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newPendingAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "NewPendingAdmin",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "txHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "signature",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "eta",
+          "type": "uint256"
+        }
+      ],
+      "name": "QueueTransaction",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "GRACE_PERIOD",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "MINIMUM_DELAY",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "MAXIMUM_DELAY",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "admin",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pendingAdmin",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "pendingAdmin_",
+          "type": "address"
+        }
+      ],
+      "name": "setPendingAdmin",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "acceptAdmin",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "delay",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "delay",
+          "type": "uint256"
+        }
+      ],
+      "name": "setDelay",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "txHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "queuedTransactions",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "signature",
+          "type": "string"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint256",
+          "name": "eta",
+          "type": "uint256"
+        }
+      ],
+      "name": "queueTransaction",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "signature",
+          "type": "string"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint256",
+          "name": "eta",
+          "type": "uint256"
+        }
+      ],
+      "name": "cancelTransaction",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "signature",
+          "type": "string"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint256",
+          "name": "eta",
+          "type": "uint256"
+        }
+      ],
+      "name": "executeTransaction",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"txHash\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"signature\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"eta\",\"type\":\"uint256\"}],\"name\":\"CancelTransaction\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"txHash\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"signature\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"eta\",\"type\":\"uint256\"}],\"name\":\"ExecuteTransaction\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"NewAdmin\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"newDelay\",\"type\":\"uint256\"}],\"name\":\"NewDelay\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newPendingAdmin\",\"type\":\"address\"}],\"name\":\"NewPendingAdmin\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"txHash\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"signature\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"eta\",\"type\":\"uint256\"}],\"name\":\"QueueTransaction\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"GRACE_PERIOD\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"MAXIMUM_DELAY\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"MINIMUM_DELAY\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"acceptAdmin\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"admin\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"signature\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"eta\",\"type\":\"uint256\"}],\"name\":\"cancelTransaction\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"delay\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"signature\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"eta\",\"type\":\"uint256\"}],\"name\":\"executeTransaction\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pendingAdmin\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"signature\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"eta\",\"type\":\"uint256\"}],\"name\":\"queueTransaction\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"txHash\",\"type\":\"bytes32\"}],\"name\":\"queuedTransactions\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"delay\",\"type\":\"uint256\"}],\"name\":\"setDelay\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"pendingAdmin_\",\"type\":\"address\"}],\"name\":\"setPendingAdmin\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Interface for interacting with a Timelock\",\"kind\":\"dev\",\"methods\":{\"cancelTransaction(address,uint256,string,bytes,uint256)\":{\"params\":{\"data\":\"Calldata for the transaction to cancel\",\"eta\":\"Timestamp of the transaction to cancel\",\"signature\":\"Function signature of the transaction to cancel\",\"target\":\"Address that the transaction is targeted at\",\"value\":\"Value of the transaction to cancel\"}},\"executeTransaction(address,uint256,string,bytes,uint256)\":{\"params\":{\"data\":\"Calldata for the transaction to execute\",\"eta\":\"Timestamp of the transaction to execute\",\"signature\":\"Function signature of the transaction to execute\",\"target\":\"Target address of the transaction to execute\",\"value\":\"Value of the transaction to execute\"},\"returns\":{\"_0\":\"bytes returned from executing transaction\"}},\"queueTransaction(address,uint256,string,bytes,uint256)\":{\"params\":{\"data\":\"Calldata for function called on target address\",\"eta\":\"Timestamp of when the transaction can be executed\",\"signature\":\"Function signature to call on target address\",\"target\":\"Address that the transaction is targeted at\",\"value\":\"Value to send to target address\"},\"returns\":{\"_0\":\"txHash of the enqueued transaction\"}},\"setDelay(uint256)\":{\"params\":{\"delay\":\"New delay value\"}},\"setPendingAdmin(address)\":{\"params\":{\"pendingAdmin_\":\"New pending admin address\"}}},\"version\":1},\"userdoc\":{\"events\":{\"CancelTransaction(bytes32,address,uint256,string,bytes,uint256)\":{\"notice\":\"Event emitted when admin cancels an enqueued transaction\"},\"ExecuteTransaction(bytes32,address,uint256,string,bytes,uint256)\":{\"notice\":\"Event emitted when admin executes an enqueued transaction\"},\"NewAdmin(address)\":{\"notice\":\"Event emitted when a pending admin accepts admin position\"},\"NewDelay(uint256)\":{\"notice\":\"Event emitted when Timelock sets new delay value\"},\"NewPendingAdmin(address)\":{\"notice\":\"Event emitted when new pending admin is set by the timelock\"},\"QueueTransaction(bytes32,address,uint256,string,bytes,uint256)\":{\"notice\":\"Event emitted when admin enqueues a transaction\"}},\"kind\":\"user\",\"methods\":{\"GRACE_PERIOD()\":{\"notice\":\"The length of time, once the delay has passed, in which a transaction can be executed before it becomes stale\"},\"MAXIMUM_DELAY()\":{\"notice\":\"The maximum value that the `delay` variable can be set to\"},\"MINIMUM_DELAY()\":{\"notice\":\"The minimum value that the `delay` variable can be set to\"},\"acceptAdmin()\":{\"notice\":\"Accept the position of admin (if caller is the current pendingAdmin)\"},\"admin()\":{\"notice\":\"Address that has admin privileges\"},\"cancelTransaction(address,uint256,string,bytes,uint256)\":{\"notice\":\"Cancel an enqueued transaction\"},\"delay()\":{\"notice\":\"Duration that a transaction must be queued before it can be executed\"},\"executeTransaction(address,uint256,string,bytes,uint256)\":{\"notice\":\"Execute an enqueued transaction\"},\"pendingAdmin()\":{\"notice\":\"The address that may become the new admin by calling `acceptAdmin()`\"},\"queueTransaction(address,uint256,string,bytes,uint256)\":{\"notice\":\"Enque a transaction\"},\"queuedTransactions(bytes32)\":{\"notice\":\"Mapping of transaction hashes to whether that transaction is currently enqueued\"},\"setDelay(uint256)\":{\"notice\":\"Set the delay value\"},\"setPendingAdmin(address)\":{\"notice\":\"Set the pending admin\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/comet/contracts/ITimelock.sol\":\"ITimelock\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/comet/contracts/ITimelock.sol\":{\"keccak256\":\"0x42b2e0fc37eed207eebf011cb8aa8006f1f75451540ea681d24e9b9a20594165\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://ff9ddcf38543c7a77c142fa49b6ff1ce32fb88d3bea17fea29c64de211a73dce\",\"dweb:/ipfs/QmSef1fHRbgomFzpLG9mpGrDkaYEVsDjJWUXTbsqtPf5h6\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: BUSL-1.1\npragma solidity 0.8.15;\n\n/**\n * @dev Interface for interacting with a Timelock\n */\ninterface ITimelock {\n    /// @notice Event emitted when a pending admin accepts admin position\n    event NewAdmin(address indexed newAdmin);\n\n    /// @notice Event emitted when new pending admin is set by the timelock\n    event NewPendingAdmin(address indexed newPendingAdmin);\n\n    /// @notice Event emitted when Timelock sets new delay value\n    event NewDelay(uint indexed newDelay);\n\n    /// @notice Event emitted when admin cancels an enqueued transaction\n    event CancelTransaction(bytes32 indexed txHash, address indexed target, uint value, string signature,  bytes data, uint eta);\n\n    /// @notice Event emitted when admin executes an enqueued transaction\n    event ExecuteTransaction(bytes32 indexed txHash, address indexed target, uint value, string signature,  bytes data, uint eta);\n\n    /// @notice Event emitted when admin enqueues a transaction\n    event QueueTransaction(bytes32 indexed txHash, address indexed target, uint value, string signature, bytes data, uint eta);\n\n    /// @notice The length of time, once the delay has passed, in which a transaction can be executed before it becomes stale\n    function GRACE_PERIOD() virtual external view returns (uint);\n\n    /// @notice The minimum value that the `delay` variable can be set to\n    function MINIMUM_DELAY() virtual external view returns (uint);\n\n    /// @notice The maximum value that the `delay` variable can be set to\n    function MAXIMUM_DELAY() virtual external view returns (uint);\n\n    /// @notice Address that has admin privileges\n    function admin() virtual external view returns (address);\n\n    /// @notice The address that may become the new admin by calling `acceptAdmin()`\n    function pendingAdmin() virtual external view returns (address);\n\n    /**\n     * @notice Set the pending admin\n     * @param pendingAdmin_ New pending admin address\n     */\n    function setPendingAdmin(address pendingAdmin_) virtual external;\n\n    /**\n     * @notice Accept the position of admin (if caller is the current pendingAdmin)\n     */\n    function acceptAdmin() virtual external;\n\n    /// @notice Duration that a transaction must be queued before it can be executed\n    function delay() virtual external view returns (uint);\n\n    /**\n     * @notice Set the delay value\n     * @param delay New delay value\n     */\n    function setDelay(uint delay) virtual external;\n\n    /// @notice Mapping of transaction hashes to whether that transaction is currently enqueued\n    function queuedTransactions(bytes32 txHash) virtual external returns (bool);\n\n    /**\n     * @notice Enque a transaction\n     * @param target Address that the transaction is targeted at\n     * @param value Value to send to target address\n     * @param signature Function signature to call on target address\n     * @param data Calldata for function called on target address\n     * @param eta Timestamp of when the transaction can be executed\n     * @return txHash of the enqueued transaction\n     */\n    function queueTransaction(address target, uint value, string memory signature, bytes memory data, uint eta) virtual external returns (bytes32);\n\n    /**\n     * @notice Cancel an enqueued transaction\n     * @param target Address that the transaction is targeted at\n     * @param value Value of the transaction to cancel\n     * @param signature Function signature of the transaction to cancel\n     * @param data Calldata for the transaction to cancel\n     * @param eta Timestamp of the transaction to cancel\n     */\n    function cancelTransaction(address target, uint value, string memory signature, bytes memory data, uint eta) virtual external;\n\n    /**\n     * @notice Execute an enqueued transaction\n     * @param target Target address of the transaction to execute\n     * @param value Value of the transaction to execute\n     * @param signature Function signature of the transaction to execute\n     * @param data Calldata for the transaction to execute\n     * @param eta Timestamp of the transaction to execute\n     * @return bytes returned from executing transaction\n     */\n    function executeTransaction(address target, uint value, string memory signature, bytes memory data, uint eta) virtual external payable returns (bytes memory);\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/comet/contracts/ITimelock.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/comet/contracts/ITimelock.sol",
+    "exportedSymbols": {
+      "ITimelock": [
+        8994
+      ]
+    },
+    "id": 8995,
+    "license": "BUSL-1.1",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8826,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".15"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:21"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ITimelock",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 8827,
+          "nodeType": "StructuredDocumentation",
+          "src": "62:57:21",
+          "text": " @dev Interface for interacting with a Timelock"
+        },
+        "fullyImplemented": false,
+        "id": 8994,
+        "linearizedBaseContracts": [
+          8994
+        ],
+        "name": "ITimelock",
+        "nameLocation": "130:9:21",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 8828,
+              "nodeType": "StructuredDocumentation",
+              "src": "146:69:21",
+              "text": "@notice Event emitted when a pending admin accepts admin position"
+            },
+            "eventSelector": "71614071b88dee5e0b2ae578a9dd7b2ebbe9ae832ba419dc0242cd065a290b6c",
+            "id": 8832,
+            "name": "NewAdmin",
+            "nameLocation": "226:8:21",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 8831,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8830,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "newAdmin",
+                  "nameLocation": "251:8:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8832,
+                  "src": "235:24:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8829,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "235:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "234:26:21"
+            },
+            "src": "220:41:21"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 8833,
+              "nodeType": "StructuredDocumentation",
+              "src": "267:71:21",
+              "text": "@notice Event emitted when new pending admin is set by the timelock"
+            },
+            "eventSelector": "69d78e38a01985fbb1462961809b4b2d65531bc93b2b94037f3334b82ca4a756",
+            "id": 8837,
+            "name": "NewPendingAdmin",
+            "nameLocation": "349:15:21",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 8836,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8835,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "newPendingAdmin",
+                  "nameLocation": "381:15:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8837,
+                  "src": "365:31:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8834,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "365:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "364:33:21"
+            },
+            "src": "343:55:21"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 8838,
+              "nodeType": "StructuredDocumentation",
+              "src": "404:60:21",
+              "text": "@notice Event emitted when Timelock sets new delay value"
+            },
+            "eventSelector": "948b1f6a42ee138b7e34058ba85a37f716d55ff25ff05a763f15bed6a04c8d2c",
+            "id": 8842,
+            "name": "NewDelay",
+            "nameLocation": "475:8:21",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 8841,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8840,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "newDelay",
+                  "nameLocation": "497:8:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8842,
+                  "src": "484:21:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8839,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "484:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "483:23:21"
+            },
+            "src": "469:38:21"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 8843,
+              "nodeType": "StructuredDocumentation",
+              "src": "513:68:21",
+              "text": "@notice Event emitted when admin cancels an enqueued transaction"
+            },
+            "eventSelector": "2fffc091a501fd91bfbff27141450d3acb40fb8e6d8382b243ec7a812a3aaf87",
+            "id": 8857,
+            "name": "CancelTransaction",
+            "nameLocation": "592:17:21",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 8856,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8845,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "txHash",
+                  "nameLocation": "626:6:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8857,
+                  "src": "610:22:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 8844,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "610:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8847,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "target",
+                  "nameLocation": "650:6:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8857,
+                  "src": "634:22:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8846,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "634:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8849,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nameLocation": "663:5:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8857,
+                  "src": "658:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8848,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "658:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8851,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "signature",
+                  "nameLocation": "677:9:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8857,
+                  "src": "670:16:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 8850,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "670:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8853,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "695:4:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8857,
+                  "src": "689:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8852,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "689:5:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8855,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "eta",
+                  "nameLocation": "706:3:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8857,
+                  "src": "701:8:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8854,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "701:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "609:101:21"
+            },
+            "src": "586:125:21"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 8858,
+              "nodeType": "StructuredDocumentation",
+              "src": "717:69:21",
+              "text": "@notice Event emitted when admin executes an enqueued transaction"
+            },
+            "eventSelector": "a560e3198060a2f10670c1ec5b403077ea6ae93ca8de1c32b451dc1a943cd6e7",
+            "id": 8872,
+            "name": "ExecuteTransaction",
+            "nameLocation": "797:18:21",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 8871,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8860,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "txHash",
+                  "nameLocation": "832:6:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8872,
+                  "src": "816:22:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 8859,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "816:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8862,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "target",
+                  "nameLocation": "856:6:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8872,
+                  "src": "840:22:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8861,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "840:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8864,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nameLocation": "869:5:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8872,
+                  "src": "864:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8863,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "864:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8866,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "signature",
+                  "nameLocation": "883:9:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8872,
+                  "src": "876:16:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 8865,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "876:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8868,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "901:4:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8872,
+                  "src": "895:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8867,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "895:5:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8870,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "eta",
+                  "nameLocation": "912:3:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8872,
+                  "src": "907:8:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8869,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "907:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "815:101:21"
+            },
+            "src": "791:126:21"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 8873,
+              "nodeType": "StructuredDocumentation",
+              "src": "923:59:21",
+              "text": "@notice Event emitted when admin enqueues a transaction"
+            },
+            "eventSelector": "76e2796dc3a81d57b0e8504b647febcbeeb5f4af818e164f11eef8131a6a763f",
+            "id": 8887,
+            "name": "QueueTransaction",
+            "nameLocation": "993:16:21",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 8886,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8875,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "txHash",
+                  "nameLocation": "1026:6:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8887,
+                  "src": "1010:22:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 8874,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1010:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8877,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "target",
+                  "nameLocation": "1050:6:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8887,
+                  "src": "1034:22:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8876,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1034:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8879,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nameLocation": "1063:5:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8887,
+                  "src": "1058:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8878,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1058:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8881,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "signature",
+                  "nameLocation": "1077:9:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8887,
+                  "src": "1070:16:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 8880,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1070:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8883,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "1094:4:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8887,
+                  "src": "1088:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8882,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1088:5:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8885,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "eta",
+                  "nameLocation": "1105:3:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8887,
+                  "src": "1100:8:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8884,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1100:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1009:100:21"
+            },
+            "src": "987:123:21"
+          },
+          {
+            "documentation": {
+              "id": 8888,
+              "nodeType": "StructuredDocumentation",
+              "src": "1116:121:21",
+              "text": "@notice The length of time, once the delay has passed, in which a transaction can be executed before it becomes stale"
+            },
+            "functionSelector": "c1a287e2",
+            "id": 8893,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "GRACE_PERIOD",
+            "nameLocation": "1251:12:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8889,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1263:2:21"
+            },
+            "returnParameters": {
+              "id": 8892,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8891,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8893,
+                  "src": "1297:4:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8890,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1297:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1296:6:21"
+            },
+            "scope": 8994,
+            "src": "1242:61:21",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 8894,
+              "nodeType": "StructuredDocumentation",
+              "src": "1309:69:21",
+              "text": "@notice The minimum value that the `delay` variable can be set to"
+            },
+            "functionSelector": "b1b43ae5",
+            "id": 8899,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "MINIMUM_DELAY",
+            "nameLocation": "1392:13:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8895,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1405:2:21"
+            },
+            "returnParameters": {
+              "id": 8898,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8897,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8899,
+                  "src": "1439:4:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8896,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1439:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1438:6:21"
+            },
+            "scope": 8994,
+            "src": "1383:62:21",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 8900,
+              "nodeType": "StructuredDocumentation",
+              "src": "1451:69:21",
+              "text": "@notice The maximum value that the `delay` variable can be set to"
+            },
+            "functionSelector": "7d645fab",
+            "id": 8905,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "MAXIMUM_DELAY",
+            "nameLocation": "1534:13:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8901,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1547:2:21"
+            },
+            "returnParameters": {
+              "id": 8904,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8903,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8905,
+                  "src": "1581:4:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8902,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1581:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1580:6:21"
+            },
+            "scope": 8994,
+            "src": "1525:62:21",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 8906,
+              "nodeType": "StructuredDocumentation",
+              "src": "1593:45:21",
+              "text": "@notice Address that has admin privileges"
+            },
+            "functionSelector": "f851a440",
+            "id": 8911,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "admin",
+            "nameLocation": "1652:5:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8907,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1657:2:21"
+            },
+            "returnParameters": {
+              "id": 8910,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8909,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8911,
+                  "src": "1691:7:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8908,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1691:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1690:9:21"
+            },
+            "scope": 8994,
+            "src": "1643:57:21",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 8912,
+              "nodeType": "StructuredDocumentation",
+              "src": "1706:80:21",
+              "text": "@notice The address that may become the new admin by calling `acceptAdmin()`"
+            },
+            "functionSelector": "26782247",
+            "id": 8917,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "pendingAdmin",
+            "nameLocation": "1800:12:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8913,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1812:2:21"
+            },
+            "returnParameters": {
+              "id": 8916,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8915,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8917,
+                  "src": "1846:7:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8914,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1846:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1845:9:21"
+            },
+            "scope": 8994,
+            "src": "1791:64:21",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 8918,
+              "nodeType": "StructuredDocumentation",
+              "src": "1861:102:21",
+              "text": " @notice Set the pending admin\n @param pendingAdmin_ New pending admin address"
+            },
+            "functionSelector": "4dd18bf5",
+            "id": 8923,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setPendingAdmin",
+            "nameLocation": "1977:15:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8921,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8920,
+                  "mutability": "mutable",
+                  "name": "pendingAdmin_",
+                  "nameLocation": "2001:13:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8923,
+                  "src": "1993:21:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8919,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1993:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1992:23:21"
+            },
+            "returnParameters": {
+              "id": 8922,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2032:0:21"
+            },
+            "scope": 8994,
+            "src": "1968:65:21",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 8924,
+              "nodeType": "StructuredDocumentation",
+              "src": "2039:95:21",
+              "text": " @notice Accept the position of admin (if caller is the current pendingAdmin)"
+            },
+            "functionSelector": "0e18b681",
+            "id": 8927,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "acceptAdmin",
+            "nameLocation": "2148:11:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8925,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2159:2:21"
+            },
+            "returnParameters": {
+              "id": 8926,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2178:0:21"
+            },
+            "scope": 8994,
+            "src": "2139:40:21",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 8928,
+              "nodeType": "StructuredDocumentation",
+              "src": "2185:80:21",
+              "text": "@notice Duration that a transaction must be queued before it can be executed"
+            },
+            "functionSelector": "6a42b8f8",
+            "id": 8933,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "delay",
+            "nameLocation": "2279:5:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8929,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2284:2:21"
+            },
+            "returnParameters": {
+              "id": 8932,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8931,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8933,
+                  "src": "2318:4:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8930,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2318:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2317:6:21"
+            },
+            "scope": 8994,
+            "src": "2270:54:21",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 8934,
+              "nodeType": "StructuredDocumentation",
+              "src": "2330:82:21",
+              "text": " @notice Set the delay value\n @param delay New delay value"
+            },
+            "functionSelector": "e177246e",
+            "id": 8939,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setDelay",
+            "nameLocation": "2426:8:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8937,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8936,
+                  "mutability": "mutable",
+                  "name": "delay",
+                  "nameLocation": "2440:5:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8939,
+                  "src": "2435:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8935,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2435:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2434:12:21"
+            },
+            "returnParameters": {
+              "id": 8938,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2463:0:21"
+            },
+            "scope": 8994,
+            "src": "2417:47:21",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 8940,
+              "nodeType": "StructuredDocumentation",
+              "src": "2470:91:21",
+              "text": "@notice Mapping of transaction hashes to whether that transaction is currently enqueued"
+            },
+            "functionSelector": "f2b06537",
+            "id": 8947,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "queuedTransactions",
+            "nameLocation": "2575:18:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8943,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8942,
+                  "mutability": "mutable",
+                  "name": "txHash",
+                  "nameLocation": "2602:6:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8947,
+                  "src": "2594:14:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 8941,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2594:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2593:16:21"
+            },
+            "returnParameters": {
+              "id": 8946,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8945,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8947,
+                  "src": "2636:4:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 8944,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2636:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2635:6:21"
+            },
+            "scope": 8994,
+            "src": "2566:76:21",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 8948,
+              "nodeType": "StructuredDocumentation",
+              "src": "2648:416:21",
+              "text": " @notice Enque a transaction\n @param target Address that the transaction is targeted at\n @param value Value to send to target address\n @param signature Function signature to call on target address\n @param data Calldata for function called on target address\n @param eta Timestamp of when the transaction can be executed\n @return txHash of the enqueued transaction"
+            },
+            "functionSelector": "3a66f901",
+            "id": 8963,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "queueTransaction",
+            "nameLocation": "3078:16:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8959,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8950,
+                  "mutability": "mutable",
+                  "name": "target",
+                  "nameLocation": "3103:6:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8963,
+                  "src": "3095:14:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8949,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3095:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8952,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nameLocation": "3116:5:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8963,
+                  "src": "3111:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8951,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3111:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8954,
+                  "mutability": "mutable",
+                  "name": "signature",
+                  "nameLocation": "3137:9:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8963,
+                  "src": "3123:23:21",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 8953,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3123:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8956,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "3161:4:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8963,
+                  "src": "3148:17:21",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8955,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3148:5:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8958,
+                  "mutability": "mutable",
+                  "name": "eta",
+                  "nameLocation": "3172:3:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8963,
+                  "src": "3167:8:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8957,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3167:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3094:82:21"
+            },
+            "returnParameters": {
+              "id": 8962,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8961,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8963,
+                  "src": "3203:7:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 8960,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3203:7:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3202:9:21"
+            },
+            "scope": 8994,
+            "src": "3069:143:21",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 8964,
+              "nodeType": "StructuredDocumentation",
+              "src": "3218:364:21",
+              "text": " @notice Cancel an enqueued transaction\n @param target Address that the transaction is targeted at\n @param value Value of the transaction to cancel\n @param signature Function signature of the transaction to cancel\n @param data Calldata for the transaction to cancel\n @param eta Timestamp of the transaction to cancel"
+            },
+            "functionSelector": "591fcdfe",
+            "id": 8977,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "cancelTransaction",
+            "nameLocation": "3596:17:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8975,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8966,
+                  "mutability": "mutable",
+                  "name": "target",
+                  "nameLocation": "3622:6:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8977,
+                  "src": "3614:14:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8965,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3614:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8968,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nameLocation": "3635:5:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8977,
+                  "src": "3630:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8967,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3630:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8970,
+                  "mutability": "mutable",
+                  "name": "signature",
+                  "nameLocation": "3656:9:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8977,
+                  "src": "3642:23:21",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 8969,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3642:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8972,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "3680:4:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8977,
+                  "src": "3667:17:21",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8971,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3667:5:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8974,
+                  "mutability": "mutable",
+                  "name": "eta",
+                  "nameLocation": "3691:3:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8977,
+                  "src": "3686:8:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8973,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3686:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3613:82:21"
+            },
+            "returnParameters": {
+              "id": 8976,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3712:0:21"
+            },
+            "scope": 8994,
+            "src": "3587:126:21",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 8978,
+              "nodeType": "StructuredDocumentation",
+              "src": "3719:427:21",
+              "text": " @notice Execute an enqueued transaction\n @param target Target address of the transaction to execute\n @param value Value of the transaction to execute\n @param signature Function signature of the transaction to execute\n @param data Calldata for the transaction to execute\n @param eta Timestamp of the transaction to execute\n @return bytes returned from executing transaction"
+            },
+            "functionSelector": "0825f38f",
+            "id": 8993,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "executeTransaction",
+            "nameLocation": "4160:18:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8989,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8980,
+                  "mutability": "mutable",
+                  "name": "target",
+                  "nameLocation": "4187:6:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8993,
+                  "src": "4179:14:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8979,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4179:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8982,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nameLocation": "4200:5:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8993,
+                  "src": "4195:10:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8981,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4195:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8984,
+                  "mutability": "mutable",
+                  "name": "signature",
+                  "nameLocation": "4221:9:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8993,
+                  "src": "4207:23:21",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 8983,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4207:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8986,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "4245:4:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8993,
+                  "src": "4232:17:21",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8985,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4232:5:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8988,
+                  "mutability": "mutable",
+                  "name": "eta",
+                  "nameLocation": "4256:3:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8993,
+                  "src": "4251:8:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8987,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4251:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4178:82:21"
+            },
+            "returnParameters": {
+              "id": 8992,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8991,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8993,
+                  "src": "4295:12:21",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8990,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4295:5:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4294:14:21"
+            },
+            "scope": 8994,
+            "src": "4151:158:21",
+            "stateMutability": "payable",
+            "virtual": true,
+            "visibility": "external"
+          }
+        ],
+        "scope": 8995,
+        "src": "120:4191:21",
+        "usedErrors": []
+      }
+    ],
+    "src": "37:4275:21"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.15+commit.e14f2714.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-11-30T22:41:29.678Z",
+  "devdoc": {
+    "details": "Interface for interacting with a Timelock",
+    "kind": "dev",
+    "methods": {
+      "cancelTransaction(address,uint256,string,bytes,uint256)": {
+        "params": {
+          "data": "Calldata for the transaction to cancel",
+          "eta": "Timestamp of the transaction to cancel",
+          "signature": "Function signature of the transaction to cancel",
+          "target": "Address that the transaction is targeted at",
+          "value": "Value of the transaction to cancel"
+        }
+      },
+      "executeTransaction(address,uint256,string,bytes,uint256)": {
+        "params": {
+          "data": "Calldata for the transaction to execute",
+          "eta": "Timestamp of the transaction to execute",
+          "signature": "Function signature of the transaction to execute",
+          "target": "Target address of the transaction to execute",
+          "value": "Value of the transaction to execute"
+        },
+        "returns": {
+          "_0": "bytes returned from executing transaction"
+        }
+      },
+      "queueTransaction(address,uint256,string,bytes,uint256)": {
+        "params": {
+          "data": "Calldata for function called on target address",
+          "eta": "Timestamp of when the transaction can be executed",
+          "signature": "Function signature to call on target address",
+          "target": "Address that the transaction is targeted at",
+          "value": "Value to send to target address"
+        },
+        "returns": {
+          "_0": "txHash of the enqueued transaction"
+        }
+      },
+      "setDelay(uint256)": {
+        "params": {
+          "delay": "New delay value"
+        }
+      },
+      "setPendingAdmin(address)": {
+        "params": {
+          "pendingAdmin_": "New pending admin address"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "events": {
+      "CancelTransaction(bytes32,address,uint256,string,bytes,uint256)": {
+        "notice": "Event emitted when admin cancels an enqueued transaction"
+      },
+      "ExecuteTransaction(bytes32,address,uint256,string,bytes,uint256)": {
+        "notice": "Event emitted when admin executes an enqueued transaction"
+      },
+      "NewAdmin(address)": {
+        "notice": "Event emitted when a pending admin accepts admin position"
+      },
+      "NewDelay(uint256)": {
+        "notice": "Event emitted when Timelock sets new delay value"
+      },
+      "NewPendingAdmin(address)": {
+        "notice": "Event emitted when new pending admin is set by the timelock"
+      },
+      "QueueTransaction(bytes32,address,uint256,string,bytes,uint256)": {
+        "notice": "Event emitted when admin enqueues a transaction"
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "GRACE_PERIOD()": {
+        "notice": "The length of time, once the delay has passed, in which a transaction can be executed before it becomes stale"
+      },
+      "MAXIMUM_DELAY()": {
+        "notice": "The maximum value that the `delay` variable can be set to"
+      },
+      "MINIMUM_DELAY()": {
+        "notice": "The minimum value that the `delay` variable can be set to"
+      },
+      "acceptAdmin()": {
+        "notice": "Accept the position of admin (if caller is the current pendingAdmin)"
+      },
+      "admin()": {
+        "notice": "Address that has admin privileges"
+      },
+      "cancelTransaction(address,uint256,string,bytes,uint256)": {
+        "notice": "Cancel an enqueued transaction"
+      },
+      "delay()": {
+        "notice": "Duration that a transaction must be queued before it can be executed"
+      },
+      "executeTransaction(address,uint256,string,bytes,uint256)": {
+        "notice": "Execute an enqueued transaction"
+      },
+      "pendingAdmin()": {
+        "notice": "The address that may become the new admin by calling `acceptAdmin()`"
+      },
+      "queueTransaction(address,uint256,string,bytes,uint256)": {
+        "notice": "Enque a transaction"
+      },
+      "queuedTransactions(bytes32)": {
+        "notice": "Mapping of transaction hashes to whether that transaction is currently enqueued"
+      },
+      "setDelay(uint256)": {
+        "notice": "Set the delay value"
+      },
+      "setPendingAdmin(address)": {
+        "notice": "Set the pending admin"
+      }
+    },
+    "version": 1
+  }
+}

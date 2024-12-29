@@ -1,0 +1,52 @@
+{
+    "Goerli": {
+        "url": "wss://eth-goerli.g.alchemy.com/v2/bI5oMgTKXmb0MndQtkAkcGxx6eLBexIk",
+        "chain_id": 5,
+        "asset": "GoETH"
+    },
+    "Ethereum": {
+        "url": "wss://eth-mainnet.g.alchemy.com/v2/BbDcv3FHFX1CCz0QixhIBVeoNLMMxRyf",
+        "chain_id": 1,
+        "asset": "Ether"
+    },
+    "Polygon": {
+        "url": "wss://polygon-mainnet.g.alchemy.com/v2/iuOuHB_3RKqHqiPJal8NmrN-yDwVpWoI",
+        "chain_id": 137,
+        "asset": "Matic"
+    },
+    "Mumbai": {
+        "url": "wss://rpc-mumbai.maticvigil.com/ws/v1/857bd788405149815e9bed09e4e0ef2b41777537",
+        "chain_id": 80001,
+        "asset": "Matic"
+    },
+    "Hyperspace": {
+        "url": "wss://wss.hyperspace.node.glif.io/apigw/lotus/rpc/v1",
+        "chain_id": 3141,
+        "asset": "tFIL"
+    },
+    "Filecoin": {
+        "url": "wss://wss.node.glif.io/apigw/lotus/rpc/v1",
+        "chain_id": 314,
+        "asset": "tFIL"
+    },
+    "Base": {
+        "url": "wss://base-mainnet.blastapi.io/3932098a-30b2-43a4-8d69-fd355f6f78f3",
+        "chain_id": 8453,
+        "asset": "ETH"
+    },
+    "BaseGoerli": {
+        "url": "wss://base-goerli.blastapi.io/3932098a-30b2-43a4-8d69-fd355f6f78f3",
+        "chain_id": 84531,
+        "asset": "GETH"
+    },
+    "Ganache": {
+        "url": "ws://172.20.89.195:8545",
+        "chain_id": 1337,
+        "asset": "GETH"
+    },
+    "Sepolia": {
+        "url": "https://eth-sepolia.g.alchemy.com/v2/hGBMirvUiknhQbXf0AUidAqMKN6WOa0Q",
+        "chain_id": 11155111,
+        "asset": "SETH"
+    }
+}

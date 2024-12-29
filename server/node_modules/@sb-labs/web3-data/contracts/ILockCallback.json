@@ -1,0 +1,199 @@
+{
+  "contractName": "ILockCallback",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "lockAcquired",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"lockAcquired\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"lockAcquired(bytes)\":{\"params\":{\"data\":\"The data that was passed to the call to lock\"},\"returns\":{\"_0\":\"Any data that you want to be returned from the lock call\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"lockAcquired(bytes)\":{\"notice\":\"Called by the pool manager on `msg.sender` when a lock is acquired\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/v4-core/src/interfaces/callback/ILockCallback.sol\":\"ILockCallback\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/v4-core/src/interfaces/callback/ILockCallback.sol\":{\"keccak256\":\"0x92e6478df92399c7c1fc6b41579e368bcd70ba9e2012f945f66da92eb0f78042\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5e540fdcde3180708f0c268f6c7b893dc03644be0dc526b5c22035287a310a44\",\"dweb:/ipfs/QmQKJSTn9GvQqps5j7XRoMazRq3i93ZJFJFXAhN4exAjp4\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.20;\n\ninterface ILockCallback {\n    /// @notice Called by the pool manager on `msg.sender` when a lock is acquired\n    /// @param data The data that was passed to the call to lock\n    /// @return Any data that you want to be returned from the lock call\n    function lockAcquired(bytes calldata data) external returns (bytes memory);\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/v4-core/src/interfaces/callback/ILockCallback.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/v4-core/src/interfaces/callback/ILockCallback.sol",
+    "exportedSymbols": {
+      "ILockCallback": [
+        4715
+      ]
+    },
+    "id": 4716,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4706,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".20"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:24:27"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ILockCallback",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 4715,
+        "linearizedBaseContracts": [
+          4715
+        ],
+        "name": "ILockCallback",
+        "nameLocation": "68:13:27",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 4707,
+              "nodeType": "StructuredDocumentation",
+              "src": "88:216:27",
+              "text": "@notice Called by the pool manager on `msg.sender` when a lock is acquired\n @param data The data that was passed to the call to lock\n @return Any data that you want to be returned from the lock call"
+            },
+            "functionSelector": "ab6291fe",
+            "id": 4714,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "lockAcquired",
+            "nameLocation": "318:12:27",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4710,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4709,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "346:4:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4714,
+                  "src": "331:19:27",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 4708,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "331:5:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "330:21:27"
+            },
+            "returnParameters": {
+              "id": 4713,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4712,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4714,
+                  "src": "370:12:27",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 4711,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "370:5:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "369:14:27"
+            },
+            "scope": 4715,
+            "src": "309:75:27",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 4716,
+        "src": "58:328:27",
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "src": "32:355:27"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.23+commit.f704f362.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-12-01T17:36:41.228Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "lockAcquired(bytes)": {
+        "params": {
+          "data": "The data that was passed to the call to lock"
+        },
+        "returns": {
+          "_0": "Any data that you want to be returned from the lock call"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "lockAcquired(bytes)": {
+        "notice": "Called by the pool manager on `msg.sender` when a lock is acquired"
+      }
+    },
+    "version": 1
+  }
+}

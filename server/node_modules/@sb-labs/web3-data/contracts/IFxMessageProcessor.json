@@ -1,0 +1,211 @@
+{
+  "contractName": "IFxMessageProcessor",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "stateId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "rootMessageSender",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "processMessageFromRoot",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"stateId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"rootMessageSender\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"processMessageFromRoot\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/comet/contracts/bridges/polygon/IFxMessageProcessor.sol\":\"IFxMessageProcessor\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/comet/contracts/bridges/polygon/IFxMessageProcessor.sol\":{\"keccak256\":\"0x2ddac9b3c5a4c0d036530e7bc61cd3f99810b6bda51d1c04fba537c3feb801f2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://10dd65490e66932c85a648df21944cde6c177258876a5b489bf93e256aa8aa78\",\"dweb:/ipfs/QmaY9HjbpwPgwrjB6xMid49rmysLWEK4TJawAXRvdhCieJ\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\n// IFxMessageProcessor represents interface to process message\ninterface IFxMessageProcessor {\n    function processMessageFromRoot(\n        uint256 stateId,\n        address rootMessageSender,\n        bytes calldata data\n    ) external;\n}",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/comet/contracts/bridges/polygon/IFxMessageProcessor.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/comet/contracts/bridges/polygon/IFxMessageProcessor.sol",
+    "exportedSymbols": {
+      "IFxMessageProcessor": [
+        2102
+      ]
+    },
+    "id": 2103,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2092,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:10"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IFxMessageProcessor",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 2102,
+        "linearizedBaseContracts": [
+          2102
+        ],
+        "name": "IFxMessageProcessor",
+        "nameLocation": "130:19:10",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "9a7c4b71",
+            "id": 2101,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "processMessageFromRoot",
+            "nameLocation": "165:22:10",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2099,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2094,
+                  "mutability": "mutable",
+                  "name": "stateId",
+                  "nameLocation": "205:7:10",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2101,
+                  "src": "197:15:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2093,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "197:7:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2096,
+                  "mutability": "mutable",
+                  "name": "rootMessageSender",
+                  "nameLocation": "230:17:10",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2101,
+                  "src": "222:25:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2095,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "222:7:10",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2098,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "272:4:10",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2101,
+                  "src": "257:19:10",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 2097,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "257:5:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "187:95:10"
+            },
+            "returnParameters": {
+              "id": 2100,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "291:0:10"
+            },
+            "scope": 2102,
+            "src": "156:136:10",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2103,
+        "src": "120:174:10",
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "src": "32:262:10"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.23+commit.f704f362.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-11-30T22:41:29.685Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

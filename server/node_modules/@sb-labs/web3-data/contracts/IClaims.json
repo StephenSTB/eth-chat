@@ -1,0 +1,969 @@
+{
+  "contractName": "IClaims",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "InsufficientBalance",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidAddress",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "Currency",
+          "name": "currency",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Burn",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "Currency",
+          "name": "currency",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Mint",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "Currency",
+          "name": "currency",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "Currency",
+          "name": "currency",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "Currency",
+          "name": "currency",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"InsufficientBalance\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidAddress\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"Currency\",\"name\":\"currency\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Burn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"Currency\",\"name\":\"currency\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Mint\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"Currency\",\"name\":\"currency\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"currency\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"balanceOf(address,address)\":{\"params\":{\"account\":\"The account to get the balance of\",\"currency\":\"The currency to get the balance of\"}},\"transfer(address,address,uint256)\":{\"details\":\"Will revert if the sender does not have enough balance\",\"params\":{\"amount\":\"The amount to transfer\",\"currency\":\"The currency to transfer\",\"to\":\"The address to transfer to\"}}},\"version\":1},\"userdoc\":{\"errors\":{\"InsufficientBalance()\":[{\"notice\":\"Thrown when user has insufficient Claims balance\"}],\"InvalidAddress()\":[{\"notice\":\"Thrown when transferring Claims to this address\"}]},\"events\":{\"Burn(address,address,uint256)\":{\"notice\":\"Emitted when burning `amount` of currency Claims from address\"},\"Mint(address,address,uint256)\":{\"notice\":\"Emitted when minting `amount` of currency Claims to address\"},\"Transfer(address,address,address,uint256)\":{\"notice\":\"Emitted when transferring `amount` of currency Claims\"}},\"kind\":\"user\",\"methods\":{\"balanceOf(address,address)\":{\"notice\":\"Get the balance of `account` for `currency`\"},\"transfer(address,address,uint256)\":{\"notice\":\"Transfer `amount` of `currency` from sender to `to`\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/v4-core/src/interfaces/IClaims.sol\":\"IClaims\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/v4-core/src/interfaces/IClaims.sol\":{\"keccak256\":\"0xdf74a92ef73ec38d1f3fdb83a217a805fee5a9e8d50a079d429dcdf88728a1e9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d4f73e8176929eed516327517ca2d37804348e6073d5b50b5a1396337f089281\",\"dweb:/ipfs/QmWdk99E4PtBBSLe39qPRacFDK52avHN65XAN12CYbCGpU\"]},\"project:/contracts/v4-core/src/interfaces/external/IERC20Minimal.sol\":{\"keccak256\":\"0x8dc5ee72426906aeb12f4ae6a2426df059491739bd5cbdb8ea4a3e26970436c6\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://f7e30dbbc972cb78d169c8845d6210d27490c8534e68a20d4f296b11ec727b92\",\"dweb:/ipfs/QmXBvaWaAnPW25YGVm2sMbf5mwrzLapUcqPnrNiiGGXxmA\"]},\"project:/contracts/v4-core/src/types/Currency.sol\":{\"keccak256\":\"0xb1395e2817b604745bf6cd41821aafeaaa252caafe45133e54f02d6f6be13d2b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://49ec58bd7634ccb1b74f59378e54771ae11cba37494b57ae64e3f6640d4afdd9\",\"dweb:/ipfs/QmeYL1TuGXcTYfsQBGu7p9urSqGjiJky8iJAgwTRYqrJ4F\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.20;\n\nimport {Currency} from \"../types/Currency.sol\";\n\ninterface IClaims {\n    /// @notice Thrown when user has insufficient Claims balance\n    error InsufficientBalance();\n\n    /// @notice Thrown when transferring Claims to this address\n    error InvalidAddress();\n\n    /// @notice Get the balance of `account` for `currency`\n    /// @param account The account to get the balance of\n    /// @param currency The currency to get the balance of\n    function balanceOf(address account, Currency currency) external returns (uint256);\n\n    /// @notice Transfer `amount` of `currency` from sender to `to`\n    /// @param to The address to transfer to\n    /// @param currency The currency to transfer\n    /// @param amount The amount to transfer\n    /// @dev Will revert if the sender does not have enough balance\n    function transfer(address to, Currency currency, uint256 amount) external;\n\n    /// @notice Emitted when minting `amount` of currency Claims to address\n    event Mint(address indexed to, Currency indexed currency, uint256 amount);\n    /// @notice Emitted when burning `amount` of currency Claims from address\n    event Burn(address indexed from, Currency indexed currency, uint256 amount);\n    /// @notice Emitted when transferring `amount` of currency Claims\n    event Transfer(address indexed from, address indexed to, Currency indexed currency, uint256 amount);\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/v4-core/src/interfaces/IClaims.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/v4-core/src/interfaces/IClaims.sol",
+    "exportedSymbols": {
+      "Currency": [
+        8892
+      ],
+      "IClaims": [
+        3666
+      ]
+    },
+    "id": 3667,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3603,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".20"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:24:14"
+      },
+      {
+        "absolutePath": "project:/contracts/v4-core/src/types/Currency.sol",
+        "file": "../types/Currency.sol",
+        "id": 3605,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3667,
+        "sourceUnit": 9164,
+        "src": "58:47:14",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 3604,
+              "name": "Currency",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 8892,
+              "src": "66:8:14",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IClaims",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 3666,
+        "linearizedBaseContracts": [
+          3666
+        ],
+        "name": "IClaims",
+        "nameLocation": "117:7:14",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 3606,
+              "nodeType": "StructuredDocumentation",
+              "src": "131:60:14",
+              "text": "@notice Thrown when user has insufficient Claims balance"
+            },
+            "errorSelector": "f4d678b8",
+            "id": 3608,
+            "name": "InsufficientBalance",
+            "nameLocation": "202:19:14",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3607,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "221:2:14"
+            },
+            "src": "196:28:14"
+          },
+          {
+            "documentation": {
+              "id": 3609,
+              "nodeType": "StructuredDocumentation",
+              "src": "230:59:14",
+              "text": "@notice Thrown when transferring Claims to this address"
+            },
+            "errorSelector": "e6c4247b",
+            "id": 3611,
+            "name": "InvalidAddress",
+            "nameLocation": "300:14:14",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3610,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "314:2:14"
+            },
+            "src": "294:23:14"
+          },
+          {
+            "documentation": {
+              "id": 3612,
+              "nodeType": "StructuredDocumentation",
+              "src": "323:171:14",
+              "text": "@notice Get the balance of `account` for `currency`\n @param account The account to get the balance of\n @param currency The currency to get the balance of"
+            },
+            "functionSelector": "f7888aec",
+            "id": 3622,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "balanceOf",
+            "nameLocation": "508:9:14",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3618,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3614,
+                  "mutability": "mutable",
+                  "name": "account",
+                  "nameLocation": "526:7:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3622,
+                  "src": "518:15:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3613,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "518:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3617,
+                  "mutability": "mutable",
+                  "name": "currency",
+                  "nameLocation": "544:8:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3622,
+                  "src": "535:17:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_Currency_$8892",
+                    "typeString": "Currency"
+                  },
+                  "typeName": {
+                    "id": 3616,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3615,
+                      "name": "Currency",
+                      "nameLocations": [
+                        "535:8:14"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 8892,
+                      "src": "535:8:14"
+                    },
+                    "referencedDeclaration": 8892,
+                    "src": "535:8:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_Currency_$8892",
+                      "typeString": "Currency"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "517:36:14"
+            },
+            "returnParameters": {
+              "id": 3621,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3620,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3622,
+                  "src": "572:7:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3619,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "572:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "571:9:14"
+            },
+            "scope": 3666,
+            "src": "499:82:14",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3623,
+              "nodeType": "StructuredDocumentation",
+              "src": "587:270:14",
+              "text": "@notice Transfer `amount` of `currency` from sender to `to`\n @param to The address to transfer to\n @param currency The currency to transfer\n @param amount The amount to transfer\n @dev Will revert if the sender does not have enough balance"
+            },
+            "functionSelector": "beabacc8",
+            "id": 3633,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transfer",
+            "nameLocation": "871:8:14",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3631,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3625,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "888:2:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3633,
+                  "src": "880:10:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3624,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "880:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3628,
+                  "mutability": "mutable",
+                  "name": "currency",
+                  "nameLocation": "901:8:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3633,
+                  "src": "892:17:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_Currency_$8892",
+                    "typeString": "Currency"
+                  },
+                  "typeName": {
+                    "id": 3627,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3626,
+                      "name": "Currency",
+                      "nameLocations": [
+                        "892:8:14"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 8892,
+                      "src": "892:8:14"
+                    },
+                    "referencedDeclaration": 8892,
+                    "src": "892:8:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_Currency_$8892",
+                      "typeString": "Currency"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3630,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "919:6:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3633,
+                  "src": "911:14:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3629,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "911:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "879:47:14"
+            },
+            "returnParameters": {
+              "id": 3632,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "935:0:14"
+            },
+            "scope": 3666,
+            "src": "862:74:14",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 3634,
+              "nodeType": "StructuredDocumentation",
+              "src": "942:71:14",
+              "text": "@notice Emitted when minting `amount` of currency Claims to address"
+            },
+            "eventSelector": "ab8530f87dc9b59234c4623bf917212bb2536d647574c8e7e5da92c2ede0c9f8",
+            "id": 3643,
+            "name": "Mint",
+            "nameLocation": "1024:4:14",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 3642,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3636,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "1045:2:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3643,
+                  "src": "1029:18:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3635,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1029:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3639,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "currency",
+                  "nameLocation": "1066:8:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3643,
+                  "src": "1049:25:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_Currency_$8892",
+                    "typeString": "Currency"
+                  },
+                  "typeName": {
+                    "id": 3638,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3637,
+                      "name": "Currency",
+                      "nameLocations": [
+                        "1049:8:14"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 8892,
+                      "src": "1049:8:14"
+                    },
+                    "referencedDeclaration": 8892,
+                    "src": "1049:8:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_Currency_$8892",
+                      "typeString": "Currency"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3641,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1084:6:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3643,
+                  "src": "1076:14:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3640,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1076:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1028:63:14"
+            },
+            "src": "1018:74:14"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 3644,
+              "nodeType": "StructuredDocumentation",
+              "src": "1097:73:14",
+              "text": "@notice Emitted when burning `amount` of currency Claims from address"
+            },
+            "eventSelector": "bac40739b0d4ca32fa2d82fc91630465ba3eddd1598da6fca393b26fb63b9453",
+            "id": 3653,
+            "name": "Burn",
+            "nameLocation": "1181:4:14",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 3652,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3646,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "from",
+                  "nameLocation": "1202:4:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3653,
+                  "src": "1186:20:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3645,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1186:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3649,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "currency",
+                  "nameLocation": "1225:8:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3653,
+                  "src": "1208:25:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_Currency_$8892",
+                    "typeString": "Currency"
+                  },
+                  "typeName": {
+                    "id": 3648,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3647,
+                      "name": "Currency",
+                      "nameLocations": [
+                        "1208:8:14"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 8892,
+                      "src": "1208:8:14"
+                    },
+                    "referencedDeclaration": 8892,
+                    "src": "1208:8:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_Currency_$8892",
+                      "typeString": "Currency"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3651,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1243:6:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3653,
+                  "src": "1235:14:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3650,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1235:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1185:65:14"
+            },
+            "src": "1175:76:14"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 3654,
+              "nodeType": "StructuredDocumentation",
+              "src": "1256:65:14",
+              "text": "@notice Emitted when transferring `amount` of currency Claims"
+            },
+            "eventSelector": "d1398bee19313d6bf672ccb116e51f4a1a947e91c757907f51fbb5b5e56c698f",
+            "id": 3665,
+            "name": "Transfer",
+            "nameLocation": "1332:8:14",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 3664,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3656,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "from",
+                  "nameLocation": "1357:4:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3665,
+                  "src": "1341:20:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3655,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1341:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3658,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "1379:2:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3665,
+                  "src": "1363:18:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3657,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1363:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3661,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "currency",
+                  "nameLocation": "1400:8:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3665,
+                  "src": "1383:25:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_Currency_$8892",
+                    "typeString": "Currency"
+                  },
+                  "typeName": {
+                    "id": 3660,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3659,
+                      "name": "Currency",
+                      "nameLocations": [
+                        "1383:8:14"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 8892,
+                      "src": "1383:8:14"
+                    },
+                    "referencedDeclaration": 8892,
+                    "src": "1383:8:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_Currency_$8892",
+                      "typeString": "Currency"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3663,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1418:6:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3665,
+                  "src": "1410:14:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3662,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1410:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1340:85:14"
+            },
+            "src": "1326:100:14"
+          }
+        ],
+        "scope": 3667,
+        "src": "107:1321:14",
+        "usedErrors": [
+          3608,
+          3611
+        ],
+        "usedEvents": [
+          3643,
+          3653,
+          3665
+        ]
+      }
+    ],
+    "src": "32:1397:14"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.23+commit.f704f362.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2024-01-13T17:30:44.238Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "balanceOf(address,address)": {
+        "params": {
+          "account": "The account to get the balance of",
+          "currency": "The currency to get the balance of"
+        }
+      },
+      "transfer(address,address,uint256)": {
+        "details": "Will revert if the sender does not have enough balance",
+        "params": {
+          "amount": "The amount to transfer",
+          "currency": "The currency to transfer",
+          "to": "The address to transfer to"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "errors": {
+      "InsufficientBalance()": [
+        {
+          "notice": "Thrown when user has insufficient Claims balance"
+        }
+      ],
+      "InvalidAddress()": [
+        {
+          "notice": "Thrown when transferring Claims to this address"
+        }
+      ]
+    },
+    "events": {
+      "Burn(address,address,uint256)": {
+        "notice": "Emitted when burning `amount` of currency Claims from address"
+      },
+      "Mint(address,address,uint256)": {
+        "notice": "Emitted when minting `amount` of currency Claims to address"
+      },
+      "Transfer(address,address,address,uint256)": {
+        "notice": "Emitted when transferring `amount` of currency Claims"
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "balanceOf(address,address)": {
+        "notice": "Get the balance of `account` for `currency`"
+      },
+      "transfer(address,address,uint256)": {
+        "notice": "Transfer `amount` of `currency` from sender to `to`"
+      }
+    },
+    "version": 1
+  }
+}

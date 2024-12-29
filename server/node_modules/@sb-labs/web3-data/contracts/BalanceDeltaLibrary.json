@@ -1,0 +1,2212 @@
+{
+  "contractName": "BalanceDeltaLibrary",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "MAXIMUM_DELTA",
+      "outputs": [
+        {
+          "internalType": "BalanceDelta",
+          "name": "",
+          "type": "int256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"MAXIMUM_DELTA\",\"outputs\":[{\"internalType\":\"BalanceDelta\",\"name\":\"\",\"type\":\"int256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/v4-core/src/types/BalanceDelta.sol\":\"BalanceDeltaLibrary\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/v4-core/src/types/BalanceDelta.sol\":{\"keccak256\":\"0xb348472d6a9050f8e162173712911896882939a0cd7316db386ced5182716845\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://10db8d83e74b6cabcf71f0325d16e9c919c66ba4e41ab58a280b432f8b9ea6e4\",\"dweb:/ipfs/QmNWQJQqCrp9QWzbdBivkYBX6tfEgobkGYhoCxvoX3ZtKg\"]}},\"version\":1}",
+  "bytecode": "0x60808060405234601857606f908161001d823930815050f35b5f80fdfe60808060405260043610156011575f80fd5b5f3560e01c62cc10c3146022575f80fd5b5f3660031901126035575f198152602090f35b5f80fdfea26469706673582212202e14e2471a56e0333e101f652e10dcc01aaad4ba4e410914311b81e9e72302e664736f6c63430008170033",
+  "deployedBytecode": "0x60808060405260043610156011575f80fd5b5f3560e01c62cc10c3146022575f80fd5b5f3660031901126035575f198152602090f35b5f80fdfea26469706673582212202e14e2471a56e0333e101f652e10dcc01aaad4ba4e410914311b81e9e72302e664736f6c63430008170033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "964:615:31:-:0;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "964:615:31:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;964:615:31;;;;-1:-1:-1;;964:615:31;;;;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.20;\n\ntype BalanceDelta is int256;\n\nusing {add as +, sub as -, eq as ==} for BalanceDelta global;\nusing BalanceDeltaLibrary for BalanceDelta global;\n\nfunction toBalanceDelta(int128 _amount0, int128 _amount1) pure returns (BalanceDelta balanceDelta) {\n    /// @solidity memory-safe-assembly\n    assembly {\n        balanceDelta :=\n            or(shl(128, _amount0), and(0x00000000000000000000000000000000ffffffffffffffffffffffffffffffff, _amount1))\n    }\n}\n\nfunction add(BalanceDelta a, BalanceDelta b) pure returns (BalanceDelta) {\n    return toBalanceDelta(a.amount0() + b.amount0(), a.amount1() + b.amount1());\n}\n\nfunction sub(BalanceDelta a, BalanceDelta b) pure returns (BalanceDelta) {\n    return toBalanceDelta(a.amount0() - b.amount0(), a.amount1() - b.amount1());\n}\n\nfunction eq(BalanceDelta a, BalanceDelta b) pure returns (bool) {\n    return a.amount0() == b.amount0() && a.amount1() == b.amount1();\n}\n\nlibrary BalanceDeltaLibrary {\n    // Sentinel return value used to signify that a NoOp occurred.\n    BalanceDelta public constant MAXIMUM_DELTA = BalanceDelta.wrap(int256(type(uint256).max));\n\n    function amount0(BalanceDelta balanceDelta) internal pure returns (int128 _amount0) {\n        /// @solidity memory-safe-assembly\n        assembly {\n            _amount0 := shr(128, balanceDelta)\n        }\n    }\n\n    function amount1(BalanceDelta balanceDelta) internal pure returns (int128 _amount1) {\n        /// @solidity memory-safe-assembly\n        assembly {\n            _amount1 := balanceDelta\n        }\n    }\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/v4-core/src/types/BalanceDelta.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/v4-core/src/types/BalanceDelta.sol",
+    "exportedSymbols": {
+      "BalanceDelta": [
+        8741
+      ],
+      "BalanceDeltaLibrary": [
+        8886
+      ],
+      "add": [
+        8793
+      ],
+      "eq": [
+        8851
+      ],
+      "sub": [
+        8823
+      ],
+      "toBalanceDelta": [
+        8763
+      ]
+    },
+    "id": 8887,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8739,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".20"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:24:31"
+      },
+      {
+        "canonicalName": "BalanceDelta",
+        "id": 8741,
+        "name": "BalanceDelta",
+        "nameLocation": "63:12:31",
+        "nodeType": "UserDefinedValueTypeDefinition",
+        "src": "58:28:31",
+        "underlyingType": {
+          "id": 8740,
+          "name": "int256",
+          "nodeType": "ElementaryTypeName",
+          "src": "79:6:31",
+          "typeDescriptions": {
+            "typeIdentifier": "t_int256",
+            "typeString": "int256"
+          }
+        }
+      },
+      {
+        "functionList": [
+          {
+            "definition": {
+              "id": 8742,
+              "name": "add",
+              "nameLocations": [
+                "95:3:31"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 8793,
+              "src": "95:3:31"
+            },
+            "operator": "+"
+          },
+          {
+            "definition": {
+              "id": 8743,
+              "name": "sub",
+              "nameLocations": [
+                "105:3:31"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 8823,
+              "src": "105:3:31"
+            },
+            "operator": "-"
+          },
+          {
+            "definition": {
+              "id": 8744,
+              "name": "eq",
+              "nameLocations": [
+                "115:2:31"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 8851,
+              "src": "115:2:31"
+            },
+            "operator": "=="
+          }
+        ],
+        "global": true,
+        "id": 8747,
+        "nodeType": "UsingForDirective",
+        "src": "88:61:31",
+        "typeName": {
+          "id": 8746,
+          "nodeType": "UserDefinedTypeName",
+          "pathNode": {
+            "id": 8745,
+            "name": "BalanceDelta",
+            "nameLocations": [
+              "129:12:31"
+            ],
+            "nodeType": "IdentifierPath",
+            "referencedDeclaration": 8741,
+            "src": "129:12:31"
+          },
+          "referencedDeclaration": 8741,
+          "src": "129:12:31",
+          "typeDescriptions": {
+            "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+            "typeString": "BalanceDelta"
+          }
+        }
+      },
+      {
+        "global": true,
+        "id": 8751,
+        "libraryName": {
+          "id": 8748,
+          "name": "BalanceDeltaLibrary",
+          "nameLocations": [
+            "156:19:31"
+          ],
+          "nodeType": "IdentifierPath",
+          "referencedDeclaration": 8886,
+          "src": "156:19:31"
+        },
+        "nodeType": "UsingForDirective",
+        "src": "150:50:31",
+        "typeName": {
+          "id": 8750,
+          "nodeType": "UserDefinedTypeName",
+          "pathNode": {
+            "id": 8749,
+            "name": "BalanceDelta",
+            "nameLocations": [
+              "180:12:31"
+            ],
+            "nodeType": "IdentifierPath",
+            "referencedDeclaration": 8741,
+            "src": "180:12:31"
+          },
+          "referencedDeclaration": 8741,
+          "src": "180:12:31",
+          "typeDescriptions": {
+            "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+            "typeString": "BalanceDelta"
+          }
+        }
+      },
+      {
+        "body": {
+          "id": 8762,
+          "nodeType": "Block",
+          "src": "301:205:31",
+          "statements": [
+            {
+              "AST": {
+                "nativeSrc": "355:149:31",
+                "nodeType": "YulBlock",
+                "src": "355:149:31",
+                "statements": [
+                  {
+                    "nativeSrc": "365:133:31",
+                    "nodeType": "YulAssignment",
+                    "src": "365:133:31",
+                    "value": {
+                      "arguments": [
+                        {
+                          "arguments": [
+                            {
+                              "kind": "number",
+                              "nativeSrc": "400:3:31",
+                              "nodeType": "YulLiteral",
+                              "src": "400:3:31",
+                              "type": "",
+                              "value": "128"
+                            },
+                            {
+                              "name": "_amount0",
+                              "nativeSrc": "405:8:31",
+                              "nodeType": "YulIdentifier",
+                              "src": "405:8:31"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "shl",
+                            "nativeSrc": "396:3:31",
+                            "nodeType": "YulIdentifier",
+                            "src": "396:3:31"
+                          },
+                          "nativeSrc": "396:18:31",
+                          "nodeType": "YulFunctionCall",
+                          "src": "396:18:31"
+                        },
+                        {
+                          "arguments": [
+                            {
+                              "kind": "number",
+                              "nativeSrc": "420:66:31",
+                              "nodeType": "YulLiteral",
+                              "src": "420:66:31",
+                              "type": "",
+                              "value": "0x00000000000000000000000000000000ffffffffffffffffffffffffffffffff"
+                            },
+                            {
+                              "name": "_amount1",
+                              "nativeSrc": "488:8:31",
+                              "nodeType": "YulIdentifier",
+                              "src": "488:8:31"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "and",
+                            "nativeSrc": "416:3:31",
+                            "nodeType": "YulIdentifier",
+                            "src": "416:3:31"
+                          },
+                          "nativeSrc": "416:81:31",
+                          "nodeType": "YulFunctionCall",
+                          "src": "416:81:31"
+                        }
+                      ],
+                      "functionName": {
+                        "name": "or",
+                        "nativeSrc": "393:2:31",
+                        "nodeType": "YulIdentifier",
+                        "src": "393:2:31"
+                      },
+                      "nativeSrc": "393:105:31",
+                      "nodeType": "YulFunctionCall",
+                      "src": "393:105:31"
+                    },
+                    "variableNames": [
+                      {
+                        "name": "balanceDelta",
+                        "nativeSrc": "365:12:31",
+                        "nodeType": "YulIdentifier",
+                        "src": "365:12:31"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "documentation": "@solidity memory-safe-assembly",
+              "evmVersion": "shanghai",
+              "externalReferences": [
+                {
+                  "declaration": 8753,
+                  "isOffset": false,
+                  "isSlot": false,
+                  "src": "405:8:31",
+                  "valueSize": 1
+                },
+                {
+                  "declaration": 8755,
+                  "isOffset": false,
+                  "isSlot": false,
+                  "src": "488:8:31",
+                  "valueSize": 1
+                },
+                {
+                  "declaration": 8759,
+                  "isOffset": false,
+                  "isSlot": false,
+                  "src": "365:12:31",
+                  "valueSize": 1
+                }
+              ],
+              "id": 8761,
+              "nodeType": "InlineAssembly",
+              "src": "346:158:31"
+            }
+          ]
+        },
+        "id": 8763,
+        "implemented": true,
+        "kind": "freeFunction",
+        "modifiers": [],
+        "name": "toBalanceDelta",
+        "nameLocation": "211:14:31",
+        "nodeType": "FunctionDefinition",
+        "parameters": {
+          "id": 8756,
+          "nodeType": "ParameterList",
+          "parameters": [
+            {
+              "constant": false,
+              "id": 8753,
+              "mutability": "mutable",
+              "name": "_amount0",
+              "nameLocation": "233:8:31",
+              "nodeType": "VariableDeclaration",
+              "scope": 8763,
+              "src": "226:15:31",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_int128",
+                "typeString": "int128"
+              },
+              "typeName": {
+                "id": 8752,
+                "name": "int128",
+                "nodeType": "ElementaryTypeName",
+                "src": "226:6:31",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_int128",
+                  "typeString": "int128"
+                }
+              },
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 8755,
+              "mutability": "mutable",
+              "name": "_amount1",
+              "nameLocation": "250:8:31",
+              "nodeType": "VariableDeclaration",
+              "scope": 8763,
+              "src": "243:15:31",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_int128",
+                "typeString": "int128"
+              },
+              "typeName": {
+                "id": 8754,
+                "name": "int128",
+                "nodeType": "ElementaryTypeName",
+                "src": "243:6:31",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_int128",
+                  "typeString": "int128"
+                }
+              },
+              "visibility": "internal"
+            }
+          ],
+          "src": "225:34:31"
+        },
+        "returnParameters": {
+          "id": 8760,
+          "nodeType": "ParameterList",
+          "parameters": [
+            {
+              "constant": false,
+              "id": 8759,
+              "mutability": "mutable",
+              "name": "balanceDelta",
+              "nameLocation": "287:12:31",
+              "nodeType": "VariableDeclaration",
+              "scope": 8763,
+              "src": "274:25:31",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                "typeString": "BalanceDelta"
+              },
+              "typeName": {
+                "id": 8758,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 8757,
+                  "name": "BalanceDelta",
+                  "nameLocations": [
+                    "274:12:31"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 8741,
+                  "src": "274:12:31"
+                },
+                "referencedDeclaration": 8741,
+                "src": "274:12:31",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                  "typeString": "BalanceDelta"
+                }
+              },
+              "visibility": "internal"
+            }
+          ],
+          "src": "273:27:31"
+        },
+        "scope": 8887,
+        "src": "202:304:31",
+        "stateMutability": "pure",
+        "virtual": false,
+        "visibility": "internal"
+      },
+      {
+        "body": {
+          "id": 8792,
+          "nodeType": "Block",
+          "src": "581:84:31",
+          "statements": [
+            {
+              "expression": {
+                "arguments": [
+                  {
+                    "commonType": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    },
+                    "id": 8782,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "expression": {
+                          "id": 8776,
+                          "name": "a",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 8766,
+                          "src": "609:1:31",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                            "typeString": "BalanceDelta"
+                          }
+                        },
+                        "id": 8777,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "611:7:31",
+                        "memberName": "amount0",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 8875,
+                        "src": "609:9:31",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_userDefinedValueType$_BalanceDelta_$8741_$returns$_t_int128_$attached_to$_t_userDefinedValueType$_BalanceDelta_$8741_$",
+                          "typeString": "function (BalanceDelta) pure returns (int128)"
+                        }
+                      },
+                      "id": 8778,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "609:11:31",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int128",
+                        "typeString": "int128"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "+",
+                    "rightExpression": {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "expression": {
+                          "id": 8779,
+                          "name": "b",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 8769,
+                          "src": "623:1:31",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                            "typeString": "BalanceDelta"
+                          }
+                        },
+                        "id": 8780,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "625:7:31",
+                        "memberName": "amount0",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 8875,
+                        "src": "623:9:31",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_userDefinedValueType$_BalanceDelta_$8741_$returns$_t_int128_$attached_to$_t_userDefinedValueType$_BalanceDelta_$8741_$",
+                          "typeString": "function (BalanceDelta) pure returns (int128)"
+                        }
+                      },
+                      "id": 8781,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "623:11:31",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int128",
+                        "typeString": "int128"
+                      }
+                    },
+                    "src": "609:25:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  },
+                  {
+                    "commonType": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    },
+                    "id": 8789,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "expression": {
+                          "id": 8783,
+                          "name": "a",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 8766,
+                          "src": "636:1:31",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                            "typeString": "BalanceDelta"
+                          }
+                        },
+                        "id": 8784,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "638:7:31",
+                        "memberName": "amount1",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 8885,
+                        "src": "636:9:31",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_userDefinedValueType$_BalanceDelta_$8741_$returns$_t_int128_$attached_to$_t_userDefinedValueType$_BalanceDelta_$8741_$",
+                          "typeString": "function (BalanceDelta) pure returns (int128)"
+                        }
+                      },
+                      "id": 8785,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "636:11:31",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int128",
+                        "typeString": "int128"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "+",
+                    "rightExpression": {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "expression": {
+                          "id": 8786,
+                          "name": "b",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 8769,
+                          "src": "650:1:31",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                            "typeString": "BalanceDelta"
+                          }
+                        },
+                        "id": 8787,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "652:7:31",
+                        "memberName": "amount1",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 8885,
+                        "src": "650:9:31",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_userDefinedValueType$_BalanceDelta_$8741_$returns$_t_int128_$attached_to$_t_userDefinedValueType$_BalanceDelta_$8741_$",
+                          "typeString": "function (BalanceDelta) pure returns (int128)"
+                        }
+                      },
+                      "id": 8788,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "650:11:31",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int128",
+                        "typeString": "int128"
+                      }
+                    },
+                    "src": "636:25:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  }
+                ],
+                "expression": {
+                  "argumentTypes": [
+                    {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    },
+                    {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  ],
+                  "id": 8775,
+                  "name": "toBalanceDelta",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 8763,
+                  "src": "594:14:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_function_internal_pure$_t_int128_$_t_int128_$returns$_t_userDefinedValueType$_BalanceDelta_$8741_$",
+                    "typeString": "function (int128,int128) pure returns (BalanceDelta)"
+                  }
+                },
+                "id": 8790,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": false,
+                "kind": "functionCall",
+                "lValueRequested": false,
+                "nameLocations": [],
+                "names": [],
+                "nodeType": "FunctionCall",
+                "src": "594:68:31",
+                "tryCall": false,
+                "typeDescriptions": {
+                  "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                  "typeString": "BalanceDelta"
+                }
+              },
+              "functionReturnParameters": 8774,
+              "id": 8791,
+              "nodeType": "Return",
+              "src": "587:75:31"
+            }
+          ]
+        },
+        "id": 8793,
+        "implemented": true,
+        "kind": "freeFunction",
+        "modifiers": [],
+        "name": "add",
+        "nameLocation": "517:3:31",
+        "nodeType": "FunctionDefinition",
+        "parameters": {
+          "id": 8770,
+          "nodeType": "ParameterList",
+          "parameters": [
+            {
+              "constant": false,
+              "id": 8766,
+              "mutability": "mutable",
+              "name": "a",
+              "nameLocation": "534:1:31",
+              "nodeType": "VariableDeclaration",
+              "scope": 8793,
+              "src": "521:14:31",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                "typeString": "BalanceDelta"
+              },
+              "typeName": {
+                "id": 8765,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 8764,
+                  "name": "BalanceDelta",
+                  "nameLocations": [
+                    "521:12:31"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 8741,
+                  "src": "521:12:31"
+                },
+                "referencedDeclaration": 8741,
+                "src": "521:12:31",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                  "typeString": "BalanceDelta"
+                }
+              },
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 8769,
+              "mutability": "mutable",
+              "name": "b",
+              "nameLocation": "550:1:31",
+              "nodeType": "VariableDeclaration",
+              "scope": 8793,
+              "src": "537:14:31",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                "typeString": "BalanceDelta"
+              },
+              "typeName": {
+                "id": 8768,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 8767,
+                  "name": "BalanceDelta",
+                  "nameLocations": [
+                    "537:12:31"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 8741,
+                  "src": "537:12:31"
+                },
+                "referencedDeclaration": 8741,
+                "src": "537:12:31",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                  "typeString": "BalanceDelta"
+                }
+              },
+              "visibility": "internal"
+            }
+          ],
+          "src": "520:32:31"
+        },
+        "returnParameters": {
+          "id": 8774,
+          "nodeType": "ParameterList",
+          "parameters": [
+            {
+              "constant": false,
+              "id": 8773,
+              "mutability": "mutable",
+              "name": "",
+              "nameLocation": "-1:-1:-1",
+              "nodeType": "VariableDeclaration",
+              "scope": 8793,
+              "src": "567:12:31",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                "typeString": "BalanceDelta"
+              },
+              "typeName": {
+                "id": 8772,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 8771,
+                  "name": "BalanceDelta",
+                  "nameLocations": [
+                    "567:12:31"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 8741,
+                  "src": "567:12:31"
+                },
+                "referencedDeclaration": 8741,
+                "src": "567:12:31",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                  "typeString": "BalanceDelta"
+                }
+              },
+              "visibility": "internal"
+            }
+          ],
+          "src": "566:14:31"
+        },
+        "scope": 8887,
+        "src": "508:157:31",
+        "stateMutability": "pure",
+        "virtual": false,
+        "visibility": "internal"
+      },
+      {
+        "body": {
+          "id": 8822,
+          "nodeType": "Block",
+          "src": "740:84:31",
+          "statements": [
+            {
+              "expression": {
+                "arguments": [
+                  {
+                    "commonType": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    },
+                    "id": 8812,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "expression": {
+                          "id": 8806,
+                          "name": "a",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 8796,
+                          "src": "768:1:31",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                            "typeString": "BalanceDelta"
+                          }
+                        },
+                        "id": 8807,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "770:7:31",
+                        "memberName": "amount0",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 8875,
+                        "src": "768:9:31",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_userDefinedValueType$_BalanceDelta_$8741_$returns$_t_int128_$attached_to$_t_userDefinedValueType$_BalanceDelta_$8741_$",
+                          "typeString": "function (BalanceDelta) pure returns (int128)"
+                        }
+                      },
+                      "id": 8808,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "768:11:31",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int128",
+                        "typeString": "int128"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "-",
+                    "rightExpression": {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "expression": {
+                          "id": 8809,
+                          "name": "b",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 8799,
+                          "src": "782:1:31",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                            "typeString": "BalanceDelta"
+                          }
+                        },
+                        "id": 8810,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "784:7:31",
+                        "memberName": "amount0",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 8875,
+                        "src": "782:9:31",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_userDefinedValueType$_BalanceDelta_$8741_$returns$_t_int128_$attached_to$_t_userDefinedValueType$_BalanceDelta_$8741_$",
+                          "typeString": "function (BalanceDelta) pure returns (int128)"
+                        }
+                      },
+                      "id": 8811,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "782:11:31",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int128",
+                        "typeString": "int128"
+                      }
+                    },
+                    "src": "768:25:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  },
+                  {
+                    "commonType": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    },
+                    "id": 8819,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "expression": {
+                          "id": 8813,
+                          "name": "a",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 8796,
+                          "src": "795:1:31",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                            "typeString": "BalanceDelta"
+                          }
+                        },
+                        "id": 8814,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "797:7:31",
+                        "memberName": "amount1",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 8885,
+                        "src": "795:9:31",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_userDefinedValueType$_BalanceDelta_$8741_$returns$_t_int128_$attached_to$_t_userDefinedValueType$_BalanceDelta_$8741_$",
+                          "typeString": "function (BalanceDelta) pure returns (int128)"
+                        }
+                      },
+                      "id": 8815,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "795:11:31",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int128",
+                        "typeString": "int128"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "-",
+                    "rightExpression": {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "expression": {
+                          "id": 8816,
+                          "name": "b",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 8799,
+                          "src": "809:1:31",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                            "typeString": "BalanceDelta"
+                          }
+                        },
+                        "id": 8817,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "811:7:31",
+                        "memberName": "amount1",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 8885,
+                        "src": "809:9:31",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_userDefinedValueType$_BalanceDelta_$8741_$returns$_t_int128_$attached_to$_t_userDefinedValueType$_BalanceDelta_$8741_$",
+                          "typeString": "function (BalanceDelta) pure returns (int128)"
+                        }
+                      },
+                      "id": 8818,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "809:11:31",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int128",
+                        "typeString": "int128"
+                      }
+                    },
+                    "src": "795:25:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  }
+                ],
+                "expression": {
+                  "argumentTypes": [
+                    {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    },
+                    {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  ],
+                  "id": 8805,
+                  "name": "toBalanceDelta",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 8763,
+                  "src": "753:14:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_function_internal_pure$_t_int128_$_t_int128_$returns$_t_userDefinedValueType$_BalanceDelta_$8741_$",
+                    "typeString": "function (int128,int128) pure returns (BalanceDelta)"
+                  }
+                },
+                "id": 8820,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": false,
+                "kind": "functionCall",
+                "lValueRequested": false,
+                "nameLocations": [],
+                "names": [],
+                "nodeType": "FunctionCall",
+                "src": "753:68:31",
+                "tryCall": false,
+                "typeDescriptions": {
+                  "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                  "typeString": "BalanceDelta"
+                }
+              },
+              "functionReturnParameters": 8804,
+              "id": 8821,
+              "nodeType": "Return",
+              "src": "746:75:31"
+            }
+          ]
+        },
+        "id": 8823,
+        "implemented": true,
+        "kind": "freeFunction",
+        "modifiers": [],
+        "name": "sub",
+        "nameLocation": "676:3:31",
+        "nodeType": "FunctionDefinition",
+        "parameters": {
+          "id": 8800,
+          "nodeType": "ParameterList",
+          "parameters": [
+            {
+              "constant": false,
+              "id": 8796,
+              "mutability": "mutable",
+              "name": "a",
+              "nameLocation": "693:1:31",
+              "nodeType": "VariableDeclaration",
+              "scope": 8823,
+              "src": "680:14:31",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                "typeString": "BalanceDelta"
+              },
+              "typeName": {
+                "id": 8795,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 8794,
+                  "name": "BalanceDelta",
+                  "nameLocations": [
+                    "680:12:31"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 8741,
+                  "src": "680:12:31"
+                },
+                "referencedDeclaration": 8741,
+                "src": "680:12:31",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                  "typeString": "BalanceDelta"
+                }
+              },
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 8799,
+              "mutability": "mutable",
+              "name": "b",
+              "nameLocation": "709:1:31",
+              "nodeType": "VariableDeclaration",
+              "scope": 8823,
+              "src": "696:14:31",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                "typeString": "BalanceDelta"
+              },
+              "typeName": {
+                "id": 8798,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 8797,
+                  "name": "BalanceDelta",
+                  "nameLocations": [
+                    "696:12:31"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 8741,
+                  "src": "696:12:31"
+                },
+                "referencedDeclaration": 8741,
+                "src": "696:12:31",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                  "typeString": "BalanceDelta"
+                }
+              },
+              "visibility": "internal"
+            }
+          ],
+          "src": "679:32:31"
+        },
+        "returnParameters": {
+          "id": 8804,
+          "nodeType": "ParameterList",
+          "parameters": [
+            {
+              "constant": false,
+              "id": 8803,
+              "mutability": "mutable",
+              "name": "",
+              "nameLocation": "-1:-1:-1",
+              "nodeType": "VariableDeclaration",
+              "scope": 8823,
+              "src": "726:12:31",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                "typeString": "BalanceDelta"
+              },
+              "typeName": {
+                "id": 8802,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 8801,
+                  "name": "BalanceDelta",
+                  "nameLocations": [
+                    "726:12:31"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 8741,
+                  "src": "726:12:31"
+                },
+                "referencedDeclaration": 8741,
+                "src": "726:12:31",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                  "typeString": "BalanceDelta"
+                }
+              },
+              "visibility": "internal"
+            }
+          ],
+          "src": "725:14:31"
+        },
+        "scope": 8887,
+        "src": "667:157:31",
+        "stateMutability": "pure",
+        "virtual": false,
+        "visibility": "internal"
+      },
+      {
+        "body": {
+          "id": 8850,
+          "nodeType": "Block",
+          "src": "890:72:31",
+          "statements": [
+            {
+              "expression": {
+                "commonType": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "id": 8848,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": false,
+                "lValueRequested": false,
+                "leftExpression": {
+                  "commonType": {
+                    "typeIdentifier": "t_int128",
+                    "typeString": "int128"
+                  },
+                  "id": 8840,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftExpression": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "id": 8834,
+                        "name": "a",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 8826,
+                        "src": "903:1:31",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                          "typeString": "BalanceDelta"
+                        }
+                      },
+                      "id": 8835,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "905:7:31",
+                      "memberName": "amount0",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 8875,
+                      "src": "903:9:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_pure$_t_userDefinedValueType$_BalanceDelta_$8741_$returns$_t_int128_$attached_to$_t_userDefinedValueType$_BalanceDelta_$8741_$",
+                        "typeString": "function (BalanceDelta) pure returns (int128)"
+                      }
+                    },
+                    "id": 8836,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "903:11:31",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  },
+                  "nodeType": "BinaryOperation",
+                  "operator": "==",
+                  "rightExpression": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "id": 8837,
+                        "name": "b",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 8829,
+                        "src": "918:1:31",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                          "typeString": "BalanceDelta"
+                        }
+                      },
+                      "id": 8838,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "920:7:31",
+                      "memberName": "amount0",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 8875,
+                      "src": "918:9:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_pure$_t_userDefinedValueType$_BalanceDelta_$8741_$returns$_t_int128_$attached_to$_t_userDefinedValueType$_BalanceDelta_$8741_$",
+                        "typeString": "function (BalanceDelta) pure returns (int128)"
+                      }
+                    },
+                    "id": 8839,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "918:11:31",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  },
+                  "src": "903:26:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "nodeType": "BinaryOperation",
+                "operator": "&&",
+                "rightExpression": {
+                  "commonType": {
+                    "typeIdentifier": "t_int128",
+                    "typeString": "int128"
+                  },
+                  "id": 8847,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftExpression": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "id": 8841,
+                        "name": "a",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 8826,
+                        "src": "933:1:31",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                          "typeString": "BalanceDelta"
+                        }
+                      },
+                      "id": 8842,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "935:7:31",
+                      "memberName": "amount1",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 8885,
+                      "src": "933:9:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_pure$_t_userDefinedValueType$_BalanceDelta_$8741_$returns$_t_int128_$attached_to$_t_userDefinedValueType$_BalanceDelta_$8741_$",
+                        "typeString": "function (BalanceDelta) pure returns (int128)"
+                      }
+                    },
+                    "id": 8843,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "933:11:31",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  },
+                  "nodeType": "BinaryOperation",
+                  "operator": "==",
+                  "rightExpression": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "id": 8844,
+                        "name": "b",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 8829,
+                        "src": "948:1:31",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                          "typeString": "BalanceDelta"
+                        }
+                      },
+                      "id": 8845,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "950:7:31",
+                      "memberName": "amount1",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 8885,
+                      "src": "948:9:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_pure$_t_userDefinedValueType$_BalanceDelta_$8741_$returns$_t_int128_$attached_to$_t_userDefinedValueType$_BalanceDelta_$8741_$",
+                        "typeString": "function (BalanceDelta) pure returns (int128)"
+                      }
+                    },
+                    "id": 8846,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "948:11:31",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  },
+                  "src": "933:26:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "src": "903:56:31",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                }
+              },
+              "functionReturnParameters": 8833,
+              "id": 8849,
+              "nodeType": "Return",
+              "src": "896:63:31"
+            }
+          ]
+        },
+        "id": 8851,
+        "implemented": true,
+        "kind": "freeFunction",
+        "modifiers": [],
+        "name": "eq",
+        "nameLocation": "835:2:31",
+        "nodeType": "FunctionDefinition",
+        "parameters": {
+          "id": 8830,
+          "nodeType": "ParameterList",
+          "parameters": [
+            {
+              "constant": false,
+              "id": 8826,
+              "mutability": "mutable",
+              "name": "a",
+              "nameLocation": "851:1:31",
+              "nodeType": "VariableDeclaration",
+              "scope": 8851,
+              "src": "838:14:31",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                "typeString": "BalanceDelta"
+              },
+              "typeName": {
+                "id": 8825,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 8824,
+                  "name": "BalanceDelta",
+                  "nameLocations": [
+                    "838:12:31"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 8741,
+                  "src": "838:12:31"
+                },
+                "referencedDeclaration": 8741,
+                "src": "838:12:31",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                  "typeString": "BalanceDelta"
+                }
+              },
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 8829,
+              "mutability": "mutable",
+              "name": "b",
+              "nameLocation": "867:1:31",
+              "nodeType": "VariableDeclaration",
+              "scope": 8851,
+              "src": "854:14:31",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                "typeString": "BalanceDelta"
+              },
+              "typeName": {
+                "id": 8828,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 8827,
+                  "name": "BalanceDelta",
+                  "nameLocations": [
+                    "854:12:31"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 8741,
+                  "src": "854:12:31"
+                },
+                "referencedDeclaration": 8741,
+                "src": "854:12:31",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                  "typeString": "BalanceDelta"
+                }
+              },
+              "visibility": "internal"
+            }
+          ],
+          "src": "837:32:31"
+        },
+        "returnParameters": {
+          "id": 8833,
+          "nodeType": "ParameterList",
+          "parameters": [
+            {
+              "constant": false,
+              "id": 8832,
+              "mutability": "mutable",
+              "name": "",
+              "nameLocation": "-1:-1:-1",
+              "nodeType": "VariableDeclaration",
+              "scope": 8851,
+              "src": "884:4:31",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              },
+              "typeName": {
+                "id": 8831,
+                "name": "bool",
+                "nodeType": "ElementaryTypeName",
+                "src": "884:4:31",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                }
+              },
+              "visibility": "internal"
+            }
+          ],
+          "src": "883:6:31"
+        },
+        "scope": 8887,
+        "src": "826:136:31",
+        "stateMutability": "pure",
+        "virtual": false,
+        "visibility": "internal"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "BalanceDeltaLibrary",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 8886,
+        "linearizedBaseContracts": [
+          8886
+        ],
+        "name": "BalanceDeltaLibrary",
+        "nameLocation": "972:19:31",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "functionSelector": "00cc10c3",
+            "id": 8865,
+            "mutability": "constant",
+            "name": "MAXIMUM_DELTA",
+            "nameLocation": "1094:13:31",
+            "nodeType": "VariableDeclaration",
+            "scope": 8886,
+            "src": "1065:89:31",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+              "typeString": "BalanceDelta"
+            },
+            "typeName": {
+              "id": 8853,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 8852,
+                "name": "BalanceDelta",
+                "nameLocations": [
+                  "1065:12:31"
+                ],
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 8741,
+                "src": "1065:12:31"
+              },
+              "referencedDeclaration": 8741,
+              "src": "1065:12:31",
+              "typeDescriptions": {
+                "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                "typeString": "BalanceDelta"
+              }
+            },
+            "value": {
+              "arguments": [
+                {
+                  "arguments": [
+                    {
+                      "expression": {
+                        "arguments": [
+                          {
+                            "id": 8860,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "1140:7:31",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_uint256_$",
+                              "typeString": "type(uint256)"
+                            },
+                            "typeName": {
+                              "id": 8859,
+                              "name": "uint256",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "1140:7:31",
+                              "typeDescriptions": {}
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_type$_t_uint256_$",
+                              "typeString": "type(uint256)"
+                            }
+                          ],
+                          "id": 8858,
+                          "name": "type",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4294967269,
+                          "src": "1135:4:31",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_metatype_pure$__$returns$__$",
+                            "typeString": "function () pure"
+                          }
+                        },
+                        "id": 8861,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "nameLocations": [],
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1135:13:31",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_meta_type_t_uint256",
+                          "typeString": "type(uint256)"
+                        }
+                      },
+                      "id": 8862,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberLocation": "1149:3:31",
+                      "memberName": "max",
+                      "nodeType": "MemberAccess",
+                      "src": "1135:17:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    ],
+                    "id": 8857,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "lValueRequested": false,
+                    "nodeType": "ElementaryTypeNameExpression",
+                    "src": "1128:6:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_type$_t_int256_$",
+                      "typeString": "type(int256)"
+                    },
+                    "typeName": {
+                      "id": 8856,
+                      "name": "int256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1128:6:31",
+                      "typeDescriptions": {}
+                    }
+                  },
+                  "id": 8863,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "kind": "typeConversion",
+                  "lValueRequested": false,
+                  "nameLocations": [],
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1128:25:31",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  }
+                }
+              ],
+              "expression": {
+                "argumentTypes": [
+                  {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  }
+                ],
+                "expression": {
+                  "id": 8854,
+                  "name": "BalanceDelta",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 8741,
+                  "src": "1110:12:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_userDefinedValueType$_BalanceDelta_$8741_$",
+                    "typeString": "type(BalanceDelta)"
+                  }
+                },
+                "id": 8855,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "lValueRequested": false,
+                "memberLocation": "1123:4:31",
+                "memberName": "wrap",
+                "nodeType": "MemberAccess",
+                "src": "1110:17:31",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_function_wrap_pure$_t_int256_$returns$_t_userDefinedValueType$_BalanceDelta_$8741_$",
+                  "typeString": "function (int256) pure returns (BalanceDelta)"
+                }
+              },
+              "id": 8864,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "functionCall",
+              "lValueRequested": false,
+              "nameLocations": [],
+              "names": [],
+              "nodeType": "FunctionCall",
+              "src": "1110:44:31",
+              "tryCall": false,
+              "typeDescriptions": {
+                "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                "typeString": "BalanceDelta"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 8874,
+              "nodeType": "Block",
+              "src": "1245:126:31",
+              "statements": [
+                {
+                  "AST": {
+                    "nativeSrc": "1307:58:31",
+                    "nodeType": "YulBlock",
+                    "src": "1307:58:31",
+                    "statements": [
+                      {
+                        "nativeSrc": "1321:34:31",
+                        "nodeType": "YulAssignment",
+                        "src": "1321:34:31",
+                        "value": {
+                          "arguments": [
+                            {
+                              "kind": "number",
+                              "nativeSrc": "1337:3:31",
+                              "nodeType": "YulLiteral",
+                              "src": "1337:3:31",
+                              "type": "",
+                              "value": "128"
+                            },
+                            {
+                              "name": "balanceDelta",
+                              "nativeSrc": "1342:12:31",
+                              "nodeType": "YulIdentifier",
+                              "src": "1342:12:31"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "shr",
+                            "nativeSrc": "1333:3:31",
+                            "nodeType": "YulIdentifier",
+                            "src": "1333:3:31"
+                          },
+                          "nativeSrc": "1333:22:31",
+                          "nodeType": "YulFunctionCall",
+                          "src": "1333:22:31"
+                        },
+                        "variableNames": [
+                          {
+                            "name": "_amount0",
+                            "nativeSrc": "1321:8:31",
+                            "nodeType": "YulIdentifier",
+                            "src": "1321:8:31"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "documentation": "@solidity memory-safe-assembly",
+                  "evmVersion": "shanghai",
+                  "externalReferences": [
+                    {
+                      "declaration": 8871,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "1321:8:31",
+                      "valueSize": 1
+                    },
+                    {
+                      "declaration": 8868,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "1342:12:31",
+                      "valueSize": 1
+                    }
+                  ],
+                  "id": 8873,
+                  "nodeType": "InlineAssembly",
+                  "src": "1298:67:31"
+                }
+              ]
+            },
+            "id": 8875,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "amount0",
+            "nameLocation": "1170:7:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8869,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8868,
+                  "mutability": "mutable",
+                  "name": "balanceDelta",
+                  "nameLocation": "1191:12:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8875,
+                  "src": "1178:25:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                    "typeString": "BalanceDelta"
+                  },
+                  "typeName": {
+                    "id": 8867,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 8866,
+                      "name": "BalanceDelta",
+                      "nameLocations": [
+                        "1178:12:31"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 8741,
+                      "src": "1178:12:31"
+                    },
+                    "referencedDeclaration": 8741,
+                    "src": "1178:12:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                      "typeString": "BalanceDelta"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1177:27:31"
+            },
+            "returnParameters": {
+              "id": 8872,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8871,
+                  "mutability": "mutable",
+                  "name": "_amount0",
+                  "nameLocation": "1235:8:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8875,
+                  "src": "1228:15:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int128",
+                    "typeString": "int128"
+                  },
+                  "typeName": {
+                    "id": 8870,
+                    "name": "int128",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1228:6:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1227:17:31"
+            },
+            "scope": 8886,
+            "src": "1161:210:31",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 8884,
+              "nodeType": "Block",
+              "src": "1461:116:31",
+              "statements": [
+                {
+                  "AST": {
+                    "nativeSrc": "1523:48:31",
+                    "nodeType": "YulBlock",
+                    "src": "1523:48:31",
+                    "statements": [
+                      {
+                        "nativeSrc": "1537:24:31",
+                        "nodeType": "YulAssignment",
+                        "src": "1537:24:31",
+                        "value": {
+                          "name": "balanceDelta",
+                          "nativeSrc": "1549:12:31",
+                          "nodeType": "YulIdentifier",
+                          "src": "1549:12:31"
+                        },
+                        "variableNames": [
+                          {
+                            "name": "_amount1",
+                            "nativeSrc": "1537:8:31",
+                            "nodeType": "YulIdentifier",
+                            "src": "1537:8:31"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "documentation": "@solidity memory-safe-assembly",
+                  "evmVersion": "shanghai",
+                  "externalReferences": [
+                    {
+                      "declaration": 8881,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "1537:8:31",
+                      "valueSize": 1
+                    },
+                    {
+                      "declaration": 8878,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "1549:12:31",
+                      "valueSize": 1
+                    }
+                  ],
+                  "id": 8883,
+                  "nodeType": "InlineAssembly",
+                  "src": "1514:57:31"
+                }
+              ]
+            },
+            "id": 8885,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "amount1",
+            "nameLocation": "1386:7:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8879,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8878,
+                  "mutability": "mutable",
+                  "name": "balanceDelta",
+                  "nameLocation": "1407:12:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8885,
+                  "src": "1394:25:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                    "typeString": "BalanceDelta"
+                  },
+                  "typeName": {
+                    "id": 8877,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 8876,
+                      "name": "BalanceDelta",
+                      "nameLocations": [
+                        "1394:12:31"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 8741,
+                      "src": "1394:12:31"
+                    },
+                    "referencedDeclaration": 8741,
+                    "src": "1394:12:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_BalanceDelta_$8741",
+                      "typeString": "BalanceDelta"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1393:27:31"
+            },
+            "returnParameters": {
+              "id": 8882,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8881,
+                  "mutability": "mutable",
+                  "name": "_amount1",
+                  "nameLocation": "1451:8:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8885,
+                  "src": "1444:15:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int128",
+                    "typeString": "int128"
+                  },
+                  "typeName": {
+                    "id": 8880,
+                    "name": "int128",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1444:6:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1443:17:31"
+            },
+            "scope": 8886,
+            "src": "1377:200:31",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 8887,
+        "src": "964:615:31",
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "src": "32:1548:31"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.23+commit.f704f362.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2024-01-13T17:30:44.268Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

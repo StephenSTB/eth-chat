@@ -1,0 +1,1426 @@
+{
+  "contractName": "SafeCast",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "SafeCastOverflow",
+      "type": "error"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"SafeCastOverflow\",\"type\":\"error\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Safe casting methods\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Contains methods for safely casting between types\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/v4-core/src/libraries/SafeCast.sol\":\"SafeCast\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/v4-core/src/libraries/SafeCast.sol\":{\"keccak256\":\"0x197985a64d2ccf38a5e6a80cf70dc345594cc7296a2364b7447e553966ed89dc\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://05c0f4aa083eb721febe1d23a1f55ced942eab0072318cb919c5fa42d0553042\",\"dweb:/ipfs/QmV1DBPTynduQnC9T5Ad87jHLZfevMkBQPFjPTMtstJgeN\"]}},\"version\":1}",
+  "bytecode": "0x6080806040523460175760399081601c823930815050f35b5f80fdfe5f80fdfea2646970667358221220ac19edfa0d3fa4acbeca5a4f4081aabec2dfcffd424d2f5714d441ed9ad477fb64736f6c63430008170033",
+  "deployedBytecode": "0x5f80fdfea2646970667358221220ac19edfa0d3fa4acbeca5a4f4081aabec2dfcffd424d2f5714d441ed9ad477fb64736f6c63430008170033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "165:1359:25:-:0;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "165:1359:25:-:0;;",
+  "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity ^0.8.20;\n\n/// @title Safe casting methods\n/// @notice Contains methods for safely casting between types\nlibrary SafeCast {\n    error SafeCastOverflow();\n\n    /// @notice Cast a uint256 to a uint160, revert on overflow\n    /// @param y The uint256 to be downcasted\n    /// @return z The downcasted integer, now type uint160\n    function toUint160(uint256 y) internal pure returns (uint160 z) {\n        z = uint160(y);\n        if (z != y) revert SafeCastOverflow();\n    }\n\n    /// @notice Cast a int256 to a int128, revert on overflow or underflow\n    /// @param y The int256 to be downcasted\n    /// @return z The downcasted integer, now type int128\n    function toInt128(int256 y) internal pure returns (int128 z) {\n        z = int128(y);\n        if (z != y) revert SafeCastOverflow();\n    }\n\n    /// @notice Cast a uint256 to a int256, revert on overflow\n    /// @param y The uint256 to be casted\n    /// @return z The casted integer, now type int256\n    function toInt256(uint256 y) internal pure returns (int256 z) {\n        if (y > uint256(type(int256).max)) revert SafeCastOverflow();\n        z = int256(y);\n    }\n\n    /// @notice Cast a uint256 to a int128, revert on overflow\n    /// @param y The uint256 to be downcasted\n    /// @return z The downcasted integer, now type int128\n    function toInt128(uint256 y) internal pure returns (int128 z) {\n        if (y > uint128(type(int128).max)) revert SafeCastOverflow();\n        z = int128(int256(y));\n    }\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/v4-core/src/libraries/SafeCast.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/v4-core/src/libraries/SafeCast.sol",
+    "exportedSymbols": {
+      "SafeCast": [
+        7048
+      ]
+    },
+    "id": 7049,
+    "license": "GPL-2.0-or-later",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6935,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".20"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "45:24:25"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "SafeCast",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": {
+          "id": 6936,
+          "nodeType": "StructuredDocumentation",
+          "src": "71:94:25",
+          "text": "@title Safe casting methods\n @notice Contains methods for safely casting between types"
+        },
+        "fullyImplemented": true,
+        "id": 7048,
+        "linearizedBaseContracts": [
+          7048
+        ],
+        "name": "SafeCast",
+        "nameLocation": "173:8:25",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "errorSelector": "93dafdf1",
+            "id": 6938,
+            "name": "SafeCastOverflow",
+            "nameLocation": "194:16:25",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 6937,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "210:2:25"
+            },
+            "src": "188:25:25"
+          },
+          {
+            "body": {
+              "id": 6960,
+              "nodeType": "Block",
+              "src": "452:78:25",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 6951,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 6946,
+                      "name": "z",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6944,
+                      "src": "462:1:25",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint160",
+                        "typeString": "uint160"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "arguments": [
+                        {
+                          "id": 6949,
+                          "name": "y",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6941,
+                          "src": "474:1:25",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 6948,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "466:7:25",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_uint160_$",
+                          "typeString": "type(uint160)"
+                        },
+                        "typeName": {
+                          "id": 6947,
+                          "name": "uint160",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "466:7:25",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 6950,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "466:10:25",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint160",
+                        "typeString": "uint160"
+                      }
+                    },
+                    "src": "462:14:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint160",
+                      "typeString": "uint160"
+                    }
+                  },
+                  "id": 6952,
+                  "nodeType": "ExpressionStatement",
+                  "src": "462:14:25"
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 6955,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 6953,
+                      "name": "z",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6944,
+                      "src": "490:1:25",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint160",
+                        "typeString": "uint160"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "id": 6954,
+                      "name": "y",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6941,
+                      "src": "495:1:25",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "490:6:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 6959,
+                  "nodeType": "IfStatement",
+                  "src": "486:37:25",
+                  "trueBody": {
+                    "errorCall": {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 6956,
+                        "name": "SafeCastOverflow",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6938,
+                        "src": "505:16:25",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_error_pure$__$returns$__$",
+                          "typeString": "function () pure"
+                        }
+                      },
+                      "id": 6957,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "505:18:25",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_tuple$__$",
+                        "typeString": "tuple()"
+                      }
+                    },
+                    "id": 6958,
+                    "nodeType": "RevertStatement",
+                    "src": "498:25:25"
+                  }
+                }
+              ]
+            },
+            "documentation": {
+              "id": 6939,
+              "nodeType": "StructuredDocumentation",
+              "src": "219:164:25",
+              "text": "@notice Cast a uint256 to a uint160, revert on overflow\n @param y The uint256 to be downcasted\n @return z The downcasted integer, now type uint160"
+            },
+            "id": 6961,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "toUint160",
+            "nameLocation": "397:9:25",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6942,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6941,
+                  "mutability": "mutable",
+                  "name": "y",
+                  "nameLocation": "415:1:25",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6961,
+                  "src": "407:9:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6940,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "407:7:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "406:11:25"
+            },
+            "returnParameters": {
+              "id": 6945,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6944,
+                  "mutability": "mutable",
+                  "name": "z",
+                  "nameLocation": "449:1:25",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6961,
+                  "src": "441:9:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint160",
+                    "typeString": "uint160"
+                  },
+                  "typeName": {
+                    "id": 6943,
+                    "name": "uint160",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "441:7:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint160",
+                      "typeString": "uint160"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "440:11:25"
+            },
+            "scope": 7048,
+            "src": "388:142:25",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 6983,
+              "nodeType": "Block",
+              "src": "775:77:25",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 6974,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 6969,
+                      "name": "z",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6967,
+                      "src": "785:1:25",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int128",
+                        "typeString": "int128"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "arguments": [
+                        {
+                          "id": 6972,
+                          "name": "y",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6964,
+                          "src": "796:1:25",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_int256",
+                            "typeString": "int256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_int256",
+                            "typeString": "int256"
+                          }
+                        ],
+                        "id": 6971,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "789:6:25",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_int128_$",
+                          "typeString": "type(int128)"
+                        },
+                        "typeName": {
+                          "id": 6970,
+                          "name": "int128",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "789:6:25",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 6973,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "789:9:25",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int128",
+                        "typeString": "int128"
+                      }
+                    },
+                    "src": "785:13:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  },
+                  "id": 6975,
+                  "nodeType": "ExpressionStatement",
+                  "src": "785:13:25"
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    },
+                    "id": 6978,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 6976,
+                      "name": "z",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6967,
+                      "src": "812:1:25",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int128",
+                        "typeString": "int128"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "id": 6977,
+                      "name": "y",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6964,
+                      "src": "817:1:25",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int256",
+                        "typeString": "int256"
+                      }
+                    },
+                    "src": "812:6:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 6982,
+                  "nodeType": "IfStatement",
+                  "src": "808:37:25",
+                  "trueBody": {
+                    "errorCall": {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 6979,
+                        "name": "SafeCastOverflow",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6938,
+                        "src": "827:16:25",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_error_pure$__$returns$__$",
+                          "typeString": "function () pure"
+                        }
+                      },
+                      "id": 6980,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "827:18:25",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_tuple$__$",
+                        "typeString": "tuple()"
+                      }
+                    },
+                    "id": 6981,
+                    "nodeType": "RevertStatement",
+                    "src": "820:25:25"
+                  }
+                }
+              ]
+            },
+            "documentation": {
+              "id": 6962,
+              "nodeType": "StructuredDocumentation",
+              "src": "536:173:25",
+              "text": "@notice Cast a int256 to a int128, revert on overflow or underflow\n @param y The int256 to be downcasted\n @return z The downcasted integer, now type int128"
+            },
+            "id": 6984,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "toInt128",
+            "nameLocation": "723:8:25",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6965,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6964,
+                  "mutability": "mutable",
+                  "name": "y",
+                  "nameLocation": "739:1:25",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6984,
+                  "src": "732:8:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 6963,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "732:6:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "731:10:25"
+            },
+            "returnParameters": {
+              "id": 6968,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6967,
+                  "mutability": "mutable",
+                  "name": "z",
+                  "nameLocation": "772:1:25",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6984,
+                  "src": "765:8:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int128",
+                    "typeString": "int128"
+                  },
+                  "typeName": {
+                    "id": 6966,
+                    "name": "int128",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "765:6:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "764:10:25"
+            },
+            "scope": 7048,
+            "src": "714:138:25",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 7013,
+              "nodeType": "Block",
+              "src": "1079:100:25",
+              "statements": [
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 7001,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 6992,
+                      "name": "y",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6987,
+                      "src": "1093:1:25",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": ">",
+                    "rightExpression": {
+                      "arguments": [
+                        {
+                          "expression": {
+                            "arguments": [
+                              {
+                                "id": 6997,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "lValueRequested": false,
+                                "nodeType": "ElementaryTypeNameExpression",
+                                "src": "1110:6:25",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_type$_t_int256_$",
+                                  "typeString": "type(int256)"
+                                },
+                                "typeName": {
+                                  "id": 6996,
+                                  "name": "int256",
+                                  "nodeType": "ElementaryTypeName",
+                                  "src": "1110:6:25",
+                                  "typeDescriptions": {}
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_type$_t_int256_$",
+                                  "typeString": "type(int256)"
+                                }
+                              ],
+                              "id": 6995,
+                              "name": "type",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 4294967269,
+                              "src": "1105:4:25",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_function_metatype_pure$__$returns$__$",
+                                "typeString": "function () pure"
+                              }
+                            },
+                            "id": 6998,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "functionCall",
+                            "lValueRequested": false,
+                            "nameLocations": [],
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1105:12:25",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_meta_type_t_int256",
+                              "typeString": "type(int256)"
+                            }
+                          },
+                          "id": 6999,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberLocation": "1118:3:25",
+                          "memberName": "max",
+                          "nodeType": "MemberAccess",
+                          "src": "1105:16:25",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_int256",
+                            "typeString": "int256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_int256",
+                            "typeString": "int256"
+                          }
+                        ],
+                        "id": 6994,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "1097:7:25",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_uint256_$",
+                          "typeString": "type(uint256)"
+                        },
+                        "typeName": {
+                          "id": 6993,
+                          "name": "uint256",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1097:7:25",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 7000,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1097:25:25",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1093:29:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 7005,
+                  "nodeType": "IfStatement",
+                  "src": "1089:60:25",
+                  "trueBody": {
+                    "errorCall": {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 7002,
+                        "name": "SafeCastOverflow",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6938,
+                        "src": "1131:16:25",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_error_pure$__$returns$__$",
+                          "typeString": "function () pure"
+                        }
+                      },
+                      "id": 7003,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1131:18:25",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_tuple$__$",
+                        "typeString": "tuple()"
+                      }
+                    },
+                    "id": 7004,
+                    "nodeType": "RevertStatement",
+                    "src": "1124:25:25"
+                  }
+                },
+                {
+                  "expression": {
+                    "id": 7011,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 7006,
+                      "name": "z",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6990,
+                      "src": "1159:1:25",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int256",
+                        "typeString": "int256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "arguments": [
+                        {
+                          "id": 7009,
+                          "name": "y",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6987,
+                          "src": "1170:1:25",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 7008,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "1163:6:25",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_int256_$",
+                          "typeString": "type(int256)"
+                        },
+                        "typeName": {
+                          "id": 7007,
+                          "name": "int256",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1163:6:25",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 7010,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1163:9:25",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int256",
+                        "typeString": "int256"
+                      }
+                    },
+                    "src": "1159:13:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "id": 7012,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1159:13:25"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 6985,
+              "nodeType": "StructuredDocumentation",
+              "src": "858:154:25",
+              "text": "@notice Cast a uint256 to a int256, revert on overflow\n @param y The uint256 to be casted\n @return z The casted integer, now type int256"
+            },
+            "id": 7014,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "toInt256",
+            "nameLocation": "1026:8:25",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6988,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6987,
+                  "mutability": "mutable",
+                  "name": "y",
+                  "nameLocation": "1043:1:25",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7014,
+                  "src": "1035:9:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6986,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1035:7:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1034:11:25"
+            },
+            "returnParameters": {
+              "id": 6991,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6990,
+                  "mutability": "mutable",
+                  "name": "z",
+                  "nameLocation": "1076:1:25",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7014,
+                  "src": "1069:8:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 6989,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1069:6:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1068:10:25"
+            },
+            "scope": 7048,
+            "src": "1017:162:25",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 7046,
+              "nodeType": "Block",
+              "src": "1414:108:25",
+              "statements": [
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 7031,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 7022,
+                      "name": "y",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7017,
+                      "src": "1428:1:25",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": ">",
+                    "rightExpression": {
+                      "arguments": [
+                        {
+                          "expression": {
+                            "arguments": [
+                              {
+                                "id": 7027,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "lValueRequested": false,
+                                "nodeType": "ElementaryTypeNameExpression",
+                                "src": "1445:6:25",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_type$_t_int128_$",
+                                  "typeString": "type(int128)"
+                                },
+                                "typeName": {
+                                  "id": 7026,
+                                  "name": "int128",
+                                  "nodeType": "ElementaryTypeName",
+                                  "src": "1445:6:25",
+                                  "typeDescriptions": {}
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_type$_t_int128_$",
+                                  "typeString": "type(int128)"
+                                }
+                              ],
+                              "id": 7025,
+                              "name": "type",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 4294967269,
+                              "src": "1440:4:25",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_function_metatype_pure$__$returns$__$",
+                                "typeString": "function () pure"
+                              }
+                            },
+                            "id": 7028,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "functionCall",
+                            "lValueRequested": false,
+                            "nameLocations": [],
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1440:12:25",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_meta_type_t_int128",
+                              "typeString": "type(int128)"
+                            }
+                          },
+                          "id": 7029,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberLocation": "1453:3:25",
+                          "memberName": "max",
+                          "nodeType": "MemberAccess",
+                          "src": "1440:16:25",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_int128",
+                            "typeString": "int128"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_int128",
+                            "typeString": "int128"
+                          }
+                        ],
+                        "id": 7024,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "1432:7:25",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_uint128_$",
+                          "typeString": "type(uint128)"
+                        },
+                        "typeName": {
+                          "id": 7023,
+                          "name": "uint128",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1432:7:25",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 7030,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1432:25:25",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint128",
+                        "typeString": "uint128"
+                      }
+                    },
+                    "src": "1428:29:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 7035,
+                  "nodeType": "IfStatement",
+                  "src": "1424:60:25",
+                  "trueBody": {
+                    "errorCall": {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 7032,
+                        "name": "SafeCastOverflow",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6938,
+                        "src": "1466:16:25",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_error_pure$__$returns$__$",
+                          "typeString": "function () pure"
+                        }
+                      },
+                      "id": 7033,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1466:18:25",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_tuple$__$",
+                        "typeString": "tuple()"
+                      }
+                    },
+                    "id": 7034,
+                    "nodeType": "RevertStatement",
+                    "src": "1459:25:25"
+                  }
+                },
+                {
+                  "expression": {
+                    "id": 7044,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 7036,
+                      "name": "z",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7020,
+                      "src": "1494:1:25",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int128",
+                        "typeString": "int128"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "arguments": [
+                        {
+                          "arguments": [
+                            {
+                              "id": 7041,
+                              "name": "y",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 7017,
+                              "src": "1512:1:25",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            ],
+                            "id": 7040,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "1505:6:25",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_int256_$",
+                              "typeString": "type(int256)"
+                            },
+                            "typeName": {
+                              "id": 7039,
+                              "name": "int256",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "1505:6:25",
+                              "typeDescriptions": {}
+                            }
+                          },
+                          "id": 7042,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "nameLocations": [],
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1505:9:25",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_int256",
+                            "typeString": "int256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_int256",
+                            "typeString": "int256"
+                          }
+                        ],
+                        "id": 7038,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "1498:6:25",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_int128_$",
+                          "typeString": "type(int128)"
+                        },
+                        "typeName": {
+                          "id": 7037,
+                          "name": "int128",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1498:6:25",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 7043,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1498:17:25",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int128",
+                        "typeString": "int128"
+                      }
+                    },
+                    "src": "1494:21:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  },
+                  "id": 7045,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1494:21:25"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 7015,
+              "nodeType": "StructuredDocumentation",
+              "src": "1185:162:25",
+              "text": "@notice Cast a uint256 to a int128, revert on overflow\n @param y The uint256 to be downcasted\n @return z The downcasted integer, now type int128"
+            },
+            "id": 7047,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "toInt128",
+            "nameLocation": "1361:8:25",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7018,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7017,
+                  "mutability": "mutable",
+                  "name": "y",
+                  "nameLocation": "1378:1:25",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7047,
+                  "src": "1370:9:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7016,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1370:7:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1369:11:25"
+            },
+            "returnParameters": {
+              "id": 7021,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7020,
+                  "mutability": "mutable",
+                  "name": "z",
+                  "nameLocation": "1411:1:25",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7047,
+                  "src": "1404:8:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int128",
+                    "typeString": "int128"
+                  },
+                  "typeName": {
+                    "id": 7019,
+                    "name": "int128",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1404:6:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1403:10:25"
+            },
+            "scope": 7048,
+            "src": "1352:170:25",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 7049,
+        "src": "165:1359:25",
+        "usedErrors": [
+          6938
+        ],
+        "usedEvents": []
+      }
+    ],
+    "src": "45:1480:25"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.23+commit.f704f362.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2024-01-13T17:30:44.256Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "title": "Safe casting methods",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "notice": "Contains methods for safely casting between types",
+    "version": 1
+  }
+}

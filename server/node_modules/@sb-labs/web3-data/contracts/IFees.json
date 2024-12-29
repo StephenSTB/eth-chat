@@ -1,0 +1,615 @@
+{
+  "contractName": "IFees",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "FeeNotDynamic",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "FeeTooLarge",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ProtocolFeeCannotBeFetched",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "protocolFeeController",
+          "type": "address"
+        }
+      ],
+      "name": "ProtocolFeeControllerUpdated",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "MIN_PROTOCOL_FEE_DENOMINATOR",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "Currency",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "protocolFeesAccrued",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "Currency",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "hookFeesAccrued",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"FeeNotDynamic\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"FeeTooLarge\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ProtocolFeeCannotBeFetched\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"protocolFeeController\",\"type\":\"address\"}],\"name\":\"ProtocolFeeControllerUpdated\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"MIN_PROTOCOL_FEE_DENOMINATOR\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"Currency\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"hookFeesAccrued\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"Currency\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"protocolFeesAccrued\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"errors\":{\"FeeNotDynamic()\":[{\"notice\":\"Thrown when a pool does not have a dynamic fee.\"}],\"FeeTooLarge()\":[{\"notice\":\"Thrown when the protocol fee denominator is less than 4. Also thrown when the static or dynamic fee on a pool is exceeds 100%.\"}],\"ProtocolFeeCannotBeFetched()\":[{\"notice\":\"Thrown when not enough gas is provided to look up the protocol fee\"}]},\"kind\":\"user\",\"methods\":{\"MIN_PROTOCOL_FEE_DENOMINATOR()\":{\"notice\":\"Returns the minimum denominator for the protocol fee, which restricts it to a maximum of 25%\"},\"hookFeesAccrued(address,address)\":{\"notice\":\"Given a hook and a currency address, returns the fees accrued\"},\"protocolFeesAccrued(address)\":{\"notice\":\"Given a currency address, returns the protocol fees accrued in that currency\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/v4-core/src/interfaces/IFees.sol\":\"IFees\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/v4-core/src/interfaces/IFees.sol\":{\"keccak256\":\"0x7a2d2b74602f23a8944b45c745e8a512f7d8f00f8ba22742636abaf929379697\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ab38548046bb65d089fd56b335a3b98d2b4f03e9af4763c2b7da2b04322a6e73\",\"dweb:/ipfs/QmVQfsaSwqV8ynqc9KEGWjQkxnAzju7uQQaFvxqhAd32cW\"]},\"project:/contracts/v4-core/src/interfaces/external/IERC20Minimal.sol\":{\"keccak256\":\"0x8dc5ee72426906aeb12f4ae6a2426df059491739bd5cbdb8ea4a3e26970436c6\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://f7e30dbbc972cb78d169c8845d6210d27490c8534e68a20d4f296b11ec727b92\",\"dweb:/ipfs/QmXBvaWaAnPW25YGVm2sMbf5mwrzLapUcqPnrNiiGGXxmA\"]},\"project:/contracts/v4-core/src/types/Currency.sol\":{\"keccak256\":\"0xb1395e2817b604745bf6cd41821aafeaaa252caafe45133e54f02d6f6be13d2b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://49ec58bd7634ccb1b74f59378e54771ae11cba37494b57ae64e3f6640d4afdd9\",\"dweb:/ipfs/QmeYL1TuGXcTYfsQBGu7p9urSqGjiJky8iJAgwTRYqrJ4F\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.19;\n\nimport {Currency} from \"../types/Currency.sol\";\n\ninterface IFees {\n    /// @notice Thrown when the protocol fee denominator is less than 4. Also thrown when the static or dynamic fee on a pool is exceeds 100%.\n    error FeeTooLarge();\n    /// @notice Thrown when not enough gas is provided to look up the protocol fee\n    error ProtocolFeeCannotBeFetched();\n    /// @notice Thrown when a pool does not have a dynamic fee.\n    error FeeNotDynamic();\n\n    event ProtocolFeeControllerUpdated(address protocolFeeController);\n\n    /// @notice Returns the minimum denominator for the protocol fee, which restricts it to a maximum of 25%\n    function MIN_PROTOCOL_FEE_DENOMINATOR() external view returns (uint8);\n\n    /// @notice Given a currency address, returns the protocol fees accrued in that currency\n    function protocolFeesAccrued(Currency) external view returns (uint256);\n\n    /// @notice Given a hook and a currency address, returns the fees accrued\n    function hookFeesAccrued(address, Currency) external view returns (uint256);\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/v4-core/src/interfaces/IFees.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/v4-core/src/interfaces/IFees.sol",
+    "exportedSymbols": {
+      "Currency": [
+        8892
+      ],
+      "IFees": [
+        3710
+      ]
+    },
+    "id": 3711,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3668,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".19"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:24:15"
+      },
+      {
+        "absolutePath": "project:/contracts/v4-core/src/types/Currency.sol",
+        "file": "../types/Currency.sol",
+        "id": 3670,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 3711,
+        "sourceUnit": 9164,
+        "src": "58:47:15",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 3669,
+              "name": "Currency",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 8892,
+              "src": "66:8:15",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IFees",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 3710,
+        "linearizedBaseContracts": [
+          3710
+        ],
+        "name": "IFees",
+        "nameLocation": "117:5:15",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 3671,
+              "nodeType": "StructuredDocumentation",
+              "src": "129:138:15",
+              "text": "@notice Thrown when the protocol fee denominator is less than 4. Also thrown when the static or dynamic fee on a pool is exceeds 100%."
+            },
+            "errorSelector": "fc5bee12",
+            "id": 3673,
+            "name": "FeeTooLarge",
+            "nameLocation": "278:11:15",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3672,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "289:2:15"
+            },
+            "src": "272:20:15"
+          },
+          {
+            "documentation": {
+              "id": 3674,
+              "nodeType": "StructuredDocumentation",
+              "src": "297:78:15",
+              "text": "@notice Thrown when not enough gas is provided to look up the protocol fee"
+            },
+            "errorSelector": "1ee49702",
+            "id": 3676,
+            "name": "ProtocolFeeCannotBeFetched",
+            "nameLocation": "386:26:15",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3675,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "412:2:15"
+            },
+            "src": "380:35:15"
+          },
+          {
+            "documentation": {
+              "id": 3677,
+              "nodeType": "StructuredDocumentation",
+              "src": "420:59:15",
+              "text": "@notice Thrown when a pool does not have a dynamic fee."
+            },
+            "errorSelector": "d00f12d2",
+            "id": 3679,
+            "name": "FeeNotDynamic",
+            "nameLocation": "490:13:15",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 3678,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "503:2:15"
+            },
+            "src": "484:22:15"
+          },
+          {
+            "anonymous": false,
+            "eventSelector": "b4bd8ef53df690b9943d3318996006dbb82a25f54719d8c8035b516a2a5b8acc",
+            "id": 3683,
+            "name": "ProtocolFeeControllerUpdated",
+            "nameLocation": "518:28:15",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 3682,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3681,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "protocolFeeController",
+                  "nameLocation": "555:21:15",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3683,
+                  "src": "547:29:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3680,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "547:7:15",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "546:31:15"
+            },
+            "src": "512:66:15"
+          },
+          {
+            "documentation": {
+              "id": 3684,
+              "nodeType": "StructuredDocumentation",
+              "src": "584:104:15",
+              "text": "@notice Returns the minimum denominator for the protocol fee, which restricts it to a maximum of 25%"
+            },
+            "functionSelector": "84e41c5e",
+            "id": 3689,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "MIN_PROTOCOL_FEE_DENOMINATOR",
+            "nameLocation": "702:28:15",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3685,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "730:2:15"
+            },
+            "returnParameters": {
+              "id": 3688,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3687,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3689,
+                  "src": "756:5:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 3686,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "756:5:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "755:7:15"
+            },
+            "scope": 3710,
+            "src": "693:70:15",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3690,
+              "nodeType": "StructuredDocumentation",
+              "src": "769:88:15",
+              "text": "@notice Given a currency address, returns the protocol fees accrued in that currency"
+            },
+            "functionSelector": "97e8cd4e",
+            "id": 3698,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "protocolFeesAccrued",
+            "nameLocation": "871:19:15",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3694,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3693,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3698,
+                  "src": "891:8:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_Currency_$8892",
+                    "typeString": "Currency"
+                  },
+                  "typeName": {
+                    "id": 3692,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3691,
+                      "name": "Currency",
+                      "nameLocations": [
+                        "891:8:15"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 8892,
+                      "src": "891:8:15"
+                    },
+                    "referencedDeclaration": 8892,
+                    "src": "891:8:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_Currency_$8892",
+                      "typeString": "Currency"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "890:10:15"
+            },
+            "returnParameters": {
+              "id": 3697,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3696,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3698,
+                  "src": "924:7:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3695,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "924:7:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "923:9:15"
+            },
+            "scope": 3710,
+            "src": "862:71:15",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3699,
+              "nodeType": "StructuredDocumentation",
+              "src": "939:73:15",
+              "text": "@notice Given a hook and a currency address, returns the fees accrued"
+            },
+            "functionSelector": "b4c41939",
+            "id": 3709,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "hookFeesAccrued",
+            "nameLocation": "1026:15:15",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3705,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3701,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3709,
+                  "src": "1042:7:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3700,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1042:7:15",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3704,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3709,
+                  "src": "1051:8:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_Currency_$8892",
+                    "typeString": "Currency"
+                  },
+                  "typeName": {
+                    "id": 3703,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 3702,
+                      "name": "Currency",
+                      "nameLocations": [
+                        "1051:8:15"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 8892,
+                      "src": "1051:8:15"
+                    },
+                    "referencedDeclaration": 8892,
+                    "src": "1051:8:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_Currency_$8892",
+                      "typeString": "Currency"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1041:19:15"
+            },
+            "returnParameters": {
+              "id": 3708,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3707,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3709,
+                  "src": "1084:7:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3706,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1084:7:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1083:9:15"
+            },
+            "scope": 3710,
+            "src": "1017:76:15",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3711,
+        "src": "107:988:15",
+        "usedErrors": [
+          3673,
+          3676,
+          3679
+        ],
+        "usedEvents": [
+          3683
+        ]
+      }
+    ],
+    "src": "32:1064:15"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.23+commit.f704f362.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2024-01-13T17:30:44.239Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "errors": {
+      "FeeNotDynamic()": [
+        {
+          "notice": "Thrown when a pool does not have a dynamic fee."
+        }
+      ],
+      "FeeTooLarge()": [
+        {
+          "notice": "Thrown when the protocol fee denominator is less than 4. Also thrown when the static or dynamic fee on a pool is exceeds 100%."
+        }
+      ],
+      "ProtocolFeeCannotBeFetched()": [
+        {
+          "notice": "Thrown when not enough gas is provided to look up the protocol fee"
+        }
+      ]
+    },
+    "kind": "user",
+    "methods": {
+      "MIN_PROTOCOL_FEE_DENOMINATOR()": {
+        "notice": "Returns the minimum denominator for the protocol fee, which restricts it to a maximum of 25%"
+      },
+      "hookFeesAccrued(address,address)": {
+        "notice": "Given a hook and a currency address, returns the fees accrued"
+      },
+      "protocolFeesAccrued(address)": {
+        "notice": "Given a currency address, returns the protocol fees accrued in that currency"
+      }
+    },
+    "version": 1
+  }
+}

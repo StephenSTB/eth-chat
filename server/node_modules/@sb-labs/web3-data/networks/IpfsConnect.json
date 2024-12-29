@@ -1,0 +1,7 @@
+{
+    "HttpGo": "/ip4/172.20.89.195/tcp/5001/",
+    "HttpJs": "/ip4/172.20.89.195/tcp/5002/",
+    "WebRTC": "/ip4/172.20.89.195/tcp/13579/wss/p2p-webrtc-star",
+    "Helia": "/ip4/172.20.89.195/tcp/4006/ws/p2p/12D3KooWF3wAyjWAQtn4TKdZLxVQACctnatZ2p65JnfVBU2PUcYy",
+    "Helia6": "/ip6/fe80::215:5dff:fe44:1c63/tcp/4008/ws/p2p/12D3KooWF3wAyjWAQtn4TKdZLxVQACctnatZ2p65JnfVBU2PUcYy"
+}

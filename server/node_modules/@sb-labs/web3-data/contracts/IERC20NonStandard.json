@@ -1,0 +1,523 @@
+{
+  "contractName": "IERC20NonStandard",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Version of ERC20 with no return values for `approve`, `transfer`, and `transferFrom`  See https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca\",\"kind\":\"dev\",\"methods\":{},\"title\":\"IERC20NonStandard\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/comet/contracts/IERC20NonStandard.sol\":\"IERC20NonStandard\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/comet/contracts/IERC20NonStandard.sol\":{\"keccak256\":\"0x352ff3474020e1a8c1b2f7a06e47e5435230a7e93580ea811558c02df1d87f95\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://046434bba8e1d82be113a1c14104747a1aa0e1031fa66b7062230c8eb9045fb0\",\"dweb:/ipfs/Qmbktm3m2gnXSz7qhsF6Mywg8JGX6fFpfE5uRm3QftrJoT\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: BUSL-1.1\npragma solidity 0.8.15;\n\n/**\n * @title IERC20NonStandard\n * @dev Version of ERC20 with no return values for `approve`, `transfer`, and `transferFrom`\n *  See https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca\n */\ninterface IERC20NonStandard {\n    function approve(address spender, uint256 amount) external;\n    function transfer(address to, uint256 value) external;\n    function transferFrom(address from, address to, uint256 value) external;\n    function balanceOf(address account) external view returns (uint256);\n}",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/comet/contracts/IERC20NonStandard.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/comet/contracts/IERC20NonStandard.sol",
+    "exportedSymbols": {
+      "IERC20NonStandard": [
+        8605
+      ]
+    },
+    "id": 8606,
+    "license": "BUSL-1.1",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8573,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".15"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:17"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IERC20NonStandard",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 8574,
+          "nodeType": "StructuredDocumentation",
+          "src": "62:232:17",
+          "text": " @title IERC20NonStandard\n @dev Version of ERC20 with no return values for `approve`, `transfer`, and `transferFrom`\n  See https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca"
+        },
+        "fullyImplemented": false,
+        "id": 8605,
+        "linearizedBaseContracts": [
+          8605
+        ],
+        "name": "IERC20NonStandard",
+        "nameLocation": "305:17:17",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "095ea7b3",
+            "id": 8581,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "approve",
+            "nameLocation": "338:7:17",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8579,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8576,
+                  "mutability": "mutable",
+                  "name": "spender",
+                  "nameLocation": "354:7:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8581,
+                  "src": "346:15:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8575,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "346:7:17",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8578,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "371:6:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8581,
+                  "src": "363:14:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8577,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "363:7:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "345:33:17"
+            },
+            "returnParameters": {
+              "id": 8580,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "387:0:17"
+            },
+            "scope": 8605,
+            "src": "329:59:17",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "a9059cbb",
+            "id": 8588,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transfer",
+            "nameLocation": "402:8:17",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8586,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8583,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "419:2:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8588,
+                  "src": "411:10:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8582,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "411:7:17",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8585,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nameLocation": "431:5:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8588,
+                  "src": "423:13:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8584,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "423:7:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "410:27:17"
+            },
+            "returnParameters": {
+              "id": 8587,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "446:0:17"
+            },
+            "scope": 8605,
+            "src": "393:54:17",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "23b872dd",
+            "id": 8597,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferFrom",
+            "nameLocation": "461:12:17",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8595,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8590,
+                  "mutability": "mutable",
+                  "name": "from",
+                  "nameLocation": "482:4:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8597,
+                  "src": "474:12:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8589,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "474:7:17",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8592,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "496:2:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8597,
+                  "src": "488:10:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8591,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "488:7:17",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8594,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nameLocation": "508:5:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8597,
+                  "src": "500:13:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8593,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "500:7:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "473:41:17"
+            },
+            "returnParameters": {
+              "id": 8596,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "523:0:17"
+            },
+            "scope": 8605,
+            "src": "452:72:17",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "70a08231",
+            "id": 8604,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "balanceOf",
+            "nameLocation": "538:9:17",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8600,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8599,
+                  "mutability": "mutable",
+                  "name": "account",
+                  "nameLocation": "556:7:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8604,
+                  "src": "548:15:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8598,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "548:7:17",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "547:17:17"
+            },
+            "returnParameters": {
+              "id": 8603,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8602,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8604,
+                  "src": "588:7:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8601,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "588:7:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "587:9:17"
+            },
+            "scope": 8605,
+            "src": "529:68:17",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 8606,
+        "src": "295:304:17",
+        "usedErrors": []
+      }
+    ],
+    "src": "37:562:17"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.15+commit.e14f2714.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-11-30T22:41:29.676Z",
+  "devdoc": {
+    "details": "Version of ERC20 with no return values for `approve`, `transfer`, and `transferFrom`  See https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca",
+    "kind": "dev",
+    "methods": {},
+    "title": "IERC20NonStandard",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

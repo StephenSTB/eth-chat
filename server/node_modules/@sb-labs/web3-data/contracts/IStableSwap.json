@@ -1,0 +1,384 @@
+{
+  "contractName": "IStableSwap",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "i",
+          "type": "uint256"
+        }
+      ],
+      "name": "coins",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "int128",
+          "name": "i",
+          "type": "int128"
+        },
+        {
+          "internalType": "int128",
+          "name": "j",
+          "type": "int128"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_dx",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_min_dy",
+          "type": "uint256"
+        }
+      ],
+      "name": "exchange",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"i\",\"type\":\"uint256\"}],\"name\":\"coins\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"int128\",\"name\":\"i\",\"type\":\"int128\"},{\"internalType\":\"int128\",\"name\":\"j\",\"type\":\"int128\"},{\"internalType\":\"uint256\",\"name\":\"_dx\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_min_dy\",\"type\":\"uint256\"}],\"name\":\"exchange\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Interface for interacting with Curve pools Note Not a comprehensive interface\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/comet/contracts/liquidator/interfaces/IStableSwap.sol\":\"IStableSwap\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/comet/contracts/liquidator/interfaces/IStableSwap.sol\":{\"keccak256\":\"0xd7a480cb441ec724724be2b78ad0beb237c2527b5e27af9001bb8a3ddef0f64c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9e0c7a841a74534803207d12371f09e5c2ea0687664daa663c64371edcf710e3\",\"dweb:/ipfs/QmUyjL6oEhJ3PR7TrJ1FqhjdWkRboAduLWLaSn32TYEw25\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity 0.8.15;\n\n/**\n * @dev Interface for interacting with Curve pools\n * Note Not a comprehensive interface\n */\n\ninterface IStableSwap {\n    function coins(uint256 i) external view returns (address);\n    function exchange(int128 i, int128 j, uint256 _dx, uint256 _min_dy) external payable returns (uint256);\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/comet/contracts/liquidator/interfaces/IStableSwap.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/comet/contracts/liquidator/interfaces/IStableSwap.sol",
+    "exportedSymbols": {
+      "IStableSwap": [
+        12805
+      ]
+    },
+    "id": 12806,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 12783,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".15"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:39"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IStableSwap",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 12784,
+          "nodeType": "StructuredDocumentation",
+          "src": "57:96:39",
+          "text": " @dev Interface for interacting with Curve pools\n Note Not a comprehensive interface"
+        },
+        "fullyImplemented": false,
+        "id": 12805,
+        "linearizedBaseContracts": [
+          12805
+        ],
+        "name": "IStableSwap",
+        "nameLocation": "165:11:39",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "c6610657",
+            "id": 12791,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "coins",
+            "nameLocation": "192:5:39",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12787,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12786,
+                  "mutability": "mutable",
+                  "name": "i",
+                  "nameLocation": "206:1:39",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12791,
+                  "src": "198:9:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12785,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "198:7:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "197:11:39"
+            },
+            "returnParameters": {
+              "id": 12790,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12789,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12791,
+                  "src": "232:7:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 12788,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "232:7:39",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "231:9:39"
+            },
+            "scope": 12805,
+            "src": "183:58:39",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "3df02124",
+            "id": 12804,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "exchange",
+            "nameLocation": "255:8:39",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12800,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12793,
+                  "mutability": "mutable",
+                  "name": "i",
+                  "nameLocation": "271:1:39",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12804,
+                  "src": "264:8:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int128",
+                    "typeString": "int128"
+                  },
+                  "typeName": {
+                    "id": 12792,
+                    "name": "int128",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "264:6:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12795,
+                  "mutability": "mutable",
+                  "name": "j",
+                  "nameLocation": "281:1:39",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12804,
+                  "src": "274:8:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int128",
+                    "typeString": "int128"
+                  },
+                  "typeName": {
+                    "id": 12794,
+                    "name": "int128",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "274:6:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int128",
+                      "typeString": "int128"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12797,
+                  "mutability": "mutable",
+                  "name": "_dx",
+                  "nameLocation": "292:3:39",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12804,
+                  "src": "284:11:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12796,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "284:7:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12799,
+                  "mutability": "mutable",
+                  "name": "_min_dy",
+                  "nameLocation": "305:7:39",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12804,
+                  "src": "297:15:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12798,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "297:7:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "263:50:39"
+            },
+            "returnParameters": {
+              "id": 12803,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12802,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12804,
+                  "src": "340:7:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12801,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "340:7:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "339:9:39"
+            },
+            "scope": 12805,
+            "src": "246:103:39",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 12806,
+        "src": "155:196:39",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:320:39"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.15+commit.e14f2714.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-11-30T22:41:29.702Z",
+  "devdoc": {
+    "details": "Interface for interacting with Curve pools Note Not a comprehensive interface",
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

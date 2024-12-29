@@ -1,0 +1,144 @@
+{
+  "contractName": "IMessageService",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "sender",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"sender\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/comet/contracts/bridges/linea/IMessageService.sol\":\"IMessageService\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/comet/contracts/bridges/linea/IMessageService.sol\":{\"keccak256\":\"0xa8bc886604072a4afd12fa254804a5eb22eab31cda6090b6bb132b30ea57db57\",\"urls\":[\"bzz-raw://cb5d8b168dfb13f76fb23a820be1d11113de8aafbba9b77d0980be26258964ba\",\"dweb:/ipfs/QmZvBn1rKeTLNN3B91pUXB22t4mTBuzXd3ydkCueE729Pk\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.8.15;\n\ninterface IMessageService {\n  function sender() external view returns (address);\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/comet/contracts/bridges/linea/IMessageService.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/comet/contracts/bridges/linea/IMessageService.sol",
+    "exportedSymbols": {
+      "IMessageService": [
+        9782
+      ]
+    },
+    "id": 9783,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 9776,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".15"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:28"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IMessageService",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 9782,
+        "linearizedBaseContracts": [
+          9782
+        ],
+        "name": "IMessageService",
+        "nameLocation": "35:15:28",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "67e404ce",
+            "id": 9781,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "sender",
+            "nameLocation": "64:6:28",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9777,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "70:2:28"
+            },
+            "returnParameters": {
+              "id": 9780,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9779,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9781,
+                  "src": "96:7:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9778,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "96:7:28",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "95:9:28"
+            },
+            "scope": 9782,
+            "src": "55:50:28",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 9783,
+        "src": "25:82:28",
+        "usedErrors": []
+      }
+    ],
+    "src": "0:108:28"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.15+commit.e14f2714.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-11-30T22:41:29.683Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

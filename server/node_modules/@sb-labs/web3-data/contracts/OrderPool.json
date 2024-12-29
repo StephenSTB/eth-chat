@@ -1,0 +1,811 @@
+{
+  "contractName": "OrderPool",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"TWAMM OrderPool - Represents an OrderPool inside of a TWAMM\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/v4-periphery/contracts/libraries/TWAMM/OrderPool.sol\":\"OrderPool\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/v4-periphery/contracts/libraries/TWAMM/OrderPool.sol\":{\"keccak256\":\"0xc14545d9c0dc267c85097b2dff9d54c3eac6fc125107edd42935415abb60e341\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://03e013ef49cc5725a13e411b3842732094055c8855c3118611b19d7fa9477e10\",\"dweb:/ipfs/QmS9Uf3Fst77YDVrtV7azYfeg4u4RibYSAoZ9UpTbaUWqs\"]}},\"version\":1}",
+  "bytecode": "0x6080806040523460175760399081601c823930815050f35b5f80fdfe5f80fdfea264697066735822122018022b42370eaf6353aaf299b30a62c4830cc865412a339414d50526db0190df64736f6c63430008170033",
+  "deployedBytecode": "0x5f80fdfea264697066735822122018022b42370eaf6353aaf299b30a62c4830cc865412a339414d50526db0190df64736f6c63430008170033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "136:1595:68:-:0;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "136:1595:68:-:0;;",
+  "source": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8.15;\n\n/// @title TWAMM OrderPool - Represents an OrderPool inside of a TWAMM\nlibrary OrderPool {\n    /// @notice Information related to a long term order pool.\n    /// @member sellRateCurrent The total current sell rate (sellAmount / second) among all orders\n    /// @member sellRateEndingAtInterval Mapping (timestamp => sellRate) The amount of expiring sellRate at this interval\n    /// @member earningsFactor Sum of (salesEarnings_k / salesRate_k) over every period k. Stored as Fixed Point X96.\n    /// @member earningsFactorAtInterval Mapping (timestamp => sellRate) The earnings factor accrued by a certain time interval. Stored as Fixed Point X96.\n    struct State {\n        uint256 sellRateCurrent;\n        mapping(uint256 => uint256) sellRateEndingAtInterval;\n        //\n        uint256 earningsFactorCurrent;\n        mapping(uint256 => uint256) earningsFactorAtInterval;\n    }\n\n    // Performs all updates on an OrderPool that must happen when hitting an expiration interval with expiring orders\n    function advanceToInterval(State storage self, uint256 expiration, uint256 earningsFactor) internal {\n        unchecked {\n            self.earningsFactorCurrent += earningsFactor;\n            self.earningsFactorAtInterval[expiration] = self.earningsFactorCurrent;\n            self.sellRateCurrent -= self.sellRateEndingAtInterval[expiration];\n        }\n    }\n\n    // Performs all the updates on an OrderPool that must happen when updating to the current time not on an interval\n    function advanceToCurrentTime(State storage self, uint256 earningsFactor) internal {\n        unchecked {\n            self.earningsFactorCurrent += earningsFactor;\n        }\n    }\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/v4-periphery/contracts/libraries/TWAMM/OrderPool.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/v4-periphery/contracts/libraries/TWAMM/OrderPool.sol",
+    "exportedSymbols": {
+      "OrderPool": [
+        24018
+      ]
+    },
+    "id": 24019,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 23950,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".15"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:24:68"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "OrderPool",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": {
+          "id": 23951,
+          "nodeType": "StructuredDocumentation",
+          "src": "65:71:68",
+          "text": "@title TWAMM OrderPool - Represents an OrderPool inside of a TWAMM"
+        },
+        "fullyImplemented": true,
+        "id": 24018,
+        "linearizedBaseContracts": [
+          24018
+        ],
+        "name": "OrderPool",
+        "nameLocation": "144:9:68",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "OrderPool.State",
+            "documentation": {
+              "id": 23952,
+              "nodeType": "StructuredDocumentation",
+              "src": "160:553:68",
+              "text": "@notice Information related to a long term order pool.\n @member sellRateCurrent The total current sell rate (sellAmount / second) among all orders\n @member sellRateEndingAtInterval Mapping (timestamp => sellRate) The amount of expiring sellRate at this interval\n @member earningsFactor Sum of (salesEarnings_k / salesRate_k) over every period k. Stored as Fixed Point X96.\n @member earningsFactorAtInterval Mapping (timestamp => sellRate) The earnings factor accrued by a certain time interval. Stored as Fixed Point X96."
+            },
+            "id": 23965,
+            "members": [
+              {
+                "constant": false,
+                "id": 23954,
+                "mutability": "mutable",
+                "name": "sellRateCurrent",
+                "nameLocation": "749:15:68",
+                "nodeType": "VariableDeclaration",
+                "scope": 23965,
+                "src": "741:23:68",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 23953,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "741:7:68",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 23958,
+                "mutability": "mutable",
+                "name": "sellRateEndingAtInterval",
+                "nameLocation": "802:24:68",
+                "nodeType": "VariableDeclaration",
+                "scope": 23965,
+                "src": "774:52:68",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
+                  "typeString": "mapping(uint256 => uint256)"
+                },
+                "typeName": {
+                  "id": 23957,
+                  "keyName": "",
+                  "keyNameLocation": "-1:-1:-1",
+                  "keyType": {
+                    "id": 23955,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "782:7:68",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "774:27:68",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
+                    "typeString": "mapping(uint256 => uint256)"
+                  },
+                  "valueName": "",
+                  "valueNameLocation": "-1:-1:-1",
+                  "valueType": {
+                    "id": 23956,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "793:7:68",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 23960,
+                "mutability": "mutable",
+                "name": "earningsFactorCurrent",
+                "nameLocation": "855:21:68",
+                "nodeType": "VariableDeclaration",
+                "scope": 23965,
+                "src": "847:29:68",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 23959,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "847:7:68",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 23964,
+                "mutability": "mutable",
+                "name": "earningsFactorAtInterval",
+                "nameLocation": "914:24:68",
+                "nodeType": "VariableDeclaration",
+                "scope": 23965,
+                "src": "886:52:68",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
+                  "typeString": "mapping(uint256 => uint256)"
+                },
+                "typeName": {
+                  "id": 23963,
+                  "keyName": "",
+                  "keyNameLocation": "-1:-1:-1",
+                  "keyType": {
+                    "id": 23961,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "894:7:68",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "886:27:68",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
+                    "typeString": "mapping(uint256 => uint256)"
+                  },
+                  "valueName": "",
+                  "valueNameLocation": "-1:-1:-1",
+                  "valueType": {
+                    "id": 23962,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "905:7:68",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "State",
+            "nameLocation": "725:5:68",
+            "nodeType": "StructDefinition",
+            "scope": 24018,
+            "src": "718:227:68",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 24000,
+              "nodeType": "Block",
+              "src": "1169:258:68",
+              "statements": [
+                {
+                  "id": 23999,
+                  "nodeType": "UncheckedBlock",
+                  "src": "1179:242:68",
+                  "statements": [
+                    {
+                      "expression": {
+                        "id": 23979,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftHandSide": {
+                          "expression": {
+                            "id": 23975,
+                            "name": "self",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 23968,
+                            "src": "1203:4:68",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_State_$23965_storage_ptr",
+                              "typeString": "struct OrderPool.State storage pointer"
+                            }
+                          },
+                          "id": 23977,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": true,
+                          "memberLocation": "1208:21:68",
+                          "memberName": "earningsFactorCurrent",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 23960,
+                          "src": "1203:26:68",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "Assignment",
+                        "operator": "+=",
+                        "rightHandSide": {
+                          "id": 23978,
+                          "name": "earningsFactor",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 23972,
+                          "src": "1233:14:68",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "1203:44:68",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "id": 23980,
+                      "nodeType": "ExpressionStatement",
+                      "src": "1203:44:68"
+                    },
+                    {
+                      "expression": {
+                        "id": 23988,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftHandSide": {
+                          "baseExpression": {
+                            "expression": {
+                              "id": 23981,
+                              "name": "self",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 23968,
+                              "src": "1261:4:68",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_State_$23965_storage_ptr",
+                                "typeString": "struct OrderPool.State storage pointer"
+                              }
+                            },
+                            "id": 23984,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberLocation": "1266:24:68",
+                            "memberName": "earningsFactorAtInterval",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 23964,
+                            "src": "1261:29:68",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
+                              "typeString": "mapping(uint256 => uint256)"
+                            }
+                          },
+                          "id": 23985,
+                          "indexExpression": {
+                            "id": 23983,
+                            "name": "expiration",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 23970,
+                            "src": "1291:10:68",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": true,
+                          "nodeType": "IndexAccess",
+                          "src": "1261:41:68",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "Assignment",
+                        "operator": "=",
+                        "rightHandSide": {
+                          "expression": {
+                            "id": 23986,
+                            "name": "self",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 23968,
+                            "src": "1305:4:68",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_State_$23965_storage_ptr",
+                              "typeString": "struct OrderPool.State storage pointer"
+                            }
+                          },
+                          "id": 23987,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "1310:21:68",
+                          "memberName": "earningsFactorCurrent",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 23960,
+                          "src": "1305:26:68",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "1261:70:68",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "id": 23989,
+                      "nodeType": "ExpressionStatement",
+                      "src": "1261:70:68"
+                    },
+                    {
+                      "expression": {
+                        "id": 23997,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftHandSide": {
+                          "expression": {
+                            "id": 23990,
+                            "name": "self",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 23968,
+                            "src": "1345:4:68",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_State_$23965_storage_ptr",
+                              "typeString": "struct OrderPool.State storage pointer"
+                            }
+                          },
+                          "id": 23992,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": true,
+                          "memberLocation": "1350:15:68",
+                          "memberName": "sellRateCurrent",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 23954,
+                          "src": "1345:20:68",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "Assignment",
+                        "operator": "-=",
+                        "rightHandSide": {
+                          "baseExpression": {
+                            "expression": {
+                              "id": 23993,
+                              "name": "self",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 23968,
+                              "src": "1369:4:68",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_State_$23965_storage_ptr",
+                                "typeString": "struct OrderPool.State storage pointer"
+                              }
+                            },
+                            "id": 23994,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberLocation": "1374:24:68",
+                            "memberName": "sellRateEndingAtInterval",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 23958,
+                            "src": "1369:29:68",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
+                              "typeString": "mapping(uint256 => uint256)"
+                            }
+                          },
+                          "id": 23996,
+                          "indexExpression": {
+                            "id": 23995,
+                            "name": "expiration",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 23970,
+                            "src": "1399:10:68",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "1369:41:68",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "1345:65:68",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "id": 23998,
+                      "nodeType": "ExpressionStatement",
+                      "src": "1345:65:68"
+                    }
+                  ]
+                }
+              ]
+            },
+            "id": 24001,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "advanceToInterval",
+            "nameLocation": "1078:17:68",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 23973,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 23968,
+                  "mutability": "mutable",
+                  "name": "self",
+                  "nameLocation": "1110:4:68",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 24001,
+                  "src": "1096:18:68",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_State_$23965_storage_ptr",
+                    "typeString": "struct OrderPool.State"
+                  },
+                  "typeName": {
+                    "id": 23967,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 23966,
+                      "name": "State",
+                      "nameLocations": [
+                        "1096:5:68"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 23965,
+                      "src": "1096:5:68"
+                    },
+                    "referencedDeclaration": 23965,
+                    "src": "1096:5:68",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_State_$23965_storage_ptr",
+                      "typeString": "struct OrderPool.State"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23970,
+                  "mutability": "mutable",
+                  "name": "expiration",
+                  "nameLocation": "1124:10:68",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 24001,
+                  "src": "1116:18:68",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 23969,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1116:7:68",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23972,
+                  "mutability": "mutable",
+                  "name": "earningsFactor",
+                  "nameLocation": "1144:14:68",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 24001,
+                  "src": "1136:22:68",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 23971,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1136:7:68",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1095:64:68"
+            },
+            "returnParameters": {
+              "id": 23974,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1169:0:68"
+            },
+            "scope": 24018,
+            "src": "1069:358:68",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 24016,
+              "nodeType": "Block",
+              "src": "1634:95:68",
+              "statements": [
+                {
+                  "id": 24015,
+                  "nodeType": "UncheckedBlock",
+                  "src": "1644:79:68",
+                  "statements": [
+                    {
+                      "expression": {
+                        "id": 24013,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftHandSide": {
+                          "expression": {
+                            "id": 24009,
+                            "name": "self",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 24004,
+                            "src": "1668:4:68",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_State_$23965_storage_ptr",
+                              "typeString": "struct OrderPool.State storage pointer"
+                            }
+                          },
+                          "id": 24011,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": true,
+                          "memberLocation": "1673:21:68",
+                          "memberName": "earningsFactorCurrent",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 23960,
+                          "src": "1668:26:68",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "Assignment",
+                        "operator": "+=",
+                        "rightHandSide": {
+                          "id": 24012,
+                          "name": "earningsFactor",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 24006,
+                          "src": "1698:14:68",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "1668:44:68",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "id": 24014,
+                      "nodeType": "ExpressionStatement",
+                      "src": "1668:44:68"
+                    }
+                  ]
+                }
+              ]
+            },
+            "id": 24017,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "advanceToCurrentTime",
+            "nameLocation": "1560:20:68",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 24007,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 24004,
+                  "mutability": "mutable",
+                  "name": "self",
+                  "nameLocation": "1595:4:68",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 24017,
+                  "src": "1581:18:68",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_State_$23965_storage_ptr",
+                    "typeString": "struct OrderPool.State"
+                  },
+                  "typeName": {
+                    "id": 24003,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 24002,
+                      "name": "State",
+                      "nameLocations": [
+                        "1581:5:68"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 23965,
+                      "src": "1581:5:68"
+                    },
+                    "referencedDeclaration": 23965,
+                    "src": "1581:5:68",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_State_$23965_storage_ptr",
+                      "typeString": "struct OrderPool.State"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 24006,
+                  "mutability": "mutable",
+                  "name": "earningsFactor",
+                  "nameLocation": "1609:14:68",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 24017,
+                  "src": "1601:22:68",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 24005,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1601:7:68",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1580:44:68"
+            },
+            "returnParameters": {
+              "id": 24008,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1634:0:68"
+            },
+            "scope": 24018,
+            "src": "1551:178:68",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 24019,
+        "src": "136:1595:68",
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "src": "39:1693:68"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.23+commit.f704f362.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-12-01T17:36:41.296Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "title": "TWAMM OrderPool - Represents an OrderPool inside of a TWAMM",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

@@ -53,6 +53,10 @@ export const Import = (props: ImportProps) =>{
         props.setComp("Display")
     }
 
+    const setCreate = () =>{
+        props.setComp("Create")
+    }
+
     return(
         <>
             <div id="import">
@@ -64,6 +68,7 @@ export const Import = (props: ImportProps) =>{
                     <Button text="Back" size="small" id="import-display-button" onClick={setDisplay} />
                     <Button text="Connect" size="small" id="import-connect-button" onClick={importAccount} />
                 </div>
+                <div id= "create-display"><Button onClick={setCreate} size="small" text="Create" id="import-create-button"/></div>
                 {error}
             </div>
         </>

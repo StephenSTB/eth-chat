@@ -1,0 +1,226 @@
+{
+  "contractName": "IMulticall",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes[]",
+          "name": "data",
+          "type": "bytes[]"
+        }
+      ],
+      "name": "multicall",
+      "outputs": [
+        {
+          "internalType": "bytes[]",
+          "name": "results",
+          "type": "bytes[]"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes[]\",\"name\":\"data\",\"type\":\"bytes[]\"}],\"name\":\"multicall\",\"outputs\":[{\"internalType\":\"bytes[]\",\"name\":\"results\",\"type\":\"bytes[]\"}],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"multicall(bytes[])\":{\"details\":\"The `msg.value` should not be trusted for any method callable from multicall.\",\"params\":{\"data\":\"The encoded function data for each of the calls to make to this contract\"},\"returns\":{\"results\":\"The results from each of the calls passed in via data\"}}},\"title\":\"Multicall interface\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"multicall(bytes[])\":{\"notice\":\"Call multiple functions in the current contract and return the data from all of them if they all succeed\"}},\"notice\":\"Enables calling multiple methods in a single call to the contract\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/v4-periphery/contracts/interfaces/IMulticall.sol\":\"IMulticall\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/v4-periphery/contracts/interfaces/IMulticall.sol\":{\"keccak256\":\"0x2e91d8cae70ddbf5f374317e7b91d11ab93f2f109c11cef72dec8dd5ec7cd252\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://af52eb9f6ebc7ee0b2bcf11886e22794e794971f0e1061950827700ed0d73bad\",\"dweb:/ipfs/QmVvqqUbQwyiEv97Ef1UNvpCSrrkefuMDgLNMNcWTZz2Ek\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8.19;\n\n/// @title Multicall interface\n/// @notice Enables calling multiple methods in a single call to the contract\ninterface IMulticall {\n    /// @notice Call multiple functions in the current contract and return the data from all of them if they all succeed\n    /// @dev The `msg.value` should not be trusted for any method callable from multicall.\n    /// @param data The encoded function data for each of the calls to make to this contract\n    /// @return results The results from each of the calls passed in via data\n    function multicall(bytes[] calldata data) external payable returns (bytes[] memory results);\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/v4-periphery/contracts/interfaces/IMulticall.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/v4-periphery/contracts/interfaces/IMulticall.sol",
+    "exportedSymbols": {
+      "IMulticall": [
+        16809
+      ]
+    },
+    "id": 16810,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 16797,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".19"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:24:58"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IMulticall",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 16798,
+          "nodeType": "StructuredDocumentation",
+          "src": "65:109:58",
+          "text": "@title Multicall interface\n @notice Enables calling multiple methods in a single call to the contract"
+        },
+        "fullyImplemented": false,
+        "id": 16809,
+        "linearizedBaseContracts": [
+          16809
+        ],
+        "name": "IMulticall",
+        "nameLocation": "184:10:58",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 16799,
+              "nodeType": "StructuredDocumentation",
+              "src": "201:378:58",
+              "text": "@notice Call multiple functions in the current contract and return the data from all of them if they all succeed\n @dev The `msg.value` should not be trusted for any method callable from multicall.\n @param data The encoded function data for each of the calls to make to this contract\n @return results The results from each of the calls passed in via data"
+            },
+            "functionSelector": "ac9650d8",
+            "id": 16808,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "multicall",
+            "nameLocation": "593:9:58",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 16803,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 16802,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "620:4:58",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16808,
+                  "src": "603:21:58",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes_calldata_ptr_$dyn_calldata_ptr",
+                    "typeString": "bytes[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 16800,
+                      "name": "bytes",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "603:5:58",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_storage_ptr",
+                        "typeString": "bytes"
+                      }
+                    },
+                    "id": 16801,
+                    "nodeType": "ArrayTypeName",
+                    "src": "603:7:58",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes_storage_$dyn_storage_ptr",
+                      "typeString": "bytes[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "602:23:58"
+            },
+            "returnParameters": {
+              "id": 16807,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 16806,
+                  "mutability": "mutable",
+                  "name": "results",
+                  "nameLocation": "667:7:58",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 16808,
+                  "src": "652:22:58",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "bytes[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 16804,
+                      "name": "bytes",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "652:5:58",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_storage_ptr",
+                        "typeString": "bytes"
+                      }
+                    },
+                    "id": 16805,
+                    "nodeType": "ArrayTypeName",
+                    "src": "652:7:58",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes_storage_$dyn_storage_ptr",
+                      "typeString": "bytes[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "651:24:58"
+            },
+            "scope": 16809,
+            "src": "584:92:58",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 16810,
+        "src": "174:504:58",
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "src": "39:640:58"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.23+commit.f704f362.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-12-01T17:36:41.278Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "multicall(bytes[])": {
+        "details": "The `msg.value` should not be trusted for any method callable from multicall.",
+        "params": {
+          "data": "The encoded function data for each of the calls to make to this contract"
+        },
+        "returns": {
+          "results": "The results from each of the calls passed in via data"
+        }
+      }
+    },
+    "title": "Multicall interface",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "multicall(bytes[])": {
+        "notice": "Call multiple functions in the current contract and return the data from all of them if they all succeed"
+      }
+    },
+    "notice": "Enables calling multiple methods in a single call to the contract",
+    "version": 1
+  }
+}

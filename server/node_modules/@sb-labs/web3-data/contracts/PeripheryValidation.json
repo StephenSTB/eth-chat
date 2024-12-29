@@ -1,0 +1,252 @@
+{
+  "contractName": "PeripheryValidation",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "TransactionTooOld",
+      "type": "error"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"TransactionTooOld\",\"type\":\"error\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/v4-periphery/contracts/base/PeripheryValidation.sol\":\"PeripheryValidation\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/v4-periphery/contracts/base/PeripheryValidation.sol\":{\"keccak256\":\"0xb47f12f77403f07a46849bd2856ee436c608c1e6bbada578c33837c52bed5a5e\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://52c9bd5f7cbe027c980e78c6b7b30fbb35b10716f215b37261428ac5271befdc\",\"dweb:/ipfs/QmVt9TYMNCwVdRtvsNAwJ1u89si9pKwHRwLBPAbZT7S2Qj\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8.19;\n\nabstract contract PeripheryValidation {\n    error TransactionTooOld();\n\n    modifier checkDeadline(uint256 deadline) {\n        if (block.timestamp > deadline) revert TransactionTooOld();\n        _;\n    }\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/v4-periphery/contracts/base/PeripheryValidation.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/v4-periphery/contracts/base/PeripheryValidation.sol",
+    "exportedSymbols": {
+      "PeripheryValidation": [
+        10944
+      ]
+    },
+    "id": 10945,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 10927,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".19"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:24:51"
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "canonicalName": "PeripheryValidation",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 10944,
+        "linearizedBaseContracts": [
+          10944
+        ],
+        "name": "PeripheryValidation",
+        "nameLocation": "83:19:51",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "errorSelector": "a83116fc",
+            "id": 10929,
+            "name": "TransactionTooOld",
+            "nameLocation": "115:17:51",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 10928,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "132:2:51"
+            },
+            "src": "109:26:51"
+          },
+          {
+            "body": {
+              "id": 10942,
+              "nodeType": "Block",
+              "src": "182:86:51",
+              "statements": [
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 10936,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "expression": {
+                        "id": 10933,
+                        "name": "block",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4294967292,
+                        "src": "196:5:51",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_block",
+                          "typeString": "block"
+                        }
+                      },
+                      "id": 10934,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "202:9:51",
+                      "memberName": "timestamp",
+                      "nodeType": "MemberAccess",
+                      "src": "196:15:51",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": ">",
+                    "rightExpression": {
+                      "id": 10935,
+                      "name": "deadline",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10931,
+                      "src": "214:8:51",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "196:26:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 10940,
+                  "nodeType": "IfStatement",
+                  "src": "192:58:51",
+                  "trueBody": {
+                    "errorCall": {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 10937,
+                        "name": "TransactionTooOld",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 10929,
+                        "src": "231:17:51",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_error_pure$__$returns$__$",
+                          "typeString": "function () pure"
+                        }
+                      },
+                      "id": 10938,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "nameLocations": [],
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "231:19:51",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_tuple$__$",
+                        "typeString": "tuple()"
+                      }
+                    },
+                    "id": 10939,
+                    "nodeType": "RevertStatement",
+                    "src": "224:26:51"
+                  }
+                },
+                {
+                  "id": 10941,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "260:1:51"
+                }
+              ]
+            },
+            "id": 10943,
+            "name": "checkDeadline",
+            "nameLocation": "150:13:51",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 10932,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10931,
+                  "mutability": "mutable",
+                  "name": "deadline",
+                  "nameLocation": "172:8:51",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10943,
+                  "src": "164:16:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10930,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "164:7:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "163:18:51"
+            },
+            "src": "141:127:51",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 10945,
+        "src": "65:205:51",
+        "usedErrors": [
+          10929
+        ],
+        "usedEvents": []
+      }
+    ],
+    "src": "39:232:51"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.23+commit.f704f362.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-12-01T17:36:41.259Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

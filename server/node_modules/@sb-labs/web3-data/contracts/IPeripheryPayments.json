@@ -1,0 +1,276 @@
+{
+  "contractName": "IPeripheryPayments",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "Currency",
+          "name": "currency",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amountMinimum",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        }
+      ],
+      "name": "sweepToken",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"Currency\",\"name\":\"currency\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountMinimum\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"}],\"name\":\"sweepToken\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"sweepToken(address,uint256,address)\":{\"details\":\"The amountMinimum parameter prevents malicious contracts from stealing the token from users\",\"params\":{\"amountMinimum\":\"The minimum amount of token required for a transfer\",\"currency\":\"The contract address of the token which will be transferred to `recipient`\",\"recipient\":\"The destination address of the token\"}}},\"title\":\"Periphery Payments\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"sweepToken(address,uint256,address)\":{\"notice\":\"Transfers the full amount of a token held by this contract to recipient\"}},\"notice\":\"Functions to ease deposits and withdrawals of ETH\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/v4-periphery/contracts/interfaces/IPeripheryPayments.sol\":\"IPeripheryPayments\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/v4-core/src/interfaces/external/IERC20Minimal.sol\":{\"keccak256\":\"0x8dc5ee72426906aeb12f4ae6a2426df059491739bd5cbdb8ea4a3e26970436c6\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://f7e30dbbc972cb78d169c8845d6210d27490c8534e68a20d4f296b11ec727b92\",\"dweb:/ipfs/QmXBvaWaAnPW25YGVm2sMbf5mwrzLapUcqPnrNiiGGXxmA\"]},\"project:/contracts/v4-core/src/types/Currency.sol\":{\"keccak256\":\"0xb1395e2817b604745bf6cd41821aafeaaa252caafe45133e54f02d6f6be13d2b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://49ec58bd7634ccb1b74f59378e54771ae11cba37494b57ae64e3f6640d4afdd9\",\"dweb:/ipfs/QmeYL1TuGXcTYfsQBGu7p9urSqGjiJky8iJAgwTRYqrJ4F\"]},\"project:/contracts/v4-periphery/contracts/interfaces/IPeripheryPayments.sol\":{\"keccak256\":\"0xd3d0e1d54b6f74ec3b5223d805badfbbac3145e4b9bcebe58622b7001bae9398\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://5a50c67dfb52ed16ca6eeda8c1b16e3fd5ada1a95f0498a32247b1d5811ed2c4\",\"dweb:/ipfs/QmY76KLVVRoYHfVXtVSNDvbipmWkque5cHNPWVMZsZm1vd\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8.19;\n\nimport {Currency} from \"../../../v4-core/src/types/Currency.sol\";\n\n/// @title Periphery Payments\n/// @notice Functions to ease deposits and withdrawals of ETH\ninterface IPeripheryPayments {\n    // TODO: figure out if we still need unwrapWETH9 from v3?\n\n    /// @notice Transfers the full amount of a token held by this contract to recipient\n    /// @dev The amountMinimum parameter prevents malicious contracts from stealing the token from users\n    /// @param currency The contract address of the token which will be transferred to `recipient`\n    /// @param amountMinimum The minimum amount of token required for a transfer\n    /// @param recipient The destination address of the token\n    function sweepToken(Currency currency, uint256 amountMinimum, address recipient) external payable;\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/v4-periphery/contracts/interfaces/IPeripheryPayments.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/v4-periphery/contracts/interfaces/IPeripheryPayments.sol",
+    "exportedSymbols": {
+      "Currency": [
+        6158
+      ],
+      "IPeripheryPayments": [
+        6616
+      ]
+    },
+    "id": 6617,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6601,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".19"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:24:29"
+      },
+      {
+        "absolutePath": "project:/contracts/v4-core/src/types/Currency.sol",
+        "file": "../../../v4-core/src/types/Currency.sol",
+        "id": 6603,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 6617,
+        "sourceUnit": 6430,
+        "src": "65:65:29",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 6602,
+              "name": "Currency",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 6158,
+              "src": "73:8:29",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IPeripheryPayments",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 6604,
+          "nodeType": "StructuredDocumentation",
+          "src": "132:92:29",
+          "text": "@title Periphery Payments\n @notice Functions to ease deposits and withdrawals of ETH"
+        },
+        "fullyImplemented": false,
+        "id": 6616,
+        "linearizedBaseContracts": [
+          6616
+        ],
+        "name": "IPeripheryPayments",
+        "nameLocation": "234:18:29",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 6605,
+              "nodeType": "StructuredDocumentation",
+              "src": "322:430:29",
+              "text": "@notice Transfers the full amount of a token held by this contract to recipient\n @dev The amountMinimum parameter prevents malicious contracts from stealing the token from users\n @param currency The contract address of the token which will be transferred to `recipient`\n @param amountMinimum The minimum amount of token required for a transfer\n @param recipient The destination address of the token"
+            },
+            "functionSelector": "df2ab5bb",
+            "id": 6615,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "sweepToken",
+            "nameLocation": "766:10:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6613,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6608,
+                  "mutability": "mutable",
+                  "name": "currency",
+                  "nameLocation": "786:8:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6615,
+                  "src": "777:17:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_Currency_$6158",
+                    "typeString": "Currency"
+                  },
+                  "typeName": {
+                    "id": 6607,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6606,
+                      "name": "Currency",
+                      "nameLocations": [
+                        "777:8:29"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 6158,
+                      "src": "777:8:29"
+                    },
+                    "referencedDeclaration": 6158,
+                    "src": "777:8:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_Currency_$6158",
+                      "typeString": "Currency"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6610,
+                  "mutability": "mutable",
+                  "name": "amountMinimum",
+                  "nameLocation": "804:13:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6615,
+                  "src": "796:21:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6609,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "796:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6612,
+                  "mutability": "mutable",
+                  "name": "recipient",
+                  "nameLocation": "827:9:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6615,
+                  "src": "819:17:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6611,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "819:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "776:61:29"
+            },
+            "returnParameters": {
+              "id": 6614,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "854:0:29"
+            },
+            "scope": 6616,
+            "src": "757:98:29",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 6617,
+        "src": "224:633:29",
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "src": "39:819:29"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.23+commit.f704f362.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-12-01T19:16:26.829Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "sweepToken(address,uint256,address)": {
+        "details": "The amountMinimum parameter prevents malicious contracts from stealing the token from users",
+        "params": {
+          "amountMinimum": "The minimum amount of token required for a transfer",
+          "currency": "The contract address of the token which will be transferred to `recipient`",
+          "recipient": "The destination address of the token"
+        }
+      }
+    },
+    "title": "Periphery Payments",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "sweepToken(address,uint256,address)": {
+        "notice": "Transfers the full amount of a token held by this contract to recipient"
+      }
+    },
+    "notice": "Functions to ease deposits and withdrawals of ETH",
+    "version": 1
+  }
+}

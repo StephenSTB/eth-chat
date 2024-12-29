@@ -10,7 +10,8 @@ import { Import } from "./components/import/Import"
 interface HotWalletProps{
     engine: Web3Engine;
     getEngine: any;
-    getNetwork: any
+    getNetwork: any;
+    network: string
 }
 
 export const HotWallet = (props: HotWalletProps) =>{
@@ -54,7 +55,7 @@ export const HotWallet = (props: HotWalletProps) =>{
                 {
                     component === "Display" &&
                     <>
-                        <Display getEngine={getEngine} getNetwork={getNetwork} setComp={setComp} engine={props.engine}></Display>
+                        <Display getEngine={getEngine} getNetwork={getNetwork} setComp={setComp} engine={props.engine} network={props.network}></Display>
                     </>
                 }
                 {

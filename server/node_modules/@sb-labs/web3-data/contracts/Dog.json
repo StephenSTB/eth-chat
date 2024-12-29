@@ -1,0 +1,1930 @@
+{
+  "contractName": "Dog",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name_",
+          "type": "string"
+        },
+        {
+          "internalType": "contract Dog",
+          "name": "father_",
+          "type": "address"
+        },
+        {
+          "internalType": "contract Dog[]",
+          "name": "pups_",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "father",
+      "outputs": [
+        {
+          "internalType": "contract Dog",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "initialized",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "pups",
+      "outputs": [
+        {
+          "internalType": "contract Dog",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name_",
+          "type": "string"
+        },
+        {
+          "internalType": "contract Dog",
+          "name": "father_",
+          "type": "address"
+        },
+        {
+          "internalType": "contract Dog[]",
+          "name": "pups_",
+          "type": "address[]"
+        }
+      ],
+      "name": "initializeDog",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract Dog",
+          "name": "pup",
+          "type": "address"
+        }
+      ],
+      "name": "addPup",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "puppers",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            },
+            {
+              "internalType": "contract Dog",
+              "name": "pup",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct Dog.Puppers[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name_\",\"type\":\"string\"},{\"internalType\":\"contract Dog\",\"name\":\"father_\",\"type\":\"address\"},{\"internalType\":\"contract Dog[]\",\"name\":\"pups_\",\"type\":\"address[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"contract Dog\",\"name\":\"pup\",\"type\":\"address\"}],\"name\":\"addPup\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"father\",\"outputs\":[{\"internalType\":\"contract Dog\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name_\",\"type\":\"string\"},{\"internalType\":\"contract Dog\",\"name\":\"father_\",\"type\":\"address\"},{\"internalType\":\"contract Dog[]\",\"name\":\"pups_\",\"type\":\"address[]\"}],\"name\":\"initializeDog\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"initialized\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"puppers\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"},{\"internalType\":\"contract Dog\",\"name\":\"pup\",\"type\":\"address\"}],\"internalType\":\"struct Dog.Puppers[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"pups\",\"outputs\":[{\"internalType\":\"contract Dog\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/comet/contracts/test/Dog.sol\":\"Dog\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/comet/contracts/test/Dog.sol\":{\"keccak256\":\"0xee406ff5f35264bf376b815eba2265ec7921232ea8edb0f3cc657777c7691c6e\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://48738199d116e4a315a4310b75de915a93645847d98382a653f4c4c7bb92519e\",\"dweb:/ipfs/QmUzsjTVNqXTi52JxpVgevMNDXeCBWHmqcyHu2oY6styqT\"]}},\"version\":1}",
+  "bytecode": "0x6080604052346200039c5762000c59803803806200001d81620003ca565b92833981016060828203126200039c5781516001600160401b0392908381116200039c57810192601f928084860112156200039c578451938285116200024557602092601f19956200007585888584011601620003ca565b97818952848683830101116200039c578186916000905b828210620003b0575011620003a1575b620000aa91508601620003f0565b946040810151908282116200039c5701918381840112156200039c57825193828511620002455760059385851b908780620000e7818501620003ca565b8099815201928201019283116200039c5787809101915b8383106200038157505050506000549660ff88166200033c576001809860ff1916176000558851928311620002455787548881811c9116801562000331575b878210146200031b57828111620002d2575b50859183116001146200026d57508190879860009262000261575b5050600019600383901b1c191690861b1785555b600280546001600160a01b03199081166001600160a01b0396871617909155600095909492905b620001bb575b6040516108539081620004068239f35b80518610156200025b57828487841b830101511660038054906801000000000000000082101562000245578982018082558210156200022f5760005285600020019086825416179055600019861462000219578680960195620001a5565b634e487b7160e01b600052601160045260246000fd5b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052604160045260246000fd5b620001ab565b0151905038806200016a565b82169787600052856000209860005b818110620002bc575091889991848a959410620002a2575b505050811b0185556200017e565b015160001960f88460031b161c1916905538808062000294565b828401518b55998901999287019287016200027c565b886000528660002083808601871c82019289871062000311575b01861c019089905b828110620003045750506200014f565b60008155018990620002f4565b92508192620002ec565b634e487b7160e01b600052602260045260246000fd5b90607f16906200013d565b60405162461bcd60e51b815260048101879052601360248201527f616c726561647920696e697469616c697a6564000000000000000000000000006044820152606490fd5b81906200038e84620003f0565b8152019101908790620000fe565b600080fd5b6000918901015238846200009c565b92809250818401015182828d01015201829087926200008c565b6040519190601f01601f191682016001600160401b038111838210176200024557604052565b51906001600160a01b03821682036200039c5756fe6080604081815260048036101561001557600080fd5b600092833560e01c9081630166be8a1461039d5750806306fdde031461027b5780630bdae0c914610147578063158ef93e146101255780631c8aca3b146100f8578063380f4841146100c95763c8d228791461007057600080fd5b346100c55760203660031901126100c557356003548110156100c55760036020935260018060a01b03907fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b0154169051908152f35b8280fd5b50346100c55760203660031901126100c557356001600160a01b03811681036100c5576100f5906107b4565b51f35b50503461012157816003193601126101215760025490516001600160a01b039091168152602090f35b5080fd5b50503461012157816003193601126101215760ff602092541690519015158152f35b505034610121578160031936011261012157600390815461016781610713565b92610174835194856106f1565b818452601f1961018383610713565b01855b818110610259575050845b8281106101f1575050815160208082528451818301819052919586958686019590830194505b8382106101c45786860387f35b8451805187528301516001600160a01b0316868401528796509485019493820193600191909101906101b7565b8186527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b810154845161025492916001600160a01b0316610231826106bf565b8282526020820152610243828861078a565b5261024e818761078a565b50610765565b610191565b6020908551610267816106bf565b888152828981830152828901015201610186565b505034610121578160031936011261012157805182816001918254926102a08461072b565b8084529381811690811561037b575060011461031f575b506102c7925094929403846106f1565b81519283916020808452825192838286015282915b84831061030757505082106102fb575b50601f01601f19168101030190f35b838284010152386102ec565b818301810151888401880152879550918201916102dc565b8087528691507fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf65b84831061036057506102c79350508101602001386102b7565b81935090816020925483858901015201910190918492610347565b9050602092506102c794915060ff191682840152151560051b820101386102b7565b919050346106bb5760603660031901126106bb5780359167ffffffffffffffff908184116106b757366023850112156106b75783830135918083116106a45760209487601f19916103f58884601f89011601866106f1565b858552602495368782840101116100c55780878a930183880137850101526001600160a01b039584358781169491908590036106a0576044359584871161069c573660238801121561069c57868801359661044f88610713565b9761045c8c51998a6106f1565b80895282848a019160051b83010191368311610698578301905b82821061067c575050508a549760ff8916610646576001809960ff1916178c558351958611610635575050908392916104af885461072b565b601f81116105c3575b508092601f8511600114610545575050899261053a575b5050600019600383901b1c191690841b1783555b6bffffffffffffffffffffffff60a01b60025416176002558185905b61050857858551f35b8151811015610535578061052a8561052361052f948661078a565b51166107b4565b610765565b826104ff565b858551f35b0151905038806104cf565b88959392919316858c527fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf6938c905b8282106105aa5750508411610591575b505050811b0183556104e3565b015160001960f88460031b161c19169055388080610584565b8484015186558a97909501949384019390810190610574565b9091929350878b527fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf6601f860160051c81019183871061062b575b869594939291601f8b920160051c01915b82811061061d5750506104b8565b8d81558796508a910161060f565b90915081906105fe565b634e487b7160e01b8c52604190528afd5b6013606492848d519362461bcd60e51b855284015282015272185b1c9958591e481a5b9a5d1a585b1a5e9959606a1b6044820152fd5b81358c81168103610694578152908401908401610476565b8e80fd5b8d80fd5b8a80fd5b8980fd5b634e487b7160e01b875260418452602487fd5b8580fd5b8380fd5b6040810190811067ffffffffffffffff8211176106db57604052565b634e487b7160e01b600052604160045260246000fd5b90601f8019910116810190811067ffffffffffffffff8211176106db57604052565b67ffffffffffffffff81116106db5760051b60200190565b90600182811c9216801561075b575b602083101461074557565b634e487b7160e01b600052602260045260246000fd5b91607f169161073a565b60001981146107745760010190565b634e487b7160e01b600052601160045260246000fd5b805182101561079e5760209160051b010190565b634e487b7160e01b600052603260045260246000fd5b600354680100000000000000008110156106db57600181018060035581101561079e5760036000527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b0180546001600160a01b0319166001600160a01b0390921691909117905556fea2646970667358221220044ac3d2fba8f366abf4d26f182577757bf56c37f73de68c96801d99330c545364736f6c634300080f0033",
+  "deployedBytecode": "0x6080604081815260048036101561001557600080fd5b600092833560e01c9081630166be8a1461039d5750806306fdde031461027b5780630bdae0c914610147578063158ef93e146101255780631c8aca3b146100f8578063380f4841146100c95763c8d228791461007057600080fd5b346100c55760203660031901126100c557356003548110156100c55760036020935260018060a01b03907fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b0154169051908152f35b8280fd5b50346100c55760203660031901126100c557356001600160a01b03811681036100c5576100f5906107b4565b51f35b50503461012157816003193601126101215760025490516001600160a01b039091168152602090f35b5080fd5b50503461012157816003193601126101215760ff602092541690519015158152f35b505034610121578160031936011261012157600390815461016781610713565b92610174835194856106f1565b818452601f1961018383610713565b01855b818110610259575050845b8281106101f1575050815160208082528451818301819052919586958686019590830194505b8382106101c45786860387f35b8451805187528301516001600160a01b0316868401528796509485019493820193600191909101906101b7565b8186527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b810154845161025492916001600160a01b0316610231826106bf565b8282526020820152610243828861078a565b5261024e818761078a565b50610765565b610191565b6020908551610267816106bf565b888152828981830152828901015201610186565b505034610121578160031936011261012157805182816001918254926102a08461072b565b8084529381811690811561037b575060011461031f575b506102c7925094929403846106f1565b81519283916020808452825192838286015282915b84831061030757505082106102fb575b50601f01601f19168101030190f35b838284010152386102ec565b818301810151888401880152879550918201916102dc565b8087528691507fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf65b84831061036057506102c79350508101602001386102b7565b81935090816020925483858901015201910190918492610347565b9050602092506102c794915060ff191682840152151560051b820101386102b7565b919050346106bb5760603660031901126106bb5780359167ffffffffffffffff908184116106b757366023850112156106b75783830135918083116106a45760209487601f19916103f58884601f89011601866106f1565b858552602495368782840101116100c55780878a930183880137850101526001600160a01b039584358781169491908590036106a0576044359584871161069c573660238801121561069c57868801359661044f88610713565b9761045c8c51998a6106f1565b80895282848a019160051b83010191368311610698578301905b82821061067c575050508a549760ff8916610646576001809960ff1916178c558351958611610635575050908392916104af885461072b565b601f81116105c3575b508092601f8511600114610545575050899261053a575b5050600019600383901b1c191690841b1783555b6bffffffffffffffffffffffff60a01b60025416176002558185905b61050857858551f35b8151811015610535578061052a8561052361052f948661078a565b51166107b4565b610765565b826104ff565b858551f35b0151905038806104cf565b88959392919316858c527fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf6938c905b8282106105aa5750508411610591575b505050811b0183556104e3565b015160001960f88460031b161c19169055388080610584565b8484015186558a97909501949384019390810190610574565b9091929350878b527fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf6601f860160051c81019183871061062b575b869594939291601f8b920160051c01915b82811061061d5750506104b8565b8d81558796508a910161060f565b90915081906105fe565b634e487b7160e01b8c52604190528afd5b6013606492848d519362461bcd60e51b855284015282015272185b1c9958591e481a5b9a5d1a585b1a5e9959606a1b6044820152fd5b81358c81168103610694578152908401908401610476565b8e80fd5b8d80fd5b8a80fd5b8980fd5b634e487b7160e01b875260418452602487fd5b8580fd5b8380fd5b6040810190811067ffffffffffffffff8211176106db57604052565b634e487b7160e01b600052604160045260246000fd5b90601f8019910116810190811067ffffffffffffffff8211176106db57604052565b67ffffffffffffffff81116106db5760051b60200190565b90600182811c9216801561075b575b602083101461074557565b634e487b7160e01b600052602260045260246000fd5b91607f169161073a565b60001981146107745760010190565b634e487b7160e01b600052601160045260246000fd5b805182101561079e5760209160051b010190565b634e487b7160e01b600052603260045260246000fd5b600354680100000000000000008110156106db57600181018060035581101561079e5760036000527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b0180546001600160a01b0319166001600160a01b0390921691909117905556fea2646970667358221220044ac3d2fba8f366abf4d26f182577757bf56c37f73de68c96801d99330c545364736f6c634300080f0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "62:1012:70:-:0;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;-1:-1:-1;;;;;62:1012:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;-1:-1:-1;62:1012:70;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;62:1012:70;;;;;;;;;;;;;;-1:-1:-1;62:1012:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;62:1012:70;;;;-1:-1:-1;;;;62:1012:70;;;;;;;;;;;;;;444:16;62:1012;;-1:-1:-1;;;;;;62:1012:70;;;-1:-1:-1;;;;;62:1012:70;;;;;;;-1:-1:-1;;62:1012:70;;;;;;;470:84;62:1012;;;;;;;;;505:3;62:1012;;487:16;;;;;62:1012;;;;;;;;;;524:4;62:1012;;;;;;;;;;;;;;;;;;;;-1:-1:-1;62:1012:70;;-1:-1:-1;62:1012:70;;;;;;;;;;;;;;;;;;;;475:10;;;62:1012;;;;-1:-1:-1;62:1012:70;;;;;-1:-1:-1;62:1012:70;;;;;-1:-1:-1;62:1012:70;;;;;-1:-1:-1;62:1012:70;;;;;-1:-1:-1;62:1012:70;;;;;-1:-1:-1;62:1012:70;487:16;;;62:1012;;;;-1:-1:-1;62:1012:70;;;;;;;;;-1:-1:-1;62:1012:70;;-1:-1:-1;62:1012:70;;-1:-1:-1;62:1012:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;62:1012:70;;-1:-1:-1;62:1012:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;62:1012:70;;;;;;;;;;;;;;;;;;-1:-1:-1;62:1012:70;;;;;-1:-1:-1;62:1012:70;;;;;;;;;;;-1:-1:-1;;;62:1012:70;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;-1:-1:-1;62:1012:70;;;-1:-1:-1;62:1012:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;62:1012:70;;;-1:-1:-1;;;;;62:1012:70;;;;;;;;;;:::o;:::-;;;-1:-1:-1;;;;;62:1012:70;;;;;;:::o",
+  "deployedSourceMap": "62:1012:70:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;62:1012:70;;;;;;;157:17;;;;;62:1012;;;;;;;;;;;;;;;;;;;;157:17;;;;62:1012;;;;;;;-1:-1:-1;;62:1012:70;;;;;-1:-1:-1;;;;;62:1012:70;;;;;;733:14;;;:::i;:::-;62:1012;;;;;;;;;;;;;;;;134:17;62:1012;;;-1:-1:-1;;;;;62:1012:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;:::i;:::-;;;;-1:-1:-1;;62:1012:70;;;:::i;:::-;;;;;;;;;891:10;;;903:15;;;;;;-1:-1:-1;;62:1012:70;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;62:1012:70;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;62:1012:70;;;;;;;-1:-1:-1;62:1012:70;;;;;;;;;;;;;;;;920:3;62:1012;;;;;;;;;920:3;;62:1012;-1:-1:-1;;;;;62:1012:70;;;;:::i;:::-;;;;;952:79;;62:1012;939:92;;;;:::i;:::-;;;;;;:::i;:::-;;920:3;:::i;:::-;891:10;;62:1012;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;110:18;;62:1012;;;;;;;:::i;:::-;;;;;;;;;110:18;;;;62:1012;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;62:1012:70;;;-1:-1:-1;62:1012:70;;-1:-1:-1;;62:1012:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;62:1012:70;;;;;;;;;;;;-1:-1:-1;62:1012:70;;;;;;;-1:-1:-1;62:1012:70;;-1:-1:-1;;62:1012:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;62:1012:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;62:1012:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;62:1012:70;;;;;;;;;;;;;;;;;444:16;62:1012;;;444:16;62:1012;475:10;;470:84;62:1012;;;;;;;505:3;62:1012;;487:16;;;;;534:8;524:19;534:8;;505:3;534:8;;;:::i;:::-;62:1012;;524:19;:::i;:::-;505:3;:::i;:::-;475:10;;;487:16;62:1012;;;;;;;;-1:-1:-1;62:1012:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;62:1012:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;62:1012:70;;;;;;;;-1:-1:-1;62:1012:70;;;;;-1:-1:-1;;;62:1012:70;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;62:1012:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;62:1012:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;62:1012:70;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;524:4;62:1012;;;;;;;;;;;524:4;62:1012;;;;;;524:4;-1:-1:-1;62:1012:70;;;;;-1:-1:-1;;;;;;62:1012:70;-1:-1:-1;;;;;62:1012:70;;;;;;;;;:::o",
+  "source": "// SPDX-License-Identifier: BUSL-1.1\npragma solidity 0.8.15;\n\ncontract Dog {\n    bool public initialized;\n    string public name;\n    Dog public father;\n    Dog[] public pups;\n\n    struct Puppers {\n        uint index;\n        Dog pup;\n    }\n\n    function initializeDog(string memory name_, Dog father_, Dog[] memory pups_) public {\n        require(!initialized, \"already initialized\");\n        initialized = true;\n        name = name_;\n        father = father_;\n        for (uint i = 0; i < pups_.length; i++) {\n            pups.push(pups_[i]);\n        }\n    }\n\n    constructor(string memory name_, Dog father_, Dog[] memory pups_) {\n        initializeDog(name_, father_, pups_);\n    }\n\n    function addPup(Dog pup) public {\n        pups.push(pup);\n    }\n\n    function puppers() public returns (Puppers[] memory) {\n        Puppers[] memory puppers = new Puppers[](pups.length);\n        for (uint i = 0; i < pups.length; i++) {\n            puppers[i] = Puppers({\n                index: i,\n                pup: pups[i]\n            });\n        }\n        return puppers;\n    }\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/comet/contracts/test/Dog.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/comet/contracts/test/Dog.sol",
+    "exportedSymbols": {
+      "Dog": [
+        15589
+      ]
+    },
+    "id": 15590,
+    "license": "BUSL-1.1",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 15440,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".15"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:70"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "Dog",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 15589,
+        "linearizedBaseContracts": [
+          15589
+        ],
+        "name": "Dog",
+        "nameLocation": "71:3:70",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "158ef93e",
+            "id": 15442,
+            "mutability": "mutable",
+            "name": "initialized",
+            "nameLocation": "93:11:70",
+            "nodeType": "VariableDeclaration",
+            "scope": 15589,
+            "src": "81:23:70",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bool",
+              "typeString": "bool"
+            },
+            "typeName": {
+              "id": 15441,
+              "name": "bool",
+              "nodeType": "ElementaryTypeName",
+              "src": "81:4:70",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "06fdde03",
+            "id": 15444,
+            "mutability": "mutable",
+            "name": "name",
+            "nameLocation": "124:4:70",
+            "nodeType": "VariableDeclaration",
+            "scope": 15589,
+            "src": "110:18:70",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_string_storage",
+              "typeString": "string"
+            },
+            "typeName": {
+              "id": 15443,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "110:6:70",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "1c8aca3b",
+            "id": 15447,
+            "mutability": "mutable",
+            "name": "father",
+            "nameLocation": "145:6:70",
+            "nodeType": "VariableDeclaration",
+            "scope": 15589,
+            "src": "134:17:70",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_Dog_$15589",
+              "typeString": "contract Dog"
+            },
+            "typeName": {
+              "id": 15446,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 15445,
+                "name": "Dog",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 15589,
+                "src": "134:3:70"
+              },
+              "referencedDeclaration": 15589,
+              "src": "134:3:70",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Dog_$15589",
+                "typeString": "contract Dog"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "c8d22879",
+            "id": 15451,
+            "mutability": "mutable",
+            "name": "pups",
+            "nameLocation": "170:4:70",
+            "nodeType": "VariableDeclaration",
+            "scope": 15589,
+            "src": "157:17:70",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_contract$_Dog_$15589_$dyn_storage",
+              "typeString": "contract Dog[]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 15449,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 15448,
+                  "name": "Dog",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 15589,
+                  "src": "157:3:70"
+                },
+                "referencedDeclaration": 15589,
+                "src": "157:3:70",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_Dog_$15589",
+                  "typeString": "contract Dog"
+                }
+              },
+              "id": 15450,
+              "nodeType": "ArrayTypeName",
+              "src": "157:5:70",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_contract$_Dog_$15589_$dyn_storage_ptr",
+                "typeString": "contract Dog[]"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Dog.Puppers",
+            "id": 15457,
+            "members": [
+              {
+                "constant": false,
+                "id": 15453,
+                "mutability": "mutable",
+                "name": "index",
+                "nameLocation": "211:5:70",
+                "nodeType": "VariableDeclaration",
+                "scope": 15457,
+                "src": "206:10:70",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 15452,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "206:4:70",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 15456,
+                "mutability": "mutable",
+                "name": "pup",
+                "nameLocation": "230:3:70",
+                "nodeType": "VariableDeclaration",
+                "scope": 15457,
+                "src": "226:7:70",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_Dog_$15589",
+                  "typeString": "contract Dog"
+                },
+                "typeName": {
+                  "id": 15455,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 15454,
+                    "name": "Dog",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 15589,
+                    "src": "226:3:70"
+                  },
+                  "referencedDeclaration": 15589,
+                  "src": "226:3:70",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_Dog_$15589",
+                    "typeString": "contract Dog"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Puppers",
+            "nameLocation": "188:7:70",
+            "nodeType": "StructDefinition",
+            "scope": 15589,
+            "src": "181:59:70",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 15508,
+              "nodeType": "Block",
+              "src": "330:230:70",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 15471,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "UnaryOperation",
+                        "operator": "!",
+                        "prefix": true,
+                        "src": "348:12:70",
+                        "subExpression": {
+                          "id": 15470,
+                          "name": "initialized",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 15442,
+                          "src": "349:11:70",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "616c726561647920696e697469616c697a6564",
+                        "id": 15472,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "362:21:70",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_6fad3ee6d344e662108f49bced409fae87c3af64246556bdd23a34dddc7e1adc",
+                          "typeString": "literal_string \"already initialized\""
+                        },
+                        "value": "already initialized"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_6fad3ee6d344e662108f49bced409fae87c3af64246556bdd23a34dddc7e1adc",
+                          "typeString": "literal_string \"already initialized\""
+                        }
+                      ],
+                      "id": 15469,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "340:7:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 15473,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "340:44:70",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 15474,
+                  "nodeType": "ExpressionStatement",
+                  "src": "340:44:70"
+                },
+                {
+                  "expression": {
+                    "id": 15477,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 15475,
+                      "name": "initialized",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15442,
+                      "src": "394:11:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "hexValue": "74727565",
+                      "id": 15476,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "408:4:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "true"
+                    },
+                    "src": "394:18:70",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 15478,
+                  "nodeType": "ExpressionStatement",
+                  "src": "394:18:70"
+                },
+                {
+                  "expression": {
+                    "id": 15481,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 15479,
+                      "name": "name",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15444,
+                      "src": "422:4:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 15480,
+                      "name": "name_",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15459,
+                      "src": "429:5:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "422:12:70",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 15482,
+                  "nodeType": "ExpressionStatement",
+                  "src": "422:12:70"
+                },
+                {
+                  "expression": {
+                    "id": 15485,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 15483,
+                      "name": "father",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15447,
+                      "src": "444:6:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_Dog_$15589",
+                        "typeString": "contract Dog"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 15484,
+                      "name": "father_",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15462,
+                      "src": "453:7:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_Dog_$15589",
+                        "typeString": "contract Dog"
+                      }
+                    },
+                    "src": "444:16:70",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_Dog_$15589",
+                      "typeString": "contract Dog"
+                    }
+                  },
+                  "id": 15486,
+                  "nodeType": "ExpressionStatement",
+                  "src": "444:16:70"
+                },
+                {
+                  "body": {
+                    "id": 15506,
+                    "nodeType": "Block",
+                    "src": "510:44:70",
+                    "statements": [
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "baseExpression": {
+                                "id": 15501,
+                                "name": "pups_",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 15466,
+                                "src": "534:5:70",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_array$_t_contract$_Dog_$15589_$dyn_memory_ptr",
+                                  "typeString": "contract Dog[] memory"
+                                }
+                              },
+                              "id": 15503,
+                              "indexExpression": {
+                                "id": 15502,
+                                "name": "i",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 15488,
+                                "src": "540:1:70",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "534:8:70",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_Dog_$15589",
+                                "typeString": "contract Dog"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_contract$_Dog_$15589",
+                                "typeString": "contract Dog"
+                              }
+                            ],
+                            "expression": {
+                              "id": 15498,
+                              "name": "pups",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 15451,
+                              "src": "524:4:70",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_contract$_Dog_$15589_$dyn_storage",
+                                "typeString": "contract Dog[] storage ref"
+                              }
+                            },
+                            "id": 15500,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "push",
+                            "nodeType": "MemberAccess",
+                            "src": "524:9:70",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_contract$_Dog_$15589_$dyn_storage_ptr_$_t_contract$_Dog_$15589_$returns$__$bound_to$_t_array$_t_contract$_Dog_$15589_$dyn_storage_ptr_$",
+                              "typeString": "function (contract Dog[] storage pointer,contract Dog)"
+                            }
+                          },
+                          "id": 15504,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "524:19:70",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 15505,
+                        "nodeType": "ExpressionStatement",
+                        "src": "524:19:70"
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 15494,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 15491,
+                      "name": "i",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15488,
+                      "src": "487:1:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<",
+                    "rightExpression": {
+                      "expression": {
+                        "id": 15492,
+                        "name": "pups_",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 15466,
+                        "src": "491:5:70",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_contract$_Dog_$15589_$dyn_memory_ptr",
+                          "typeString": "contract Dog[] memory"
+                        }
+                      },
+                      "id": 15493,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "src": "491:12:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "487:16:70",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 15507,
+                  "initializationExpression": {
+                    "assignments": [
+                      15488
+                    ],
+                    "declarations": [
+                      {
+                        "constant": false,
+                        "id": 15488,
+                        "mutability": "mutable",
+                        "name": "i",
+                        "nameLocation": "480:1:70",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 15507,
+                        "src": "475:6:70",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 15487,
+                          "name": "uint",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "475:4:70",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "visibility": "internal"
+                      }
+                    ],
+                    "id": 15490,
+                    "initialValue": {
+                      "hexValue": "30",
+                      "id": 15489,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "484:1:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "nodeType": "VariableDeclarationStatement",
+                    "src": "475:10:70"
+                  },
+                  "loopExpression": {
+                    "expression": {
+                      "id": 15496,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "++",
+                      "prefix": false,
+                      "src": "505:3:70",
+                      "subExpression": {
+                        "id": 15495,
+                        "name": "i",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 15488,
+                        "src": "505:1:70",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 15497,
+                    "nodeType": "ExpressionStatement",
+                    "src": "505:3:70"
+                  },
+                  "nodeType": "ForStatement",
+                  "src": "470:84:70"
+                }
+              ]
+            },
+            "functionSelector": "0166be8a",
+            "id": 15509,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "initializeDog",
+            "nameLocation": "255:13:70",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 15467,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 15459,
+                  "mutability": "mutable",
+                  "name": "name_",
+                  "nameLocation": "283:5:70",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15509,
+                  "src": "269:19:70",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 15458,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "269:6:70",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 15462,
+                  "mutability": "mutable",
+                  "name": "father_",
+                  "nameLocation": "294:7:70",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15509,
+                  "src": "290:11:70",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_Dog_$15589",
+                    "typeString": "contract Dog"
+                  },
+                  "typeName": {
+                    "id": 15461,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 15460,
+                      "name": "Dog",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 15589,
+                      "src": "290:3:70"
+                    },
+                    "referencedDeclaration": 15589,
+                    "src": "290:3:70",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_Dog_$15589",
+                      "typeString": "contract Dog"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 15466,
+                  "mutability": "mutable",
+                  "name": "pups_",
+                  "nameLocation": "316:5:70",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15509,
+                  "src": "303:18:70",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_contract$_Dog_$15589_$dyn_memory_ptr",
+                    "typeString": "contract Dog[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 15464,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 15463,
+                        "name": "Dog",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 15589,
+                        "src": "303:3:70"
+                      },
+                      "referencedDeclaration": 15589,
+                      "src": "303:3:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_Dog_$15589",
+                        "typeString": "contract Dog"
+                      }
+                    },
+                    "id": 15465,
+                    "nodeType": "ArrayTypeName",
+                    "src": "303:5:70",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_contract$_Dog_$15589_$dyn_storage_ptr",
+                      "typeString": "contract Dog[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "268:54:70"
+            },
+            "returnParameters": {
+              "id": 15468,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "330:0:70"
+            },
+            "scope": 15589,
+            "src": "246:314:70",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 15527,
+              "nodeType": "Block",
+              "src": "632:53:70",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 15522,
+                        "name": "name_",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 15511,
+                        "src": "656:5:70",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      {
+                        "id": 15523,
+                        "name": "father_",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 15514,
+                        "src": "663:7:70",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_Dog_$15589",
+                          "typeString": "contract Dog"
+                        }
+                      },
+                      {
+                        "id": 15524,
+                        "name": "pups_",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 15518,
+                        "src": "672:5:70",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_contract$_Dog_$15589_$dyn_memory_ptr",
+                          "typeString": "contract Dog[] memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        },
+                        {
+                          "typeIdentifier": "t_contract$_Dog_$15589",
+                          "typeString": "contract Dog"
+                        },
+                        {
+                          "typeIdentifier": "t_array$_t_contract$_Dog_$15589_$dyn_memory_ptr",
+                          "typeString": "contract Dog[] memory"
+                        }
+                      ],
+                      "id": 15521,
+                      "name": "initializeDog",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15509,
+                      "src": "642:13:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_string_memory_ptr_$_t_contract$_Dog_$15589_$_t_array$_t_contract$_Dog_$15589_$dyn_memory_ptr_$returns$__$",
+                        "typeString": "function (string memory,contract Dog,contract Dog[] memory)"
+                      }
+                    },
+                    "id": 15525,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "642:36:70",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 15526,
+                  "nodeType": "ExpressionStatement",
+                  "src": "642:36:70"
+                }
+              ]
+            },
+            "id": 15528,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 15519,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 15511,
+                  "mutability": "mutable",
+                  "name": "name_",
+                  "nameLocation": "592:5:70",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15528,
+                  "src": "578:19:70",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 15510,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "578:6:70",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 15514,
+                  "mutability": "mutable",
+                  "name": "father_",
+                  "nameLocation": "603:7:70",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15528,
+                  "src": "599:11:70",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_Dog_$15589",
+                    "typeString": "contract Dog"
+                  },
+                  "typeName": {
+                    "id": 15513,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 15512,
+                      "name": "Dog",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 15589,
+                      "src": "599:3:70"
+                    },
+                    "referencedDeclaration": 15589,
+                    "src": "599:3:70",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_Dog_$15589",
+                      "typeString": "contract Dog"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 15518,
+                  "mutability": "mutable",
+                  "name": "pups_",
+                  "nameLocation": "625:5:70",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15528,
+                  "src": "612:18:70",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_contract$_Dog_$15589_$dyn_memory_ptr",
+                    "typeString": "contract Dog[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 15516,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 15515,
+                        "name": "Dog",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 15589,
+                        "src": "612:3:70"
+                      },
+                      "referencedDeclaration": 15589,
+                      "src": "612:3:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_Dog_$15589",
+                        "typeString": "contract Dog"
+                      }
+                    },
+                    "id": 15517,
+                    "nodeType": "ArrayTypeName",
+                    "src": "612:5:70",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_contract$_Dog_$15589_$dyn_storage_ptr",
+                      "typeString": "contract Dog[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "577:54:70"
+            },
+            "returnParameters": {
+              "id": 15520,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "632:0:70"
+            },
+            "scope": 15589,
+            "src": "566:119:70",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 15540,
+              "nodeType": "Block",
+              "src": "723:31:70",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 15537,
+                        "name": "pup",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 15531,
+                        "src": "743:3:70",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_Dog_$15589",
+                          "typeString": "contract Dog"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_Dog_$15589",
+                          "typeString": "contract Dog"
+                        }
+                      ],
+                      "expression": {
+                        "id": 15534,
+                        "name": "pups",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 15451,
+                        "src": "733:4:70",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_contract$_Dog_$15589_$dyn_storage",
+                          "typeString": "contract Dog[] storage ref"
+                        }
+                      },
+                      "id": 15536,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "src": "733:9:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_contract$_Dog_$15589_$dyn_storage_ptr_$_t_contract$_Dog_$15589_$returns$__$bound_to$_t_array$_t_contract$_Dog_$15589_$dyn_storage_ptr_$",
+                        "typeString": "function (contract Dog[] storage pointer,contract Dog)"
+                      }
+                    },
+                    "id": 15538,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "733:14:70",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 15539,
+                  "nodeType": "ExpressionStatement",
+                  "src": "733:14:70"
+                }
+              ]
+            },
+            "functionSelector": "380f4841",
+            "id": 15541,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addPup",
+            "nameLocation": "700:6:70",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 15532,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 15531,
+                  "mutability": "mutable",
+                  "name": "pup",
+                  "nameLocation": "711:3:70",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15541,
+                  "src": "707:7:70",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_Dog_$15589",
+                    "typeString": "contract Dog"
+                  },
+                  "typeName": {
+                    "id": 15530,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 15529,
+                      "name": "Dog",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 15589,
+                      "src": "707:3:70"
+                    },
+                    "referencedDeclaration": 15589,
+                    "src": "707:3:70",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_Dog_$15589",
+                      "typeString": "contract Dog"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "706:9:70"
+            },
+            "returnParameters": {
+              "id": 15533,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "723:0:70"
+            },
+            "scope": 15589,
+            "src": "691:63:70",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 15587,
+              "nodeType": "Block",
+              "src": "813:259:70",
+              "statements": [
+                {
+                  "assignments": [
+                    15552
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 15552,
+                      "mutability": "mutable",
+                      "name": "puppers",
+                      "nameLocation": "840:7:70",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 15587,
+                      "src": "823:24:70",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Puppers_$15457_memory_ptr_$dyn_memory_ptr",
+                        "typeString": "struct Dog.Puppers[]"
+                      },
+                      "typeName": {
+                        "baseType": {
+                          "id": 15550,
+                          "nodeType": "UserDefinedTypeName",
+                          "pathNode": {
+                            "id": 15549,
+                            "name": "Puppers",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 15457,
+                            "src": "823:7:70"
+                          },
+                          "referencedDeclaration": 15457,
+                          "src": "823:7:70",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Puppers_$15457_storage_ptr",
+                            "typeString": "struct Dog.Puppers"
+                          }
+                        },
+                        "id": 15551,
+                        "nodeType": "ArrayTypeName",
+                        "src": "823:9:70",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Puppers_$15457_storage_$dyn_storage_ptr",
+                          "typeString": "struct Dog.Puppers[]"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 15560,
+                  "initialValue": {
+                    "arguments": [
+                      {
+                        "expression": {
+                          "id": 15557,
+                          "name": "pups",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 15451,
+                          "src": "864:4:70",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_contract$_Dog_$15589_$dyn_storage",
+                            "typeString": "contract Dog[] storage ref"
+                          }
+                        },
+                        "id": 15558,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "length",
+                        "nodeType": "MemberAccess",
+                        "src": "864:11:70",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 15556,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "nodeType": "NewExpression",
+                      "src": "850:13:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_Puppers_$15457_memory_ptr_$dyn_memory_ptr_$",
+                        "typeString": "function (uint256) pure returns (struct Dog.Puppers memory[] memory)"
+                      },
+                      "typeName": {
+                        "baseType": {
+                          "id": 15554,
+                          "nodeType": "UserDefinedTypeName",
+                          "pathNode": {
+                            "id": 15553,
+                            "name": "Puppers",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 15457,
+                            "src": "854:7:70"
+                          },
+                          "referencedDeclaration": 15457,
+                          "src": "854:7:70",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Puppers_$15457_storage_ptr",
+                            "typeString": "struct Dog.Puppers"
+                          }
+                        },
+                        "id": 15555,
+                        "nodeType": "ArrayTypeName",
+                        "src": "854:9:70",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Puppers_$15457_storage_$dyn_storage_ptr",
+                          "typeString": "struct Dog.Puppers[]"
+                        }
+                      }
+                    },
+                    "id": 15559,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "850:26:70",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Puppers_$15457_memory_ptr_$dyn_memory_ptr",
+                      "typeString": "struct Dog.Puppers memory[] memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "823:53:70"
+                },
+                {
+                  "body": {
+                    "id": 15583,
+                    "nodeType": "Block",
+                    "src": "925:117:70",
+                    "statements": [
+                      {
+                        "expression": {
+                          "id": 15581,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "baseExpression": {
+                              "id": 15572,
+                              "name": "puppers",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 15552,
+                              "src": "939:7:70",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_struct$_Puppers_$15457_memory_ptr_$dyn_memory_ptr",
+                                "typeString": "struct Dog.Puppers memory[] memory"
+                              }
+                            },
+                            "id": 15574,
+                            "indexExpression": {
+                              "id": 15573,
+                              "name": "i",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 15562,
+                              "src": "947:1:70",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "nodeType": "IndexAccess",
+                            "src": "939:10:70",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Puppers_$15457_memory_ptr",
+                              "typeString": "struct Dog.Puppers memory"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "arguments": [
+                              {
+                                "id": 15576,
+                                "name": "i",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 15562,
+                                "src": "985:1:70",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              {
+                                "baseExpression": {
+                                  "id": 15577,
+                                  "name": "pups",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 15451,
+                                  "src": "1009:4:70",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_array$_t_contract$_Dog_$15589_$dyn_storage",
+                                    "typeString": "contract Dog[] storage ref"
+                                  }
+                                },
+                                "id": 15579,
+                                "indexExpression": {
+                                  "id": 15578,
+                                  "name": "i",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 15562,
+                                  "src": "1014:1:70",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "nodeType": "IndexAccess",
+                                "src": "1009:7:70",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_contract$_Dog_$15589",
+                                  "typeString": "contract Dog"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                },
+                                {
+                                  "typeIdentifier": "t_contract$_Dog_$15589",
+                                  "typeString": "contract Dog"
+                                }
+                              ],
+                              "id": 15575,
+                              "name": "Puppers",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 15457,
+                              "src": "952:7:70",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_struct$_Puppers_$15457_storage_ptr_$",
+                                "typeString": "type(struct Dog.Puppers storage pointer)"
+                              }
+                            },
+                            "id": 15580,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "structConstructorCall",
+                            "lValueRequested": false,
+                            "names": [
+                              "index",
+                              "pup"
+                            ],
+                            "nodeType": "FunctionCall",
+                            "src": "952:79:70",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Puppers_$15457_memory_ptr",
+                              "typeString": "struct Dog.Puppers memory"
+                            }
+                          },
+                          "src": "939:92:70",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Puppers_$15457_memory_ptr",
+                            "typeString": "struct Dog.Puppers memory"
+                          }
+                        },
+                        "id": 15582,
+                        "nodeType": "ExpressionStatement",
+                        "src": "939:92:70"
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 15568,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 15565,
+                      "name": "i",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15562,
+                      "src": "903:1:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<",
+                    "rightExpression": {
+                      "expression": {
+                        "id": 15566,
+                        "name": "pups",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 15451,
+                        "src": "907:4:70",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_contract$_Dog_$15589_$dyn_storage",
+                          "typeString": "contract Dog[] storage ref"
+                        }
+                      },
+                      "id": 15567,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "src": "907:11:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "903:15:70",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 15584,
+                  "initializationExpression": {
+                    "assignments": [
+                      15562
+                    ],
+                    "declarations": [
+                      {
+                        "constant": false,
+                        "id": 15562,
+                        "mutability": "mutable",
+                        "name": "i",
+                        "nameLocation": "896:1:70",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 15584,
+                        "src": "891:6:70",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 15561,
+                          "name": "uint",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "891:4:70",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "visibility": "internal"
+                      }
+                    ],
+                    "id": 15564,
+                    "initialValue": {
+                      "hexValue": "30",
+                      "id": 15563,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "900:1:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "nodeType": "VariableDeclarationStatement",
+                    "src": "891:10:70"
+                  },
+                  "loopExpression": {
+                    "expression": {
+                      "id": 15570,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "++",
+                      "prefix": false,
+                      "src": "920:3:70",
+                      "subExpression": {
+                        "id": 15569,
+                        "name": "i",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 15562,
+                        "src": "920:1:70",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 15571,
+                    "nodeType": "ExpressionStatement",
+                    "src": "920:3:70"
+                  },
+                  "nodeType": "ForStatement",
+                  "src": "886:156:70"
+                },
+                {
+                  "expression": {
+                    "id": 15585,
+                    "name": "puppers",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 15552,
+                    "src": "1058:7:70",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Puppers_$15457_memory_ptr_$dyn_memory_ptr",
+                      "typeString": "struct Dog.Puppers memory[] memory"
+                    }
+                  },
+                  "functionReturnParameters": 15547,
+                  "id": 15586,
+                  "nodeType": "Return",
+                  "src": "1051:14:70"
+                }
+              ]
+            },
+            "functionSelector": "0bdae0c9",
+            "id": 15588,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "puppers",
+            "nameLocation": "769:7:70",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 15542,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "776:2:70"
+            },
+            "returnParameters": {
+              "id": 15547,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 15546,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15588,
+                  "src": "795:16:70",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Puppers_$15457_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct Dog.Puppers[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 15544,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 15543,
+                        "name": "Puppers",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 15457,
+                        "src": "795:7:70"
+                      },
+                      "referencedDeclaration": 15457,
+                      "src": "795:7:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Puppers_$15457_storage_ptr",
+                        "typeString": "struct Dog.Puppers"
+                      }
+                    },
+                    "id": 15545,
+                    "nodeType": "ArrayTypeName",
+                    "src": "795:9:70",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Puppers_$15457_storage_$dyn_storage_ptr",
+                      "typeString": "struct Dog.Puppers[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "794:18:70"
+            },
+            "scope": 15589,
+            "src": "760:312:70",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 15590,
+        "src": "62:1012:70",
+        "usedErrors": []
+      }
+    ],
+    "src": "37:1038:70"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.15+commit.e14f2714.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-11-30T22:41:29.722Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

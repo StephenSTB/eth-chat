@@ -1,0 +1,899 @@
+{
+  "contractName": "CallbackValidation",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Provides validation for callbacks from Uniswap V3 Pools\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/comet/contracts/liquidator/vendor/@uniswap/v3-periphery/contracts/libraries/CallbackValidation.sol\":\"CallbackValidation\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/comet/contracts/liquidator/vendor/@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol\":{\"keccak256\":\"0xfe6113d518466cd6652c85b111e01f33eb62157f49ae5ed7d5a3947a2044adb1\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://1c42b9e6f5902ac38dd43e25750939baa7e0c1425dc75afd717c4412731065d5\",\"dweb:/ipfs/QmWaoacnzsucTvBME2o7YgZBZMhaHv7fkj83htHMVWJKWh\"]},\"project:/contracts/comet/contracts/liquidator/vendor/@uniswap/v3-core/contracts/interfaces/pool/IUniswapV3PoolActions.sol\":{\"keccak256\":\"0x9453dd0e7442188667d01d9b65de3f1e14e9511ff3e303179a15f6fc267f7634\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://982f4328f956c3e60e67501e759eb292ac487f76460c774c50e9ae4fcc92aae5\",\"dweb:/ipfs/QmRnzEDsaqtd9PJEVcgQi7p5aV5pMSvRUoGZJAdwFUJxgZ\"]},\"project:/contracts/comet/contracts/liquidator/vendor/@uniswap/v3-core/contracts/interfaces/pool/IUniswapV3PoolDerivedState.sol\":{\"keccak256\":\"0xe603ac5b17ecdee73ba2b27efdf386c257a19c14206e87eee77e2017b742d9e5\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://8febc9bdb399a4d94bb89f5377732652e2400e4a8dee808201ade6848f9004e7\",\"dweb:/ipfs/QmaKDqYYFU4d2W2iN77aDHptfbFmYZRrMYXHeGpJmM8C1c\"]},\"project:/contracts/comet/contracts/liquidator/vendor/@uniswap/v3-core/contracts/interfaces/pool/IUniswapV3PoolEvents.sol\":{\"keccak256\":\"0x8071514d0fe5d17d6fbd31c191cdfb703031c24e0ece3621d88ab10e871375cd\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://d0b571930cc7488b1d546a7e9cea7c52d8b3c4e207da657ed0e0db7343b8cd03\",\"dweb:/ipfs/QmaGK6vVwB95QSTR1XMYvrh7ivYAYZxi3fD7v6VMA4jZ39\"]},\"project:/contracts/comet/contracts/liquidator/vendor/@uniswap/v3-core/contracts/interfaces/pool/IUniswapV3PoolImmutables.sol\":{\"keccak256\":\"0xf6e5d2cd1139c4c276bdbc8e1d2b256e456c866a91f1b868da265c6d2685c3f7\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://b99c8c9ae8e27ee6559e5866bea82cbc9ffc8247f8d15b7422a4deb287d4d047\",\"dweb:/ipfs/QmfL8gaqt3ffAnm6nVj5ksuNpLygXuL3xq5VBqrkwC2JJ3\"]},\"project:/contracts/comet/contracts/liquidator/vendor/@uniswap/v3-core/contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol\":{\"keccak256\":\"0x759b78a2918af9e99e246dc3af084f654e48ef32bb4e4cb8a966aa3dcaece235\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://64144fb96e1c7fdba87305acadb98a198d26a3d46c097cb3a666e567f6f29735\",\"dweb:/ipfs/QmUnWVwN9FKB9uV5Pr8YfLpWZnYM2DENnRMaadZ492JS9u\"]},\"project:/contracts/comet/contracts/liquidator/vendor/@uniswap/v3-core/contracts/interfaces/pool/IUniswapV3PoolState.sol\":{\"keccak256\":\"0x852dc1f5df7dcf7f11e7bb3eed79f0cea72ad4b25f6a9d2c35aafb48925fd49f\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://ed63907c38ff36b0e22bc9ffc53e791ea74f0d4f0e7c257fdfb5aaf8825b1f0f\",\"dweb:/ipfs/QmSQrckghEjs6HVsA5GVgpNpZWvTXMY5eQLF7cN6deFeEg\"]},\"project:/contracts/comet/contracts/liquidator/vendor/@uniswap/v3-periphery/contracts/libraries/CallbackValidation.sol\":{\"keccak256\":\"0xb2ea4a9cba9be9b2ba17ee2dc884079949c59a18d69317fbbaa0e2aa83afe4f7\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://b9548dd9f17524005ce0ca36831d867045f06dbc2e22ac715ddd6640948b8aca\",\"dweb:/ipfs/QmXpXvq5ALi4NgXYDg2Jg1ZDqcaQnEpKoq4Fw6iq4A641c\"]},\"project:/contracts/comet/contracts/liquidator/vendor/@uniswap/v3-periphery/contracts/libraries/PoolAddress.sol\":{\"keccak256\":\"0x79c1e7262b0dfade1388c231a02d4447c04081a6542c1c6492251fe7943f160c\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://466950cec49e41b6a4175b4b78203650d58d8caa0dc0a746731ab9038e0ee472\",\"dweb:/ipfs/QmbPKYW6dtYCaCpmHAfErcqVkyFF9qjqD8nCGMdNRfNu6E\"]}},\"version\":1}",
+  "bytecode": "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220d805db642e30ccab620cf68097fa5563b0f7c69e5db32a0635319d65c8c2efad64736f6c634300080f0033",
+  "deployedBytecode": "0x600080fdfea2646970667358221220d805db642e30ccab620cf68097fa5563b0f7c69e5db32a0635319d65c8c2efad64736f6c634300080f0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "234:1236:58:-:0;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "234:1236:58:-:0;;",
+  "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity 0.8.15;\n\nimport '../../../v3-core/contracts/interfaces/IUniswapV3Pool.sol';\nimport './PoolAddress.sol';\n\n/// @notice Provides validation for callbacks from Uniswap V3 Pools\nlibrary CallbackValidation {\n    /// @notice Returns the address of a valid Uniswap V3 Pool\n    /// @param factory The contract address of the Uniswap V3 factory\n    /// @param tokenA The contract address of either token0 or token1\n    /// @param tokenB The contract address of the other token\n    /// @param fee The fee collected upon every swap in the pool, denominated in hundredths of a bip\n    /// @return pool The V3 pool contract address\n    function verifyCallback(\n        address factory,\n        address tokenA,\n        address tokenB,\n        uint24 fee\n    ) internal view returns (IUniswapV3Pool pool) {\n        return verifyCallback(factory, PoolAddress.getPoolKey(tokenA, tokenB, fee));\n    }\n\n    /// @notice Returns the address of a valid Uniswap V3 Pool\n    /// @param factory The contract address of the Uniswap V3 factory\n    /// @param poolKey The identifying key of the V3 pool\n    /// @return pool The V3 pool contract address\n    function verifyCallback(address factory, PoolAddress.PoolKey memory poolKey)\n        internal\n        view\n        returns (IUniswapV3Pool pool)\n    {\n        pool = IUniswapV3Pool(PoolAddress.computeAddress(factory, poolKey));\n        require(msg.sender == address(pool));\n    }\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/comet/contracts/liquidator/vendor/@uniswap/v3-periphery/contracts/libraries/CallbackValidation.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/comet/contracts/liquidator/vendor/@uniswap/v3-periphery/contracts/libraries/CallbackValidation.sol",
+    "exportedSymbols": {
+      "CallbackValidation": [
+        13880
+      ],
+      "IUniswapV3Pool": [
+        12979
+      ],
+      "IUniswapV3PoolActions": [
+        13103
+      ],
+      "IUniswapV3PoolDerivedState": [
+        13134
+      ],
+      "IUniswapV3PoolEvents": [
+        13253
+      ],
+      "IUniswapV3PoolImmutables": [
+        13293
+      ],
+      "IUniswapV3PoolOwnerActions": [
+        13319
+      ],
+      "IUniswapV3PoolState": [
+        13427
+      ],
+      "PoolAddress": [
+        13977
+      ]
+    },
+    "id": 13881,
+    "license": "GPL-2.0-or-later",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 13817,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".15"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "45:23:58"
+      },
+      {
+        "absolutePath": "project:/contracts/comet/contracts/liquidator/vendor/@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol",
+        "file": "../../../v3-core/contracts/interfaces/IUniswapV3Pool.sol",
+        "id": 13818,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 13881,
+        "sourceUnit": 12980,
+        "src": "70:66:58",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/comet/contracts/liquidator/vendor/@uniswap/v3-periphery/contracts/libraries/PoolAddress.sol",
+        "file": "./PoolAddress.sol",
+        "id": 13819,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 13881,
+        "sourceUnit": 13978,
+        "src": "137:27:58",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "CallbackValidation",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": {
+          "id": 13820,
+          "nodeType": "StructuredDocumentation",
+          "src": "166:68:58",
+          "text": "@notice Provides validation for callbacks from Uniswap V3 Pools"
+        },
+        "fullyImplemented": true,
+        "id": 13880,
+        "linearizedBaseContracts": [
+          13880
+        ],
+        "name": "CallbackValidation",
+        "nameLocation": "242:18:58",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 13845,
+              "nodeType": "Block",
+              "src": "850:92:58",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 13836,
+                        "name": "factory",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 13823,
+                        "src": "882:7:58",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "arguments": [
+                          {
+                            "id": 13839,
+                            "name": "tokenA",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 13825,
+                            "src": "914:6:58",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          {
+                            "id": 13840,
+                            "name": "tokenB",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 13827,
+                            "src": "922:6:58",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          {
+                            "id": 13841,
+                            "name": "fee",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 13829,
+                            "src": "930:3:58",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint24",
+                              "typeString": "uint24"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            },
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            },
+                            {
+                              "typeIdentifier": "t_uint24",
+                              "typeString": "uint24"
+                            }
+                          ],
+                          "expression": {
+                            "id": 13837,
+                            "name": "PoolAddress",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 13977,
+                            "src": "891:11:58",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_contract$_PoolAddress_$13977_$",
+                              "typeString": "type(library PoolAddress)"
+                            }
+                          },
+                          "id": 13838,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "getPoolKey",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 13925,
+                          "src": "891:22:58",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_pure$_t_address_$_t_address_$_t_uint24_$returns$_t_struct$_PoolKey_$13893_memory_ptr_$",
+                            "typeString": "function (address,address,uint24) pure returns (struct PoolAddress.PoolKey memory)"
+                          }
+                        },
+                        "id": 13842,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "891:43:58",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_PoolKey_$13893_memory_ptr",
+                          "typeString": "struct PoolAddress.PoolKey memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_struct$_PoolKey_$13893_memory_ptr",
+                          "typeString": "struct PoolAddress.PoolKey memory"
+                        }
+                      ],
+                      "id": 13835,
+                      "name": "verifyCallback",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        13846,
+                        13879
+                      ],
+                      "referencedDeclaration": 13879,
+                      "src": "867:14:58",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$_t_address_$_t_struct$_PoolKey_$13893_memory_ptr_$returns$_t_contract$_IUniswapV3Pool_$12979_$",
+                        "typeString": "function (address,struct PoolAddress.PoolKey memory) view returns (contract IUniswapV3Pool)"
+                      }
+                    },
+                    "id": 13843,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "867:68:58",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IUniswapV3Pool_$12979",
+                      "typeString": "contract IUniswapV3Pool"
+                    }
+                  },
+                  "functionReturnParameters": 13834,
+                  "id": 13844,
+                  "nodeType": "Return",
+                  "src": "860:75:58"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 13821,
+              "nodeType": "StructuredDocumentation",
+              "src": "267:411:58",
+              "text": "@notice Returns the address of a valid Uniswap V3 Pool\n @param factory The contract address of the Uniswap V3 factory\n @param tokenA The contract address of either token0 or token1\n @param tokenB The contract address of the other token\n @param fee The fee collected upon every swap in the pool, denominated in hundredths of a bip\n @return pool The V3 pool contract address"
+            },
+            "id": 13846,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "verifyCallback",
+            "nameLocation": "692:14:58",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 13830,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 13823,
+                  "mutability": "mutable",
+                  "name": "factory",
+                  "nameLocation": "724:7:58",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 13846,
+                  "src": "716:15:58",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 13822,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "716:7:58",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 13825,
+                  "mutability": "mutable",
+                  "name": "tokenA",
+                  "nameLocation": "749:6:58",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 13846,
+                  "src": "741:14:58",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 13824,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "741:7:58",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 13827,
+                  "mutability": "mutable",
+                  "name": "tokenB",
+                  "nameLocation": "773:6:58",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 13846,
+                  "src": "765:14:58",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 13826,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "765:7:58",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 13829,
+                  "mutability": "mutable",
+                  "name": "fee",
+                  "nameLocation": "796:3:58",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 13846,
+                  "src": "789:10:58",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint24",
+                    "typeString": "uint24"
+                  },
+                  "typeName": {
+                    "id": 13828,
+                    "name": "uint24",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "789:6:58",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "706:99:58"
+            },
+            "returnParameters": {
+              "id": 13834,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 13833,
+                  "mutability": "mutable",
+                  "name": "pool",
+                  "nameLocation": "844:4:58",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 13846,
+                  "src": "829:19:58",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IUniswapV3Pool_$12979",
+                    "typeString": "contract IUniswapV3Pool"
+                  },
+                  "typeName": {
+                    "id": 13832,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 13831,
+                      "name": "IUniswapV3Pool",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 12979,
+                      "src": "829:14:58"
+                    },
+                    "referencedDeclaration": 12979,
+                    "src": "829:14:58",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IUniswapV3Pool_$12979",
+                      "typeString": "contract IUniswapV3Pool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "828:21:58"
+            },
+            "scope": 13880,
+            "src": "683:259:58",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 13878,
+              "nodeType": "Block",
+              "src": "1338:130:58",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 13866,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 13858,
+                      "name": "pool",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 13856,
+                      "src": "1348:4:58",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IUniswapV3Pool_$12979",
+                        "typeString": "contract IUniswapV3Pool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "arguments": [
+                        {
+                          "arguments": [
+                            {
+                              "id": 13862,
+                              "name": "factory",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 13849,
+                              "src": "1397:7:58",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            },
+                            {
+                              "id": 13863,
+                              "name": "poolKey",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 13852,
+                              "src": "1406:7:58",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_PoolKey_$13893_memory_ptr",
+                                "typeString": "struct PoolAddress.PoolKey memory"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              },
+                              {
+                                "typeIdentifier": "t_struct$_PoolKey_$13893_memory_ptr",
+                                "typeString": "struct PoolAddress.PoolKey memory"
+                              }
+                            ],
+                            "expression": {
+                              "id": 13860,
+                              "name": "PoolAddress",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 13977,
+                              "src": "1370:11:58",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_contract$_PoolAddress_$13977_$",
+                                "typeString": "type(library PoolAddress)"
+                              }
+                            },
+                            "id": 13861,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "computeAddress",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 13976,
+                            "src": "1370:26:58",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_pure$_t_address_$_t_struct$_PoolKey_$13893_memory_ptr_$returns$_t_address_$",
+                              "typeString": "function (address,struct PoolAddress.PoolKey memory) pure returns (address)"
+                            }
+                          },
+                          "id": 13864,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1370:44:58",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 13859,
+                        "name": "IUniswapV3Pool",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 12979,
+                        "src": "1355:14:58",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_IUniswapV3Pool_$12979_$",
+                          "typeString": "type(contract IUniswapV3Pool)"
+                        }
+                      },
+                      "id": 13865,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1355:60:58",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IUniswapV3Pool_$12979",
+                        "typeString": "contract IUniswapV3Pool"
+                      }
+                    },
+                    "src": "1348:67:58",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IUniswapV3Pool_$12979",
+                      "typeString": "contract IUniswapV3Pool"
+                    }
+                  },
+                  "id": 13867,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1348:67:58"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 13875,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "id": 13869,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4294967281,
+                            "src": "1433:3:58",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 13870,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "src": "1433:10:58",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "arguments": [
+                            {
+                              "id": 13873,
+                              "name": "pool",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 13856,
+                              "src": "1455:4:58",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_IUniswapV3Pool_$12979",
+                                "typeString": "contract IUniswapV3Pool"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_contract$_IUniswapV3Pool_$12979",
+                                "typeString": "contract IUniswapV3Pool"
+                              }
+                            ],
+                            "id": 13872,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "1447:7:58",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": {
+                              "id": 13871,
+                              "name": "address",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "1447:7:58",
+                              "typeDescriptions": {}
+                            }
+                          },
+                          "id": 13874,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1447:13:58",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "1433:27:58",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 13868,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "1425:7:58",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 13876,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1425:36:58",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 13877,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1425:36:58"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 13847,
+              "nodeType": "StructuredDocumentation",
+              "src": "948:236:58",
+              "text": "@notice Returns the address of a valid Uniswap V3 Pool\n @param factory The contract address of the Uniswap V3 factory\n @param poolKey The identifying key of the V3 pool\n @return pool The V3 pool contract address"
+            },
+            "id": 13879,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "verifyCallback",
+            "nameLocation": "1198:14:58",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 13853,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 13849,
+                  "mutability": "mutable",
+                  "name": "factory",
+                  "nameLocation": "1221:7:58",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 13879,
+                  "src": "1213:15:58",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 13848,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1213:7:58",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 13852,
+                  "mutability": "mutable",
+                  "name": "poolKey",
+                  "nameLocation": "1257:7:58",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 13879,
+                  "src": "1230:34:58",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PoolKey_$13893_memory_ptr",
+                    "typeString": "struct PoolAddress.PoolKey"
+                  },
+                  "typeName": {
+                    "id": 13851,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 13850,
+                      "name": "PoolAddress.PoolKey",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 13893,
+                      "src": "1230:19:58"
+                    },
+                    "referencedDeclaration": 13893,
+                    "src": "1230:19:58",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PoolKey_$13893_storage_ptr",
+                      "typeString": "struct PoolAddress.PoolKey"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1212:53:58"
+            },
+            "returnParameters": {
+              "id": 13857,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 13856,
+                  "mutability": "mutable",
+                  "name": "pool",
+                  "nameLocation": "1328:4:58",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 13879,
+                  "src": "1313:19:58",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IUniswapV3Pool_$12979",
+                    "typeString": "contract IUniswapV3Pool"
+                  },
+                  "typeName": {
+                    "id": 13855,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 13854,
+                      "name": "IUniswapV3Pool",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 12979,
+                      "src": "1313:14:58"
+                    },
+                    "referencedDeclaration": 12979,
+                    "src": "1313:14:58",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IUniswapV3Pool_$12979",
+                      "typeString": "contract IUniswapV3Pool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1312:21:58"
+            },
+            "scope": 13880,
+            "src": "1189:279:58",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 13881,
+        "src": "234:1236:58",
+        "usedErrors": []
+      }
+    ],
+    "src": "45:1426:58"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.15+commit.e14f2714.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-11-30T22:41:29.710Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "notice": "Provides validation for callbacks from Uniswap V3 Pools",
+    "version": 1
+  }
+}

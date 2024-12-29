@@ -1,0 +1,1127 @@
+{
+  "contractName": "FeeLibrary",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "DYNAMIC_FEE_FLAG",
+      "outputs": [
+        {
+          "internalType": "uint24",
+          "name": "",
+          "type": "uint24"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "HOOK_SWAP_FEE_FLAG",
+      "outputs": [
+        {
+          "internalType": "uint24",
+          "name": "",
+          "type": "uint24"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "HOOK_WITHDRAW_FEE_FLAG",
+      "outputs": [
+        {
+          "internalType": "uint24",
+          "name": "",
+          "type": "uint24"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "STATIC_FEE_MASK",
+      "outputs": [
+        {
+          "internalType": "uint24",
+          "name": "",
+          "type": "uint24"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"DYNAMIC_FEE_FLAG\",\"outputs\":[{\"internalType\":\"uint24\",\"name\":\"\",\"type\":\"uint24\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"HOOK_SWAP_FEE_FLAG\",\"outputs\":[{\"internalType\":\"uint24\",\"name\":\"\",\"type\":\"uint24\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"HOOK_WITHDRAW_FEE_FLAG\",\"outputs\":[{\"internalType\":\"uint24\",\"name\":\"\",\"type\":\"uint24\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"STATIC_FEE_MASK\",\"outputs\":[{\"internalType\":\"uint24\",\"name\":\"\",\"type\":\"uint24\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/v4-core/src/libraries/FeeLibrary.sol\":\"FeeLibrary\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/v4-core/src/libraries/FeeLibrary.sol\":{\"keccak256\":\"0x9fc00b77978b617d1a9b5c9d024210b43ee5455682982703d3009bfafc1c12b4\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://777acadfdbd1b3c01aa780b2dff49771ae6189e421b7e23be38c2db75b9c1267\",\"dweb:/ipfs/QmUR443r39JFuYjLi6zCWnW7r15u1gbmkuEd6e43Br4gyL\"]}},\"version\":1}",
+  "bytecode": "0x608080604052346100195760d7908161001e823930815050f35b5f80fdfe60808060405260043610156011575f80fd5b5f3560e01c9081634f7deff714608c57508063c7a97b4e146075578063d11e7dee14605e5763f26ef49d146043575f80fd5b5f366003190112605a576020604051628000008152f35b5f80fd5b5f366003190112605a576020604051624000008152f35b5f366003190112605a576020604051620fffff8152f35b5f366003190112605a57806220000060209252f3fea264697066735822122054872ae76252f635317c7845db7d8821c5e7b09fbbfc332c04ae00f5fde86dfe64736f6c63430008170033",
+  "deployedBytecode": "0x60808060405260043610156011575f80fd5b5f3560e01c9081634f7deff714608c57508063c7a97b4e146075578063d11e7dee14605e5763f26ef49d146043575f80fd5b5f366003190112605a576020604051628000008152f35b5f80fd5b5f366003190112605a576020604051624000008152f35b5f366003190112605a576020604051620fffff8152f35b5f366003190112605a57806220000060209252f3fea264697066735822122054872ae76252f635317c7845db7d8821c5e7b09fbbfc332c04ae00f5fde86dfe64736f6c63430008170033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "71:911:21:-:0;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "71:911:21:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;71:911:21;;;;;;;193:8;71:911;;;;;;;;;;-1:-1:-1;;71:911:21;;;;;;;259:8;71:911;;;;;;-1:-1:-1;;71:911:21;;;;;;;137:8;71:911;;;;;;-1:-1:-1;;71:911:21;;;;;329:8;71:911;;;",
+  "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity ^0.8.20;\n\nlibrary FeeLibrary {\n    uint24 public constant STATIC_FEE_MASK = 0x0FFFFF;\n    uint24 public constant DYNAMIC_FEE_FLAG = 0x800000; // 1000\n    uint24 public constant HOOK_SWAP_FEE_FLAG = 0x400000; // 0100\n    uint24 public constant HOOK_WITHDRAW_FEE_FLAG = 0x200000; // 0010\n\n    function isDynamicFee(uint24 self) internal pure returns (bool) {\n        return self & DYNAMIC_FEE_FLAG != 0;\n    }\n\n    function hasHookSwapFee(uint24 self) internal pure returns (bool) {\n        return self & HOOK_SWAP_FEE_FLAG != 0;\n    }\n\n    function hasHookWithdrawFee(uint24 self) internal pure returns (bool) {\n        return self & HOOK_WITHDRAW_FEE_FLAG != 0;\n    }\n\n    function isStaticFeeTooLarge(uint24 self) internal pure returns (bool) {\n        return self & STATIC_FEE_MASK >= 1000000;\n    }\n\n    function getStaticFee(uint24 self) internal pure returns (uint24) {\n        return self & STATIC_FEE_MASK;\n    }\n}\n",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/v4-core/src/libraries/FeeLibrary.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/v4-core/src/libraries/FeeLibrary.sol",
+    "exportedSymbols": {
+      "FeeLibrary": [
+        4535
+      ]
+    },
+    "id": 4536,
+    "license": "GPL-2.0-or-later",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4454,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".20"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "45:24:21"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "FeeLibrary",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 4535,
+        "linearizedBaseContracts": [
+          4535
+        ],
+        "name": "FeeLibrary",
+        "nameLocation": "79:10:21",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "functionSelector": "c7a97b4e",
+            "id": 4457,
+            "mutability": "constant",
+            "name": "STATIC_FEE_MASK",
+            "nameLocation": "119:15:21",
+            "nodeType": "VariableDeclaration",
+            "scope": 4535,
+            "src": "96:49:21",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint24",
+              "typeString": "uint24"
+            },
+            "typeName": {
+              "id": 4455,
+              "name": "uint24",
+              "nodeType": "ElementaryTypeName",
+              "src": "96:6:21",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint24",
+                "typeString": "uint24"
+              }
+            },
+            "value": {
+              "hexValue": "3078304646464646",
+              "id": 4456,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "137:8:21",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_1048575_by_1",
+                "typeString": "int_const 1048575"
+              },
+              "value": "0x0FFFFF"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "functionSelector": "f26ef49d",
+            "id": 4460,
+            "mutability": "constant",
+            "name": "DYNAMIC_FEE_FLAG",
+            "nameLocation": "174:16:21",
+            "nodeType": "VariableDeclaration",
+            "scope": 4535,
+            "src": "151:50:21",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint24",
+              "typeString": "uint24"
+            },
+            "typeName": {
+              "id": 4458,
+              "name": "uint24",
+              "nodeType": "ElementaryTypeName",
+              "src": "151:6:21",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint24",
+                "typeString": "uint24"
+              }
+            },
+            "value": {
+              "hexValue": "3078383030303030",
+              "id": 4459,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "193:8:21",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_8388608_by_1",
+                "typeString": "int_const 8388608"
+              },
+              "value": "0x800000"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "functionSelector": "d11e7dee",
+            "id": 4463,
+            "mutability": "constant",
+            "name": "HOOK_SWAP_FEE_FLAG",
+            "nameLocation": "238:18:21",
+            "nodeType": "VariableDeclaration",
+            "scope": 4535,
+            "src": "215:52:21",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint24",
+              "typeString": "uint24"
+            },
+            "typeName": {
+              "id": 4461,
+              "name": "uint24",
+              "nodeType": "ElementaryTypeName",
+              "src": "215:6:21",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint24",
+                "typeString": "uint24"
+              }
+            },
+            "value": {
+              "hexValue": "3078343030303030",
+              "id": 4462,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "259:8:21",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_4194304_by_1",
+                "typeString": "int_const 4194304"
+              },
+              "value": "0x400000"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "functionSelector": "4f7deff7",
+            "id": 4466,
+            "mutability": "constant",
+            "name": "HOOK_WITHDRAW_FEE_FLAG",
+            "nameLocation": "304:22:21",
+            "nodeType": "VariableDeclaration",
+            "scope": 4535,
+            "src": "281:56:21",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint24",
+              "typeString": "uint24"
+            },
+            "typeName": {
+              "id": 4464,
+              "name": "uint24",
+              "nodeType": "ElementaryTypeName",
+              "src": "281:6:21",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint24",
+                "typeString": "uint24"
+              }
+            },
+            "value": {
+              "hexValue": "3078323030303030",
+              "id": 4465,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "329:8:21",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_2097152_by_1",
+                "typeString": "int_const 2097152"
+              },
+              "value": "0x200000"
+            },
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 4479,
+              "nodeType": "Block",
+              "src": "416:52:21",
+              "statements": [
+                {
+                  "expression": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    },
+                    "id": 4477,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint24",
+                        "typeString": "uint24"
+                      },
+                      "id": 4475,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 4473,
+                        "name": "self",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4468,
+                        "src": "433:4:21",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint24",
+                          "typeString": "uint24"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "&",
+                      "rightExpression": {
+                        "id": 4474,
+                        "name": "DYNAMIC_FEE_FLAG",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4460,
+                        "src": "440:16:21",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint24",
+                          "typeString": "uint24"
+                        }
+                      },
+                      "src": "433:23:21",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint24",
+                        "typeString": "uint24"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "hexValue": "30",
+                      "id": 4476,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "460:1:21",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "src": "433:28:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 4472,
+                  "id": 4478,
+                  "nodeType": "Return",
+                  "src": "426:35:21"
+                }
+              ]
+            },
+            "id": 4480,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isDynamicFee",
+            "nameLocation": "361:12:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4469,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4468,
+                  "mutability": "mutable",
+                  "name": "self",
+                  "nameLocation": "381:4:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4480,
+                  "src": "374:11:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint24",
+                    "typeString": "uint24"
+                  },
+                  "typeName": {
+                    "id": 4467,
+                    "name": "uint24",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "374:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "373:13:21"
+            },
+            "returnParameters": {
+              "id": 4472,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4471,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4480,
+                  "src": "410:4:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 4470,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "410:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "409:6:21"
+            },
+            "scope": 4535,
+            "src": "352:116:21",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 4493,
+              "nodeType": "Block",
+              "src": "540:54:21",
+              "statements": [
+                {
+                  "expression": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    },
+                    "id": 4491,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint24",
+                        "typeString": "uint24"
+                      },
+                      "id": 4489,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 4487,
+                        "name": "self",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4482,
+                        "src": "557:4:21",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint24",
+                          "typeString": "uint24"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "&",
+                      "rightExpression": {
+                        "id": 4488,
+                        "name": "HOOK_SWAP_FEE_FLAG",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4463,
+                        "src": "564:18:21",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint24",
+                          "typeString": "uint24"
+                        }
+                      },
+                      "src": "557:25:21",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint24",
+                        "typeString": "uint24"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "hexValue": "30",
+                      "id": 4490,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "586:1:21",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "src": "557:30:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 4486,
+                  "id": 4492,
+                  "nodeType": "Return",
+                  "src": "550:37:21"
+                }
+              ]
+            },
+            "id": 4494,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "hasHookSwapFee",
+            "nameLocation": "483:14:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4483,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4482,
+                  "mutability": "mutable",
+                  "name": "self",
+                  "nameLocation": "505:4:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4494,
+                  "src": "498:11:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint24",
+                    "typeString": "uint24"
+                  },
+                  "typeName": {
+                    "id": 4481,
+                    "name": "uint24",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "498:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "497:13:21"
+            },
+            "returnParameters": {
+              "id": 4486,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4485,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4494,
+                  "src": "534:4:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 4484,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "534:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "533:6:21"
+            },
+            "scope": 4535,
+            "src": "474:120:21",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 4507,
+              "nodeType": "Block",
+              "src": "670:58:21",
+              "statements": [
+                {
+                  "expression": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    },
+                    "id": 4505,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint24",
+                        "typeString": "uint24"
+                      },
+                      "id": 4503,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 4501,
+                        "name": "self",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4496,
+                        "src": "687:4:21",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint24",
+                          "typeString": "uint24"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "&",
+                      "rightExpression": {
+                        "id": 4502,
+                        "name": "HOOK_WITHDRAW_FEE_FLAG",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4466,
+                        "src": "694:22:21",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint24",
+                          "typeString": "uint24"
+                        }
+                      },
+                      "src": "687:29:21",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint24",
+                        "typeString": "uint24"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "hexValue": "30",
+                      "id": 4504,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "720:1:21",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "src": "687:34:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 4500,
+                  "id": 4506,
+                  "nodeType": "Return",
+                  "src": "680:41:21"
+                }
+              ]
+            },
+            "id": 4508,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "hasHookWithdrawFee",
+            "nameLocation": "609:18:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4497,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4496,
+                  "mutability": "mutable",
+                  "name": "self",
+                  "nameLocation": "635:4:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4508,
+                  "src": "628:11:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint24",
+                    "typeString": "uint24"
+                  },
+                  "typeName": {
+                    "id": 4495,
+                    "name": "uint24",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "628:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "627:13:21"
+            },
+            "returnParameters": {
+              "id": 4500,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4499,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4508,
+                  "src": "664:4:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 4498,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "664:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "663:6:21"
+            },
+            "scope": 4535,
+            "src": "600:128:21",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 4521,
+              "nodeType": "Block",
+              "src": "805:57:21",
+              "statements": [
+                {
+                  "expression": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    },
+                    "id": 4519,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint24",
+                        "typeString": "uint24"
+                      },
+                      "id": 4517,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 4515,
+                        "name": "self",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4510,
+                        "src": "822:4:21",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint24",
+                          "typeString": "uint24"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "&",
+                      "rightExpression": {
+                        "id": 4516,
+                        "name": "STATIC_FEE_MASK",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4457,
+                        "src": "829:15:21",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint24",
+                          "typeString": "uint24"
+                        }
+                      },
+                      "src": "822:22:21",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint24",
+                        "typeString": "uint24"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": ">=",
+                    "rightExpression": {
+                      "hexValue": "31303030303030",
+                      "id": 4518,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "848:7:21",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_1000000_by_1",
+                        "typeString": "int_const 1000000"
+                      },
+                      "value": "1000000"
+                    },
+                    "src": "822:33:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 4514,
+                  "id": 4520,
+                  "nodeType": "Return",
+                  "src": "815:40:21"
+                }
+              ]
+            },
+            "id": 4522,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isStaticFeeTooLarge",
+            "nameLocation": "743:19:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4511,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4510,
+                  "mutability": "mutable",
+                  "name": "self",
+                  "nameLocation": "770:4:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4522,
+                  "src": "763:11:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint24",
+                    "typeString": "uint24"
+                  },
+                  "typeName": {
+                    "id": 4509,
+                    "name": "uint24",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "763:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "762:13:21"
+            },
+            "returnParameters": {
+              "id": 4514,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4513,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4522,
+                  "src": "799:4:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 4512,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "799:4:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "798:6:21"
+            },
+            "scope": 4535,
+            "src": "734:128:21",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 4533,
+              "nodeType": "Block",
+              "src": "934:46:21",
+              "statements": [
+                {
+                  "expression": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    },
+                    "id": 4531,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 4529,
+                      "name": "self",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4524,
+                      "src": "951:4:21",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint24",
+                        "typeString": "uint24"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "&",
+                    "rightExpression": {
+                      "id": 4530,
+                      "name": "STATIC_FEE_MASK",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4457,
+                      "src": "958:15:21",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint24",
+                        "typeString": "uint24"
+                      }
+                    },
+                    "src": "951:22:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    }
+                  },
+                  "functionReturnParameters": 4528,
+                  "id": 4532,
+                  "nodeType": "Return",
+                  "src": "944:29:21"
+                }
+              ]
+            },
+            "id": 4534,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getStaticFee",
+            "nameLocation": "877:12:21",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4525,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4524,
+                  "mutability": "mutable",
+                  "name": "self",
+                  "nameLocation": "897:4:21",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4534,
+                  "src": "890:11:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint24",
+                    "typeString": "uint24"
+                  },
+                  "typeName": {
+                    "id": 4523,
+                    "name": "uint24",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "890:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "889:13:21"
+            },
+            "returnParameters": {
+              "id": 4528,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4527,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4534,
+                  "src": "926:6:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint24",
+                    "typeString": "uint24"
+                  },
+                  "typeName": {
+                    "id": 4526,
+                    "name": "uint24",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "926:6:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "925:8:21"
+            },
+            "scope": 4535,
+            "src": "868:112:21",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 4536,
+        "src": "71:911:21",
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "src": "45:938:21"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.23+commit.f704f362.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-12-02T16:40:01.669Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

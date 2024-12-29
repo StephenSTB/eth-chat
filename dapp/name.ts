@@ -14,15 +14,17 @@ import { green, yellow, red, gray } from "@sb-labs/web3-data/functions/ConsoleCo
 
 const __dirname = new URL('.', import.meta.url).pathname;
 
-import * as raw from "multiformats/codecs/raw"
+
 
 import * as dagPB from "@ipld/dag-pb"
 
 import * as json from "multiformats/codecs/json"
 
-import { CID } from 'multiformats/cid'
+import { CID, Version } from 'multiformats/cid'
 
 import { prepare } from "@ipld/dag-pb";
+
+import * as raw from "multiformats/codecs/raw"
 
 import { sha256 } from 'multiformats/hashes/sha2';
 
@@ -36,14 +38,16 @@ import {base32} from "multiformats/bases/base32"
 import {base64} from "multiformats/bases/base64"
 
 import {createHelia} from "helia"
+/*
 import { createLibp2p } from "libp2p"
 import { createHeliaHTTP, } from '@helia/http'
 import { unixfs } from '@helia/unixfs'
 import { trustlessGateway } from '@helia/block-brokers'
-import { delegatedHTTPRouting, httpGatewayRouting } from '@helia/routers'
+import { delegatedHTTPRouting, httpGatewayRouting } from '@helia/routers'*/
 
 import { MemoryDatastore } from 'datastore-core'
 import { MemoryBlockstore } from 'blockstore-core'
+import { FsBlockstore }  from "blockstore-fs"
 import { createFromProtobuf } from '@libp2p/peer-id-factory'
 import { noise } from '@chainsafe/libp2p-noise'
 import { webSockets } from '@libp2p/websockets'
@@ -75,7 +79,7 @@ try{
 
 const main = async () =>{
 
- let prvdrs = {} as Providers;
+    let prvdrs = {} as Providers;
 
     prvdrs[network] = providers[network]
 
@@ -98,13 +102,13 @@ const main = async () =>{
 
     account = wallet[0].address as string;
 
-    await deployName();
+    //await deployName();
     
-    await createName();
+    //await createName();
 
-    await getName();
+    //await getName();
 
-    await editInfo()
+    //await editInfo()
 
     await runHelia()
    // process.exit(0)
@@ -157,53 +161,12 @@ const deployName = async () =>{
     const runHelia = async () =>{ 
         const datastore = new MemoryDatastore();
         const blockstore = new MemoryBlockstore();
+        const blockstr = new FsBlockstore("./test") 
         //const peerId = await createFromProtobuf(new Uint8Array(fs.readFileSync("PeerId")))
         console.log("here")
-        const libp2p = await createLibp2p({
-            datastore,
-            addresses: {
-                listen: [`/ip4/0.0.0.0/tcp/4005`,`/ip4/0.0.0.0/tcp/4006/ws`, `/ip6/::1/tcp/4007`, `/ip6/::1/tcp/4008/wss`, ]
-            },
-            transports: [
-                tcp(), webSockets()
-            ],
-            connectionEncryption: [
-                noise()
-            ],
-            streamMuxers: [
-                yamux(), mplex()
-            ],
-                relay: {
-                    enabled: true,
-                    hop: {
-                    enabled: true,
-                    active: true
-                    }
-                },
-                dht: kadDHT(),
-            peerDiscovery: [
-                bootstrap({
-                    list: [
-                        "/ip4/104.131.131.82/tcp/4001/p2p/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ",
-                        "/dnsaddr/bootstrap.libp2p.io/p2p/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN",
-                        "/dnsaddr/bootstrap.libp2p.io/p2p/QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb",
-                        "/dnsaddr/bootstrap.libp2p.io/p2p/QmZa1sAxajnQjVM8WjWXoMbmPd7NsWhfKsPkErzpm9wGkp",
-                        "/dnsaddr/bootstrap.libp2p.io/p2p/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa",
-                        "/dnsaddr/bootstrap.libp2p.io/p2p/QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt",
-                        "/dns4/node0.preload.ipfs.io/tcp/443/wss/p2p/QmZMxNdpMkewiVZLMRxaNxUeZpDUb34pWjZ1kZvsd16Zic",
-                        "/dns4/node1.preload.ipfs.io/tcp/443/wss/p2p/Qmbut9Ywz9YEDrz8ySBSgWyJk41Uvm2QJPhwDJzJyGFsD6",
-                        "/dns4/node2.preload.ipfs.io/tcp/443/wss/p2p/QmV7gnbW5VTcJ3oyM2Xk1rdFBJ3kTkvxc87UFGsun29STS",
-                        "/dns4/node3.preload.ipfs.io/tcp/443/wss/p2p/QmY7JB6MQXhxHvq7dBDh4HpbH29v4yE9JRadAVpndvzySN",
-                    ]
-                })
-            ]
-        })
 
-
-
-
-        const helia0 = await createHelia({});
-        
+        const helia0 = await createHelia({blockstore: blockstr});
+        /*
         helia0.libp2p.getConnections()
         /*const helia = await createHeliaHTTP({
             blockBrokers: [
@@ -222,23 +185,22 @@ const deployName = async () =>{
                 Data: data,
                 Links:[],
             })
-            const value = {data: data}
+            */
 
-            const block = await Block.encode({value: value, codec: json, hasher: sha256})
-            console.log(block.cid)*/
+            const block = await Block.encode({value: data, codec: raw, hasher: sha256})
+            console.log(block.cid)
 
             //const image_block = await Block.encode({value: {Data: data, Links: []}, codec: dagPB, hasher: sha256});
             
             //console.log(image_block.cid.toString(base64))
-            //const b = await helia0.blockstore.put(block.cid, new Uint8Array(Buffer.from(JSON.stringify(value), "utf-8")))
+            //const value = {data: data}
+            helia0.blockstore.put(block.cid, data)
             //const file0 = await helia0.blockstore.get(block.cid);
             console.log()
 
             const blk = await Block.encode({value: data, codec: raw, hasher: sha256});
 
             console.log(blk.cid.toString(base32.encoder))
-
-            
 
             
           //const id = await hfs.addBytes(data)

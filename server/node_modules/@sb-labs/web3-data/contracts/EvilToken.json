@@ -1,0 +1,3340 @@
+{
+  "contractName": "EvilToken",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_initialAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "_tokenName",
+          "type": "string"
+        },
+        {
+          "internalType": "uint8",
+          "name": "_decimalUnits",
+          "type": "uint8"
+        },
+        {
+          "internalType": "string",
+          "name": "_tokenSymbol",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "allocateTo",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "allowance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "attack",
+      "outputs": [
+        {
+          "internalType": "enum EvilToken.AttackType",
+          "name": "attackType",
+          "type": "uint8"
+        },
+        {
+          "internalType": "address",
+          "name": "source",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "destination",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "maxCalls",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "decimals",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "numberOfCalls",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAttack",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "enum EvilToken.AttackType",
+              "name": "attackType",
+              "type": "uint8"
+            },
+            {
+              "internalType": "address",
+              "name": "source",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "destination",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "asset",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "maxCalls",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct EvilToken.ReentryAttack",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "enum EvilToken.AttackType",
+              "name": "attackType",
+              "type": "uint8"
+            },
+            {
+              "internalType": "address",
+              "name": "source",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "destination",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "asset",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "maxCalls",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct EvilToken.ReentryAttack",
+          "name": "attack_",
+          "type": "tuple"
+        }
+      ],
+      "name": "setAttack",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_initialAmount\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_tokenName\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"_decimalUnits\",\"type\":\"uint8\"},{\"internalType\":\"string\",\"name\":\"_tokenSymbol\",\"type\":\"string\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"allocateTo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"attack\",\"outputs\":[{\"internalType\":\"enum EvilToken.AttackType\",\"name\":\"attackType\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"source\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"destination\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxCalls\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAttack\",\"outputs\":[{\"components\":[{\"internalType\":\"enum EvilToken.AttackType\",\"name\":\"attackType\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"source\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"destination\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxCalls\",\"type\":\"uint256\"}],\"internalType\":\"struct EvilToken.ReentryAttack\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"numberOfCalls\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"enum EvilToken.AttackType\",\"name\":\"attackType\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"source\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"destination\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxCalls\",\"type\":\"uint256\"}],\"internalType\":\"struct EvilToken.ReentryAttack\",\"name\":\"attack_\",\"type\":\"tuple\"}],\"name\":\"setAttack\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"FaucetToken that attempts reentrancy attacks\",\"kind\":\"dev\",\"methods\":{},\"title\":\"Malicious ERC20 token\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/comet/contracts/test/EvilToken.sol\":\"EvilToken\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/comet/contracts/Comet.sol\":{\"keccak256\":\"0xab4571bb7ed9430e36563114799dfbdb2525b77d081ebe0d5e59d7e67621451e\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://9c76ef2801c7547be1c04205e4a6fbd955263a6d523658a9887edf10e0034220\",\"dweb:/ipfs/QmVWdyF5Ee1213ehsAXB1i88DJLXSkGT8o1S5PWFPNPUBA\"]},\"project:/contracts/comet/contracts/CometConfiguration.sol\":{\"keccak256\":\"0x58cdf3e481d05a5fb47f25304d104115af196c97d38725d33a2d27a9f01f7b4a\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://a3f44637440f16fab29a16528b88cbe234ad300f87f3b5e25f8b85ead47bdd35\",\"dweb:/ipfs/QmQGFFE6YKnm1KtTsoMm5fRFKjnhECd6Fr1ZwAsRfJ4bio\"]},\"project:/contracts/comet/contracts/CometCore.sol\":{\"keccak256\":\"0x843ecc64cab2c0cae5a1d7f4111c6d02834f798f3834fe9405f259b476bd875a\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://0c2d0a9cb559321b9b651b486d8d8d2a4afc8dd4688bfb211af1ecaf95b02700\",\"dweb:/ipfs/QmPpXG8DNtEv8L2rdUuPdHEqnApCk2BXLgPwSJ8pgVXj84\"]},\"project:/contracts/comet/contracts/CometMainInterface.sol\":{\"keccak256\":\"0x5709827ba55f108da7a9ca7b1bcfd0edc7637295496df002f94eb788c6c4801a\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://40f5ee85e2ae19abe057c5fcd2b861fc295ade156d517a55f4740da1fe3e8149\",\"dweb:/ipfs/QmTJGCkGZaHYZMPMJcvrju8EB4qjDh2Z7T37fhs8kJbrgv\"]},\"project:/contracts/comet/contracts/CometMath.sol\":{\"keccak256\":\"0x9e404ff1451fb5b533058d31e5fe560f91887e251325ec6f8ae49862fd5b462f\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://81e335765a490f22e8383c197b5b39679d440a4b54fadc36f1b6f7cb31985f09\",\"dweb:/ipfs/QmPiB7TkukKA6aShFPu5d1T5D6N8xXwrfnNSD8zksVtTtd\"]},\"project:/contracts/comet/contracts/CometStorage.sol\":{\"keccak256\":\"0xedc38ed37acf51c1f1210bc724e78033b4f2874604918014dde288cd5cf3464c\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://bbba37919596e53718e4d6b2ae3d60f60b4575852dcbc9abad647f3ef8594751\",\"dweb:/ipfs/QmSnSQVm1SAKhhPo3i7JkvZ8G8vQtAdWBmErHvSDMh9MQR\"]},\"project:/contracts/comet/contracts/ERC20.sol\":{\"keccak256\":\"0xbbdb060282d2bc31a60c7a7e93ce014036039e154281172e07a3f24cf6892567\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://ac38dfeba0c599b1b51645b6cd01007d1121762a65adad96ef51e2f1d420203f\",\"dweb:/ipfs/QmQjUMd6qSnF5pepvCPhB5YohCmGzEP6mhX5FBGDktUsGc\"]},\"project:/contracts/comet/contracts/IPriceFeed.sol\":{\"keccak256\":\"0x310068353d00e6a4db31a7245ec49e8e48bb78a26616eb93dc92ef38e1b2218b\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://7c21788138ef0b331c5e0a93c2463436380924133584de858b87304bce4332a3\",\"dweb:/ipfs/QmV9dhQt6UaHcaVXvbpaARMnfdtj2KgLVs2Nf8wFij9cho\"]},\"project:/contracts/comet/contracts/test/EvilToken.sol\":{\"keccak256\":\"0x60813a2862fbe877d0437078bb04dbc9e7b04922a46616a6591ccc3ea69a19e6\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://1c49ebdd0c0cba5a5e0dbc7cbf4fa3aef4bb7a016846091c49c30517ea6e9bfe\",\"dweb:/ipfs/QmTfuLmDHzjPK1sGL6jq2xWj7ZCr3zmcReYmzQD1GC5twH\"]},\"project:/contracts/comet/contracts/test/FaucetToken.sol\":{\"keccak256\":\"0x6d2627a3c14ddeb52585e0df5dc3f5ff1f18f6266d0c53496956505fb8f55cf9\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://b365ed801256ce32077fac97c69c497b3d93c511dcef702696cef301df1c2352\",\"dweb:/ipfs/QmdDFv1rJ8VrdNKE7Ct76vwgFxzgwaE4NDVnwCiPhEgNt6\"]}},\"version\":1}",
+  "bytecode": "0x60406080815234620003db5762000f1b90813803806200001f81620003e0565b938439820191608081840312620003db57805192602090818301519260018060401b0393848111620003db5782620000599183016200041c565b90858101519260ff8416809403620003db576060820151868111620003db576200008492016200041c565b8660035560009633885260058552868820558151858111620003c7578754906001938483811c93168015620003bc575b87841014620002c6578190601f9384811162000369575b50879084831160011462000305578b92620002f9575b5050600019600383901b1c191690841b1788555b815191868311620002e55783548481811c91168015620002da575b87821014620002c6579081838594931162000271575b50869183116001146200020d57899262000201575b5050600019600383901b1c191690821b1790555b60ff19600254161760025583600b5582519160c083019083821090821117620001ed5793839460a09452825230908201523083820152306060820152620f4240908160808201526000199283910152600654610100600160a81b033060081b169060018060a81b0319161760065560018060a01b03193081600754161760075530906008541617600855600955600a5551610a7b9081620004a08239f35b634e487b7160e01b85526041600452602485fd5b0151905038806200013b565b848a52868a208594509190601f1984168b5b898282106200025a575050841162000240575b505050811b0190556200014f565b015160001960f88460031b161c1916905538808062000232565b83850151865588979095019493840193016200021f565b90919250848a52868a208380860160051c820192898710620002bc575b91869588929594930160051c01915b828110620002ad57505062000126565b8c81558695508791016200029d565b925081926200028e565b634e487b7160e01b8a52602260045260248afd5b90607f169062000110565b634e487b7160e01b89526041600452602489fd5b015190503880620000e1565b8b8052888c208794509190601f1984168d5b8b82821062000352575050841162000338575b505050811b018855620000f5565b015160001960f88460031b161c191690553880806200032a565b8385015186558a9790950194938401930162000317565b9091508a8052878b208480850160051c8201928a8610620003b2575b918891869594930160051c01915b828110620003a3575050620000cb565b8d815585945088910162000393565b9250819262000385565b92607f1692620000b4565b634e487b7160e01b88526041600452602488fd5b600080fd5b6040519190601f01601f191682016001600160401b038111838210176200040657604052565b634e487b7160e01b600052604160045260246000fd5b81601f82011215620003db578051906001600160401b038211620004065760209062000451601f8401601f19168301620003e0565b93838552828483010111620003db5782906000905b8383831062000486575050116200047c57505090565b6000918301015290565b819350828193920101518282880101520183916200046656fe608060408181526004918236101561001657600080fd5b600092833560e01c918262c767201461059c5750816306fdde03146104df57816308bca56614610460578163095ea7b3146103f157816318160ddd146103d257816318d46199146103b357816323b872dd1461038c578163313ce5671461036a57816370a082311461033257816395d89b41146102325781639e5faafc146101cd578163a9059cbb1461019e578163dd62ed3e14610151575063f6a0e867146100be57600080fd5b3461014d578160031936011261014d5760c09160a082516100de81610678565b8281528260208201528284820152826060820152826080820152015260a061010461078b565b825192610112848351610768565b600180841b039081602084015116602086015281818401511690850152606082015116606084015260808101516080840152015160a0820152f35b5080fd5b90503461019a578160031936011261019a5760209282916101706106fb565b6101786106e0565b6001600160a01b03918216845291865283832091168252845220549051908152f35b8280fd5b50503461014d578060031936011261014d576020906101bb6106fb565b506101c46107e4565b90519015158152f35b50503461014d578160031936011261014d57600654600754600854600954600a54855160c0969095919492936001600160a01b03908116938116926102158860ff8316610768565b60081c1660208701528501526060840152608083015260a0820152f35b9190503461019a578260031936011261019a5780519183600180549182821c928281168015610328575b602095868610821461031557508488529081156102f3575060011461029b575b610297868661028d828b03836106be565b5191829182610711565b0390f35b9295508083527fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf65b8284106102e057505050826102979461028d92820101943861027c565b80548685018801529286019281016102c3565b60ff191687860152505050151560051b830101925061028d826102973861027c565b634e487b7160e01b845260229052602483fd5b93607f169361025c565b50503461014d57602036600319011261014d5760209181906001600160a01b0361035a6106fb565b1681526005845220549051908152f35b50503461014d578160031936011261014d5760209060ff600254169051908152f35b50503461014d57606036600319011261014d576020906103aa6106fb565b506101bb6106e0565b50503461014d578160031936011261014d57602090600b549051908152f35b50503461014d578160031936011261014d576020906003549051908152f35b90503461019a578160031936011261019a5760209261040e6106fb565b918360243592839233825287528181209460018060a01b0316948582528752205582519081527f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925843392a35160018152f35b50503461014d578060031936011261014d5761047a6106fb565b6001600160a01b03168083526005602052818320805460243591906104a0908390610a39565b90556104ae81600354610a39565b60035582519081527fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef60203092a351f35b9190503461019a578260031936011261019a578051918380549060019082821c928281168015610592575b602095868610821461031557508488529081156102f3575060011461053a57610297868661028d828b03836106be565b8080949750527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5635b82841061057f57505050826102979461028d92820101943861027c565b8054868501880152928601928101610562565b93607f169361050a565b9150346106745760c0366003190112610674576105b882610678565b35906003821015610674578181526105ce6106e0565b602082018190526001600160a01b039260443584811691908281036106705786850152606435948516928386036106705760a09560608601526084359485608082015260a435968791015260ff60065491610100600160a81b039060081b169216906affffffffffffffffffffff60a81b1617176006556bffffffffffffffffffffffff60a01b908160075416176007556008541617600855600955600a5551f35b8780fd5b8380fd5b60c0810190811067ffffffffffffffff82111761069457604052565b634e487b7160e01b600052604160045260246000fd5b67ffffffffffffffff811161069457604052565b90601f8019910116810190811067ffffffffffffffff82111761069457604052565b602435906001600160a01b03821682036106f657565b600080fd5b600435906001600160a01b03821682036106f657565b919091602080825283519081818401526000945b828610610752575050806040939411610745575b601f01601f1916010190565b6000838284010152610739565b8581018201518487016040015294810194610725565b9060038210156107755752565b634e487b7160e01b600052602160045260246000fd5b6040519061079882610678565b8160065460ff811660038110156107755782526001600160a01b03600891821c811660208401526007548116604084015290541660608201526009546080820152600a5460a090910152565b6107ec61078b565b600b546000198114610a235760010180600b5560a08201511015610811575b50600190565b80516003811015610775576108c15760208082015160408084015160809094015190516323b872dd60e01b81526001600160a01b0392831660048201529390911660248401526044830152600091908160648185335af180156108b65761087c575b50505b3861080b565b6020813d82116108ae575b81610894602093836106be565b8101031261014d5751801515036108ab5780610873565b80fd5b3d9150610887565b6040513d84823e3d90fd5b805160038110156107755760010361096a5760018060a01b0380602083015116906080816040850151169160608501511693015191333b156106f6576040516304c8826360e31b81526001600160a01b03918216600482015291811660248301529092166044830152606482015260008180608481015b038183335af1801561095e5761094f575b50610876565b610958906106aa565b38610949565b6040513d6000823e3d90fd5b80516003811015610775576002036109e55760018060a01b0380602083015116906080816040850151169160608501511693015191333b156106f657604051639032317760e01b81526001600160a01b0391821660048201529181166024830152909216604483015260648201526000818060848101610938565b60405162461bcd60e51b8152602060048201526016602482015275696e76616c6964207265656e7472792061747461636b60501b6044820152606490fd5b634e487b7160e01b600052601160045260246000fd5b81198111610a2357019056fea2646970667358221220b089a5b8b7def8f6a402563c74bef7d931848a5416bbe4ae2e4681776364579164736f6c634300080f0033",
+  "deployedBytecode": "0x608060408181526004918236101561001657600080fd5b600092833560e01c918262c767201461059c5750816306fdde03146104df57816308bca56614610460578163095ea7b3146103f157816318160ddd146103d257816318d46199146103b357816323b872dd1461038c578163313ce5671461036a57816370a082311461033257816395d89b41146102325781639e5faafc146101cd578163a9059cbb1461019e578163dd62ed3e14610151575063f6a0e867146100be57600080fd5b3461014d578160031936011261014d5760c09160a082516100de81610678565b8281528260208201528284820152826060820152826080820152015260a061010461078b565b825192610112848351610768565b600180841b039081602084015116602086015281818401511690850152606082015116606084015260808101516080840152015160a0820152f35b5080fd5b90503461019a578160031936011261019a5760209282916101706106fb565b6101786106e0565b6001600160a01b03918216845291865283832091168252845220549051908152f35b8280fd5b50503461014d578060031936011261014d576020906101bb6106fb565b506101c46107e4565b90519015158152f35b50503461014d578160031936011261014d57600654600754600854600954600a54855160c0969095919492936001600160a01b03908116938116926102158860ff8316610768565b60081c1660208701528501526060840152608083015260a0820152f35b9190503461019a578260031936011261019a5780519183600180549182821c928281168015610328575b602095868610821461031557508488529081156102f3575060011461029b575b610297868661028d828b03836106be565b5191829182610711565b0390f35b9295508083527fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf65b8284106102e057505050826102979461028d92820101943861027c565b80548685018801529286019281016102c3565b60ff191687860152505050151560051b830101925061028d826102973861027c565b634e487b7160e01b845260229052602483fd5b93607f169361025c565b50503461014d57602036600319011261014d5760209181906001600160a01b0361035a6106fb565b1681526005845220549051908152f35b50503461014d578160031936011261014d5760209060ff600254169051908152f35b50503461014d57606036600319011261014d576020906103aa6106fb565b506101bb6106e0565b50503461014d578160031936011261014d57602090600b549051908152f35b50503461014d578160031936011261014d576020906003549051908152f35b90503461019a578160031936011261019a5760209261040e6106fb565b918360243592839233825287528181209460018060a01b0316948582528752205582519081527f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925843392a35160018152f35b50503461014d578060031936011261014d5761047a6106fb565b6001600160a01b03168083526005602052818320805460243591906104a0908390610a39565b90556104ae81600354610a39565b60035582519081527fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef60203092a351f35b9190503461019a578260031936011261019a578051918380549060019082821c928281168015610592575b602095868610821461031557508488529081156102f3575060011461053a57610297868661028d828b03836106be565b8080949750527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5635b82841061057f57505050826102979461028d92820101943861027c565b8054868501880152928601928101610562565b93607f169361050a565b9150346106745760c0366003190112610674576105b882610678565b35906003821015610674578181526105ce6106e0565b602082018190526001600160a01b039260443584811691908281036106705786850152606435948516928386036106705760a09560608601526084359485608082015260a435968791015260ff60065491610100600160a81b039060081b169216906affffffffffffffffffffff60a81b1617176006556bffffffffffffffffffffffff60a01b908160075416176007556008541617600855600955600a5551f35b8780fd5b8380fd5b60c0810190811067ffffffffffffffff82111761069457604052565b634e487b7160e01b600052604160045260246000fd5b67ffffffffffffffff811161069457604052565b90601f8019910116810190811067ffffffffffffffff82111761069457604052565b602435906001600160a01b03821682036106f657565b600080fd5b600435906001600160a01b03821682036106f657565b919091602080825283519081818401526000945b828610610752575050806040939411610745575b601f01601f1916010190565b6000838284010152610739565b8581018201518487016040015294810194610725565b9060038210156107755752565b634e487b7160e01b600052602160045260246000fd5b6040519061079882610678565b8160065460ff811660038110156107755782526001600160a01b03600891821c811660208401526007548116604084015290541660608201526009546080820152600a5460a090910152565b6107ec61078b565b600b546000198114610a235760010180600b5560a08201511015610811575b50600190565b80516003811015610775576108c15760208082015160408084015160809094015190516323b872dd60e01b81526001600160a01b0392831660048201529390911660248401526044830152600091908160648185335af180156108b65761087c575b50505b3861080b565b6020813d82116108ae575b81610894602093836106be565b8101031261014d5751801515036108ab5780610873565b80fd5b3d9150610887565b6040513d84823e3d90fd5b805160038110156107755760010361096a5760018060a01b0380602083015116906080816040850151169160608501511693015191333b156106f6576040516304c8826360e31b81526001600160a01b03918216600482015291811660248301529092166044830152606482015260008180608481015b038183335af1801561095e5761094f575b50610876565b610958906106aa565b38610949565b6040513d6000823e3d90fd5b80516003811015610775576002036109e55760018060a01b0380602083015116906080816040850151169160608501511693015191333b156106f657604051639032317760e01b81526001600160a01b0391821660048201529181166024830152909216604483015260648201526000818060848101610938565b60405162461bcd60e51b8152602060048201526016602482015275696e76616c6964207265656e7472792061747461636b60501b6044820152606490fd5b634e487b7160e01b600052601160045260246000fd5b81198111610a2357019056fea2646970667358221220b089a5b8b7def8f6a402563c74bef7d931848a5416bbe4ae2e4681776364579164736f6c634300080f0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "234:2490:71:-:0;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;746:28:72;234:2490:71;-1:-1:-1;794:10:72;;234:2490:71;;784:9:72;234:2490:71;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;234:2490:71;;;;;;;;;;;;;;;-1:-1:-1;234:2490:71;;;;;;;;;;;;;;;-1:-1:-1;;;;746:28:72;234:2490:71;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;746:28:72;234:2490:71;;;;;;;;;;;;;;;890:24:72;234:2490:71;;;890:24:72;234:2490:71;;615:1;234:2490;;;;;;;;;;;;;;;;;;;;860:247;234:2490;;;;954:4;860:247;;;234:2490;954:4;860:247;;;234:2490;954:4;234:2490;860:247;;234:2490;1055:3;860:247;;234:2490;860:247;;234:2490;;;860:247;;;;234:2490;851:256;234:2490;;;;;;954:4;234:2490;;;;;;;;;;;;851:256;234:2490;;;;;;;954:4;234:2490;;;;;;;954:4;234:2490;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;234:2490:71;;;;;;;;;;;;-1:-1:-1;234:2490:71;;;;;;;;;;;;;-1:-1:-1;234:2490:71;;-1:-1:-1;;234:2490:71;;;;;;;;;;;;;-1:-1:-1;234:2490:71;;;;;;;;;;;;;;;;;;;;746:28:72;234:2490:71;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;784:9:72;234:2490:71;;;;;;;;;;;;;;;;;;;784:9:72;234:2490:71;;;;;;;;;;;;;;;;;;;-1:-1:-1;234:2490:71;;;;;;;;;;;;;-1:-1:-1;;;234:2490:71;;;;;;;;;;;;;;;;-1:-1:-1;;;234:2490:71;;;;;;;;;;;;-1:-1:-1;234:2490:71;;;;;;;;;;;;;-1:-1:-1;234:2490:71;;-1:-1:-1;;234:2490:71;;;;;;;;;;;;;-1:-1:-1;234:2490:71;;;;;;;;;;;;;;;;;;;;746:28:72;234:2490:71;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;784:9:72;234:2490:71;;;;;;;;;;;;;;;;;;784:9:72;234:2490:71;;;;;;;;;;;;;;;;;;;-1:-1:-1;234:2490:71;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;234:2490:71;;;;;;;;;-1:-1:-1;234:2490:71;;;;;;;;;-1:-1:-1;;234:2490:71;;;-1:-1:-1;;;;;234:2490:71;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;234:2490:71;;;;;;;;;;-1:-1:-1;;234:2490:71;;;;:::i;:::-;;;;;;;;;;;;;;;-1:-1:-1;234:2490:71;;;;;;;;;;;;;;;;:::o;:::-;-1:-1:-1;234:2490:71;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "234:2490:71:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::i;:::-;-1:-1:-1;;;;;234:2490:71;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;1405:15;;:::i;:::-;234:2490;;;;;;;;;;;;;;;;;;;;;;554:27;234:2490;554:27;234:2490;;;554:27;234:2490;554:27;234:2490;;;;;;;;;;;-1:-1:-1;;;;;234:2490:71;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;257:20:72;234:2490:71;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;234:2490:71;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;234:2490:71;;;;;-1:-1:-1;;;234:2490:71;;;;;;;;-1:-1:-1;234:2490:71;;;;;;;-1:-1:-1;;;234:2490:71;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;234:2490:71;;;;;;;;-1:-1:-1;;;;;234:2490:71;;:::i;:::-;;;;414:44:72;234:2490:71;;;;;;;;;;;;;;;;;;;;;;;;;;;283:21:72;234:2490:71;;;;;;;;;;;;;;;;-1:-1:-1;;234:2490:71;;;;;;;;:::i;:::-;;;;:::i;:::-;;;;;;;;;;;;;;;;587:29;234:2490;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;1918:10:72;;;;234:2490:71;;;;;;;;;;;;;;;;;;;;;;;;;;;1963:38:72;1918:10;;1963:38;;234:2490:71;;;;;;;;;;;;;;;;;;;;;:::i;:::-;-1:-1:-1;;;;;234:2490:71;;;;2481:9:72;234:2490:71;;;;;;;;;;;2481:26:72;;234:2490:71;;2481:26:72;:::i;:::-;234:2490:71;;2517:20:72;234:2490:71;;;2517:20:72;:::i;:::-;234:2490:71;;;;;;;2552:38:72;234:2490:71;2569:4:72;2552:38;;234:2490:71;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;234:2490:71;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;234:2490:71;;;;;;;:::i;:::-;;;;;;;;;;;;;;:::i;:::-;;;;;;;-1:-1:-1;;;;;234:2490:71;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1290:16;234:2490;;;;;;;;;;;;;;;;;;;;1290:16;234:2490;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;-1:-1:-1;;;;;234:2490:71;;;;;;:::o;:::-;;;;;;;;-1:-1:-1;;;;;234:2490:71;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;234:2490:71;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;-1:-1:-1;234:2490:71;;;;;-1:-1:-1;234:2490:71;;;;;;;;:::i;:::-;;1203:6;234:2490;;;;;;;;;;;;-1:-1:-1;;;;;234:2490:71;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;1560:1161::-;234:2490;;:::i;:::-;1672:15;234:2490;-1:-1:-1;;234:2490:71;;;;;;;1672:15;234:2490;1717:22;;;234:2490;-1:-1:-1;1697:997:71;;;1560:1161;2703:11;234:2490;1560:1161;:::o;1697:997::-;234:2490;;;;;;;;1788:52;;1913:20;;;;234:2490;1951:25;;;;234:2490;1994:20;;;;234:2490;;;-1:-1:-1;;;1856:172:71;;-1:-1:-1;;;;;234:2490:71;;;1856:172;;;234:2490;;;;;;;;;;;;;-1:-1:-1;;234:2490:71;;;;-1:-1:-1;1870:10:71;1856:172;;;;;;;;1784:910;;;;1697:997;;;1856:172;1913:20;1856:172;;;;;;;;;1913:20;1856:172;;;:::i;:::-;;;234:2490;;;;;;;;;;;1856:172;;;234:2490;;;1856:172;;;-1:-1:-1;1856:172:71;;;1951:25;234:2490;;;;;;;;1784:910;234:2490;;;;;;;;;2049:52;234:2490;;;;;;;2174:20;;;;234:2490;;2212:25;2292:20;2212:25;;;;234:2490;;2255:19;;;;234:2490;;2292:20;;234:2490;2131:10;;2117:209;;;;2212:25;234:2490;-1:-1:-1;;;2117:209:71;;-1:-1:-1;;;;;234:2490:71;;;2117:209;;;234:2490;;;;;;;;;;;;;;;;;;;-1:-1:-1;234:2490:71;;;;;2117:209;;2131:10;;;2117:209;;;;;;;;2045:649;;1784:910;;2117:209;;;;:::i;:::-;;;;;2212:25;234:2490;;-1:-1:-1;234:2490:71;;;;;2045:649;234:2490;;;;;;;;2375:22;2347:50;2375:22;;234:2490;;;;;2468:20;;;;234:2490;;2506:25;2586:20;2506:25;;;;234:2490;;2549:19;;;;234:2490;;2586:20;;234:2490;2427:10;;2413:207;;;;2506:25;234:2490;-1:-1:-1;;;2413:207:71;;-1:-1:-1;;;;;234:2490:71;;;2413:207;;;234:2490;;;;;;;;;;;;;;;;;;;-1:-1:-1;234:2490:71;;;;;2413:207;234:2490;2343:351;234:2490;;-1:-1:-1;;;2651:32:71;;234:2490;2651:32;;;234:2490;;;;;;-1:-1:-1;;;234:2490:71;;;;;;2651:32;234:2490;;;;-1:-1:-1;234:2490:71;;;;;-1:-1:-1;234:2490:71;;;;;;;;;;:::o",
+  "source": "// SPDX-License-Identifier: BUSL-1.1\npragma solidity 0.8.15;\n\nimport \"./../ERC20.sol\";\nimport \"./../Comet.sol\";\nimport \"./FaucetToken.sol\";\n\n/**\n * @title Malicious ERC20 token\n * @dev FaucetToken that attempts reentrancy attacks\n */\ncontract EvilToken is FaucetToken {\n    enum AttackType {\n        TRANSFER_FROM,\n        WITHDRAW_FROM,\n        SUPPLY_FROM\n    }\n\n    struct ReentryAttack {\n        AttackType attackType;\n        address source;\n        address destination;\n        address asset;\n        uint amount;\n        uint maxCalls;\n    }\n\n    ReentryAttack public attack;\n    uint public numberOfCalls = 0;\n\n    constructor(\n        uint256 _initialAmount,\n        string memory _tokenName,\n        uint8 _decimalUnits,\n        string memory _tokenSymbol\n    ) FaucetToken(_initialAmount, _tokenName, _decimalUnits, _tokenSymbol) {\n        attack = ReentryAttack({\n            attackType: AttackType.TRANSFER_FROM,\n            source: address(this),\n            destination: address(this),\n            asset: address(this),\n            amount: 1e6,\n            maxCalls: type(uint).max\n        });\n    }\n\n    function getAttack() external view returns (ReentryAttack memory) {\n        return attack;\n    }\n\n    function setAttack(ReentryAttack memory attack_) external {\n        attack = attack_;\n    }\n\n    function transfer(address, uint256) external override returns (bool) {\n        return performAttack();\n    }\n\n    function transferFrom(address, address, uint256) external override returns (bool) {\n        return performAttack();\n    }\n\n    function performAttack() internal returns (bool) {\n        ReentryAttack memory reentryAttack = attack;\n        numberOfCalls++;\n        if (numberOfCalls > reentryAttack.maxCalls) {\n            // do nothing\n        } else if (reentryAttack.attackType == AttackType.TRANSFER_FROM) {\n            Comet(payable(msg.sender)).transferFrom(\n                reentryAttack.source,\n                reentryAttack.destination,\n                reentryAttack.amount\n            );\n        } else if (reentryAttack.attackType == AttackType.WITHDRAW_FROM) {\n            Comet(payable(msg.sender)).withdrawFrom(\n                reentryAttack.source,\n                reentryAttack.destination,\n                reentryAttack.asset,\n                reentryAttack.amount\n            );\n        } else if (reentryAttack.attackType == AttackType.SUPPLY_FROM) {\n            Comet(payable(msg.sender)).supplyFrom(\n                reentryAttack.source,\n                reentryAttack.destination,\n                reentryAttack.asset,\n                reentryAttack.amount\n            );\n        } else {\n            revert(\"invalid reentry attack\");\n        }\n        return true;\n    }\n\n}",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/comet/contracts/test/EvilToken.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/comet/contracts/test/EvilToken.sol",
+    "exportedSymbols": {
+      "Comet": [
+        4239
+      ],
+      "CometConfiguration": [
+        4308
+      ],
+      "CometCore": [
+        4573
+      ],
+      "CometMainInterface": [
+        5859
+      ],
+      "CometMath": [
+        6067
+      ],
+      "CometStorage": [
+        6894
+      ],
+      "ERC20": [
+        8552
+      ],
+      "EvilToken": [
+        15815
+      ],
+      "FaucetToken": [
+        16093
+      ],
+      "IPriceFeed": [
+        8815
+      ],
+      "StandardToken": [
+        16044
+      ]
+    },
+    "id": 15816,
+    "license": "BUSL-1.1",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 15591,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".15"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:71"
+      },
+      {
+        "absolutePath": "project:/contracts/comet/contracts/ERC20.sol",
+        "file": "./../ERC20.sol",
+        "id": 15592,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 15816,
+        "sourceUnit": 8553,
+        "src": "62:24:71",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/comet/contracts/Comet.sol",
+        "file": "./../Comet.sol",
+        "id": 15593,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 15816,
+        "sourceUnit": 4240,
+        "src": "87:24:71",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/comet/contracts/test/FaucetToken.sol",
+        "file": "./FaucetToken.sol",
+        "id": 15594,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 15816,
+        "sourceUnit": 16094,
+        "src": "112:27:71",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 15596,
+              "name": "FaucetToken",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 16093,
+              "src": "256:11:71"
+            },
+            "id": 15597,
+            "nodeType": "InheritanceSpecifier",
+            "src": "256:11:71"
+          }
+        ],
+        "canonicalName": "EvilToken",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 15595,
+          "nodeType": "StructuredDocumentation",
+          "src": "141:92:71",
+          "text": " @title Malicious ERC20 token\n @dev FaucetToken that attempts reentrancy attacks"
+        },
+        "fullyImplemented": true,
+        "id": 15815,
+        "linearizedBaseContracts": [
+          15815,
+          16093,
+          16044
+        ],
+        "name": "EvilToken",
+        "nameLocation": "243:9:71",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "EvilToken.AttackType",
+            "id": 15601,
+            "members": [
+              {
+                "id": 15598,
+                "name": "TRANSFER_FROM",
+                "nameLocation": "300:13:71",
+                "nodeType": "EnumValue",
+                "src": "300:13:71"
+              },
+              {
+                "id": 15599,
+                "name": "WITHDRAW_FROM",
+                "nameLocation": "323:13:71",
+                "nodeType": "EnumValue",
+                "src": "323:13:71"
+              },
+              {
+                "id": 15600,
+                "name": "SUPPLY_FROM",
+                "nameLocation": "346:11:71",
+                "nodeType": "EnumValue",
+                "src": "346:11:71"
+              }
+            ],
+            "name": "AttackType",
+            "nameLocation": "279:10:71",
+            "nodeType": "EnumDefinition",
+            "src": "274:89:71"
+          },
+          {
+            "canonicalName": "EvilToken.ReentryAttack",
+            "id": 15615,
+            "members": [
+              {
+                "constant": false,
+                "id": 15604,
+                "mutability": "mutable",
+                "name": "attackType",
+                "nameLocation": "411:10:71",
+                "nodeType": "VariableDeclaration",
+                "scope": 15615,
+                "src": "400:21:71",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_AttackType_$15601",
+                  "typeString": "enum EvilToken.AttackType"
+                },
+                "typeName": {
+                  "id": 15603,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 15602,
+                    "name": "AttackType",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 15601,
+                    "src": "400:10:71"
+                  },
+                  "referencedDeclaration": 15601,
+                  "src": "400:10:71",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_AttackType_$15601",
+                    "typeString": "enum EvilToken.AttackType"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 15606,
+                "mutability": "mutable",
+                "name": "source",
+                "nameLocation": "439:6:71",
+                "nodeType": "VariableDeclaration",
+                "scope": 15615,
+                "src": "431:14:71",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 15605,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "431:7:71",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 15608,
+                "mutability": "mutable",
+                "name": "destination",
+                "nameLocation": "463:11:71",
+                "nodeType": "VariableDeclaration",
+                "scope": 15615,
+                "src": "455:19:71",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 15607,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "455:7:71",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 15610,
+                "mutability": "mutable",
+                "name": "asset",
+                "nameLocation": "492:5:71",
+                "nodeType": "VariableDeclaration",
+                "scope": 15615,
+                "src": "484:13:71",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 15609,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "484:7:71",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 15612,
+                "mutability": "mutable",
+                "name": "amount",
+                "nameLocation": "512:6:71",
+                "nodeType": "VariableDeclaration",
+                "scope": 15615,
+                "src": "507:11:71",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 15611,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "507:4:71",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 15614,
+                "mutability": "mutable",
+                "name": "maxCalls",
+                "nameLocation": "533:8:71",
+                "nodeType": "VariableDeclaration",
+                "scope": 15615,
+                "src": "528:13:71",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 15613,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "528:4:71",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "ReentryAttack",
+            "nameLocation": "376:13:71",
+            "nodeType": "StructDefinition",
+            "scope": 15815,
+            "src": "369:179:71",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "9e5faafc",
+            "id": 15618,
+            "mutability": "mutable",
+            "name": "attack",
+            "nameLocation": "575:6:71",
+            "nodeType": "VariableDeclaration",
+            "scope": 15815,
+            "src": "554:27:71",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_ReentryAttack_$15615_storage",
+              "typeString": "struct EvilToken.ReentryAttack"
+            },
+            "typeName": {
+              "id": 15617,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 15616,
+                "name": "ReentryAttack",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 15615,
+                "src": "554:13:71"
+              },
+              "referencedDeclaration": 15615,
+              "src": "554:13:71",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_ReentryAttack_$15615_storage_ptr",
+                "typeString": "struct EvilToken.ReentryAttack"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "18d46199",
+            "id": 15621,
+            "mutability": "mutable",
+            "name": "numberOfCalls",
+            "nameLocation": "599:13:71",
+            "nodeType": "VariableDeclaration",
+            "scope": 15815,
+            "src": "587:29:71",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 15619,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "587:4:71",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "hexValue": "30",
+              "id": 15620,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "615:1:71",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_0_by_1",
+                "typeString": "int_const 0"
+              },
+              "value": "0"
+            },
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 15663,
+              "nodeType": "Block",
+              "src": "841:273:71",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 15661,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 15638,
+                      "name": "attack",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15618,
+                      "src": "851:6:71",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ReentryAttack_$15615_storage",
+                        "typeString": "struct EvilToken.ReentryAttack storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "arguments": [
+                        {
+                          "expression": {
+                            "id": 15640,
+                            "name": "AttackType",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 15601,
+                            "src": "900:10:71",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_AttackType_$15601_$",
+                              "typeString": "type(enum EvilToken.AttackType)"
+                            }
+                          },
+                          "id": 15641,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "TRANSFER_FROM",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 15598,
+                          "src": "900:24:71",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_AttackType_$15601",
+                            "typeString": "enum EvilToken.AttackType"
+                          }
+                        },
+                        {
+                          "arguments": [
+                            {
+                              "id": 15644,
+                              "name": "this",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 4294967268,
+                              "src": "954:4:71",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_EvilToken_$15815",
+                                "typeString": "contract EvilToken"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_contract$_EvilToken_$15815",
+                                "typeString": "contract EvilToken"
+                              }
+                            ],
+                            "id": 15643,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "946:7:71",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": {
+                              "id": 15642,
+                              "name": "address",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "946:7:71",
+                              "typeDescriptions": {}
+                            }
+                          },
+                          "id": 15645,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "946:13:71",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        {
+                          "arguments": [
+                            {
+                              "id": 15648,
+                              "name": "this",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 4294967268,
+                              "src": "994:4:71",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_EvilToken_$15815",
+                                "typeString": "contract EvilToken"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_contract$_EvilToken_$15815",
+                                "typeString": "contract EvilToken"
+                              }
+                            ],
+                            "id": 15647,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "986:7:71",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": {
+                              "id": 15646,
+                              "name": "address",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "986:7:71",
+                              "typeDescriptions": {}
+                            }
+                          },
+                          "id": 15649,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "986:13:71",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        {
+                          "arguments": [
+                            {
+                              "id": 15652,
+                              "name": "this",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 4294967268,
+                              "src": "1028:4:71",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_EvilToken_$15815",
+                                "typeString": "contract EvilToken"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_contract$_EvilToken_$15815",
+                                "typeString": "contract EvilToken"
+                              }
+                            ],
+                            "id": 15651,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "1020:7:71",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": {
+                              "id": 15650,
+                              "name": "address",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "1020:7:71",
+                              "typeDescriptions": {}
+                            }
+                          },
+                          "id": 15653,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1020:13:71",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        {
+                          "hexValue": "316536",
+                          "id": 15654,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1055:3:71",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_1000000_by_1",
+                            "typeString": "int_const 1000000"
+                          },
+                          "value": "1e6"
+                        },
+                        {
+                          "expression": {
+                            "arguments": [
+                              {
+                                "id": 15657,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "lValueRequested": false,
+                                "nodeType": "ElementaryTypeNameExpression",
+                                "src": "1087:4:71",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_type$_t_uint256_$",
+                                  "typeString": "type(uint256)"
+                                },
+                                "typeName": {
+                                  "id": 15656,
+                                  "name": "uint",
+                                  "nodeType": "ElementaryTypeName",
+                                  "src": "1087:4:71",
+                                  "typeDescriptions": {}
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_type$_t_uint256_$",
+                                  "typeString": "type(uint256)"
+                                }
+                              ],
+                              "id": 15655,
+                              "name": "type",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 4294967269,
+                              "src": "1082:4:71",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_function_metatype_pure$__$returns$__$",
+                                "typeString": "function () pure"
+                              }
+                            },
+                            "id": 15658,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "functionCall",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1082:10:71",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_meta_type_t_uint256",
+                              "typeString": "type(uint256)"
+                            }
+                          },
+                          "id": 15659,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "max",
+                          "nodeType": "MemberAccess",
+                          "src": "1082:14:71",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_enum$_AttackType_$15601",
+                            "typeString": "enum EvilToken.AttackType"
+                          },
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          {
+                            "typeIdentifier": "t_rational_1000000_by_1",
+                            "typeString": "int_const 1000000"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 15639,
+                        "name": "ReentryAttack",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 15615,
+                        "src": "860:13:71",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_ReentryAttack_$15615_storage_ptr_$",
+                          "typeString": "type(struct EvilToken.ReentryAttack storage pointer)"
+                        }
+                      },
+                      "id": 15660,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "names": [
+                        "attackType",
+                        "source",
+                        "destination",
+                        "asset",
+                        "amount",
+                        "maxCalls"
+                      ],
+                      "nodeType": "FunctionCall",
+                      "src": "860:247:71",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                        "typeString": "struct EvilToken.ReentryAttack memory"
+                      }
+                    },
+                    "src": "851:256:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ReentryAttack_$15615_storage",
+                      "typeString": "struct EvilToken.ReentryAttack storage ref"
+                    }
+                  },
+                  "id": 15662,
+                  "nodeType": "ExpressionStatement",
+                  "src": "851:256:71"
+                }
+              ]
+            },
+            "id": 15664,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "id": 15632,
+                    "name": "_initialAmount",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 15623,
+                    "src": "784:14:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  {
+                    "id": 15633,
+                    "name": "_tokenName",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 15625,
+                    "src": "800:10:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_memory_ptr",
+                      "typeString": "string memory"
+                    }
+                  },
+                  {
+                    "id": 15634,
+                    "name": "_decimalUnits",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 15627,
+                    "src": "812:13:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  {
+                    "id": 15635,
+                    "name": "_tokenSymbol",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 15629,
+                    "src": "827:12:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_memory_ptr",
+                      "typeString": "string memory"
+                    }
+                  }
+                ],
+                "id": 15636,
+                "kind": "baseConstructorSpecifier",
+                "modifierName": {
+                  "id": 15631,
+                  "name": "FaucetToken",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 16093,
+                  "src": "772:11:71"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "772:68:71"
+              }
+            ],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 15630,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 15623,
+                  "mutability": "mutable",
+                  "name": "_initialAmount",
+                  "nameLocation": "652:14:71",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15664,
+                  "src": "644:22:71",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 15622,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "644:7:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 15625,
+                  "mutability": "mutable",
+                  "name": "_tokenName",
+                  "nameLocation": "690:10:71",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15664,
+                  "src": "676:24:71",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 15624,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "676:6:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 15627,
+                  "mutability": "mutable",
+                  "name": "_decimalUnits",
+                  "nameLocation": "716:13:71",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15664,
+                  "src": "710:19:71",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 15626,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "710:5:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 15629,
+                  "mutability": "mutable",
+                  "name": "_tokenSymbol",
+                  "nameLocation": "753:12:71",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15664,
+                  "src": "739:26:71",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 15628,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "739:6:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "634:137:71"
+            },
+            "returnParameters": {
+              "id": 15637,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "841:0:71"
+            },
+            "scope": 15815,
+            "src": "623:491:71",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 15672,
+              "nodeType": "Block",
+              "src": "1186:30:71",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 15670,
+                    "name": "attack",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 15618,
+                    "src": "1203:6:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ReentryAttack_$15615_storage",
+                      "typeString": "struct EvilToken.ReentryAttack storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 15669,
+                  "id": 15671,
+                  "nodeType": "Return",
+                  "src": "1196:13:71"
+                }
+              ]
+            },
+            "functionSelector": "f6a0e867",
+            "id": 15673,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAttack",
+            "nameLocation": "1129:9:71",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 15665,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1138:2:71"
+            },
+            "returnParameters": {
+              "id": 15669,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 15668,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15673,
+                  "src": "1164:20:71",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                    "typeString": "struct EvilToken.ReentryAttack"
+                  },
+                  "typeName": {
+                    "id": 15667,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 15666,
+                      "name": "ReentryAttack",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 15615,
+                      "src": "1164:13:71"
+                    },
+                    "referencedDeclaration": 15615,
+                    "src": "1164:13:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ReentryAttack_$15615_storage_ptr",
+                      "typeString": "struct EvilToken.ReentryAttack"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1163:22:71"
+            },
+            "scope": 15815,
+            "src": "1120:96:71",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 15683,
+              "nodeType": "Block",
+              "src": "1280:33:71",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 15681,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 15679,
+                      "name": "attack",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15618,
+                      "src": "1290:6:71",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ReentryAttack_$15615_storage",
+                        "typeString": "struct EvilToken.ReentryAttack storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 15680,
+                      "name": "attack_",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15676,
+                      "src": "1299:7:71",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                        "typeString": "struct EvilToken.ReentryAttack memory"
+                      }
+                    },
+                    "src": "1290:16:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ReentryAttack_$15615_storage",
+                      "typeString": "struct EvilToken.ReentryAttack storage ref"
+                    }
+                  },
+                  "id": 15682,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1290:16:71"
+                }
+              ]
+            },
+            "functionSelector": "00c76720",
+            "id": 15684,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setAttack",
+            "nameLocation": "1231:9:71",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 15677,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 15676,
+                  "mutability": "mutable",
+                  "name": "attack_",
+                  "nameLocation": "1262:7:71",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15684,
+                  "src": "1241:28:71",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                    "typeString": "struct EvilToken.ReentryAttack"
+                  },
+                  "typeName": {
+                    "id": 15675,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 15674,
+                      "name": "ReentryAttack",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 15615,
+                      "src": "1241:13:71"
+                    },
+                    "referencedDeclaration": 15615,
+                    "src": "1241:13:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ReentryAttack_$15615_storage_ptr",
+                      "typeString": "struct EvilToken.ReentryAttack"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1240:30:71"
+            },
+            "returnParameters": {
+              "id": 15678,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1280:0:71"
+            },
+            "scope": 15815,
+            "src": "1222:91:71",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "baseFunctions": [
+              15938
+            ],
+            "body": {
+              "id": 15697,
+              "nodeType": "Block",
+              "src": "1388:39:71",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 15694,
+                      "name": "performAttack",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15814,
+                      "src": "1405:13:71",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$__$returns$_t_bool_$",
+                        "typeString": "function () returns (bool)"
+                      }
+                    },
+                    "id": 15695,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1405:15:71",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 15693,
+                  "id": 15696,
+                  "nodeType": "Return",
+                  "src": "1398:22:71"
+                }
+              ]
+            },
+            "functionSelector": "a9059cbb",
+            "id": 15698,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transfer",
+            "nameLocation": "1328:8:71",
+            "nodeType": "FunctionDefinition",
+            "overrides": {
+              "id": 15690,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "1364:8:71"
+            },
+            "parameters": {
+              "id": 15689,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 15686,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15698,
+                  "src": "1337:7:71",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 15685,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1337:7:71",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 15688,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15698,
+                  "src": "1346:7:71",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 15687,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1346:7:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1336:18:71"
+            },
+            "returnParameters": {
+              "id": 15693,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 15692,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15698,
+                  "src": "1382:4:71",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 15691,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1382:4:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1381:6:71"
+            },
+            "scope": 15815,
+            "src": "1319:108:71",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "baseFunctions": [
+              16015
+            ],
+            "body": {
+              "id": 15713,
+              "nodeType": "Block",
+              "src": "1515:39:71",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 15710,
+                      "name": "performAttack",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15814,
+                      "src": "1532:13:71",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$__$returns$_t_bool_$",
+                        "typeString": "function () returns (bool)"
+                      }
+                    },
+                    "id": 15711,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1532:15:71",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 15709,
+                  "id": 15712,
+                  "nodeType": "Return",
+                  "src": "1525:22:71"
+                }
+              ]
+            },
+            "functionSelector": "23b872dd",
+            "id": 15714,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferFrom",
+            "nameLocation": "1442:12:71",
+            "nodeType": "FunctionDefinition",
+            "overrides": {
+              "id": 15706,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "1491:8:71"
+            },
+            "parameters": {
+              "id": 15705,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 15700,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15714,
+                  "src": "1455:7:71",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 15699,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1455:7:71",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 15702,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15714,
+                  "src": "1464:7:71",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 15701,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1464:7:71",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 15704,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15714,
+                  "src": "1473:7:71",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 15703,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1473:7:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1454:27:71"
+            },
+            "returnParameters": {
+              "id": 15709,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 15708,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15714,
+                  "src": "1509:4:71",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 15707,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1509:4:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1508:6:71"
+            },
+            "scope": 15815,
+            "src": "1433:121:71",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 15813,
+              "nodeType": "Block",
+              "src": "1609:1112:71",
+              "statements": [
+                {
+                  "assignments": [
+                    15721
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 15721,
+                      "mutability": "mutable",
+                      "name": "reentryAttack",
+                      "nameLocation": "1640:13:71",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 15813,
+                      "src": "1619:34:71",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                        "typeString": "struct EvilToken.ReentryAttack"
+                      },
+                      "typeName": {
+                        "id": 15720,
+                        "nodeType": "UserDefinedTypeName",
+                        "pathNode": {
+                          "id": 15719,
+                          "name": "ReentryAttack",
+                          "nodeType": "IdentifierPath",
+                          "referencedDeclaration": 15615,
+                          "src": "1619:13:71"
+                        },
+                        "referencedDeclaration": 15615,
+                        "src": "1619:13:71",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ReentryAttack_$15615_storage_ptr",
+                          "typeString": "struct EvilToken.ReentryAttack"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 15723,
+                  "initialValue": {
+                    "id": 15722,
+                    "name": "attack",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 15618,
+                    "src": "1656:6:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ReentryAttack_$15615_storage",
+                      "typeString": "struct EvilToken.ReentryAttack storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1619:43:71"
+                },
+                {
+                  "expression": {
+                    "id": 15725,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "++",
+                    "prefix": false,
+                    "src": "1672:15:71",
+                    "subExpression": {
+                      "id": 15724,
+                      "name": "numberOfCalls",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15621,
+                      "src": "1672:13:71",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 15726,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1672:15:71"
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 15730,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 15727,
+                      "name": "numberOfCalls",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15621,
+                      "src": "1701:13:71",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": ">",
+                    "rightExpression": {
+                      "expression": {
+                        "id": 15728,
+                        "name": "reentryAttack",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 15721,
+                        "src": "1717:13:71",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                          "typeString": "struct EvilToken.ReentryAttack memory"
+                        }
+                      },
+                      "id": 15729,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "maxCalls",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 15614,
+                      "src": "1717:22:71",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1701:38:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "condition": {
+                      "commonType": {
+                        "typeIdentifier": "t_enum$_AttackType_$15601",
+                        "typeString": "enum EvilToken.AttackType"
+                      },
+                      "id": 15736,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "expression": {
+                          "id": 15732,
+                          "name": "reentryAttack",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 15721,
+                          "src": "1788:13:71",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                            "typeString": "struct EvilToken.ReentryAttack memory"
+                          }
+                        },
+                        "id": 15733,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "attackType",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 15604,
+                        "src": "1788:24:71",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_enum$_AttackType_$15601",
+                          "typeString": "enum EvilToken.AttackType"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "==",
+                      "rightExpression": {
+                        "expression": {
+                          "id": 15734,
+                          "name": "AttackType",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 15601,
+                          "src": "1816:10:71",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_enum$_AttackType_$15601_$",
+                            "typeString": "type(enum EvilToken.AttackType)"
+                          }
+                        },
+                        "id": 15735,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "memberName": "TRANSFER_FROM",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 15598,
+                        "src": "1816:24:71",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_enum$_AttackType_$15601",
+                          "typeString": "enum EvilToken.AttackType"
+                        }
+                      },
+                      "src": "1788:52:71",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "falseBody": {
+                      "condition": {
+                        "commonType": {
+                          "typeIdentifier": "t_enum$_AttackType_$15601",
+                          "typeString": "enum EvilToken.AttackType"
+                        },
+                        "id": 15758,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "id": 15754,
+                            "name": "reentryAttack",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 15721,
+                            "src": "2049:13:71",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                              "typeString": "struct EvilToken.ReentryAttack memory"
+                            }
+                          },
+                          "id": 15755,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "attackType",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 15604,
+                          "src": "2049:24:71",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_AttackType_$15601",
+                            "typeString": "enum EvilToken.AttackType"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "expression": {
+                            "id": 15756,
+                            "name": "AttackType",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 15601,
+                            "src": "2077:10:71",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_AttackType_$15601_$",
+                              "typeString": "type(enum EvilToken.AttackType)"
+                            }
+                          },
+                          "id": 15757,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "WITHDRAW_FROM",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 15599,
+                          "src": "2077:24:71",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_AttackType_$15601",
+                            "typeString": "enum EvilToken.AttackType"
+                          }
+                        },
+                        "src": "2049:52:71",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "falseBody": {
+                        "condition": {
+                          "commonType": {
+                            "typeIdentifier": "t_enum$_AttackType_$15601",
+                            "typeString": "enum EvilToken.AttackType"
+                          },
+                          "id": 15782,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "expression": {
+                              "id": 15778,
+                              "name": "reentryAttack",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 15721,
+                              "src": "2347:13:71",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                                "typeString": "struct EvilToken.ReentryAttack memory"
+                              }
+                            },
+                            "id": 15779,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "attackType",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 15604,
+                            "src": "2347:24:71",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_enum$_AttackType_$15601",
+                              "typeString": "enum EvilToken.AttackType"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "==",
+                          "rightExpression": {
+                            "expression": {
+                              "id": 15780,
+                              "name": "AttackType",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 15601,
+                              "src": "2375:10:71",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_enum$_AttackType_$15601_$",
+                                "typeString": "type(enum EvilToken.AttackType)"
+                              }
+                            },
+                            "id": 15781,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "memberName": "SUPPLY_FROM",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 15600,
+                            "src": "2375:22:71",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_enum$_AttackType_$15601",
+                              "typeString": "enum EvilToken.AttackType"
+                            }
+                          },
+                          "src": "2347:50:71",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "falseBody": {
+                          "id": 15806,
+                          "nodeType": "Block",
+                          "src": "2637:57:71",
+                          "statements": [
+                            {
+                              "expression": {
+                                "arguments": [
+                                  {
+                                    "hexValue": "696e76616c6964207265656e7472792061747461636b",
+                                    "id": 15803,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": true,
+                                    "kind": "string",
+                                    "lValueRequested": false,
+                                    "nodeType": "Literal",
+                                    "src": "2658:24:71",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_stringliteral_abc19d535d3adc068d79dc587f51a05930a6e6764937c91d7285f7061a9c46b3",
+                                      "typeString": "literal_string \"invalid reentry attack\""
+                                    },
+                                    "value": "invalid reentry attack"
+                                  }
+                                ],
+                                "expression": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_stringliteral_abc19d535d3adc068d79dc587f51a05930a6e6764937c91d7285f7061a9c46b3",
+                                      "typeString": "literal_string \"invalid reentry attack\""
+                                    }
+                                  ],
+                                  "id": 15802,
+                                  "name": "revert",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [
+                                    4294967277,
+                                    4294967277
+                                  ],
+                                  "referencedDeclaration": 4294967277,
+                                  "src": "2651:6:71",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_function_revert_pure$_t_string_memory_ptr_$returns$__$",
+                                    "typeString": "function (string memory) pure"
+                                  }
+                                },
+                                "id": 15804,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "kind": "functionCall",
+                                "lValueRequested": false,
+                                "names": [],
+                                "nodeType": "FunctionCall",
+                                "src": "2651:32:71",
+                                "tryCall": false,
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_tuple$__$",
+                                  "typeString": "tuple()"
+                                }
+                              },
+                              "id": 15805,
+                              "nodeType": "ExpressionStatement",
+                              "src": "2651:32:71"
+                            }
+                          ]
+                        },
+                        "id": 15807,
+                        "nodeType": "IfStatement",
+                        "src": "2343:351:71",
+                        "trueBody": {
+                          "id": 15801,
+                          "nodeType": "Block",
+                          "src": "2399:232:71",
+                          "statements": [
+                            {
+                              "expression": {
+                                "arguments": [
+                                  {
+                                    "expression": {
+                                      "id": 15791,
+                                      "name": "reentryAttack",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 15721,
+                                      "src": "2468:13:71",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                                        "typeString": "struct EvilToken.ReentryAttack memory"
+                                      }
+                                    },
+                                    "id": 15792,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "source",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 15606,
+                                    "src": "2468:20:71",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    }
+                                  },
+                                  {
+                                    "expression": {
+                                      "id": 15793,
+                                      "name": "reentryAttack",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 15721,
+                                      "src": "2506:13:71",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                                        "typeString": "struct EvilToken.ReentryAttack memory"
+                                      }
+                                    },
+                                    "id": 15794,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "destination",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 15608,
+                                    "src": "2506:25:71",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    }
+                                  },
+                                  {
+                                    "expression": {
+                                      "id": 15795,
+                                      "name": "reentryAttack",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 15721,
+                                      "src": "2549:13:71",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                                        "typeString": "struct EvilToken.ReentryAttack memory"
+                                      }
+                                    },
+                                    "id": 15796,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "asset",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 15610,
+                                    "src": "2549:19:71",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    }
+                                  },
+                                  {
+                                    "expression": {
+                                      "id": 15797,
+                                      "name": "reentryAttack",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 15721,
+                                      "src": "2586:13:71",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                                        "typeString": "struct EvilToken.ReentryAttack memory"
+                                      }
+                                    },
+                                    "id": 15798,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "amount",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 15612,
+                                    "src": "2586:20:71",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  }
+                                ],
+                                "expression": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  ],
+                                  "expression": {
+                                    "arguments": [
+                                      {
+                                        "arguments": [
+                                          {
+                                            "expression": {
+                                              "id": 15786,
+                                              "name": "msg",
+                                              "nodeType": "Identifier",
+                                              "overloadedDeclarations": [],
+                                              "referencedDeclaration": 4294967281,
+                                              "src": "2427:3:71",
+                                              "typeDescriptions": {
+                                                "typeIdentifier": "t_magic_message",
+                                                "typeString": "msg"
+                                              }
+                                            },
+                                            "id": 15787,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberName": "sender",
+                                            "nodeType": "MemberAccess",
+                                            "src": "2427:10:71",
+                                            "typeDescriptions": {
+                                              "typeIdentifier": "t_address",
+                                              "typeString": "address"
+                                            }
+                                          }
+                                        ],
+                                        "expression": {
+                                          "argumentTypes": [
+                                            {
+                                              "typeIdentifier": "t_address",
+                                              "typeString": "address"
+                                            }
+                                          ],
+                                          "id": 15785,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "nodeType": "ElementaryTypeNameExpression",
+                                          "src": "2419:8:71",
+                                          "typeDescriptions": {
+                                            "typeIdentifier": "t_type$_t_address_payable_$",
+                                            "typeString": "type(address payable)"
+                                          },
+                                          "typeName": {
+                                            "id": 15784,
+                                            "name": "address",
+                                            "nodeType": "ElementaryTypeName",
+                                            "src": "2419:8:71",
+                                            "stateMutability": "payable",
+                                            "typeDescriptions": {}
+                                          }
+                                        },
+                                        "id": 15788,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "typeConversion",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "2419:19:71",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                          "typeIdentifier": "t_address_payable",
+                                          "typeString": "address payable"
+                                        }
+                                      }
+                                    ],
+                                    "expression": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_address_payable",
+                                          "typeString": "address payable"
+                                        }
+                                      ],
+                                      "id": 15783,
+                                      "name": "Comet",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 4239,
+                                      "src": "2413:5:71",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_type$_t_contract$_Comet_$4239_$",
+                                        "typeString": "type(contract Comet)"
+                                      }
+                                    },
+                                    "id": 15789,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "kind": "typeConversion",
+                                    "lValueRequested": false,
+                                    "names": [],
+                                    "nodeType": "FunctionCall",
+                                    "src": "2413:26:71",
+                                    "tryCall": false,
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_contract$_Comet_$4239",
+                                      "typeString": "contract Comet"
+                                    }
+                                  },
+                                  "id": 15790,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "memberName": "supplyFrom",
+                                  "nodeType": "MemberAccess",
+                                  "referencedDeclaration": 2532,
+                                  "src": "2413:37:71",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_address_$_t_uint256_$returns$__$",
+                                    "typeString": "function (address,address,address,uint256) external"
+                                  }
+                                },
+                                "id": 15799,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "kind": "functionCall",
+                                "lValueRequested": false,
+                                "names": [],
+                                "nodeType": "FunctionCall",
+                                "src": "2413:207:71",
+                                "tryCall": false,
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_tuple$__$",
+                                  "typeString": "tuple()"
+                                }
+                              },
+                              "id": 15800,
+                              "nodeType": "ExpressionStatement",
+                              "src": "2413:207:71"
+                            }
+                          ]
+                        }
+                      },
+                      "id": 15808,
+                      "nodeType": "IfStatement",
+                      "src": "2045:649:71",
+                      "trueBody": {
+                        "id": 15777,
+                        "nodeType": "Block",
+                        "src": "2103:234:71",
+                        "statements": [
+                          {
+                            "expression": {
+                              "arguments": [
+                                {
+                                  "expression": {
+                                    "id": 15767,
+                                    "name": "reentryAttack",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 15721,
+                                    "src": "2174:13:71",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                                      "typeString": "struct EvilToken.ReentryAttack memory"
+                                    }
+                                  },
+                                  "id": 15768,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "memberName": "source",
+                                  "nodeType": "MemberAccess",
+                                  "referencedDeclaration": 15606,
+                                  "src": "2174:20:71",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                },
+                                {
+                                  "expression": {
+                                    "id": 15769,
+                                    "name": "reentryAttack",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 15721,
+                                    "src": "2212:13:71",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                                      "typeString": "struct EvilToken.ReentryAttack memory"
+                                    }
+                                  },
+                                  "id": 15770,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "memberName": "destination",
+                                  "nodeType": "MemberAccess",
+                                  "referencedDeclaration": 15608,
+                                  "src": "2212:25:71",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                },
+                                {
+                                  "expression": {
+                                    "id": 15771,
+                                    "name": "reentryAttack",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 15721,
+                                    "src": "2255:13:71",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                                      "typeString": "struct EvilToken.ReentryAttack memory"
+                                    }
+                                  },
+                                  "id": 15772,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "memberName": "asset",
+                                  "nodeType": "MemberAccess",
+                                  "referencedDeclaration": 15610,
+                                  "src": "2255:19:71",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                },
+                                {
+                                  "expression": {
+                                    "id": 15773,
+                                    "name": "reentryAttack",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 15721,
+                                    "src": "2292:13:71",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                                      "typeString": "struct EvilToken.ReentryAttack memory"
+                                    }
+                                  },
+                                  "id": 15774,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "memberName": "amount",
+                                  "nodeType": "MemberAccess",
+                                  "referencedDeclaration": 15612,
+                                  "src": "2292:20:71",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  },
+                                  {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  },
+                                  {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  },
+                                  {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                ],
+                                "expression": {
+                                  "arguments": [
+                                    {
+                                      "arguments": [
+                                        {
+                                          "expression": {
+                                            "id": 15762,
+                                            "name": "msg",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 4294967281,
+                                            "src": "2131:3:71",
+                                            "typeDescriptions": {
+                                              "typeIdentifier": "t_magic_message",
+                                              "typeString": "msg"
+                                            }
+                                          },
+                                          "id": 15763,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "memberName": "sender",
+                                          "nodeType": "MemberAccess",
+                                          "src": "2131:10:71",
+                                          "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                          }
+                                        }
+                                      ],
+                                      "expression": {
+                                        "argumentTypes": [
+                                          {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                          }
+                                        ],
+                                        "id": 15761,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": true,
+                                        "lValueRequested": false,
+                                        "nodeType": "ElementaryTypeNameExpression",
+                                        "src": "2123:8:71",
+                                        "typeDescriptions": {
+                                          "typeIdentifier": "t_type$_t_address_payable_$",
+                                          "typeString": "type(address payable)"
+                                        },
+                                        "typeName": {
+                                          "id": 15760,
+                                          "name": "address",
+                                          "nodeType": "ElementaryTypeName",
+                                          "src": "2123:8:71",
+                                          "stateMutability": "payable",
+                                          "typeDescriptions": {}
+                                        }
+                                      },
+                                      "id": 15764,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "kind": "typeConversion",
+                                      "lValueRequested": false,
+                                      "names": [],
+                                      "nodeType": "FunctionCall",
+                                      "src": "2123:19:71",
+                                      "tryCall": false,
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_address_payable",
+                                        "typeString": "address payable"
+                                      }
+                                    }
+                                  ],
+                                  "expression": {
+                                    "argumentTypes": [
+                                      {
+                                        "typeIdentifier": "t_address_payable",
+                                        "typeString": "address payable"
+                                      }
+                                    ],
+                                    "id": 15759,
+                                    "name": "Comet",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 4239,
+                                    "src": "2117:5:71",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_type$_t_contract$_Comet_$4239_$",
+                                      "typeString": "type(contract Comet)"
+                                    }
+                                  },
+                                  "id": 15765,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "kind": "typeConversion",
+                                  "lValueRequested": false,
+                                  "names": [],
+                                  "nodeType": "FunctionCall",
+                                  "src": "2117:26:71",
+                                  "tryCall": false,
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_contract$_Comet_$4239",
+                                    "typeString": "contract Comet"
+                                  }
+                                },
+                                "id": 15766,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "withdrawFrom",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": 3288,
+                                "src": "2117:39:71",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_address_$_t_uint256_$returns$__$",
+                                  "typeString": "function (address,address,address,uint256) external"
+                                }
+                              },
+                              "id": 15775,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "functionCall",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "2117:209:71",
+                              "tryCall": false,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_tuple$__$",
+                                "typeString": "tuple()"
+                              }
+                            },
+                            "id": 15776,
+                            "nodeType": "ExpressionStatement",
+                            "src": "2117:209:71"
+                          }
+                        ]
+                      }
+                    },
+                    "id": 15809,
+                    "nodeType": "IfStatement",
+                    "src": "1784:910:71",
+                    "trueBody": {
+                      "id": 15753,
+                      "nodeType": "Block",
+                      "src": "1842:197:71",
+                      "statements": [
+                        {
+                          "expression": {
+                            "arguments": [
+                              {
+                                "expression": {
+                                  "id": 15745,
+                                  "name": "reentryAttack",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 15721,
+                                  "src": "1913:13:71",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                                    "typeString": "struct EvilToken.ReentryAttack memory"
+                                  }
+                                },
+                                "id": 15746,
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "source",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": 15606,
+                                "src": "1913:20:71",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              },
+                              {
+                                "expression": {
+                                  "id": 15747,
+                                  "name": "reentryAttack",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 15721,
+                                  "src": "1951:13:71",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                                    "typeString": "struct EvilToken.ReentryAttack memory"
+                                  }
+                                },
+                                "id": 15748,
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "destination",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": 15608,
+                                "src": "1951:25:71",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              },
+                              {
+                                "expression": {
+                                  "id": 15749,
+                                  "name": "reentryAttack",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 15721,
+                                  "src": "1994:13:71",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_ReentryAttack_$15615_memory_ptr",
+                                    "typeString": "struct EvilToken.ReentryAttack memory"
+                                  }
+                                },
+                                "id": 15750,
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "amount",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": 15612,
+                                "src": "1994:20:71",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              ],
+                              "expression": {
+                                "arguments": [
+                                  {
+                                    "arguments": [
+                                      {
+                                        "expression": {
+                                          "id": 15740,
+                                          "name": "msg",
+                                          "nodeType": "Identifier",
+                                          "overloadedDeclarations": [],
+                                          "referencedDeclaration": 4294967281,
+                                          "src": "1870:3:71",
+                                          "typeDescriptions": {
+                                            "typeIdentifier": "t_magic_message",
+                                            "typeString": "msg"
+                                          }
+                                        },
+                                        "id": 15741,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "memberName": "sender",
+                                        "nodeType": "MemberAccess",
+                                        "src": "1870:10:71",
+                                        "typeDescriptions": {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        }
+                                      }
+                                    ],
+                                    "expression": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        }
+                                      ],
+                                      "id": 15739,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "nodeType": "ElementaryTypeNameExpression",
+                                      "src": "1862:8:71",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_type$_t_address_payable_$",
+                                        "typeString": "type(address payable)"
+                                      },
+                                      "typeName": {
+                                        "id": 15738,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1862:8:71",
+                                        "stateMutability": "payable",
+                                        "typeDescriptions": {}
+                                      }
+                                    },
+                                    "id": 15742,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "kind": "typeConversion",
+                                    "lValueRequested": false,
+                                    "names": [],
+                                    "nodeType": "FunctionCall",
+                                    "src": "1862:19:71",
+                                    "tryCall": false,
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_address_payable",
+                                      "typeString": "address payable"
+                                    }
+                                  }
+                                ],
+                                "expression": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address_payable",
+                                      "typeString": "address payable"
+                                    }
+                                  ],
+                                  "id": 15737,
+                                  "name": "Comet",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 4239,
+                                  "src": "1856:5:71",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_type$_t_contract$_Comet_$4239_$",
+                                    "typeString": "type(contract Comet)"
+                                  }
+                                },
+                                "id": 15743,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "kind": "typeConversion",
+                                "lValueRequested": false,
+                                "names": [],
+                                "nodeType": "FunctionCall",
+                                "src": "1856:26:71",
+                                "tryCall": false,
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_contract$_Comet_$4239",
+                                  "typeString": "contract Comet"
+                                }
+                              },
+                              "id": 15744,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "transferFrom",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 2833,
+                              "src": "1856:39:71",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$_t_bool_$",
+                                "typeString": "function (address,address,uint256) external returns (bool)"
+                              }
+                            },
+                            "id": 15751,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "functionCall",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1856:172:71",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            }
+                          },
+                          "id": 15752,
+                          "nodeType": "ExpressionStatement",
+                          "src": "1856:172:71"
+                        }
+                      ]
+                    }
+                  },
+                  "id": 15810,
+                  "nodeType": "IfStatement",
+                  "src": "1697:997:71",
+                  "trueBody": {
+                    "id": 15731,
+                    "nodeType": "Block",
+                    "src": "1741:37:71",
+                    "statements": []
+                  }
+                },
+                {
+                  "expression": {
+                    "hexValue": "74727565",
+                    "id": 15811,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "2710:4:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 15718,
+                  "id": 15812,
+                  "nodeType": "Return",
+                  "src": "2703:11:71"
+                }
+              ]
+            },
+            "id": 15814,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "performAttack",
+            "nameLocation": "1569:13:71",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 15715,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1582:2:71"
+            },
+            "returnParameters": {
+              "id": 15718,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 15717,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15814,
+                  "src": "1603:4:71",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 15716,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1603:4:71",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1602:6:71"
+            },
+            "scope": 15815,
+            "src": "1560:1161:71",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 15816,
+        "src": "234:2490:71",
+        "usedErrors": []
+      }
+    ],
+    "src": "37:2687:71"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.15+commit.e14f2714.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-11-30T22:41:29.723Z",
+  "devdoc": {
+    "details": "FaucetToken that attempts reentrancy attacks",
+    "kind": "dev",
+    "methods": {},
+    "title": "Malicious ERC20 token",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

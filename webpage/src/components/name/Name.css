@@ -42,11 +42,19 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    border: saddlebrown 1px solid;
+   /* border: saddlebrown 1px solid;*/
 }
 
 #name-name-input,#name-bio-textarea, #name-link-input, #name-avatar-section{
     margin-bottom: 10px;
+}
+
+#name-name-button{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
 }
 
 

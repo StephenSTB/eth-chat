@@ -1,0 +1,296 @@
+{
+  "contractName": "SimpleWstETH",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokensPerStEth_",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "decimals",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "tokensPerStEth",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokensPerStEth_\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"tokensPerStEth\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/comet/contracts/test/SimpleWstETH.sol\":\"SimpleWstETH\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"project:/contracts/comet/contracts/test/SimpleWstETH.sol\":{\"keccak256\":\"0x9d3d106e770d6c76432c35df2499f0101bd85fcd9f979c8dd30c3981acc733ff\",\"license\":\"BUSL-1.1\",\"urls\":[\"bzz-raw://4ae426898a5bb4cb14d7dba1ca91138a007279d46d6e9bad36105430388fd26b\",\"dweb:/ipfs/QmcmEwC2vBLDasLFZoUJNzKRLytYq3HuVjMCxsf1q5aQVN\"]}},\"version\":1}",
+  "bytecode": "0x60a03461005857601f61013638819003918201601f19168301916001600160401b0383118484101761005d57808492602094604052833981010312610058575160805260405160c2908161007482396080518160490152f35b600080fd5b634e487b7160e01b600052604160045260246000fdfe6080806040526004361015601257600080fd5b600090813560e01c908163313ce56714606f5750639576a0c814603457600080fd5b34606c5780600319360112606c5760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b80fd5b9050346088578160031936011260885780601260209252f35b5080fdfea2646970667358221220e4a18eb642144acd28dfff7446bb9fae253814fb579e24b618af811f4f23776b64736f6c634300080f0033",
+  "deployedBytecode": "0x6080806040526004361015601257600080fd5b600090813560e01c908163313ce56714606f5750639576a0c814603457600080fd5b34606c5780600319360112606c5760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b80fd5b9050346088578160031936011260885780601260209252f35b5080fdfea2646970667358221220e4a18eb642144acd28dfff7446bb9fae253814fb579e24b618af811f4f23776b64736f6c634300080f0033",
+  "immutableReferences": {
+    "17838": [
+      {
+        "length": 32,
+        "start": 73
+      }
+    ]
+  },
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "62:198:79:-:0;;;;;;;;;;;;;-1:-1:-1;;62:198:79;;;;-1:-1:-1;;;;;62:198:79;;;;;;;;;;;;;;;;;;;;;;;;219:32;;62:198;;;;;;;;219:32;62:198;;;;;;;-1:-1:-1;62:198:79;;;;;;-1:-1:-1;62:198:79;;;;;-1:-1:-1;62:198:79",
+  "deployedSourceMap": "62:198:79:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;132:36;62:198;;;;;;;;;;;;;;;;;;;;;123:2;62:198;;;;;;;",
+  "source": "// SPDX-License-Identifier: BUSL-1.1\npragma solidity 0.8.15;\n\ncontract SimpleWstETH {\n    uint8 public constant decimals = 18;\n\n    uint public immutable tokensPerStEth;\n\n    constructor(uint tokensPerStEth_) {\n        tokensPerStEth = tokensPerStEth_;\n    }\n}",
+  "sourcePath": "/home/stephensb/sb-labs/solidity-contracts/contracts/comet/contracts/test/SimpleWstETH.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/comet/contracts/test/SimpleWstETH.sol",
+    "exportedSymbols": {
+      "SimpleWstETH": [
+        17849
+      ]
+    },
+    "id": 17850,
+    "license": "BUSL-1.1",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 17833,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".15"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:79"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "SimpleWstETH",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 17849,
+        "linearizedBaseContracts": [
+          17849
+        ],
+        "name": "SimpleWstETH",
+        "nameLocation": "71:12:79",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "functionSelector": "313ce567",
+            "id": 17836,
+            "mutability": "constant",
+            "name": "decimals",
+            "nameLocation": "112:8:79",
+            "nodeType": "VariableDeclaration",
+            "scope": 17849,
+            "src": "90:35:79",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint8",
+              "typeString": "uint8"
+            },
+            "typeName": {
+              "id": 17834,
+              "name": "uint8",
+              "nodeType": "ElementaryTypeName",
+              "src": "90:5:79",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint8",
+                "typeString": "uint8"
+              }
+            },
+            "value": {
+              "hexValue": "3138",
+              "id": 17835,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "123:2:79",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_18_by_1",
+                "typeString": "int_const 18"
+              },
+              "value": "18"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "9576a0c8",
+            "id": 17838,
+            "mutability": "immutable",
+            "name": "tokensPerStEth",
+            "nameLocation": "154:14:79",
+            "nodeType": "VariableDeclaration",
+            "scope": 17849,
+            "src": "132:36:79",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 17837,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "132:4:79",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 17847,
+              "nodeType": "Block",
+              "src": "209:49:79",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 17845,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 17843,
+                      "name": "tokensPerStEth",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17838,
+                      "src": "219:14:79",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 17844,
+                      "name": "tokensPerStEth_",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17840,
+                      "src": "236:15:79",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "219:32:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 17846,
+                  "nodeType": "ExpressionStatement",
+                  "src": "219:32:79"
+                }
+              ]
+            },
+            "id": 17848,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 17841,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 17840,
+                  "mutability": "mutable",
+                  "name": "tokensPerStEth_",
+                  "nameLocation": "192:15:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 17848,
+                  "src": "187:20:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 17839,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "187:4:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "186:22:79"
+            },
+            "returnParameters": {
+              "id": 17842,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "209:0:79"
+            },
+            "scope": 17849,
+            "src": "175:83:79",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 17850,
+        "src": "62:198:79",
+        "usedErrors": []
+      }
+    ],
+    "src": "37:223:79"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.15+commit.e14f2714.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-11-30T22:41:29.739Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
