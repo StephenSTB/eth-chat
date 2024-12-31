@@ -112,9 +112,11 @@ let account = wallet[0].address as string
 
 // Express app creatiion
 const app = express();
-const port = 3001;
+
 
 if(dev){
+
+    const port = 3001;
     const  httpServer = http.createServer(app)
 
     httpServer.listen(port, () => {
@@ -131,14 +133,16 @@ if(dev){
     app.use("/", peerServer);
 }
 else{
-    const privateKey = fs.readFileSync('../../secret/eth-chat-cert/server.key', 'utf8'); //Certificate is saved at: /etc/letsencrypt/live/ethereumchatchain.xyz/fullchain.pem Key is saved at:         /etc/letsencrypt/live/ethereumchatchain.xyz/privkey.pem
+
+    const port = 3001;
+    const privateKey = fs.readFileSync('../../secret/eth-chat-cert/privkey.pem', 'utf8'); //Certificate is saved at: /etc/letsencrypt/live/ethereumchatchain.xyz/fullchain.pem Key is saved at:         /etc/letsencrypt/live/ethereumchatchain.xyz/privkey.pem
     
-    const certificate = fs.readFileSync('../../secret/eth-chat-cert/server.crt', 'utf8');
+    const certificate = fs.readFileSync('../../secret/eth-chat-cert/fullchain.pem', 'utf8');
     //console.log("private key: ", privateKey)
     const credentials = { key: privateKey, cert: certificate };
     const httpsServer = https.createServer(credentials, app);
     httpsServer.listen(port, () => {
-        console.log(`Server running at https://ethereumchatchain.xyz:${port}`);
+        console.log(`Server running at https://www.ethereumchatchain.xyz:${port}`);
     });
 
     const peerServer = ExpressPeerServer(httpsServer, {
