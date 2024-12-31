@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import {BrowserRouter, Routes, Route} from "react-router-dom"
-import Web3 from "web3"
-import {deployed} from "@sb-labs/web3-data/networks/DeployedContracts"
-import { contractFactoryV2, ContractFactoryV2 } from "@sb-labs/contract-factory-v2"
+//import Web3 from "web3"
+//import {deployed} from "@sb-labs/web3-data/networks/DeployedContracts"
+//import { contractFactoryV2, ContractFactoryV2 } from "@sb-labs/contract-factory-v2"
 import { EngineArgs, Web3Engine } from '@sb-labs/web3-engine'
 import './App.css'
-import { chains } from './interfaces/interfaces';
-import { Connect } from './components/connect/Connect';
-import { Peer } from "peerjs"
+//import { chains } from './interfaces/interfaces';
+//import { Connect } from './components/connect/Connect';
+//import { Peer } from "peerjs"
 import { Topbar } from './components/topbar/Topbar'
 import { WalletContainer } from './components/wallet-container/WalletContainer'
 import { HotWallet } from './components/hot-wallet/HotWallet'
@@ -21,13 +21,14 @@ interface Web3Props{
 
 function App() {
   //const [web3, setWeb3] = useState({} as Web3)
-  const [account, setAccount] = useState<string>("")
-  const [displayAddress, setDisplayAddress] = useState<string>("")
-  const [me, setMe] = useState<Peer>()
-  const [peeruuid, setpeeruuid] = useState<string>()
-  const [callStreamRecorder, setCallStreamRecorder] = useState<MediaRecorder>();
+  //const [account, setAccount] = useState<string>("")
+  //const [displayAddress, setDisplayAddress] = useState<string>("")
+  //const [me, setMe] = useState<Peer>()
+  //const [peeruuid, setpeeruuid] = useState<string>()
+  //const [callStreamRecorder, setCallStreamRecorder] = useState<MediaRecorder>();
   const [engine, setEngine] = useState<Web3Engine>(new Web3Engine({} as EngineArgs));
   const [network, setNetwork] = useState<string>("Sepolia");
+  const host = true ? {host: "localhost", port: 3001} : {host: "ethereumchatchain.xyz", port: 3001}
 /*
   async function getWeb3(web3: Web3, uuid: string){
     console.log("getweb3")
@@ -57,11 +58,11 @@ function App() {
   useEffect(() =>{
 
   },[callStreamRecorder] )*/
-
+  /*
   const setCallStream = (callstream: MediaRecorder) =>{
 
     setCallStreamRecorder(callstream)
-  }
+  }*/
 
   const getEngine = (engine: Web3Engine) =>{
     setEngine(engine)
@@ -84,7 +85,6 @@ function App() {
 
     useEffect(() =>{
         console.log("play first track");
-        ;
         const next = (Math.floor(Math.random() * 1000) ) % tracks.length;
         console.log((next));
         (document.querySelector("#player") as HTMLAudioElement).src =  tracks[next];
@@ -112,10 +112,10 @@ function App() {
                                                     /*<Connect text='Connect' getWeb3={getWeb3} me={me as Peer} setpeeruuid={setpeeruuid} setCallStreamRecoder={setCallStream} ></Connect>
                                                                         <Messages></Messages>*/
                                                 }
-                                                <Call engine={engine} network={network}/>
+                                                <Call engine={engine} network={network} host={host}/>
                                           </div>}
                                         />
-                  <Route path="name" element={<Name engine={engine} network={network}/>}/>
+                  <Route path="name" element={<Name engine={engine} network={network} host={host}/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>

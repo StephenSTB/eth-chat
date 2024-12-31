@@ -36,7 +36,7 @@ export const VideoPlayer = (props: VideoPlayerProps) =>{
             const me = props.me;
             console.log(`me: ${me.id}, peer: ${props.peeruuid}`)
 
-            let conn = me.connect(props.peeruuid, {reliable: true})
+            //let conn = me.connect(props.peeruuid, {reliable: true})
             
             
             /*

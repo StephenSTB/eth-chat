@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 export const Topbar = () =>{
 
     const navigate = useNavigate();
-
+    /*
     const changeWallet = (e: Event) =>{
         console.log("change wallet")
-    }
+    }*/
 
     return(
         <>

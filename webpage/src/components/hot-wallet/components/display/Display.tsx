@@ -12,11 +12,11 @@ import {ethereum_black, copy, flame} from "@sb-labs/images"
 
 import * as CryptoJS from 'crypto-js'
 
-import {ecrecover, toBuffer} from "ethereumjs-util"
+//import {ecrecover, toBuffer} from "ethereumjs-util"
 
 import { Buffer } from 'buffer';
 
-import { v4 as uuidV4 } from "uuid"
+//import { v4 as uuidV4 } from "uuid"
 
 import axios from "axios" 
 
@@ -25,8 +25,6 @@ globalThis.Buffer = Buffer;
 //console.log('Buffer polyfill:', Buffer);
 
 import "./Display.css"
-import { net } from "web3"
-
 
 interface DisplayProps{
     engine: Web3Engine,
@@ -50,8 +48,8 @@ export const Display = (props: DisplayProps) => {
     const [display, setDisplay] = useState("Connect")
     const [password, setPassword] = useState<string>("")
     const [error, setError] = useState<string>("");
-    const  [options, setOptions] = useState(props.network == "Sepolia" ? [<option value="Sepolia" key="Sepolia">Sepolia</option>,<option value="Base" key="Base">Base</option>] : 
-                                                                        [<option value="Base" key="Base">Base</option>,<option value="Sepolia" key="Sepolia">Sepolia</option>])
+    const  options = props.network == "Sepolia" ? [<option value="Sepolia" key="Sepolia">Sepolia</option>,<option value="Base" key="Base">Base</option>] : 
+                                                                        [<option value="Base" key="Base">Base</option>,<option value="Sepolia" key="Sepolia">Sepolia</option>]
     // account 
     const [copyState, setCopyState] = useState<boolean>(false)
     // send ether
@@ -62,7 +60,7 @@ export const Display = (props: DisplayProps) => {
     // registry variables
     const [callSignKey, setCallSignKey] = useState<boolean>(false);
     const [callRegisterGas, setCallRegisterGas] = useState("");
-    const [callChannelGas, setCallChannelGas] = useState("");
+    //const [callChannelGas, setCallChannelGas] = useState("");
     // transacting variables
     const [transactCallSignKey, setTransactCallSignKey] = useState<boolean>(false);
 
@@ -116,42 +114,12 @@ export const Display = (props: DisplayProps) => {
                 account = engine.web3Instances[network].wallet[0].address
                 console.log(account)
                 console.log(engine.web3Instances[network].contracts["Call"])
-                const signkey = await engine.sendTransaction(network as string, {from: account}, "Call", "SignKeys", [account], true)
-                console.log(signkey.transaction.v)
-                if(signkey.transaction.v == 0){
-                    const sig = await engine.web3Instances[network].wallet[0].sign("Enable Public Key.")
-                    const registerGas = await engine.getGas(network as string, {from: account}, "Call", "register", [sig.signature])
-                    console.log("Gas:", registerGas)
-                    setCallSignKey(true);
-                    setCallRegisterGas(engine.web3Instances[network].web3.utils.fromWei(registerGas.gas.toString(), "ether"))
-                    return;
-                }
-                else{
-                    setCallSignKey(false)
-                    /* get create channel gas */
-                    // get enable hash
-                    const enableHash = await engine.sendTransaction(network, {from: account}, "Call", "EnableHash", [], true)
-                    //console.log(enableHash)
-                    const publicKey = (await engine.sendTransaction(network, {from: account}, "Call", "SignKeys", [account], true)).transaction
-                    //console.log(publicKey)
-
-                    let keybuf = new Uint8Array(Buffer.from(("04" + ecrecover(toBuffer(enableHash.transaction), Number(publicKey.v), toBuffer(publicKey.r), toBuffer(publicKey.s)).toString("hex")), "hex"))
-                    //console.log(keybuf)
-                    const uuid = uuidV4()
-                    let encrypted = await engine.encrypt(keybuf, uuid)//await engine.sendTransaction(network, {from: account},"Call", "CallChannel", [account] )
-                    //console.log(encrypted)
-
-                    let gas = await engine.getGas(network, {from: account}, "Call", "setCallChannel",[account, ["0x" + encrypted.toString("hex"), "0x" + encrypted.toString("hex")]] )
-                    const utils = engine.web3Instances[network].web3.utils
-                    setCallChannelGas(utils.fromWei(gas.gas.toString(), "ether"))
-                    
-                }
                 // Name verifier.
                 const name_tx = (await engine.sendTransaction(network, {from: account}, "Name", "Names", [account], true))
                 const _name = name_tx.transaction;
                 console.log(_name)
                 if(_name !== ""){
-                    const address = await engine.sendTransaction(network, {from: account}, "Name", "NamesResolver", ["Steve"], true)
+                    //const address = await engine.sendTransaction(network, {from: account}, "Name", "NamesResolver", ["Steve"], true)
                 
                     const info_tx = await engine.sendTransaction(network, {from: account}, "Name", "Info", [account], true)
                     const info = info_tx.transaction;
@@ -177,6 +145,37 @@ export const Display = (props: DisplayProps) => {
                     }
                     
                 }
+                const signkey = await engine.sendTransaction(network as string, {from: account}, "Call", "SignKeys", [account], true)
+                console.log(signkey.transaction.v)
+                if(signkey.transaction.v == 0){
+                    const sig = await engine.web3Instances[network].wallet[0].sign("Enable Public Key.")
+                    const registerGas = await engine.getGas(network as string, {from: account}, "Call", "register", [sig.signature])
+                    console.log("Gas:", registerGas)
+                    setCallSignKey(true);
+                    setCallRegisterGas(engine.web3Instances[network].web3.utils.fromWei(registerGas.gas.toString(), "ether"))
+                    return;
+                }
+                else{
+                    setCallSignKey(false)
+                    /* get create channel gas */
+                    // get enable hash
+                    //const enableHash = await engine.sendTransaction(network, {from: account}, "Call", "EnableHash", [], true)
+                    //console.log(enableHash)
+                    //const publicKey = (await engine.sendTransaction(network, {from: account}, "Call", "SignKeys", [account], true)).transaction
+                    //console.log(publicKey)
+
+                    //let keybuf = new Uint8Array(Buffer.from(("04" + ecrecover(toBuffer(enableHash.transaction), Number(publicKey.v), toBuffer(publicKey.r), toBuffer(publicKey.s)).toString("hex")), "hex"))
+                    //console.log(keybuf)
+                    //const uuid = uuidV4()
+                    //let encrypted = await engine.encrypt(keybuf, uuid)//await engine.sendTransaction(network, {from: account},"Call", "CallChannel", [account] )
+                    //console.log(encrypted)
+
+                    //let gas = await engine.getGas(network, {from: account}, "Call", "setCallChannel",[account, ["0x" + encrypted.toString("hex"), "0x" + encrypted.toString("hex")]] )
+                    //const utils = engine.web3Instances[network].web3.utils
+                    //setCallChannelGas(utils.fromWei(gas.gas.toString(), "ether"))
+                    
+                }
+               
             }
         }
         // get registries
@@ -257,7 +256,7 @@ export const Display = (props: DisplayProps) => {
     }
 
     /* address*/
-    const copyAddress = (e: Event) =>{
+    const copyAddress = () =>{
         navigator.clipboard.writeText(account as string)
         setCopyState(true)
     }
@@ -329,7 +328,7 @@ export const Display = (props: DisplayProps) => {
 
     
     /*Registry */
-    const registerCallSignKey = async (e: Event) =>{
+    const registerCallSignKey = async () =>{
         setTransactCallSignKey(true)
         const sig = await engine?.defaultInstance?.wallet[0].sign("Enable Public Key.")
         const register = await engine?.sendTransaction(network as string, {from: account},"Call", "register", [sig?.signature] )
@@ -340,15 +339,7 @@ export const Display = (props: DisplayProps) => {
         }    
     }
 
-    /* create Call channel */
-    const changeChannel =  async (e: ChangeEvent<HTMLInputElement>) =>{
-        const utils = engine?.defaultInstance?.web3.utils;
-        if(!utils?.isAddress(e.target.value)){
-            setError("Call channel input must be valid address.")
-            return;
-        }
-        await engine?.sendTransaction(network as string, {from: account}, "Call", "SignKeys", [e.target.value], true )
-    }
+    
 
     return(
         <>

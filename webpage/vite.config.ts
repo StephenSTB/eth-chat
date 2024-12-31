@@ -4,6 +4,7 @@ import wasm from 'vite-plugin-wasm'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build:{target: ['chrome100'] },
   plugins: [
     nodePolyfills({
       // To add only specific polyfills, add them here. If no option is passed, adds all polyfills

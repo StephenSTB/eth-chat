@@ -8,11 +8,11 @@ import { v4 as uuidV4} from "uuid"
 import { ecrecover, toBuffer } from "ethereumjs-util";
 import { Peer } from "peerjs"
 import { VideoPlayer } from "../videoplayer/VideoPlayer";
-import { net } from "web3";
 
 interface CallProps{
     engine: Web3Engine;
-    network: string
+    network: string;
+    host: any;
 }
 
 export const Call = (props: CallProps) =>{
@@ -21,9 +21,10 @@ export const Call = (props: CallProps) =>{
 
     const [callAddress, setCallAddress] = useState<string>("");
     const [error, setError] = useState<string>("")
-    const [callButtonText, setCallButtonText] = useState<string>("Call")
+    //const [callButtonText, setCallButtonText] = useState<string>("Call")
     const [promptText, setPromptText] = useState<string>("")
     const [transacting, setTransacting] = useState<boolean>(false)
+    const [transactionGas,setTranasactionGas] = useState<string>("")
 
     const [engine, setEngine] = useState<Web3Engine>();
     const [network, setNetwork] = useState<string>("")
@@ -33,10 +34,11 @@ export const Call = (props: CallProps) =>{
 
     const [me, setMe] = useState<Peer>()
     const [peeruuid, setpeeruuid] = useState<string>("");
-
     const [showPlayer, setShowPlayer] = useState<boolean>(false)
 
+
     const [mobile, setMobile] = useState<boolean>(false)
+
     
     useEffect(() =>{
         if(props.engine.mnemonic === undefined){
@@ -97,7 +99,11 @@ export const Call = (props: CallProps) =>{
                 if(signKey.transaction.v == 0){
                     console.log("No sign Key")
                     setPromptText(" Press call to create sign key.")
-                    
+                    const sig = await engine?.defaultInstance?.wallet[0].sign("Enable Public Key.")
+                    const gasT = await engine?.getGas(network as string, {from: account},"Call", "register", [sig?.signature] )
+                    const utils = engine?.defaultInstance?.web3.utils;
+                    const gas = utils?.fromWei(gasT.gas.toString(), "ether") as string
+                    setTranasactionGas("Gas to register: "+ gas)
                     setCallState(1)
                     return
                 }
@@ -115,7 +121,9 @@ export const Call = (props: CallProps) =>{
             try{
                 setTransacting(true)
                 const sig = await engine?.defaultInstance?.wallet[0].sign("Enable Public Key.")
+                
                 const register = await engine?.sendTransaction(network as string, {from: account},"Call", "register", [sig?.signature] )
+                console.log(register)
                 //setTransacting(false)
                 setCallState(2)
                 state = 2
@@ -137,6 +145,12 @@ export const Call = (props: CallProps) =>{
                 if(callchannel.transaction.encryptedSender == null){
                     console.log("Need to Create call channel")
                     setPromptText("Need to Create call channel press call to do so.")
+                    console.log("0x" + Buffer.alloc(108).fill("dddd").toString())
+                    const gasT = await engine?.getGas(network, {from: account}, "Call", "setCallChannel",  [callAddress, ["0x" +  Buffer.alloc(108).fill("dddd").toString(), "0x" +  Buffer.alloc(108).fill("dddd").toString()]])
+                    console.log(gasT)
+                    const utils = engine?.defaultInstance?.web3.utils;
+                    const gas = utils?.fromWei(gasT.gas.toString(), "ether") as string
+                    setTranasactionGas("Gas to set call channel: "+ gas)
                     setCallState(3);
                 }
                 else{
@@ -175,19 +189,29 @@ export const Call = (props: CallProps) =>{
                 let keybuf1 = new Uint8Array(Buffer.from("04" + ecrecover(toBuffer(enablehash), Number(signKey1.v), toBuffer(signKey1.r), toBuffer(signKey1.s)).toString("hex"), "hex"))
                 const encrypted1 = await engine?.encrypt(keybuf1, uuid)
 
+                console.log(encrypted0)
+                console.log(encrypted1)
+
                 let enableCallChannel = await engine?.sendTransaction(network, {from: account}, "Call", "setCallChannel", [callAddress, ["0x" + encrypted0?.toString("hex"), "0x" + encrypted1?.toString('hex')]])
+                
+                console.log(enableCallChannel)
+                
                 if(enableCallChannel.success){
                     console.log("Created call channel from: ", account, " to ", callAddress)
+                    const callchannel = await engine?.sendTransaction(network as string, {from: account},"Call", "CallChannel", [account, callAddress], true )
+                    console.log(callchannel.transaction)
                     setPromptText(`Created call channel from you to ${callAddress}.`)
                     setTransacting(false)
                     state = 4
+                }else{
+                    throw new Error();
                 }
+
             }catch{
                 console.log("Error creating call channel 3")
                 setError(`Error creating call channel for ${callAddress} 3`)
                 setTransacting(false)
             }
-            
         }
         
         
@@ -200,6 +224,7 @@ export const Call = (props: CallProps) =>{
                 if(callchannel.transaction.encryptedSender == null){
                     console.log("Calle needs to Create call channel")
                     setPromptText("Calle needs to Create call channel.")
+                    setTranasactionGas("")
                     setCallState(3);
                 }
                 else{
@@ -210,8 +235,6 @@ export const Call = (props: CallProps) =>{
                 console.log("Error getting other user call channel 4")
                 setError("Error getting other user call channel 4")
             }
-            
-            
         }
         // can make a call.
         if(state == 5){
@@ -240,8 +263,8 @@ export const Call = (props: CallProps) =>{
             }
             
             const me = new Peer(uuid, {
-                host: "localhost",
-                port: 3001,
+                host: props.host.host,
+                port: props.host.port,
                 path: "/eth-chat",
             })
             setMe(me)
@@ -261,9 +284,10 @@ export const Call = (props: CallProps) =>{
                 { showPlayer && <VideoPlayer closePlayer={closePlayer} me={me as Peer} peeruuid={peeruuid} />}
                 <div id="call-search">
                     <Input placeholder="name or 0x... " size={mobile ? "" : "small"} onChange={changeCallAddress}/>
-                    <Button theme="light" size={mobile ? "" : "large"} text={callButtonText} id="call-button" transacting={transacting} onClick={call}/>
+                    <Button theme="light" size={mobile ? "" : "large"} text="Call" id="call-button" transacting={transacting} onClick={call}/>
                 </div>
-                {promptText}
+                {transactionGas}<br/>
+                {promptText}<br/>
                 {error}
             </div>
         </>

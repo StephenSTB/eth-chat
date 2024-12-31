@@ -147,7 +147,7 @@ export function Connect(props: ConnectProps){
     const prefix = "/src/assets/"
     const tracks = [ prefix + "CtrlAltDelete.mp3", prefix + "don'tknowwhy.mp3", prefix + "Bleach.mp3", prefix + "Suppuku.mp3"]; //prefix + "Bleach.mp3", prefix + "Suppuku.mp3"
 
-    let track = 0;
+    //let track = 0;
 
     const switchTrack = () =>{
         const track = (Math.floor(Math.random() * 1000 )) % tracks.length;
@@ -177,11 +177,14 @@ size?: string;
     inputType?: string;
     id?:string;
 */
+    const closePlayer = () =>{
+
+    }
     return(
         <div id="connect">
 
             {
-                displayStream && <VideoPlayer me={props.me } peeruuid={peeruuid as string} /> // getStreaming?{/*setCallStreamRecorder={props.setCallStreamRecoder*/}
+                displayStream && <VideoPlayer me={props.me } peeruuid={peeruuid as string} closePlayer={closePlayer}/> // getStreaming?{/*setCallStreamRecorder={props.setCallStreamRecoder*/}
                 
             }
             {

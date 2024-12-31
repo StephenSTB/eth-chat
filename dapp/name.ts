@@ -38,6 +38,8 @@ import {base32} from "multiformats/bases/base32"
 import {base64} from "multiformats/bases/base64"
 
 import {createHelia} from "helia"
+
+import {unixfs} from "@helia/unixfs"
 /*
 import { createLibp2p } from "libp2p"
 import { createHeliaHTTP, } from '@helia/http'
@@ -58,8 +60,6 @@ import { mplex } from '@libp2p/mplex'
 
 import { execSync } from 'child_process';
 
-import { bootstrap } from '@libp2p/bootstrap'
-import { hashes } from "multiformats/dist/types/src/basics";
 
 let engine : Web3Engine;
 
@@ -201,6 +201,12 @@ const deployName = async () =>{
             const blk = await Block.encode({value: data, codec: raw, hasher: sha256});
 
             console.log(blk.cid.toString(base32.encoder))
+            /*
+            const hfs = unixfs(helia0)
+            const dir = fs.readdir("../", () =>{
+
+            })
+            hfs.addDirectory()*/
 
             
           //const id = await hfs.addBytes(data)

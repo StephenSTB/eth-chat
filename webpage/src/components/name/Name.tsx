@@ -21,7 +21,8 @@ setInterval(() =>{
 
 interface NameProps{
     network: string,
-    engine: Web3Engine
+    engine: Web3Engine,
+    host: any;
 }
 
 export const Name = (props: NameProps) =>{
@@ -49,6 +50,9 @@ export const Name = (props: NameProps) =>{
     const [account, setAccount] = useState<string>("");
     const [transacting, setTransacting] = useState<boolean>(false)
 
+    const [newNameGas, setNewNameGas] = useState<string>("") 
+    const [editInfoGas, setEditInfoGas] = useState<string>("")
+
     const navigate = useNavigate()
 
     useEffect(() =>{
@@ -71,6 +75,12 @@ export const Name = (props: NameProps) =>{
             console.log(name == "")
             
             if(name !== undefined && name !== ""){
+
+                let gas = await engine?.getGas(network, {from: account}, "Name", "editInfo", [newBio, "bafkreie6z5t57xg2htwfdgjhvv6wyaqemfqjggsoswzpsimi5c6ibjtg24", "bafkreie6z5t57xg2htwfdgjhvv6wyaqemfqjggsoswzpsimi5c6ibjtg24"])
+                const utils = engine?.defaultInstance?.web3.utils;
+                console.log(utils?.fromWei(gas.gas.toString(), "ether"))
+                setEditInfoGas(utils?.fromWei(gas.gas.toString(), "ether") as string);
+                
                 let nameInfo = (await engine.sendTransaction(network, {from: account}, "Name", "Info", [account], true)).transaction
                 console.log(nameInfo)
                 
@@ -99,6 +109,12 @@ export const Name = (props: NameProps) =>{
                 }
             }
             else{
+
+                // todo random name
+                let gas = await engine?.getGas(network, {from: account}, "Name", "createName", ["newName", "", "bafkreie6z5t57xg2htwfdgjhvv6wyaqemfqjggsoswzpsimi5c6ibjtg24", "bafkreie6z5t57xg2htwfdgjhvv6wyaqemfqjggsoswzpsimi5c6ibjtg24"])
+                const utils = engine?.defaultInstance?.web3.utils;
+                console.log(utils?.fromWei(gas.gas.toString(), "ether"))
+                setNewNameGas(utils?.fromWei(gas.gas.toString(), "ether") as string);
                 setCreateName(true)
                 console.log("here")
             }
@@ -194,6 +210,7 @@ export const Name = (props: NameProps) =>{
         let gas = await engine?.getGas(network, {from: account}, "Name", "createName", [newName, newBio, link, avatar])
         const utils = engine?.defaultInstance?.web3.utils;
         console.log(utils?.fromWei(gas.gas.toString(), "ether"))
+        
         let createTranasaction = await engine?.sendTransaction(network, {from: account}, "Name", "createName", [newName, newBio, link, avatar])
         if(!createTranasaction.success){
             console.log(createTranasaction)
@@ -209,7 +226,7 @@ export const Name = (props: NameProps) =>{
             //console.log("here")
             formData.append('file', avatarFile as File);
             formData.append('data', JSON.stringify(transaction))
-            await axios.post("http://localhost:3001/api/avatar", formData, {
+            await axios.post(`${props.host.port == 3001 ? `http://localhost:3001/api/avatar` : "https://" + props.host.host + ":" + props.host.port + "/api/avatar"}`, formData, {
                 headers:{
                     "Content-Type": 'multipart/form-data'
                 }
@@ -221,8 +238,57 @@ export const Name = (props: NameProps) =>{
         setLink(newLink)
         setAvatar(iconImport)
         setCreateName(false)
+        setTransacting(false)
     }
 
+    const editInfo = async () =>{
+        console.log("edit info")
+        setTransacting(true)
+
+        //let info = (await engine?.sendTransaction(network, {from: account}, "Name", "Info", [account], true)).transaction
+
+        let link = "bafkreihdwdcefgh4dqkjv67uzcmw7ojee6xedzdetojuzjevtenxquvyku";
+        let avatar = "bafkreihdwdcefgh4dqkjv67uzcmw7ojee6xedzdetojuzjevtenxquvyku";
+        // get blank info
+
+        console.log(avatarCid)
+        console.log("newlink avatar cid", newLink, avatarCid)
+        if(newLink !== ""){
+            link = newLink;
+        }
+        if(avatarCid !== ""){
+            avatar = avatarCid
+        }
+
+        let editTransaction = await engine?.sendTransaction(network, {from: account}, "Name", "editInfo", [newBio, link, avatar])
+
+        if(!editTransaction.success){
+            console.log(editTransaction)
+            return
+        }
+
+        let transaction =  (await engine?.sendTransaction(network, {from: account}, "Name", "Info", [account], true)).transaction
+        transaction.network = network
+        console.log(transaction)
+        //TODO send avatar
+        const formData = new FormData();
+        if(avatarFile !== undefined){
+            //console.log("here")
+            formData.append('file', avatarFile as File);
+            formData.append('data', JSON.stringify(transaction))
+            const resp = await axios.post(`${props.host.port == 3001 ? `http://localhost:3001/api/avatar` : "https://" + props.host.host + ":" + props.host.port +  "/api/avatar"}`, formData, {
+                headers:{
+                    "Content-Type": 'multipart/form-data'
+                }
+            })
+            console.log(resp)
+        }
+
+        setBio(newBio)
+        setLink(newLink)
+        setAvatar(iconImport)
+        setTransacting(false)
+    }
 
     return(
         <>
@@ -230,28 +296,45 @@ export const Name = (props: NameProps) =>{
             <div id="name-main-view">
                 {
                     name !== "" &&
-                    <div id="name-current">
-                        <div id="name-name">{name} <Icon src={avatar} size="large" round={true} /></div>
-                        <div id="name-bio"><Textarea value={bio} /></div>
-                        <div> <a href={"https://ipfs.io/ipfs/" + link}>{linkDisplay}</a></div>
-                    </div>
-                }
-                {
-                    createName &&
-                    <div id="name-create">
-                        <h3>Create Name</h3>
-                        <div>
-                            <Input placeholder="name..." size="small" id="name-name-input" onChange={changeName}/>
-                            <div id ="name-bio-textarea"><Textarea placeholder="bio..." onChange={changeBio}/></div>
+                    <>
+                        <div id="name-current">
+                            <div id="name-name">{name} <Icon src={avatar} size="large" round={true} /></div>
+                            <div id="name-bio"><Textarea value={bio} /></div>
+                            <div> <a href={"https://ipfs.io/ipfs/" + link}>{linkDisplay}</a></div>
+                        </div>
+                        <div id="name-edit">
+                            <h3>Edit</h3>
+                            
+                            <div id="name-edit-bio"><Textarea placeholder="bio..." onChange={changeBio}></Textarea></div>
                             <Input placeholder="link..." size="small" id="name-link-input" onChange={changeLink}/>
-                            <label >Upload Avatar:</label>
                             <div id="name-avatar-section"> 
                                 <input id="name-avatar-button" type="file" accept="image/png" onChange={changeAvatar}></input>
                                 <Icon src={iconImport} />
                             </div>
-                            <div id="name-name-button"><Button size="medium" text="Create" transacting={transacting} onClick={NewName} /></div>
+                            <div id="name-edit-button">gas: {editInfoGas}&nbsp; <Button size="medium" text="Edit" transacting={transacting} onClick={editInfo} /></div>
                         </div>
-                    </div>
+                    </>
+                    
+                }
+                {
+                    createName &&
+                    <>
+                        <div id="name-create">
+                            <h3>Create Name</h3>
+                            <div>
+                                <Input placeholder="name..." size="small" id="name-name-input" onChange={changeName}/>
+                                <div id ="name-bio-textarea"><Textarea placeholder="bio..." onChange={changeBio}/></div>
+                                <Input placeholder="link..." size="small" id="name-link-input" onChange={changeLink}/>
+                                <label>Upload Avatar:</label>
+                                <div id="name-avatar-section"> 
+                                    <input id="name-avatar-button" type="file" accept="image/png" onChange={changeAvatar}></input>
+                                    <Icon src={iconImport} />
+                                </div>
+                                <div id="name-name-button">gas: {newNameGas} <Button size="medium" text="Create" transacting={transacting} onClick={NewName} /></div>
+                            </div>
+                        </div>
+                    </>
+                    
                 }
                 <div>{error}</div>
             </div>
