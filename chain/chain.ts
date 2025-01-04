@@ -82,7 +82,7 @@ try{
 // Web3 engine Initialization.
 
 let prvdrs = {} as Providers;
-prvdrs["Ganache"] = providers["Ganache"];
+//prvdrs["Ganache"] = providers["Ganache"];
 prvdrs["Sepolia"] = providers["Sepolia"];
 prvdrs["Base"] = providers["Base"]
 
@@ -91,7 +91,7 @@ const engineArgs =
     browser: false,
     mnemonic, 
     defaultAccount: 0,
-    networks: ["Ganache","Sepolia", "Base"], 
+    networks: ["Sepolia", "Base"], 
     defaultNetwork: "Sepolia", 
     providers: prvdrs, 
     deployed, 
@@ -135,15 +135,17 @@ if(dev){
 else{
 
     const port = 3001;
+    const host = `0.0.0.0`;
     const privateKey = fs.readFileSync('../../secret/eth-chat-cert/privkey.pem', 'utf8'); //Certificate is saved at: /etc/letsencrypt/live/ethereumchatchain.xyz/fullchain.pem Key is saved at:         /etc/letsencrypt/live/ethereumchatchain.xyz/privkey.pem
     
     const certificate = fs.readFileSync('../../secret/eth-chat-cert/fullchain.pem', 'utf8');
     //console.log("private key: ", privateKey)
     const credentials = { key: privateKey, cert: certificate };
     const httpsServer = https.createServer(credentials, app);
-    httpsServer.listen(port, () => {
+    httpsServer.listen(port, host, () => {
         console.log(`Server running at https://www.ethereumchatchain.xyz:${port}`);
     });
+    console.log(httpsServer.address());
 
     const peerServer = ExpressPeerServer(httpsServer, {
         path: "/eth-chat",
@@ -171,7 +173,7 @@ const server = app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });*/
 
-app.get("/", (req, res, next) => res.send("Hello world!"));
+app.get("/", (req, res) => res.send("Hello world!"));
 
 // Set up multer to store files in memory
 const upload = multer({
