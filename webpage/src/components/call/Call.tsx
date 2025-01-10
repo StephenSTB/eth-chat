@@ -262,10 +262,15 @@ export const Call = (props: CallProps) =>{
                 setError("Error getting uuids 5")
             }
             
-            const me = new Peer(uuid, {
+            const me = new Peer(uuid, props.host.port === 9000 ? 
+                {
+                    host: "0.peerjs.com", 
+                    port: 443
+                }
+                : {
                 host: props.host.host,
                 port: props.host.port,
-                path: "/eth-chat",
+                path: props.host.path,
             })
             setMe(me)
             setpeeruuid(peeruuid)

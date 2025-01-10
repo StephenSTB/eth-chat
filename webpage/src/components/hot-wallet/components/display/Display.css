@@ -89,16 +89,16 @@
     margin-bottom: 10.5px;
 }
 
-/*call signing*/
+/*signing keys*/
 
-#call-sign{
+#sign{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#call-sign-key-button{
+#sign-key-button{
     min-width: 250px;
     margin-top: 5px;
 }

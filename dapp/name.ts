@@ -102,7 +102,7 @@ const main = async () =>{
 
     account = wallet[0].address as string;
 
-    //await deployName();
+    await deployName();
     
     //await createName();
 
@@ -110,7 +110,7 @@ const main = async () =>{
 
     //await editInfo()
 
-    await runHelia()
+    //await runHelia()
    // process.exit(0)
 }
 
@@ -121,7 +121,7 @@ const deployName = async () =>{
         //console.log(callDeployed)
     
         if(nameDeployed.success){
-            console.log(green(), "Call Deployed")
+            console.log(green(), "Name Deployed")
         }
         
 }

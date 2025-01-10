@@ -48,7 +48,7 @@ export const Display = (props: DisplayProps) => {
     const [display, setDisplay] = useState("Connect")
     const [password, setPassword] = useState<string>("")
     const [error, setError] = useState<string>("");
-    const  options = props.network == "Sepolia" ? [<option value="Sepolia" key="Sepolia">Sepolia</option>,<option value="Base" key="Base">Base</option>] : 
+    const  options = props.network == "Ganache" || props.network == "Sepolia" ? [<option value="Ganache" key="Ganache">Ganache</option>,<option value="Sepolia" key="Sepolia">Sepolia</option>,<option value="Base" key="Base">Base</option>] : 
                                                                         [<option value="Base" key="Base">Base</option>,<option value="Sepolia" key="Sepolia">Sepolia</option>]
     // account 
     const [copyState, setCopyState] = useState<boolean>(false)
@@ -62,7 +62,7 @@ export const Display = (props: DisplayProps) => {
     const [callRegisterGas, setCallRegisterGas] = useState("");
     //const [callChannelGas, setCallChannelGas] = useState("");
     // transacting variables
-    const [transactCallSignKey, setTransactCallSignKey] = useState<boolean>(false);
+    const [transactSignKey, setTransactSignKey] = useState<boolean>(false);
 
     useEffect(() =>{
 
@@ -107,17 +107,16 @@ export const Display = (props: DisplayProps) => {
         
         const getRegistries = async() =>{
 
-            console.log(engine.web3Instances[network].contracts)
+            //console.log(engine.web3Instances[network].contracts)
 
-            if(engine.web3Instances[network].contracts["Call"] !== undefined){
-                console.log("here")
+            if(engine.web3Instances[network].contracts["Name"] !== undefined){
                 account = engine.web3Instances[network].wallet[0].address
                 console.log(account)
-                console.log(engine.web3Instances[network].contracts["Call"])
                 // Name verifier.
                 const name_tx = (await engine.sendTransaction(network, {from: account}, "Name", "Names", [account], true))
                 const _name = name_tx.transaction;
                 console.log(_name)
+
                 if(_name !== ""){
                     //const address = await engine.sendTransaction(network, {from: account}, "Name", "NamesResolver", ["Steve"], true)
                 
@@ -145,11 +144,12 @@ export const Display = (props: DisplayProps) => {
                     }
                     
                 }
-                const signkey = await engine.sendTransaction(network as string, {from: account}, "Call", "SignKeys", [account], true)
+                console.log("here")
+                const signkey = await engine.sendTransaction(network as string, {from: account}, "PublicKeys", "SignKeys", [account], true)
                 console.log(signkey.transaction.v)
                 if(signkey.transaction.v == 0){
                     const sig = await engine.web3Instances[network].wallet[0].sign("Enable Public Key.")
-                    const registerGas = await engine.getGas(network as string, {from: account}, "Call", "register", [sig.signature])
+                    const registerGas = await engine.getGas(network as string, {from: account}, "PublicKeys", "register", [sig.signature])
                     console.log("Gas:", registerGas)
                     setCallSignKey(true);
                     setCallRegisterGas(engine.web3Instances[network].web3.utils.fromWei(registerGas.gas.toString(), "ether"))
@@ -203,7 +203,7 @@ export const Display = (props: DisplayProps) => {
         //console.log(mnemonic)
 
         let prvdrs = {} as Providers;
-
+        prvdrs["Ganache"] = providers["Ganache"]
         prvdrs["Sepolia"] = providers["Sepolia"]
         prvdrs["Base"] = providers["Base"]
 
@@ -212,8 +212,8 @@ export const Display = (props: DisplayProps) => {
             browser: true,
             mnemonic, 
             defaultAccount: 0,
-            networks: ["Sepolia", "Base"], 
-            defaultNetwork: "Sepolia", 
+            networks: ["Ganache","Sepolia", "Base"], 
+            defaultNetwork: "Ganache", 
             providers: prvdrs, 
             deployed, 
             contractFactory: contractFactoryV2, 
@@ -265,7 +265,8 @@ export const Display = (props: DisplayProps) => {
 
     const sendEther = async () =>{
         setEtherTransacting(true)
-        if(Number(ether) > sendEthereum){
+        engine?.utils
+        if(Number(ether) > sendEthereum + 0.002 ){
             let eth = engine?.defaultInstance?.web3.utils.toWei(sendEthereum.toString())
             await engine?.sendTransaction(network as string, {from: account, to:toAddress, value: eth})
             const sent = engine?.defaultInstance?.web3.utils.fromWei(eth?.toString() as string, "ether")
@@ -328,6 +329,7 @@ export const Display = (props: DisplayProps) => {
 
     
     /*Registry */
+    /*
     const registerCallSignKey = async () =>{
         setTransactCallSignKey(true)
         const sig = await engine?.defaultInstance?.wallet[0].sign("Enable Public Key.")
@@ -337,9 +339,18 @@ export const Display = (props: DisplayProps) => {
             setTransactCallSignKey(false);
             setCallSignKey(false)
         }    
-    }
+    }*/
 
-    
+    const registerSignKey = async () =>{
+        setTransactSignKey(true)
+        const sig = await engine?.defaultInstance?.wallet[0].sign("Enable Public Key.")
+        const register = await engine?.sendTransaction(network as string, {from: account},"PublicKeys", "register", [sig?.signature] )
+        console.log(register);
+        if(register.success){
+            setTransactSignKey(false);
+            setCallSignKey(false)
+        }    
+    }
 
     return(
         <>
@@ -404,10 +415,10 @@ export const Display = (props: DisplayProps) => {
                             callSignKey && 
                             <>
                                 <Divider />
-                                <div id="call-sign">
-                                <div>Register Call Sign Key Button to Interact with App.</div>
+                                <div id="sign">
+                                <div>Register Sign Key Button to Interact with App.</div>
                                 <div>Gas : {callRegisterGas}</div>
-                                <Button text="Register Call Sign Key." size="large" onClick={registerCallSignKey} id="call-sign-key-button" transacting={transactCallSignKey}/>
+                                <Button text="Register Sign Key." size="large" onClick={registerSignKey} id="sign-key-button" transacting={transactSignKey}/>
                             </div>
                             </>
                             

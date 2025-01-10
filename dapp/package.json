@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "name" : "ts-node --esm ./name.ts"
+    "name" : "ts-node --esm ./name.ts",
+    "following": "ts-node --esm following.ts",
+    "messages" : "ts-node --esm ./messages.ts",
+    "publickeys": "ts-node --esm ./publickeys.ts"
   },
   "author": "",
   "license": "ISC",

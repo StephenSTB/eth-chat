@@ -13,6 +13,7 @@ import { WalletContainer } from './components/wallet-container/WalletContainer'
 import { HotWallet } from './components/hot-wallet/HotWallet'
 import { Call } from './components/call/Call'
 import { Name } from './components/name/Name'
+import { Follow } from './components/follow/Follow'
 /*
 interface Web3Props{
     web3: Web3;
@@ -27,8 +28,8 @@ function App() {
   //const [peeruuid, setpeeruuid] = useState<string>()
   //const [callStreamRecorder, setCallStreamRecorder] = useState<MediaRecorder>();
   const [engine, setEngine] = useState<Web3Engine>(new Web3Engine({} as EngineArgs));
-  const [network, setNetwork] = useState<string>("Sepolia");
-  const host = true ? {host: "localhost", port: 3001} : {host: "ethereumchatchain.xyz", port: 3001}
+  const [network, setNetwork] = useState<string>("Ganache");
+  const host = false ? {host: "localhost", port: 3001, path: "/eth-chat"} : {host: "35.183.125.48", port: 3001, path: "/eth-chat"};
 /*
   async function getWeb3(web3: Web3, uuid: string){
     console.log("getweb3")
@@ -107,14 +108,15 @@ function App() {
                 <Route path="/">
                     <Route index element={<WalletContainer wallet={<HotWallet getEngine={getEngine} getNetwork={getNetwork} engine={engine} network={network}/>}></WalletContainer>} />
                     
-                    <Route path="call" element={<div>
+                    {/*<Route path="call" element={<div>
                                                 {
                                                     /*<Connect text='Connect' getWeb3={getWeb3} me={me as Peer} setpeeruuid={setpeeruuid} setCallStreamRecoder={setCallStream} ></Connect>
-                                                                        <Messages></Messages>*/
+                                                                        <Messages></Messages>*//*
                                                 }
                                                 <Call engine={engine} network={network} host={host}/>
                                           </div>}
-                                        />
+                                        />*/}
+                  <Route path="follow" element={<Follow engine={engine} network={network} host={host}/>}/>
                   <Route path="name" element={<Name engine={engine} network={network} host={host}/>}/>
                 </Route>
             </Routes>

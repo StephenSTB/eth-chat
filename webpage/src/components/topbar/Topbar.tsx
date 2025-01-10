@@ -15,7 +15,8 @@ export const Topbar = () =>{
             <div id="topbar">
                 <div className="top-section">
                     <Button size="small" text="Name" onClick={() => navigate("/name")} theme="light" id="top-button"></Button>
-                    <Button size="small" text="Call" onClick={() => navigate("/call")} theme="light" id="top-button"></Button>
+                    {/*<Button size="small" text="Call" onClick={() => navigate("/call")} theme="light" id="top-button"></Button>*/}
+                    <Button size="small" text="Follow" onClick={() => navigate("/follow")} theme="light" id="top-button"></Button>
                     <Button size="small" text="Wallet" onClick={() => navigate("/")} theme="light" id="top-button"></Button>
                 </div>
                 <div className="top-section"></div>

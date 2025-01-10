@@ -111,7 +111,9 @@ export const Name = (props: NameProps) =>{
             else{
 
                 // todo random name
+                console.log("here111")
                 let gas = await engine?.getGas(network, {from: account}, "Name", "createName", ["newName", "", "bafkreie6z5t57xg2htwfdgjhvv6wyaqemfqjggsoswzpsimi5c6ibjtg24", "bafkreie6z5t57xg2htwfdgjhvv6wyaqemfqjggsoswzpsimi5c6ibjtg24"])
+                console.log(gas)
                 const utils = engine?.defaultInstance?.web3.utils;
                 console.log(utils?.fromWei(gas.gas.toString(), "ether"))
                 setNewNameGas(utils?.fromWei(gas.gas.toString(), "ether") as string);
@@ -158,8 +160,6 @@ export const Name = (props: NameProps) =>{
         
         const blobUrl = URL.createObjectURL(avatarInput as File);
         setIconImport(blobUrl)
-        
-        
         
     }
    
@@ -221,6 +221,7 @@ export const Name = (props: NameProps) =>{
         transaction.network = network
         console.log(transaction)
         //TODO send avatar
+        /*
         const formData = new FormData();
         if(avatarFile !== undefined){
             //console.log("here")
@@ -231,7 +232,7 @@ export const Name = (props: NameProps) =>{
                     "Content-Type": 'multipart/form-data'
                 }
             })
-        }
+        }*/
 
         setName(newName)
         setBio(newBio)
@@ -270,6 +271,7 @@ export const Name = (props: NameProps) =>{
         let transaction =  (await engine?.sendTransaction(network, {from: account}, "Name", "Info", [account], true)).transaction
         transaction.network = network
         console.log(transaction)
+        /*
         //TODO send avatar
         const formData = new FormData();
         if(avatarFile !== undefined){
@@ -282,7 +284,7 @@ export const Name = (props: NameProps) =>{
                 }
             })
             console.log(resp)
-        }
+        }*/
 
         setBio(newBio)
         setLink(newLink)

@@ -36,18 +36,18 @@ export const VideoPlayer = (props: VideoPlayerProps) =>{
             const me = props.me;
             console.log(`me: ${me.id}, peer: ${props.peeruuid}`)
 
-            //let conn = me.connect(props.peeruuid, {reliable: true})
             
             
-            /*
+            
             const connectToPeer = async () =>{
-                
-                var conn = me.connect(props.peeruuid);
+                const conn = me.connect(props.peeruuid, {reliable: true})
+               // var conn = me.connect(props.peeruuid);
                 console.log(conn)
                 // on open will be launch when you successfully connect to PeerServer
                 conn.on('open', function(){
                 console.log("open connection")
                 // here you have conn.id
+                //console.log(conn.id);
                 conn.send('hi!');
                 });
 
@@ -60,16 +60,19 @@ export const VideoPlayer = (props: VideoPlayerProps) =>{
                 
             }
             
-            await connectToPeer()*/
-            
+            connectToPeer();
+         
+            /*
             console.log("me:" + me.id + "peer:" + props.peeruuid)
             const callstream = await navigator.mediaDevices.getUserMedia({video: true, audio: false});
             const answerstream = navigator.mediaDevices.getUserMedia({video: true, audio: false});
+*/
+            
             /*
             const callStreamRecord = new MediaRecorder(callstream);
             console.log(props.setCallStreamRecorder)
             props.setCallStreamRecorder(callStreamRecord)*/
-        
+            /*
             (document.querySelector("#video1") as HTMLVideoElement).srcObject = callstream;
             const callpeer = async () =>{
                     
@@ -78,12 +81,13 @@ export const VideoPlayer = (props: VideoPlayerProps) =>{
                 call.on('stream', (remoteStream: MediaStream) => {
                     //new MediaRecorder(remoteStream)
                     console.log("stream");
+                    
                     //(document.querySelector("#video1") as HTMLVideoElement).srcObject = callstream;
                     (document.querySelector("#video2") as HTMLVideoElement).srcObject = remoteStream;
                     //setCallPerformed(true)
                 })
             }
-            callpeer();
+            await callpeer();
             
             const answerpeer = async () =>{
                     
@@ -98,7 +102,7 @@ export const VideoPlayer = (props: VideoPlayerProps) =>{
                     })
                 })
             }
-            answerpeer();
+            await answerpeer();*/
             
             
             /*

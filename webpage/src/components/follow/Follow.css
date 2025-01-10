@@ -1,0 +1,47 @@
+#follow-main{
+    border: solid 1px gray;
+    margin-top: 5vh;
+    height: 95vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#follow-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#follow-follow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+
+@media screen and (max-width: 600px){
+    #follow-main{
+        
+    }
+
+   
+
+    
+    
+}
+
+@media screen and (min-width: 900px){
+    #follow-main{
+        
+    }
+    #follow-box{
+        width: 800px;
+        height: 800px;
+        border: solid 1px black;
+    }
+    
+}
